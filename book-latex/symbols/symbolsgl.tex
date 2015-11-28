@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: symbolsgl.tex,v 1.5 2014/01/08 22:56:07 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% These ones for the symbols glossary
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN example of symbols definition
+%
+\newglossaryentry{ohm}{type=symbols,
+        name={\ensuremath{\Omega}},
+        symbol={\ensuremath{\Omega}}, 
+        sort=ohm,
+        description=unit of electrical resistance}
+
+\newglossaryentry{angstrom}{type=symbols,
+        name={\AA},
+        symbol={\AA},
+        sort=angstrom,
+        description={non-SI unit of length}}
+
+\newglossaryentry{xdet}{type=symbols,
+        name={\ensuremath{x(t)}},
+        symbol={\ensuremath{x(t)}},
+        sort=xdet,
+        description={Audio signal}}
+
+\newglossaryentry{xidet}{type=symbols,
+        name={\ensuremath{x_i(t)}},
+        symbol={\ensuremath{x_i(t)}},
+        sort=xidet,
+        description={Audio signal captured at microphone $i$}}
+
+%
+% END example of symbols definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set language specific definitions...
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \printglossary[type=symbols,style=super,nonumberlist=true,title=List of Symbols,toctitle=List of Symbols]
+  \addcontentsline{toc}{chapter}{List of Symbols}
+}
+{
+  \printglossary[type=symbols,style=super,nonumberlist=true,title=Lista de símbolos,title=Lista de símbolos,toctitle=Lista de símbolos]
+  \addcontentsline{toc}{chapter}{Lista de símbolos}
+}
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
