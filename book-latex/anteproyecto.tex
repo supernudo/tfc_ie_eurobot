@@ -99,128 +99,115 @@
 \section{Introducción}
 \label{sec:introduccion}
 
-\textit{En este apartado se describirá el contexto en el que se desenvolverá el
-TFG y sus antecedentes si existen. Recuerda que en el anteproyecto
-también se pueden poner referencias bibliográficas como \cite{texis}}.
+Este proyecto trata sobre el desarrollo de robots para la competición de robots Eurobot \cite{eurobot}. Se propone relizar un manual de referencia creado a partir de la experiencia adquirida por el autor en el desarrollo de robots para esta competición en los últimos 12 años. 
 
 
 \section{Objetivos y desarrollo}
 \label{sec:objetivos-y-campo}
 
-\textit{En este apartado se delimitan y explican con claridad los objetivos
-generales a conseguir con el TFG y la aplicación del mismo, así como los
-objetivos específicos en su caso. Algo del tipo:}
-
-El objetivo fundamental de este proyecto es el diseño, implementación y
-evaluación de \ldots
+El objetivo fundamental de este proyecto es la dibulgación del conocimiento adquirido en la realización de robots que compiten en Eurobot.
 
 Los objetivos específicos de este proyecto son los siguientes:
 
 \begin{itemize}
-\item Realizar un  \ldots
-\item Diseñar, implementar y evaluar  \ldots, siguiendo la arquitectura
-  mostrada en la figura \ref{fig_arquitectura}, y que tendrá las
-  siguientes características:
-
-  \begin{enumerate}
-  \item Característica 1 \ldots
-  \item Característica 2 \ldots
-  \item  \ldots
-  \item Característica n \ldots
-  \end{enumerate}
-
-\item Analizar  \ldots
-
-\item Documentar  \ldots
-
+\item Reflexionar y analizar diferentes aspectos indirectamente relacionados con el desarrollo de ingeniería (el equipo de trabajo, organización, ...)
+\item Analizar y describir los fundamentos de ingenieria implicitos (dinamica, cinemática, sistemas de control, ...).
+\item Describir las partes fundamentales del desarrollo (movimiento, navegación, posicionamiento, estrategia ...) y diseño un robot de Eurobot (mecánica, electronica, programación, ...).
+\item Presentar implementaciones y diseños reales de cada una de las partes fundamentales de un robot de Eurobot. 
+\item Documentar todas aquellos diseños, desarrollos o algoritmos realizados que puedan servir de punto de partida o ser reutilizados en futuros desarrollos (diseños electrónicos, librerías software, herramientas de simulación, ...). 
 \end{itemize}
 
-  \begin{figure}[tphb]
-    \centering
-    \includegraphics[width=3in]{Diagrama2.pdf}
-    \caption{Arquitectura del sistema completo.}
-    \label{fig_arquitectura}
-  \end{figure}
+Especificamente se tratarán los siguientes temas:
 
+\begin{enumerate}
+
+\item El robot de Eurobot
+	\begin{itemize}
+	\item Especificaciones de diseño
+	\item Partes principales
+	\item Arquitectura mecánica
+	\item Arquitectura hardware
+	\item Arquitectura software
+	\item Fases y metodologia de diseño
+	\item Depuración y pruebas
+	\end{itemize}
+
+
+\item El equipo
+	\begin{itemize}
+	\item Numero de integrantes
+	\item Espectativas y objetivos
+	\item Repartición de tareas
+	\item Roles
+	\item Organización y coordinación del trabajo
+	\item Niveles de implicación
+	\end{itemize}
+
+\item Detección del robot oponente
+
+\item Navegación
+	\begin{itemize}
+	\item Control de movimiento
+	\item Posicionamiento
+	\item Detección de bloqueos
+	\item Generación de trayectorias
+	\item Evitación de obstaculos
+	\end{itemize}
+
+\item Manipulación de elementos de juego
+	\begin{itemize}
+	\item Soluciones conocidas
+	\item Tipos de actuadores
+	\item Tipos de sensores	
+	\item Control optimo de mecanismos
+	\item Sincronización de mecanismos y movimiento del robot
+	\end{itemize}
+
+\item Comunicación entre dos robots
+
+\item Estrategia de juego
+
+	\begin{itemize}
+	\item Partes de un partido
+	\item Toma de decisiones
+	\item Tipos de implementaciones de estrategia
+	\item Implementación de estrategia con dos robots
+	\item Simulación
+	\end{itemize}
+
+
+\end{enumerate}
 
 \section{Metodología y plan de trabajo}
 \label{sec:metodologia-y-plan}
 
-\textit{Aquí se incluirá una descripción (puede ser incluso una enumeración)
-clara de las etapas que se van a seguir, y si es posible se deberá
-incluir un diagrama de Gantt. Por ejemplo algo del estilo a:}
-
-Estas son las fases de desarrollo que se van a seguir para la
-consecución de los objetivos del proyecto:
+El desarrollo del proyecto se va a realizar a tiempo parcial en paralelo con una jornada laborar de 40 horas semanales. Se disponen de aproximadamente 8 horas disponibles a la semana dedicables al desarrollo del proyecto. El objetivo es terminar el desarrollo en junio de 2016. Estas son las fases de desarrollo que se van a seguir para la consecución de los objetivos del proyecto:
 
 \begin{enumerate}
-  
-\item Formación inicial (1 mes)
-  
-  \begin{itemize}
-  \item Formación en \ldots
-  \item Consulta de la API \ldots
-  \item Consulta bibliográfica \ldots
-  \item Profundización en herramientas de soporte \ldots
-  \item  \ldots
-  \end{itemize}
-
-\item Diseño del entorno \ldots (0,5 meses)
-
-\item Diseño, implementación y evaluación del  \ldots (2 meses)
-  \begin{itemize}
-  \item Definición del  \ldots
-  \item Implementación del  \ldots
-  \item Evaluación del  \ldots
-  \end{itemize}
-  
-\item Implementación y evaluación de  \ldots (1 mes)
-
-\item Diseño, implementación y evaluación del módulo  \ldots (1 mes):
-  \begin{itemize}
-  \item Definición de  \ldots
-  \item Definición de  \ldots
-  \item Implementación y evaluación  \ldots
-  \end{itemize}
-
-\item Integración y  \ldots (1 mes)
-
-\item Documentación  \ldots (0,5 meses)
-
+\item Análisis, clasificíon del contenido a documentar en capítulos y secciones (generación del índice de contenido, 1 semana).
+\item Organizaión y clasificación de la información y datos experimentales de los robots desarrollados (2 semanas)
+\item Documentación de codigo fuente y diseños electrónicos realizados (1 mes)
+\item Documentación, síntesis y redacción del contenido del libro del proyecto (5 meses).
 \end{enumerate}
-
 
 \section{Medios}
 \label{sec:medios}
 
-\textit{Aquí se describen de los medios necesarios para realizar el TFG. Por
-ejemplo:}
-
-Las herramientas que van a ser necesarias para desarrollar este proyecto
-son las siguientes:
+Las herramientas que van a ser necesarias para desarrollar este proyecto son las siguientes:
 
 \begin{itemize}
 \item PC compatible
-\item Sensor  \ldots
 \item Sistema operativo GNU/Linux~\cite{gnulinux}
-\item Entorno de desarrollo Emacs/Vim~\cite{emacs}
+\item Editor de textos Gedit~\cite{gedit}
 \item Procesador de textos \LaTeX~\cite{lamport94}
-\item Control de versiones CVS~\cite{cvs}
+\item Control de versiones Mercurial~\cite{hg}
 \item Compilador C/C++ gcc~\cite{gcc}
 \item Gestor de compilaciones make~\cite{make}
-\item Robot con movilidad.
-\item  \ldots
+\item Compilador C30 de Microchip~\cite{c30}
+\item Entorno de desarrollo MplabX~\cite{mplabx}
+\item Robots P.Tinto y Tirantes~\cite{eurobotics_102_vs_rcva_101}
+\item Campo de juego de Eurobot.
 \end{itemize}
-
-Otros recursos necesarios para la elaboración del proyecto son:
-
-\begin{itemize}
-\item Herramientas  \ldots
-\item Sistema de desarrollo  \ldots
-\item  \ldots
-\end{itemize}
-
-
 
 
 %
