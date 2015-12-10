@@ -171,8 +171,8 @@
 %\input{chapters/resultados.tex}
 
 %\input{chapters/conclusiones.tex}
-\chapter{Introducción}
-\section{Presentación}
+\chapter{Introducción al proyecto}
+\section{Introducción}
 \section{La competición Eurobot}
 \section{Robotica educativa}
 \section{El equipo Eurobotics Engineering}
@@ -181,65 +181,72 @@
 \section{Organización del libro}
 
 \chapter{El robot de Eurobot}
-
+\section{Introducción}
 \section{Especificaciones de diseño}
-\section{Características principales}
+\section{Partes principales en el desarrollo de un robot de Eurobot}
 \section{Arquitectura mecánica, hardware y software}
 \section{Fases y metodologia de diseño}
 \section{Depuración y pruebas}
 
 \chapter{El equipo}
+\section{Introducción}
 \section{Numero de integrantes}
 \section{Espectativas, motivación y objetivos}
 \section{Tareas principales}
 \section{Organización y metodología del trabajo}
 
+%\chapter{Introducción}
+%\section{Navegación autónoma}
+%\section{Manipulación de elementos}
+%\section{Estratégia}
 
-\chapter{Sistema base}
+%\chapter{Position manager}
+%\chapter{Trajectory manager}
+%\chapter{Obstacle avoidance}
+%\chapter{Blocking detection}
 
-\chapter{Position manager}
-\chapter{Trajectory manager}
-\chapter{Obstacle avoidance}
-\chapter{Blocking detection}
+\chapter{Sistema de navegación autónoma}
 
-\chapter{Control de posición}
+\section{Introducción}
+\section{Arquitectura mecánica}
+\section{Arquitectura hardware}
+\section{Arquitectura software}
 
-\section{Arquitectura mecánica y hardware}
+\section{Dinámica de un sistema de tracción diferencial}
+	\subsection{Coeficiente de aderencia de las ruedas, cálculo experimental}
+	\subsection{Determinación de la aceleración máxima}
+	\subsection{Perfil de velocidad trapezoidal}
+	\subsection{Leyes mecánicas y termicas de un motor DC}
+	\subsection{Condición de deslizamiento y dimensionamiento de la reductora}
+	\subsection{Elección de la velocidad y la aceleración}
 
-\section{Cinematica y coeficiente de aderencia}
-\section{Deslizamiento en fase de aceleración}
-\section{Elección del perfil de velocidad}
-\section{Leyes mecánicas y termicas de un motor DC}
+\section{Control de posición polar} 
+	\subsection{Ajuste del controlador PID}
 
-\section{Control PID}
-\section{Control polar} 
+\section{Posicionamiento relativo mediante odometría}
+	\subsection{Medida y corrección de errores sistematicos}
+	\subsection{Compensación de la fuerza centripeta}
+	\subsection{Posicionamiento absoluto}
 
-\section{Ajuste del controlador PID}
-\section{El bloqueo del motor}
-\section{Elección de la velocidad y aceleración adecuadas}
+\section{Detección de bloqueos mecánicos}
+\section{Generación de trayectorias}
 
-\section{Detección de bloqueos}
-
-
-\chapter{Generación de trayectorias}
-
-\chapter{Posicionamiento mediante odometría}
-\section{Fundamento teórico}
-\section{Medida y corrección de errores sistematicos}
-\section{Compensación de la fuerza centripeta}
-
-\chapter{Posicionamiento mediante balizas}
+\section{Evitación de obstaculos}
+\subsection{Sistema detección de obstaculos}
+\subsection{Detección de oponentes mediante baliza tipo faro}
 
 \chapter{Manipulación de elementos de juego}
-\section{Soluciones mecánicas conocidas}
+\section{Introducción}
 \section{Tipos de actuadores}
 \section{Tipos de sensores}
+\section{Soluciones mecánicas conocidas}
 \section{Control de mecanismos}
 \section{Sincronización de sistemas mecanismos y movimiento del robot}
 
-\chapter{Comunicación entre dos robots}
 
 \chapter{Estrategia de juego}
+\section{Introducción}
+\section{Comunicación entre dos robots}
 \section{Partes de un partido}
 \section{Toma de decisiones}
 \section{Tipos de implementaciones de estrategia}
