@@ -184,9 +184,12 @@
 \section{Introducción}
 \section{Especificaciones de diseño}
 \section{Partes principales en el desarrollo de un robot de Eurobot}
-\section{Arquitectura mecánica, hardware y software}
+\section{Arquitecturas mecánica, hardware y software}
 \section{Fases y metodologia de diseño}
-\section{Depuración y pruebas}
+\begin{itemize}
+\item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
+\end{itemize}
+\section{Depuración y puesta en marcha}
 
 \chapter{El equipo}
 \section{Introducción}
@@ -205,7 +208,7 @@
 %\chapter{Obstacle avoidance}
 %\chapter{Blocking detection}
 
-\chapter{Sistema de navegación autónoma}
+\chapter{Plataforma robotica base}
 
 \section{Introducción}
 \section{Arquitectura mecánica}
@@ -220,31 +223,50 @@
 	\subsection{Condición de deslizamiento y dimensionamiento de la reductora}
 	\subsection{Elección de la velocidad y la aceleración}
 
-\section{Control de posición polar} 
+\section{Control en posición de tipo polar} 
+	\subsection{Tipos de controladores}
 	\subsection{Ajuste del controlador PID}
 
 \section{Posicionamiento relativo mediante odometría}
 	\subsection{Medida y corrección de errores sistematicos}
 	\subsection{Compensación de la fuerza centripeta}
-	\subsection{Posicionamiento absoluto}
+
+\section{Posicionamiento absoluto mediante balizas}
 
 \section{Detección de bloqueos mecánicos}
+
 \section{Generación de trayectorias}
 
 \section{Evitación de obstaculos}
-\subsection{Sistema detección de obstaculos}
+\subsection{Sistemas detección de obstaculos}
 \subsection{Detección de oponentes mediante baliza tipo faro}
 
-\chapter{Manipulación de elementos de juego}
+
+\chapter{Sistemas mecánicos de manipulación de elementos de juego}
 \section{Introducción}
-\section{Tipos de actuadores}
-\section{Tipos de sensores}
+\section{Partes y elementos de un sistema mecánico}
+	\subsection{Tipos de actuadores}
+	\subsection{Tipos de sensores}
+	\subsection{Arquitectura hardware}
+	\subsection{Arquitectura software}
+
 \section{Soluciones mecánicas conocidas}
+
+\section{Lectura y procesamiento de sensores}
+	\subsection{Filtrado de sensores digitales}
+	\subsection{Filtrado de sensores analógicos}
+
+\section{Control de actuadores}
 \section{Control de mecanismos}
 \section{Sincronización de sistemas mecanismos y movimiento del robot}
 
+\chapter{Implementación del juego, partido y estrategia}
 
-\chapter{Estrategia de juego}
+\section{Organización de un partido}
+\section{Tareas del robot}
+\section{Zonas de trabajo}
+
+\section{Estrategia de juego}
 \section{Introducción}
 \section{Comunicación entre dos robots}
 \section{Partes de un partido}
