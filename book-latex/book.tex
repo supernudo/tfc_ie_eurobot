@@ -174,7 +174,7 @@
 \chapter{Introducción al proyecto}
 \section{Introducción}
 \section{La competición Eurobot}
-\section{Robotica educativa}
+\section{Robótica educativa}
 \section{El equipo Eurobotics Engineering}
 \section{A hombros de gigantes}
 \section{Motivación y objetivos}
@@ -185,7 +185,7 @@
 \section{Especificaciones de diseño}
 \section{Partes principales en el desarrollo de un robot de Eurobot}
 \section{Arquitecturas mecánica, hardware y software}
-\section{Fases y metodologia de diseño}
+\section{Fases y metodología de diseño}
 \begin{itemize}
 \item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
 \end{itemize}
@@ -194,21 +194,11 @@
 \chapter{El equipo}
 \section{Introducción}
 \section{Numero de integrantes}
-\section{Espectativas, motivación y objetivos}
+\section{Expectativas, motivación y objetivos}
 \section{Tareas principales}
 \section{Organización y metodología del trabajo}
 
-%\chapter{Introducción}
-%\section{Navegación autónoma}
-%\section{Manipulación de elementos}
-%\section{Estratégia}
-
-%\chapter{Position manager}
-%\chapter{Trajectory manager}
-%\chapter{Obstacle avoidance}
-%\chapter{Blocking detection}
-
-\chapter{Plataforma robotica base}
+\chapter{Plataforma robótica base}
 
 \section{Introducción}
 \section{Arquitectura mecánica}
@@ -216,10 +206,10 @@
 \section{Arquitectura software}
 
 \section{Dinámica de un sistema de tracción diferencial}
-	\subsection{Coeficiente de aderencia de las ruedas, cálculo experimental}
+	\subsection{Coeficiente de adherencia de las ruedas, cálculo experimental}
 	\subsection{Determinación de la aceleración máxima}
 	\subsection{Perfil de velocidad trapezoidal}
-	\subsection{Leyes mecánicas y termicas de un motor DC}
+	\subsection{Leyes mecánicas y térmicas de un motor DC}
 	\subsection{Condición de deslizamiento y dimensionamiento de la reductora}
 	\subsection{Elección de la velocidad y la aceleración}
 
@@ -228,8 +218,8 @@
 	\subsection{Ajuste del controlador PID}
 
 \section{Posicionamiento relativo mediante odometría}
-	\subsection{Medida y corrección de errores sistematicos}
-	\subsection{Compensación de la fuerza centripeta}
+	\subsection{Medida y corrección de errores sistemáticos}
+	\subsection{Compensación de la fuerza centrípeta}
 
 \section{Posicionamiento absoluto mediante balizas}
 
@@ -237,43 +227,78 @@
 
 \section{Generación de trayectorias}
 
-\section{Evitación de obstaculos}
-\subsection{Sistemas detección de obstaculos}
-\subsection{Detección de oponentes mediante baliza tipo faro}
+\section{Evitación de obstáculos}
+	\subsection{Sistemas detección de obstáculos}
+	\subsection{Detección de oponentes mediante baliza tipo faro}
 
 
-\chapter{Sistemas mecánicos de manipulación de elementos de juego}
+\chapter{Sistemas mecánicos para la manipulación de elementos de juego}
 \section{Introducción}
-\section{Partes y elementos de un sistema mecánico}
-	\subsection{Tipos de actuadores}
-	\subsection{Tipos de sensores}
-	\subsection{Arquitectura hardware}
-	\subsection{Arquitectura software}
-
 \section{Soluciones mecánicas conocidas}
+	\subsection{Análisis de mecanismos utilizados según los elementos de juego}
+	\subsection{Conclusiones en la elección de un sistema mecánico}
+
+\section{Partes de un sistema mecánico}
 
 \section{Lectura y procesamiento de sensores}
+	\subsection{Tipos de sensores}
+	\subsection{Electrónica de acondicionamiento}
 	\subsection{Filtrado de sensores digitales}
 	\subsection{Filtrado de sensores analógicos}
 
 \section{Control de actuadores}
+	\subsection{Tipos de actuadores}
+	\subsection{Electrónica de control}
+
 \section{Control de mecanismos}
 \section{Sincronización de sistemas mecanismos y movimiento del robot}
 
-\chapter{Implementación del juego, partido y estrategia}
 
-\section{Organización de un partido}
-\section{Tareas del robot}
-\section{Zonas de trabajo}
 
-\section{Estrategia de juego}
+
+\chapter{Implementación de la estrategia de juego}
+
 \section{Introducción}
+\begin{itemize}
+\item Union de la plataforma robótica y los sistemas mecánicos.
+\end{itemize}
+
+\section{Elementos y fases de un partido de Eurobot}
+
+	\begin{itemize}
+	\item Patron implicito: recolectar, transportar y almacenar/construir. 
+	\item Dependencias entre capacidad de recolectar y numero de veces que se almacena
+	\item Tipos de tareas: de accion, de recolectar, transportar y almacenar
+	\item Tipos de trayectorias en función del campo de juego (caminos libres vs preestablecidos)
+	\item{Independencia de los sistemas mecánicos y las trayectorias}
+	\item{Modularidad y flexibilidad de la estrategia}
+	\end{itemize}
+
+	\subsection{Zonas de trabajo}
+	\subsection{Tareas de una zona de trabajo}
+	\subsection{Trayectorias entre zonas de trabajo}
+	\subsection{Condiciones en la elección de una zona de trabajo}
+
+\section{Arquitectura software}
+
+\section{Gestion de trayectorias en un partido}
+\begin{itemize}
+\item Sobrecarga de las trajectorias del sistema base.
+\end{itemize}
+
 \section{Comunicación entre dos robots}
-\section{Partes de un partido}
-\section{Toma de decisiones}
-\section{Tipos de implementaciones de estrategia}
-\section{Implementación de estrategia con dos robots}
-\section{Simulación}
+
+\section{Simulación de estrategias}
+
+\section{Patrones de implementación de estrategia}	
+	\subsection{Estrategia secuencial bloqueante}
+	\subsection{Estrategia reactiva}
+	\subsection{Estratégia basada en prioridades}
+	\subsection{Estratégia adaptativa}
+	\subsection{Estrategia con dos robots}
+
+\section{Pruebas, depuración y validación de la estrategia}
+
 
 
 % Optional in PFCs
