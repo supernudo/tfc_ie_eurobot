@@ -5,13 +5,13 @@
 % $Id: introduccion.tex,v 1.6 2014/02/11 11:00:06 macias Exp $
 %
 % By:
-%  + Javier Macías-Guarasa. 
+%  + Javier Macías-Guarasa.
 %    Departamento de Electrónica
 %    Universidad de Alcalá
-%  + Roberto Barra-Chicote. 
+%  + Roberto Barra-Chicote.
 %    Departamento de Ingeniería Electrónica
-%    Universidad Politécnica de Madrid   
-% 
+%    Universidad Politécnica de Madrid
+%
 % Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
@@ -67,10 +67,10 @@ Las reglas cambian cada año, sin embargo, la base es siempre la misma:
 
 Tal y como está diseñado, Eurobot constituye un reto de ingeniería que permite a alumnos de electrónica, mecánica e informática aplicar sus conocimientos o ampliarlos y compartirlos. También hace, por ejemplo, que alumnos de electrónica aprendan mecánica o informática o ambos campos o todos. Dada la complejidad de los robots suelen ser construidos por equipo formados de al menos 2 personas, lo cual implica cierta organización, división de tareas y trabajo en equipo. Un equipo numeroso permite desarrollar robots con partes más especializadas pero implica una gestión y coordinación mayor. Por otro lado, Eurobot implica confeccionar un producto completo, original y funcional desde cero\footnote{No siempre se ha de empezar desde cero, un desarrollo modular y estructurado permite partir de una base mínima.} (o como diríamos en Inglés \emph{from scratch}) en cosa de 6 o 7 meses. Esto implica una elección y compra de materiales, componentes, diseño electrónico y mecánico, construcción de prototipos, desarrollo de software, ... y en definitiva una gestión del tiempo. Tiempo que suele escasear porque los participantes, generalmente alumnos, disponen de él escasamente\footnote{Y parece ser que menos aún con los actuales planes de estudios Bolonia}.
 
+
 La comunidad de Eurobot se comunica principalmente a través de sus foros\cite{foros_eurobot}. Hay tres foros principales: un foro relacionado con las reglas de cada año, el foro de Eurobot Open\cite{foro_eurobot_open} y el foro de la Copa de Francia de la robótica\cite{foro_copa_francia}. Este último es el foro más activo dado que la Copa nacional de Francia es la de mayor tradición y la que reúne el mayor numero de participantes. Este foro, aunque está escrito en francés, es el que acumula la mayoría de la información acerca de la competición y de temas técnicos. Además, cada equipo suele tener una página web, blog o canal de Youtube donde comparte los avances de los robots que construyen cada año.
 
 Eurobot está organizada gracias la asociación internacional de Eurobot y a la asociación francesa \emph{Planet Sciences}\cite{planet_sciences} y a muchas otras asociaciones, escuelas, universidades y personas voluntarias de los países participantes. Es increíble la cantidad de personas que apoyan Eurobot y trabajan de forma voluntaria sin ninguna remuneración más que la satisfacción de estar implicados y formar parte de esta fiesta que es Eurobot. Y esto incluye a los participantes, ya que ganar Eurobot no implica ningún premio económico. En total, un montón de gente que trabaja para disfrutar y divertirse con la robótica.
-
 
 \section{El equipo \emph{Eurobotics Engineering}, historia y antecedentes}
 \label{sec:equipo_eurobotics}
@@ -103,7 +103,7 @@ Al ir ganando experiencia, se es capaz de detectar las partes fundamentales y co
 
 Quizá llegue un momento en que el tiempo que lleva realizar la depuración del robot sobre el entorno real es mucho y es un proceso lento, o quizá no se disponga de dicho entorno porque no queda otra opción que desarrollar de forma remota. Para todo eso, es muy útil el uso de simuladores o bancos de pruebas\footnote{También conocidos en la literatura anglosajona como \emph{sandbox}.} que permiten emular las interfaces de entrada y salida del robot (sensores y motores) o sus estímulos (obstáculos).
 
-La robótica se disfruta, es divertida, pero también se sufre y requiere de un indudable ejercicio de abstracción y concentración. Es necesario investigar sobre cosas nueva o reforzar conocimientos ya adquiridos, aplicarlos y madurarlos. Son más comunes los errores que los aciertos, nada sale a la primera, y la \emph{ley de Murphy}\footnote{"Si algo puede salir mal, saldrá mal"} suele no fallar.  Todo esto lleva al aprendizaje y aplicación del \emph{método científico} para experimentar o para resolver problemas encontrados, como comportamientos no esperados del robot. 
+La robótica se disfruta, es divertida, pero también se sufre y requiere de un indudable ejercicio de abstracción y concentración. Es necesario investigar sobre cosas nueva o reforzar conocimientos ya adquiridos, aplicarlos y madurarlos. Son más comunes los errores que los aciertos, nada sale a la primera, y la \emph{ley de Murphy}\footnote{"Si algo puede salir mal, saldrá mal"} suele no fallar.  Todo esto lleva al aprendizaje y aplicación del \emph{método científico} para experimentar o para resolver problemas encontrados, como comportamientos no esperados del robot.
 
 Durante el desarrollo de la robótica, puede parecer que es una actividad poco agradecida o agradecida en momentos muy cortos. Pero merece la pena y además se demuestra que más tarde, en el mundo laboral o de la investigación, es cuando la robótica tiene gran parte su retorno\footnote{El autor de este proyecto esta convencido de ello y lo ha experimentado.}.
 
@@ -111,7 +111,13 @@ Durante el desarrollo de la robótica, puede parecer que es una actividad poco ag
 \section{A hombros de gigantes}
 \label{sec:a_hombros_de_gigantes}
 
+Hoy en día es casi impensable que una sóla persona pueda realizar avances en los diferentes campos de la ciencia equiparables a los descubrimientos de los grandes cientificos de la historia. Así la investigación y el desarrollo tecnológico son llevados a cabo por grupos de personas cada cual experta en ciertos tema concretos. Por otro lado la tecnología y sus aplicaciónes cada vez son más complejas y eso es en gran parte a que los nuevos desarrollos se apoyan en desarrollos anteriores que permiten abstraerse de aquello que se encuentra fuera del alcance de un objetivo concreto.
 
+Quizá el ejemplo más conocido a dia de hoy es la plataforma de desarrollo Arduino\cite{arduino} que permite desarrollar sistemas embebidos partiendo de un conocimiento muy básico o nulo sobre microcontroladores. Esto es gracias a que la plataforma de desarrollo Arduino tiene una vasta librería de funciones que abstraen la programación de bajo nivel del microcontrolador de forma que no se \emph{escribe un bit} de uno o varios \emph{registros} de nombres aprentemente sin significado, si no que se \emph{detiene}, se \emph{cambia el sentido} o se cambia la \emph{velocidad} de un \emph{motor}. Además todas esas funciones se encuentran documentadas y son accesibles\cite{arduino_src} para su modificación o consulta. Así, si una funcionalidad de una librería no existe, es posible estudiar como está implementada y añadir nuevas funcionalidades, lo cual implica un aprendizaje.
+
+En cierta manera, esta manera de abordar el aprendizaje y el desarrollo de aplicaciones tecnolológicas es una forma natural y acorde con la sociedad actual. Hoy en día la tecnología que tenemos en nuestras manos es compleja y muy abstracta por lo que no tiene sentido que el aprendizaje de la misma comience desde los niveles más básicos. Plataformas como Arduino permiten comenzar en un punto intermedio y poder crecer hacia niveles de abstracción mayores (grano grueso) o hacia niveles inferiores más específicos (grano fino).
+
+Pues bien este proyecto no es una excepción y tambien camina a hombros de gigantes.
 
 
 \section{Motivación y objetivos}
@@ -121,12 +127,13 @@ El objetivo fundamental de este proyecto es la divulgación del conocimiento adqu
 
 Los objetivos específicos de este proyecto son los siguientes:
 
+
 \begin{itemize}
 \item Reflexionar y analizar diferentes aspectos indirectamente relacionados con el desarrollo de ingeniería (el equipo de trabajo, organización, ...)
 \item Analizar y describir los fundamentos de ingeniería implícitos (dinámica, cinemática, sistemas de control, ...).
 \item Describir las partes fundamentales del desarrollo (movimiento, navegación, posicionamiento, estrategia ...) y diseño un robot de Eurobot (mecánica, electrónica, programación, ...).
-\item Presentar implementaciones y diseños reales de cada una de las partes fundamentales de un robot de Eurobot. 
-\item Documentar todas aquellos diseños, desarrollos o algoritmos realizados que puedan servir de punto de partida o ser reutilizados en futuros desarrollos (diseños electrónicos, librerías software, herramientas de simulación, ...). 
+\item Presentar implementaciones y diseños reales de cada una de las partes fundamentales de un robot de Eurobot.
+\item Documentar todas aquellos diseños, desarrollos o algoritmos realizados que puedan servir de punto de partida o ser reutilizados en futuros desarrollos (diseños electrónicos, librerías software, herramientas de simulación, ...).
 \end{itemize}
 
 \section{Organización del libro}
