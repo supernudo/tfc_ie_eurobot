@@ -49,8 +49,8 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 all: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
+#$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
+#$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)

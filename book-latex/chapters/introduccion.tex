@@ -108,29 +108,41 @@ La robótica se disfruta, es divertida, pero también se sufre y requiere de un in
 Durante el desarrollo de la robótica, puede parecer que es una actividad poco agradecida o agradecida en momentos muy cortos. Pero merece la pena y además se demuestra que más tarde, en el mundo laboral o de la investigación, es cuando la robótica tiene gran parte su retorno\footnote{El autor de este proyecto esta convencido de ello y lo ha experimentado.}.
 
 
-\section{A hombros de gigantes.}
-\label{sec:a_hombros_de_gigantes}
+\section{Aprendiendo de gigantes.}
+\label{sec:aprendiendo_de_gigantes}
 
 Hoy en día es casi impensable que una sola persona pueda realizar avances en los diferentes campos de la ciencia equiparables a los descubrimientos de los grandes científicos de la historia. Así la investigación y el desarrollo tecnológico son llevados a cabo por grupos de personas cada cual experta en ciertos tema concretos. Por otro lado la tecnología y sus aplicaciones cada vez son más complejas y eso es en gran parte a que los nuevos desarrollos se apoyan en desarrollos anteriores que permiten abstraerse de aquello que se encuentra fuera del alcance de un objetivo concreto.
 
-Quizá el ejemplo más conocido a día de hoy es la plataforma de desarrollo Arduino\cite{arduino} que permite desarrollar sistemas embebidos partiendo de un conocimiento muy básico o nulo sobre microcontroladores. Esto es gracias a que la plataforma de desarrollo Arduino tiene una vasta librería de funciones que abstraen la programación de bajo nivel del microcontrolador de forma que no se \emph{escribe un bit} de uno o varios \emph{registros} de nombres aparentemente sin significado, si no que se \emph{detiene}, se \emph{cambia el sentido} o se \emph{cambia la velocidad} de un \emph{motor}. Además todas esas funciones se encuentran documentadas y son accesibles\cite{arduino_src} para su modificación o consulta. Así, si una funcionalidad de una librería no existe, es posible estudiar como está implementada y añadir nuevas funcionalidades, lo cual implica un aprendizaje.
+Quizá el ejemplo más conocido a día de hoy es la plataforma de desarrollo Arduino\cite{arduino} que permite desarrollar sistemas embebidos partiendo de un conocimiento muy básico o nulo sobre microcontroladores. Esto es gracias a que la plataforma de desarrollo Arduino tiene una vasta librería de funciones que abstraen la programación de bajo nivel del microcontrolador de forma que no se \emph{escribe un bit} de uno o varios \emph{registros} de nombres aparentemente sin significado, si no que se \emph{detiene}, se \emph{cambia el sentido} o se \emph{cambia la velocidad} de un \emph{motor}. Además todas esas funciones se encuentran documentadas y son accesibles\cite{arduino_src} para su modificación o consulta. Así, si una funcionalidad de una librería no existe, es posible estudiar como está implementada y añadir nuevas funcionalidades.
 
 En cierta forma, esta manera de abordar el aprendizaje y el desarrollo de aplicaciones tecnológicas es una forma natural y acorde con el desarrollo tecnológico de la sociedad actual. Hoy en día la tecnología que utilizamos en el día a día es compleja y muy abstracta por lo que no tiene sentido que el aprendizaje de la misma comience desde los niveles más básicos. Plataformas como Arduino permiten comenzar en un punto intermedio y poder crecer hacia niveles de abstracción mayores (grano grueso) o hacia niveles inferiores más específicos (grano fino).
 
-Pues bien este proyecto no es una excepción y también camina a hombros de gigantes. El código fuente de los microcontroladores de algunos de los robots desarrollados (Husillo, Joselito o Campanolo) fue escrito desde cero. Otros se apoyaron en el código escrito en años anteriores (Electrococo, Mr.Proper y Topolino). Y finalmente a partir del año 2010 los robots (Trompetero, Zamorano, Automático, Crispin, P.Tinto y Tirantes) se apoyaron sobre código abierto escrito por terceros.
+Pues bien este proyecto no es una excepción y también se ha apoyado en hombros de gigantes. El código fuente de los microcontroladores de algunos de los robots desarrollados (Husillo, Joselito o Campanolo) fue escrito desde cero. Otros (Electrococo, Mr.Proper y Topolino) se ayudaron del código escrito en años anteriores para para otros robots. Y finalmente a partir del año 2010 los robots (Trompetero, Zamorano, Automático, Crispin, P.Tinto y Tirantes) se desarrollaron a partir del código abierto escrito por terceros.
 
-El utilizar código abierto de terceros vino dado por el objetivo de evolucionar tecnológicamente los robots a desarrollar para Eurobot. Para ello se estudió los fundamentos técnicos y tecnológicos de los robots hasta entonces que obtenían muy buenos resultados (equipos como RCVA\cite{rcva}, Microb Tecnology\cite{microb}, RCA Archen\cite{rca_aachen} o Turak\cite{turak}). Al final de dicho estudio se establecieron los requisitos de la mecánica, hardware y software necesarios, y se desarrollo una plataforma robótica base (el \emph{Dummy robot}) con una mecánica y una electrónica de acuerdo a los requisitos buscados.
+El utilizar código abierto de terceros vino dado por el objetivo de evolucionar tecnológicamente los robots a desarrollar para Eurobot. Para ello se estudió los fundamentos técnicos y tecnológicos de los robots por aquella época obtenían muy buenos resultados como RCVA\cite{rcva}, Microb Tecnology\cite{microb}, RCA Archen\cite{rca_aachen} o Turak\cite{turak}. Al final de dicho estudio se establecieron los requisitos de la mecánica, hardware y software necesarios, y se desarrollo una plataforma robótica base (el \emph{Dummy robot}, ver \ref{dummy_robot}) con una mecánica y una electrónica de acuerdo a los requisitos buscados.
+
+\begin{figure}
+\centering
+\includegraphics[height=.2\textheight]{dummy_robot_1}
+\hspace{1cm}
+\includegraphics[height=.2\textheight]{dummy_robot_2}
+
+\caption{\emph{Dummy robot}. Plataforma robótica base desarrollada en 2010. Diseño mecánico: Diego Salazar Accuci. Electrónica y programación: Javier Balinas.}
+
+\label{dummy_robot}
+\end{figure}
+
 
 Al final del proceso de estudio se descubrieron las librerías Aversive desarrolladas por el equipo \emph{Microb Technology} para microcontroladores AVR de Atmel. Por aquél entonces, la electrónica que se estaba diseñando estaba basada en microcontrolador dsPIC de Microchip. Podríamos a ver migrado el HW y utilizar microcontroladores AVR, pero al final se optó por migrar las librerías Aversive a la arquitectura de dsPIC, lo que se denominó Aversive4dsPIC\footnote{Pronunciado \emph{Aversive for dsPIC}, Aversive para dsPIC}.
 
-La decisión de utilizar estas librerías y portarlas permitió no solo aprender a utilizarlas desde la capa de aplicación (el robot) sin no estudiar como estaban implementadas y adaptarlas para ser compatibles con una arquitectura diferente. En definitiva se reutilizó el código de terceros, lo cual implica mucho más que el simple hecho de aprovechar el trabajo realizado por otros. En este caso las librerías Aversive\cite{aversive_src} son unas librerías libres desarrolladas por varias personas, versionada bajo un sistemas de control de versiones,  bien estructuradas, escritas siguiendo una guía de estilo común, que explota al máximo el lenguaje ANSI C, que cuenta con un \emph{toolchain} que utiliza herramientas libres y que implementan todo tipo de funcionalidades y muchas de ellas dirigidas al desarrollo de robots como los de Eurobot. La migración de las librerías Aversive se realizó siguiendo y manteniendo toda las características anteriormente mencionada, lo cual implicó el aprendizaje de las mismas y de todos los conceptos derivados y subyacentes.     
+La decisión de utilizar estas librerías y portarlas permitió no solo aprender a utilizarlas desde la capa de aplicación (el robot) sin no estudiar como estaban implementadas y adaptarlas para ser compatibles con una arquitectura diferente. En definitiva se reutilizó el código de terceros, lo cual implica mucho más que el simple hecho de aprovechar el trabajo realizado por otros. En este caso las librerías Aversive\cite{aversive_src} son unas librerías libres desarrolladas por varias personas, versionada bajo un sistemas de control de versiones, que están muy bien estructuradas, escritas siguiendo una guía de estilo común, que explota al máximo el lenguaje ANSI C, que cuenta con un \emph{toolchain}\footnote{Cadena de herramientas: conjunto de programas mediante los cuales se construye el programa que se ejecuta en el microcontrolador} que utiliza herramientas libres, que implementan todo tipo de funcionalidades y muchas de ellas dirigidas al desarrollo de robots como los de Eurobot. La migración de las librerías Aversive se realizó siguiendo y manteniendo toda las características anteriormente mencionada, lo cual implicó el aprendizaje de las mismas y de todos los conceptos derivados y subyacentes de ellas.     
 
 
 
 \section{Motivación y objetivos}
 \label{sec:motivacion_y_objetivos}
 
-Todo el trabajo realizado en el desarrollo de los diferentes robots viene principalmente motivado por la afición a la robótica, la electrónica, los sistemas embebidos y por una necesidad de inventar y crear cosas.
+Todo el trabajo realizado en el desarrollo de los diferentes robots viene principalmente motivado por la afición a la robótica, la electrónica, los sistemas embebidos y por la inquietud de inventar y crear cosas.
 
 Por otro lado, el objetivo fundamental de este trabajo es la divulgación del conocimiento adquirido en la realización de robots que compiten en Eurobot, siendo los objetivos específicos de este proyecto los siguientes:
 
