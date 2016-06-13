@@ -1,0 +1,122 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: introduccion.tex,v 1.6 2014/02/11 11:00:06 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{El robot de Eurobot}
+\label{cha:el_robot_de_eurobot}
+
+\begin{FraseCelebre}
+  \begin{Frase}
+    Desocupado lector, sin juramento me podrás creer que quisiera que este
+    libro [...] fuera el más hermoso, el más gallardo y más discreto que
+    pudiera imaginarse\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+  \end{Frase}
+  \begin{Fuente}
+    Miguel de Cervantes, Don Quijote de la Mancha
+  \end{Fuente}
+\end{FraseCelebre}
+
+
+
+\section{Introducción}
+
+Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si comparamos las reglas del juego de varios años se observan especificaciones funcionales comunes que repercuten en el diseño de la mecánica, de la electrónica o del software, de forma que dicho diseño puede ser reutilizado de un año para otro.
+
+\section{Especificaciones funcionales}
+
+Un robot de Eurobot ha de ser completamente autónomo, además sin tener en cuenta la temática de una prueba, ha de tener principalmente las siguientes funcionalidades:
+
+\begin{enumerate}
+\item Iniciar el partido mediante una cuerda y pararse automáticamente al final del tiempo de partido (90 segundos)
+\item Desplazarse hasta la posición de los elementos de juego
+\item Evitar chocar con elementos del campo de juego y con otros robots oponentes
+\item Sincronizar sus movimientos con un robot secundario (en caso de permitirse dos robots por equipo).
+\end{enumerate}
+
+Y mecánicamente ha de cumplir las siguientes restricciones:
+
+\begin{itemize}
+\item Perímetro máximo inicial 1200 mm (700 mm para el robot secundario)
+\item Perímetro máximo desplegado 1500 mm (900 mm para el robot secundario)
+\item Altura máxima de 350 mm
+\end{itemize}
+
+Con el fin de facilitar la detección entre los robots para evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
+
+Estas balizas pueden ser activas o pasivas. Por ejemplo, un sistema compuesto por una baliza maciza y un sensor de ultrasonidos puede ser utilizado para detectar a que distancia y dirección se encuentra un robot oponente antes de tomar tomar la decisión de hacia donde redirigirse.
+
+Además el campo de juego cuenta con 3 soportes para balizas adicionales a disposición de cada equipo (ver figura \ref{balizas_campo}). Estos soportes adicionales están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante, un emisor y un sensor de luz puede ser utilizado para localizar la esquina del campo donde se encuentra una canasta.
+
+Las restricciones acorde con las balizas son las siguientes:
+
+\begin{itemize}
+\item Balizas del oponente: dimensiones máximas de 80x80x80 cm y peso máximo de 0,5 Kg.
+\item Balizas del campo de juego: dimensiones máximas de 160x80x80 cm.
+\item Espacio para sensores en cada robot: 80x80x80 cm. 
+\end{itemize}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=.27\textheight]{balizas_robots}
+\caption{Altura de balizas y sensores. Vista de perfil de dos robots oponentes y el campo de juego. 1- Soporte para balizas del campo de juego. 2- Soporte para baliza del oponente. 3- Espacio para sensores de balizas.}
+\label{balizas_robots}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=.27\textheight]{balizas_campo}
+\caption{Soportes para balizas del campo de juego. Campo de juego de Eurobot 2015. Soportes para balizas de los equipos A y B.}
+\label{balizas_campo}
+\end{figure}
+
+Además las reglas especifican otras generalidades respecto a temas como:
+
+\begin{itemize}
+\item Fuentes de alimentación y baterías
+\item Utilización de fuentes de luz y láseres
+\item Utilización de sistemas de comunicación de radio
+\item Utilización de sistemas de aire comprimido
+\item Botón de parada de emergencia
+\item Procedimientos de un partido
+\end{itemize}
+
+
+\section{Partes principales en el desarrollo de un robot de Eurobot}
+
+\section{Arquitecturas mecánica, hardware y software}
+\section{Fases y metodología de diseño}
+\begin{itemize}
+\item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
+\end{itemize}
+\section{Depuración y puesta en marcha}
+
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
