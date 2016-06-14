@@ -45,20 +45,18 @@
 
 \section{Introducción}
 
-Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si comparamos las reglas del juego de varios años se observan especificaciones funcionales comunes que repercuten en el diseño de la mecánica, de la electrónica o del software, de forma que dicho diseño puede ser reutilizado de un año para otro.
+Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha:introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si comparamos las reglas del juego de varios años se observan especificaciones funcionales comunes que repercuten en el diseño de la mecánica, de la electrónica o del software, de forma que dicho diseño puede ser reutilizado de un año para otro.
 
 \section{Especificaciones funcionales}
 
-Un robot de Eurobot ha de ser completamente autónomo, además sin tener en cuenta la temática de una prueba, ha de tener principalmente las siguientes funcionalidades:
+Un robot de Eurobot ha de ser completamente autónomo. Independientemente de la temática de una prueba, el robot ha de ser capaz de:
 
 \begin{enumerate}
-\item Iniciar el partido mediante una cuerda y pararse automáticamente al final del tiempo de partido (90 segundos)
-\item Desplazarse hasta la posición de los elementos de juego
-\item Evitar chocar con elementos del campo de juego y con otros robots oponentes
-\item Sincronizar sus movimientos con un robot secundario (en caso de permitirse dos robots por equipo).
+\item Desplazarse hasta las diferentes zonas del campo donde se sitúan los elementos del juego o donde almacenarlos.
+\item Evitar chocar con elementos del campo de juego y con otros robots oponentes durante los desplazamientos entre zonas del campo.
 \end{enumerate}
 
-Y mecánicamente ha de cumplir las siguientes restricciones:
+Además, mecánicamente ha de cumplir las siguientes restricciones:
 
 \begin{itemize}
 \item Perímetro máximo inicial 1200 mm (700 mm para el robot secundario)
@@ -66,16 +64,16 @@ Y mecánicamente ha de cumplir las siguientes restricciones:
 \item Altura máxima de 350 mm
 \end{itemize}
 
-Con el fin de facilitar la detección entre los robots para evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
+Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
 
 Estas balizas pueden ser activas o pasivas. Por ejemplo, un sistema compuesto por una baliza maciza y un sensor de ultrasonidos puede ser utilizado para detectar a que distancia y dirección se encuentra un robot oponente antes de tomar tomar la decisión de hacia donde redirigirse.
 
-Además el campo de juego cuenta con 3 soportes para balizas adicionales a disposición de cada equipo (ver figura \ref{balizas_campo}). Estos soportes adicionales están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante, un emisor y un sensor de luz puede ser utilizado para localizar la esquina del campo donde se encuentra una canasta.
+Además el campo de juego cuenta con 3 soportes para balizas adicionales que están a disposición de cada equipo (ver figura \ref{balizas_campo}). Estos soportes están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante colocada en el soporte de una esquina del campo y un sensor de luz reflexivo en el robot puede ser utilizado para localizar una canasta que se encuentre en dicha esquina del campo.
 
-Las restricciones acorde con las balizas son las siguientes:
+Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus dimensiones y peso:
 
 \begin{itemize}
-\item Balizas del oponente: dimensiones máximas de 80x80x80 cm y peso máximo de 0,5 Kg.
+\item Balizas colocadas en el oponente: dimensiones máximas de 80x80x80 cm y peso máximo de 0,5 Kg.
 \item Balizas del campo de juego: dimensiones máximas de 160x80x80 cm.
 \item Espacio para sensores en cada robot: 80x80x80 cm. 
 \end{itemize}
@@ -94,7 +92,7 @@ Las restricciones acorde con las balizas son las siguientes:
 \label{balizas_campo}
 \end{figure}
 
-Además las reglas especifican otras generalidades respecto a temas como:
+Por último, las reglas además especifican otros temas que deben de ser tenidos en cuenta en caso de que apliquen:
 
 \begin{itemize}
 \item Fuentes de alimentación y baterías
@@ -102,17 +100,21 @@ Además las reglas especifican otras generalidades respecto a temas como:
 \item Utilización de sistemas de comunicación de radio
 \item Utilización de sistemas de aire comprimido
 \item Botón de parada de emergencia
-\item Procedimientos de un partido
+\item Método de comienzo y finalización de un partido
+\item Procedimientos de un partido.
 \end{itemize}
 
 
 \section{Partes principales en el desarrollo de un robot de Eurobot}
 
 \section{Arquitecturas mecánica, hardware y software}
+
 \section{Fases y metodología de diseño}
+
 \begin{itemize}
 \item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
 \end{itemize}
+
 \section{Depuración y puesta en marcha}
 
 
