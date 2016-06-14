@@ -45,24 +45,22 @@
 
 \section{Introducción}
 
-Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha:introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si comparamos las reglas del juego de varios años se observan especificaciones funcionales comunes que repercuten en el diseño de la mecánica, de la electrónica o del software, de forma que dicho diseño puede ser reutilizado de un año para otro.
+Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha:introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si se comparan las reglas del juego de varios años se observan características comunes que repercuten en el diseño de la mecánica, de la electrónica o del software.
 
-\section{Especificaciones funcionales}
+\section{Especificaciones del robot de Eurobot}
 
-Un robot de Eurobot ha de ser completamente autónomo. Independientemente de la temática de una prueba, el robot ha de ser capaz de:
+Un robot de Eurobot tiene especificaciones independientes de la temática del juego y otras dependientes totalmente. Las primera permiten que una vez estén desarrolladas y validadas puedan ser reutilizadas o mejoradas en futuros diseños. Esto quiere decir que pueden ser un bloque totalmente modular, por ejemplo una tarjeta electrónica, o diseños reutilizables como el diseño electrónico de la tarjeta, cuyo PCB\footnote{Del inglés \emph{Printed Circuit Board}, Tarjeta de Circuito Impreso} puede diseñarse a medida del robot y en función del espacio disponible.
+
+Por otro lado, los sistemas mecánicos a diseñar para la manipulación de los elementos de juego son en su mayoría específicos de cada prueba. Sólo una pequeña parte del desarrollo relacionado con estos sistemas es reutilizable, como es parte del desarrollo software destinado al control de dichos sistemas mecánicos. 
+
+Un robot de Eurobot ha de ser completamente autónomo y básicamente ser capaz de:
 
 \begin{enumerate}
-\item Desplazarse hasta las diferentes zonas del campo donde se sitúan los elementos del juego o donde almacenarlos.
+\item Desplazarse hasta las diferentes zonas del campo donde se sitúan los elementos del juego o donde se almacenan.
 \item Evitar chocar con elementos del campo de juego y con otros robots oponentes durante los desplazamientos entre zonas del campo.
 \end{enumerate}
 
-Además, mecánicamente ha de cumplir las siguientes restricciones:
-
-\begin{itemize}
-\item Perímetro máximo inicial 1200 mm (700 mm para el robot secundario)
-\item Perímetro máximo desplegado 1500 mm (900 mm para el robot secundario)
-\item Altura máxima de 350 mm
-\end{itemize}
+Además, si las reglas permiten dos robots por equipo: un robot principal y uno secundario, es recomendable que ambos robots sean capaces de comunicarse entre sí con el fin jugar de forma cooperativa.
 
 Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
 
@@ -92,7 +90,18 @@ Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus d
 \label{balizas_campo}
 \end{figure}
 
-Por último, las reglas además especifican otros temas que deben de ser tenidos en cuenta en caso de que apliquen:
+Por otro lado, el robot ha de ser capaz de resolver la temática del juego lo cual implica el manejo de los elementos o piezas propias del juego. Por ejemplo, en Eurobot 2015, juego titulado como Robomovies (temática sobre el cine), una de las cosas por las que los robots obtenían puntos era por hacer una torre con piezas cilíndricas coronada con una pelota de tenis que simbolizaba un foco de cine. 
+
+Además, mecánicamente un robot ha de cumplir las siguientes restricciones dimensionales:
+
+\begin{itemize}
+\item Perímetro máximo inicial 1200 mm (700 mm para el robot secundario)
+\item Perímetro máximo desplegado 1500 mm (900 mm para el robot secundario)
+\item Altura máxima de 350 mm
+\end{itemize}
+
+
+Por último, las reglas de Eurobot además especifican otros temas que deben de ser tenidos en cuenta en caso de que apliquen:
 
 \begin{itemize}
 \item Fuentes de alimentación y baterías
@@ -106,6 +115,24 @@ Por último, las reglas además especifican otros temas que deben de ser tenidos e
 
 
 \section{Partes principales en el desarrollo de un robot de Eurobot}
+
+Teniendo en cuenta las especificaciones descritas en la sección anterior y la temática de la prueba de Eurobot, el desarrollo de un robot de Eurobot se puede dividir en las siguientes partes principales:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=.4\textheight]{partes_robot_eurobot}
+\caption{Partes principales del desarrollo de un robot de Eurobot. En el fondo robot P.Tinto y Tirantes (robot secundario) desarrollados para Eurobot 2015 por el equipo Eurobotics Engineering}
+\end{figure}
+
+\begin{enumerate}
+\item Estrategia de juego.
+\item Desplazamiento y localización.
+\item Evitación de obstáculos.
+\item Comunicación entre robots (en caso de jugar con 2 robots).
+\item Manipulación elementos de juego. 
+\end{enumerate}
+
+ 
 
 \section{Arquitecturas mecánica, hardware y software}
 
