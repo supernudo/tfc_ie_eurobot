@@ -83,6 +83,81 @@ El equipo Eurobot Engineering participó en Eurobot desde el año 2010 hasta el añ
 
 TODO: añadir tabla resumen con integrantes de cada año, robots y distribución del trabajo.
 
+\begin{center}
+	\begin{longtable}{|c|c|c|p{5cm}|p{5cm}|}
+    \caption[Resultados de la correlación cruzada.]{Resultados de la correlación cruzada.} \label{table2} \\
+    
+    \hline 
+	\multicolumn{1}{|c|}{\textbf{Año}} & 
+	\multicolumn{1}{c|}{\textbf{Prueba}} & 
+	\multicolumn{1}{c|}{\textbf{Robots}} & 
+	\multicolumn{1}{p{5cm}|}{\textbf{Características}} & 
+	\multicolumn{1}{p{5cm}|}{\textbf{Integrantes equipo}} \\ 
+	\hline 
+    \endfirsthead
+    
+
+    \multicolumn{5}{c}%
+    {{\bfseries \tablename\ \thetable{} -- continúa en la página anterior}} \\
+	\multicolumn{1}{|c|}{\textbf{Año}} & 
+	\multicolumn{1}{c|}{\textbf{Prueba}} & 
+	\multicolumn{1}{c|}{\textbf{Robots}} & 
+	\multicolumn{1}{p{5cm}|}{\textbf{Características}} & 
+	\multicolumn{1}{p{5cm}|}{\textbf{Integrantes equipo}} \\ 
+	\hline 
+    \endhead
+    
+    \hline \multicolumn{5}{|r|}{{Continúa en la página siguiente}} \\ \hline
+    \endfoot
+
+    \hline \hline
+    \endlastfoot
+    
+    \hline	
+	2002 &	
+	Flying Billiards &	
+	Ligre &	
+	PC GNU/Linux \newline
+	Microcontroladores PIC \newline
+	Visión artificial &
+	\textbf{Depeca UAH:} \newline
+	Santiago Cobreces Alvarez \newline
+	Miguel García Pérez \newline
+	Pedro Jimenez Molina \newline
+	Fernando Méndez Rebollo \newline
+	Jesus Nuevo Chiquero \newline
+	Dam Peinador Aranda \newline
+	Daniel Pizarro Perez \\
+
+    \hline	
+	% año, prueba, robot
+	2003 &
+	Heads or Tails &
+	Husillo	&
+	% caractisticas
+	PC GNU/Linux \newline
+	Microcontroladores 8051 \newline
+	Visión artificial &
+	% integrantes	 
+
+	& \\
+%    \hline	2004	&	Coconut Rugby		&	Electrococo y Joselito	& A	& A	\\
+%    \hline	2005	&	Bowling				&	Campanolo				& A	& F	\\
+%    \hline	2006	&	Golf				&	Caponata				& A	& F	\\
+%    \hline	2007	&	Recycling			&	Mr. Proper				& A	& F	\\
+%    \hline	2008	&	Mission to mars		&	Topolino				& A	& F	\\
+%    \hline	2009	&	Temples of Atlantis	&	-						& A	& F	\\
+%    \hline	2010	&	Feed the world		&	Trompetero				& A	& F	\\    
+%	\hline	2011	&	Chess'Up!			&	Zamorano				& A	& F	\\
+%    \hline	2012	&	Treasure Island		&	Automático y Crispín	& A	& A	\\
+%    \hline	2013	&	Happy Birthday		&	-						& A	& F	\\
+%    \hline	2014	&	Prehistobot			&	Grosnik y Seskäpa		& A	& A	\\
+%    \hline	2015	&	Robomovies			&	P.Tito y Tirantes		& A	& A	\\
+	\end{longtable}
+\end{center}
+
+
+	
 
 \section{La robótica educativa}
 \label{sec:robotica_educativa}
@@ -121,20 +196,27 @@ En cierta forma, esta manera de abordar el aprendizaje y el desarrollo de aplica
 
 Pues bien este proyecto no es una excepción y también se ha apoyado en hombros de gigantes. El código fuente de los microcontroladores de algunos de los robots desarrollados (Husillo, Joselito o Campanolo) fue escrito desde cero. Otros (Electrococo, Mr.Proper y Topolino) se ayudaron del código escrito en años anteriores para para otros robots. Y finalmente a partir del año 2010 los robots (Trompetero, Zamorano, Automático, Crispin, P.Tinto y Tirantes) se desarrollaron a partir del código abierto escrito por terceros.
 
-El utilizar código abierto de terceros vino dado por el objetivo de evolucionar tecnológicamente los robots a desarrollar para Eurobot. Para ello se estudió los fundamentos técnicos y tecnológicos de los robots por aquella época obtenían muy buenos resultados como RCVA\cite{rcva}, Microb Tecnology\cite{microb}, RCA Archen\cite{rca_aachen} o Turak\cite{turak}. Al final de dicho estudio se establecieron los requisitos de la mecánica, hardware y software necesarios, y se desarrollo una plataforma robótica base (el \emph{Dummy robot}, ver \ref{dummy_robot}) con una mecánica y una electrónica de acuerdo a los requisitos buscados.
+El utilizar código abierto de terceros vino dado por el objetivo de evolucionar tecnológicamente los robots a desarrollar para Eurobot. Para ello se estudió los fundamentos técnicos y tecnológicos de los robots por aquella época obtenían muy buenos resultados como RCVA\cite{rcva}, Microb Tecnology\cite{microb}, RCA Archen\cite{rca_aachen} o Turak\cite{turak}. Al final de dicho estudio se establecieron los requisitos de la mecánica, hardware y software necesarios, y se desarrollo una plataforma robótica base (el \emph{Dummy robot}, ver \ref{fig:dummy_robot}) con una mecánica y una electrónica de acuerdo a los requisitos buscados.
 
-\begin{figure}
-\centering
-\includegraphics[height=.2\textheight]{dummy_robot_1}
-\hspace{1cm}
-\includegraphics[height=.2\textheight]{dummy_robot_2} \\
-\vspace{.5cm}
-\includegraphics[height=.2\textheight]{dummy_robot_tarjeta_dspic33}
+\begin{figure}[h]
+\centerline{
+	\subfloat[Diseño 3D]{\includegraphics[height=.2\textheight]{dummy_robot_1}
+	\label{fig:dummy_robot_3d}}
+	\hfil
+	\subfloat[Prototipo mecánico]{\includegraphics[height=.2\textheight]{dummy_robot_2}
+	\label{fig:dummy_robot_prototipo}}
+	\hfil
+}
+\centerline{
+	\subfloat[Tarjeta electronica dsPIC33]{\includegraphics[height=.2\textheight]{dummy_robot_tarjeta_dspic33}
+	\label{fig:dummy_robot_tarjeta_dspic33}}
+	\hfil
+}
 
 \caption{\emph{Dummy robot}. Plataforma robótica base desarrollada en 2010 por el equipo Eurobotics Engineering. Diseño 3D, prototipo mecánico y electrónica basada en microcontrolador dsPIC33.}
-
-\label{dummy_robot}
+\label{fig:dummy_robot}
 \end{figure}
+
 
 
 Al final del proceso de estudio se descubrieron las librerías Aversive desarrolladas por el equipo \emph{Microb Technology} para microcontroladores AVR de Atmel. Por aquél entonces, la electrónica que se estaba diseñando estaba basada en microcontrolador dsPIC de Microchip. Podríamos a ver migrado el HW y utilizar microcontroladores AVR, pero al final se optó por migrar las librerías Aversive a la arquitectura de dsPIC, lo que se denominó Aversive4dsPIC\footnote{Pronunciado \emph{Aversive for dsPIC}, Aversive para dsPIC}.
