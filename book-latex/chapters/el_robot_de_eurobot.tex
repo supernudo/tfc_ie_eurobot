@@ -118,12 +118,6 @@ Por último, las reglas de Eurobot además especifican otros temas que deben de se
 
 Teniendo en cuenta las especificaciones descritas en la sección anterior y la temática de la prueba de Eurobot, el desarrollo de un robot de Eurobot se puede dividir en las siguientes partes principales:
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=.4\textheight]{partes_robot_eurobot}
-\caption{Partes principales del desarrollo de un robot de Eurobot. En el fondo robot P.Tinto y Tirantes (robot secundario) desarrollados para Eurobot 2015 por el equipo Eurobotics Engineering}
-\end{figure}
-
 \begin{enumerate}
 \item Estrategia de juego.
 \item Desplazamiento y localización.
@@ -132,7 +126,37 @@ Teniendo en cuenta las especificaciones descritas en la sección anterior y la te
 \item Manipulación elementos de juego. 
 \end{enumerate}
 
- 
+Así, tal y como representa la figura \ref{fig:partes_robot_eurobot}, un único robot está compuesto por las tres primera partes y sólo en caso de contar con 2 o más robots es necesaria la parte de comunicación entre robots. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=.4\textheight]{partes_robot_eurobot}
+\caption{Partes principales del desarrollo de un robot de Eurobot. En el fondo robot P.Tinto y Tirantes (robot secundario) desarrollados para Eurobot 2015 por el equipo Eurobotics Engineering}
+\label{fig:partes_robot_eurobot}
+\end{figure}
+
+Por otro lado, las partes 2, 3 y 4 forman lo que se ha denominado \emph{plataforma robótica base}. Esta plataforma base está compuesta por las partes que permiten un desarrollo independientemente de la temática de la prueba de Eurobot. Así, esta plataforma robótica constituye un desarrollo reutilizable en la concepción de nuevos robots de Eurobot. 
+
+Cada una de estas partes principales de un robot de Eurobot tienen pueden implicar un desarrollo mecánico, electrónico y de software, dependiendo el caso:
+
+\begin{description}
+\item Estrategia de juego.
+
+La estrategia de juego constituye el nivel más abstracto del robot y tiene un desarrollo puramente software. La estrategia tiene en cuenta diferentes variables del juego (tareas por realizar, prioridad de tareas, posición del oponente, el tiempo transcurrido de partido, etc.) para tomar decisiones que maximicen la puntuación a conseguir y así ganar el partido.
+
+El desarrollo de la estrategia puede ser realizado en paralelo a otras partes del robot, pero ha de tener en cuenta los tiempos derivados de tareas que impliquen sistemas mecánicos, como por ejemplo coger una pelota y almacenarla o desplazarse de un punto del campo a otro. Dichos tiempos por lo general son mucho mayores (segundos o decenas de segundos) que el tiempo que tarda el algoritmo de estrategia implementado en tomar una decisión. Es por ello que dicho algoritmo estará la mayor parte del tiempo esperando a que otras partes terminen de realizar su función.
+
+\item Desplazamiento y localización.
+
+El desplazamiento y localización del robot de Eurobot implica un desarrollo conjunto de mecánica, electrónica y software. 
+
+El desplazamiento lleva implícito una localización, ambas funciones permiten realizar trayectorias desde un punto de inicio hasta un punto de destino y con una velocidad y aceleración determinadas.   
+
+\item Evitación de obstáculos.
+\item Comunicación entre robots (en caso de jugar con 2 robots).
+\item Manipulación elementos de juego. 
+
+\end{description}
 
 \section{Arquitecturas mecánica, hardware y software}
 
@@ -140,6 +164,9 @@ Teniendo en cuenta las especificaciones descritas en la sección anterior y la te
 
 \begin{itemize}
 \item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
+\item Desde la inexperiencia
+\item Grano fino / grano grueso
+\item Grano grueso puede limitar el diseño mecánico
 \end{itemize}
 
 \section{Depuración y puesta en marcha}
