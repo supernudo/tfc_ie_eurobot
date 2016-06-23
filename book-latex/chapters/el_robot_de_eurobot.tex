@@ -123,7 +123,7 @@ Teniendo en cuenta las especificaciones descritas en la sección anterior y la te
 \item Desplazamiento y localización.
 \item Evitación de obstáculos.
 \item Comunicación entre robots (en caso de jugar con 2 robots).
-\item Manipulación elementos de juego. 
+\item Manipulación de elementos de juego. 
 \end{enumerate}
 
 Así, tal y como representa la figura \ref{fig:partes_robot_eurobot}, un único robot está compuesto por las tres primera partes y sólo en caso de contar con 2 o más robots es necesaria la parte de comunicación entre robots. 
@@ -137,26 +137,42 @@ Así, tal y como representa la figura \ref{fig:partes_robot_eurobot}, un único ro
 
 Por otro lado, las partes 2, 3 y 4 forman lo que se ha denominado \emph{plataforma robótica base}. Esta plataforma base está compuesta por las partes que permiten un desarrollo independientemente de la temática de la prueba de Eurobot. Así, esta plataforma robótica constituye un desarrollo reutilizable en la concepción de nuevos robots de Eurobot. 
 
-Cada una de estas partes principales de un robot de Eurobot tienen pueden implicar un desarrollo mecánico, electrónico y de software, dependiendo el caso:
+Cada una de estas partes principales de un robot de Eurobot tienen pueden implicar un desarrollo mecánico, electrónico y de software, dependiendo del caso.
 
-\begin{description}
-\item Estrategia de juego.
+
+\subsection{Estrategia de juego}
+\label{sec:estrategia_de_juego}
 
 La estrategia de juego constituye el nivel más abstracto del robot y tiene un desarrollo puramente software. La estrategia tiene en cuenta diferentes variables del juego (tareas por realizar, prioridad de tareas, posición del oponente, el tiempo transcurrido de partido, etc.) para tomar decisiones que maximicen la puntuación a conseguir y así ganar el partido.
 
+TODO: figura.
+
 El desarrollo de la estrategia puede ser realizado en paralelo a otras partes del robot, pero ha de tener en cuenta los tiempos derivados de tareas que impliquen sistemas mecánicos, como por ejemplo coger una pelota y almacenarla o desplazarse de un punto del campo a otro. Dichos tiempos por lo general son mucho mayores (segundos o decenas de segundos) que el tiempo que tarda el algoritmo de estrategia implementado en tomar una decisión. Es por ello que dicho algoritmo estará la mayor parte del tiempo esperando a que otras partes terminen de realizar su función.
 
-\item Desplazamiento y localización.
+\subsection{Desplazamiento y localización}
+\label{sec:desplazamiento_y_localizacion}
 
-El desplazamiento y localización del robot de Eurobot implica un desarrollo conjunto de mecánica, electrónica y software. 
+Un robot de Eurobot está diseñado para funcionar en un entorno de dimensiones conocidas como es el campo de juego (un área de 2x3 m), o lo que es lo mismo un plano cartesiano. Así la posición del robot y otros objetos del campo, como elementos de juego o los robots oponentes, vendrá dada por sus coordenadas rectangulares $(x,y)$ y polares $(d,a)$ relativas al origen de coordenadas $(0,0)$.
 
-El desplazamiento lleva implícito una localización, ambas funciones permiten realizar trayectorias desde un punto de inicio hasta un punto de destino y con una velocidad y aceleración determinadas.   
+La localización permite al robot conocer su posición $(x_r,y_r)$ en el campo y poder calcular las distancias (rectangulares o polares) relativas a su posición de un punto de destino $(x_i,y_i)$. El desplazamiento permite recorrer dichas distancias a una velocidad $v$ y aceleración $a$ determinadas generando así \emph{trayectorias}.
 
-\item Evitación de obstáculos.
-\item Comunicación entre robots (en caso de jugar con 2 robots).
-\item Manipulación elementos de juego. 
+TODO: figura.
 
-\end{description}
+Mecánicamente es necesario desarrollar un sistema de tracción, que en el caso de los robots desarrollados un \emph{sistema de tracción diferencial}. Dicho sistema está compuesto por dos motores con reductora que mueven dos ruedas independientemente. Además para poder \emph{controlar velocidad y aceleración} de cada rueda se utilizan unos sensores tipo \emph{encoder} que miden cuanto gira cada rueda, o lo que es lo mismo su posición angular relativa. Utilizando la información medida por los encoders (u otro sistema similar) es posible medir la posición del robot de forma relativa a una posición de inicio mediante \emph{algoritmos de odometría}.
+
+La electrónica asociada ha de contar con una etapa de electrónica de potencia que permita la excitación de los motores (\emph{drivers} de motores), el acondicionamiento y decodificación de las señales de los encoders, y un microcontrolador donde se implementen los algoritmos de control de la velocidad y aceleración de los motores, y el algoritmo de odometría.
+
+Dicho microcontrolador, además de implementar los algoritmos específicos de control de motores y odometría, ha de implementar funciones mucho más abstractas como la \emph{generación de trayectorias}. De forma que en última medida, el robot pueda desplazarse a un punto del campo de juego de forma autónoma o seguir un camino compuesto por varios puntos.
+
+TODO: figura.
+
+
+\subsection{Evitación de obstáculos}
+\label{sec:evitacion_de_obstaculos}
+\subsection{Comunicación entre robots}
+\label{sec:comunicacion_entre_robots}
+\subsection{Manipulación de elementos de juego} 
+\label{sec:manipulación_de_elementos_de_juego}
 
 \section{Arquitecturas mecánica, hardware y software}
 
