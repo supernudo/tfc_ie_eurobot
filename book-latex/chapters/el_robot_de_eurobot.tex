@@ -48,6 +48,7 @@
 Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha:introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si se comparan las reglas del juego de varios años se observan características comunes que repercuten en el diseño de la mecánica, de la electrónica o del software.
 
 \section{Especificaciones del robot de Eurobot}
+\label{sec:especificaciones_del_robot_de_eurobot}
 
 Un robot de Eurobot tiene especificaciones independientes de la temática del juego y otras dependientes totalmente. Las primera permiten que una vez estén desarrolladas y validadas puedan ser reutilizadas o mejoradas en futuros diseños. Esto quiere decir que pueden ser un bloque totalmente modular, por ejemplo una tarjeta electrónica, o diseños reutilizables como el diseño electrónico de la tarjeta, cuyo PCB\footnote{Del inglés \emph{Printed Circuit Board}, Tarjeta de Circuito Impreso} puede diseñarse a medida del robot y en función del espacio disponible.
 
@@ -181,9 +182,58 @@ Como muestra la figura \ref{fig:desplazamiento_y_localizacion_bloques} la electr
 
 Dicho microcontrolador, además de implementar los algoritmos específicos de control de motores y odometría, ha de implementar funciones mucho más abstractas como la \emph{generación de trayectorias}. De forma que en última medida, el robot pueda desplazarse a un punto del campo de juego de forma autónoma o seguir un camino compuesto por varios puntos como el representado en la figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}.
 
-
 \subsection{Evitación de obstáculos}
 \label{sec:evitacion_de_obstaculos}
+
+El robot de Eurobot se encuentra con dos tipos de obstáculos a evitar en sus trayectorias. Por un lado están los obstáculos fijos y de posición conocida como pueden ser partes del campo de juego o elementos de juego al inicio del partido. Y por otro lado, objetos de posición desconocida como son los robots oponentes o elementos de juego que han sido movidos de su posición inicial.
+
+La evitación de obstáculos está directamente relacionada con la generación de trayectorias del robot, teniéndose en cuenta previamente al calculo de la trayectoria a realizar y durante la misma. Los sistemas de detección de obstáculos a desarrollar dependen de las diferente situaciones que se dan en un partido de Eurobot:
+
+\begin{description}
+\item \textbf{Objetos en trayectorias de un punto a otro del campo}
+
+Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{ejemplo_trayectorias_y_evitacion}
+\caption{Evitación de obstáculos en trayectorias de una zona a otra del campo. En el centro un robot oponente. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
+\label{fig:ejemplo_trayectorias_y_evitacion}
+\end{figure}
+
+
+La evitación los obstáculo fijos del campo de juego se puede realizar utilizando la \emph{localización del robot}. Si el robot conoce su posición es sencillo evitar chocar con paredes o elementos fijos del campo de juego.
+
+Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver \ref{sec:especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado\ref{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
+
+Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición de nuestro robot o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
+
+\item \textbf{Objeto inesperado en una trayectoria}
+
+Iniciada una trayectoria, que a priori no tiene obstáculos, en cualquier punto de esta puede ocurrir que el robot oponente cambie su posición y se interponga en el camino del robot pudiendo producirse una colisión. En este caso, el robot ha de detectar este obstáculo inesperado y parar o modificar su trayectoria para evitar la colisión.
+
+La detección de un objeto inesperado en una trayectoria se puede realizar utilizando el mismo sistema desarrollado para localizar al robot oponente, si el rango de medida cubre pociones cercanas al robot y el tiempo de medida de posición es suficientemente pequeño respecto a la velocidad de desplazamiento del robot.
+
+TODO: sistema rango cercano.
+
+
+\item \textbf{Objeto que bloquea un elemento del juego}
+
+Caso en el que el robot se encuentra en una zona desde donde necesita acceder a un elemento de juego, por ejemplo un dispensador de fichas. Puede ocurrir que uno de los elementos de juego, por ejemplo una pelota u otro elemento, se encuentre entre el robot y el dispensador de fichas. La probabilidad de que ocurra esto es mayor con los objetos esféricos y de poco peso, como por ejemplo pelotas de \emph{ping pong}, la manipulación de los mismos puede hacer que éstos rueden a lo largo del campo aleatoriamente. 
+
+Otro caso, que se suele dar muy pocas veces, es que el robot oponente esté protegiendo un elemento de juego común de forma premeditada utilizando otro elemento de juego, con el fin de dificultar su acceso al otro robot.
+
+
+TODO: sistema basado en odometria y sensores bajo perfil.
+
+\end{description}
+
+
+
+
+
+
 \subsection{Comunicación entre robots}
 \label{sec:comunicacion_entre_robots}
 \subsection{Manipulación de elementos de juego} 
