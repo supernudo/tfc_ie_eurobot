@@ -205,41 +205,72 @@ Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejempl
 
 La evitación los obstáculo fijos del campo de juego se puede realizar utilizando la \emph{localización del robot}. Si el robot conoce su posición es sencillo evitar chocar con paredes o elementos fijos del campo de juego.
 
-Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver \ref{sec:especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado\ref{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
+Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver figura \ref{sec:especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado\ref{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
 
-Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición de nuestro robot o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
+Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición del robot (ver ejemplo de la figura \ref{fig:medida_posicion_oponente} o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{medida_posicion_oponente}
+\caption{Ejemplo de sistema de medida de la posición del robot oponente que utiliza una baliza colocada en el oponente y un sensor en el robot. La medida obtenida es el ángulo y la distancia relativa al la posición del robot.}
+\label{fig:medida_posicion_oponente}
+\end{figure}
+
 
 \item \textbf{Objeto inesperado en una trayectoria}
 
 Iniciada una trayectoria, que a priori no tiene obstáculos, en cualquier punto de esta puede ocurrir que el robot oponente cambie su posición y se interponga en el camino del robot pudiendo producirse una colisión. En este caso, el robot ha de detectar este obstáculo inesperado y parar o modificar su trayectoria para evitar la colisión.
 
-La detección de un objeto inesperado en una trayectoria se puede realizar utilizando el mismo sistema desarrollado para localizar al robot oponente, si el rango de medida cubre pociones cercanas al robot y el tiempo de medida de posición es suficientemente pequeño respecto a la velocidad de desplazamiento del robot.
+La detección de un objeto inesperado en una trayectoria se puede realizar utilizando el mismo sistema desarrollado para localizar al robot oponente, si el rango de medida cubre distancias cercanas al robot y el tiempo de medida es suficientemente pequeño respecto a la velocidad de desplazamiento del robot. Aún así, un segundo sistema más especifico para estos casos aumenta la fiabilidad y permite hacer una doble comprobación si los rangos de detección de ambos sistemas se solapan.
 
-TODO: sistema rango cercano.
+El sistema a desarrollar permite detectar un objeto cercano (0 a 30cm aproximadamente) en las dirección de avance del robot (parte delantera y trasera) y opcionalmente detectar un objeto situado a los lados del robot (lado izquierdo y derecho). El rango depende de principalmente de la distancia de frenado del robot a velocidad máxima, de forma que la detección de un objeto permita evitar la colisión. 
+
+Suelen utilizarse sensores digitales de luz difusa (luz roja o infrarrojos) situados estratégicamente a una altura determinada. En parte delantera y trasera del robot tres sensores son suficientes para detectar un objeto (dos si el robot es estrecho), dos de ellos se sitúan en los extremos de del robot y si fuera necesario un tercero en el punto medio entre ellos (ver figura \ref{fig:deteccion_obstaculo_en_trayectoria}). Para la detección de objetos a izquierda y derecha del robot un sensor a cada lado es suficiente. El fundamento es simple, si cualquiera de los dos sensores de los extremos de robot detecta un objeto hay posibilidad de colisión.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{deteccion_obstaculo_en_trayectoria}
+\caption{Ejemplo de sistema de detección de obstáculos en trayectoria. Tres sensores de corta distancia digitales detectan posibles colisiones.}
+\label{fig:deteccion_obstaculo_en_trayectoria}
+\end{figure}
 
 
 \item \textbf{Objeto que bloquea un elemento del juego}
 
-Caso en el que el robot se encuentra en una zona desde donde necesita acceder a un elemento de juego, por ejemplo un dispensador de fichas. Puede ocurrir que uno de los elementos de juego, por ejemplo una pelota u otro elemento, se encuentre entre el robot y el dispensador de fichas. La probabilidad de que ocurra esto es mayor con los objetos esféricos y de poco peso, como por ejemplo pelotas de \emph{ping pong}, la manipulación de los mismos puede hacer que éstos rueden a lo largo del campo aleatoriamente. 
+Caso en el que el robot se encuentra en una zona desde donde necesita acceder a un elemento de juego, por ejemplo un dispensador de fichas. Puede ocurrir que uno de los elementos de juego, por ejemplo una pelota u otro elemento, se encuentre entre el robot y el dicho dispensador. La probabilidad de que ocurra esto es mayor con los objetos esféricos y de poco peso, como por ejemplo pelotas de \emph{ping pong}, la manipulación de los mismos puede hacer que éstos rueden a lo largo del campo aleatoriamente con facilidad\footnote{Este tipo de objetos también puede entrar dentro de los sistemas mecánicos del robot e inutilízalos o bloquearlos}. 
 
 Otro caso, que se suele dar muy pocas veces, es que el robot oponente esté protegiendo un elemento de juego común de forma premeditada utilizando otro elemento de juego, con el fin de dificultar su acceso al otro robot.
 
+En el caso de que un objeto se encuentre entre un elemento fijo del campo, como una pared, y el robot. Si el robot necesita utilizar dicha pared como referencia y un objeto se encuentra en medio, la referencia que medirá el robot será errónea, así como los movimientos que realice respecto a esa referencia. Esta situación se puede prevenir si el robot es capaz de limpiar previamente la zona a la que quiere acceder realizando realizando secuencias de movimientos específicas para ello, o si el objeto bloqueante es detectado mediante sensores.
 
-TODO: sistema basado en odometria y sensores bajo perfil.
+Una tercera forma de detectar un objeto bloqueante es utilizando la localización del robot, su posición y el error estimado de la misma. Si en el momento de tomar la referencia de la pared la posición medida por la localización del robot es mayor que el error estimado (en distancia o ángulo) algo está impidiendo llegar hasta la posición de referencia.
 
 \end{description}
 
-
-
-
-
-
 \subsection{Comunicación entre robots}
 \label{sec:comunicacion_entre_robots}
+
+En caso de disponer de dos robots por equipo hay diferentes formas de implementar una estrategia coordinada:
+
+\begin{enumerate}
+\item Que cada robot tenga asignado una zona de forma que no se estorben.
+\item Que cada robot se mueva libremente por todo el campo y considere al robot compañero como un obstáculo más.
+\item Que exista una comunicación entre ambos de forma que cada uno conozca la posición del otro trabajen en cualquier zona del campo pero sin estorbarse.
+\end{enumerate}
+
+Las dos primeras formas no implican un desarrollo añadido, los mismos sistemas de localización, desplazamiento y evitación de obstáculos desarrollados para un robot pueden replicarse en un segundo robot sin apenas coste añadido, excepto por aquel derivado de sus características mecánicas (diferente dimensiones, motores, sistemas mecánicos...).
+
+La tercera forma necesita del desarrollo de un sistema de comunicación entre ambos robots. Esto implica un desarrollo electrónico y de software principalmente. Es recomendable utilizar una tecnología que robusta y flexible que incluya capas de comunicación que aseguren una fiabilidad en la comunicación. Sobre todo porque el entorno en el que se desarrollan las competiciones suele tener muchas perturbaciones de radio frecuencia como equipos de audio y vídeo inalámbricos, redes Wifi o Bluetooth que pueden afectar a la comunicaciones entre los robots. 
+
+Como representa la figura \ref{}, cada robot necesita de un modulo de comunicación conectado a un microcontrolador. Bluetooth y Zigbee son dos de las tecnologías más utilizadas en comunicación inalámbrica, existen en el mercado módulos de comunicación de estas tecnologías que permiten crear enlaces de comunicación de forma sencilla. Dichos módulos electrónicos suelen tener una interfaz serie de comunicación (UART, SPI, I2C, ...) de forma que una vez establecido el canal de comunicación inalámbrico la comunicación entre dos microcontroladores es trasparente (similar a tener un canal cableado). 
+
+Por la parte del software, es necesario desarrollar un protocolo de comunicación, común a los dos robots, a partir del cual enviar y/o recibir mensajes entre ellos.
+
+
+
+
 \subsection{Manipulación de elementos de juego} 
 \label{sec:manipulación_de_elementos_de_juego}
-
-\section{Arquitecturas mecánica, hardware y software}
 
 \section{Fases y metodología de diseño}
 
@@ -252,6 +283,7 @@ TODO: sistema basado en odometria y sensores bajo perfil.
 
 \section{Depuración y puesta en marcha}
 
+Pruebas en campo costoso, todo lo no dependiente de la mecanica simulado.
 
 
 %%% Local Variables:
