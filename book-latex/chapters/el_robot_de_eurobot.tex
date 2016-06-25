@@ -62,11 +62,11 @@ Un robot de Eurobot ha de ser completamente autónomo y básicamente ser capaz de:
 
 Además, si las reglas permiten dos robots por equipo: un robot principal y uno secundario, es recomendable que ambos robots sean capaces de comunicarse entre sí con el fin jugar de forma cooperativa.
 
-Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
+Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{fig:balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
 
 Estas balizas pueden ser activas o pasivas. Por ejemplo, un sistema compuesto por una baliza maciza y un sensor de ultrasonidos puede ser utilizado para detectar a que distancia y dirección se encuentra un robot oponente antes de tomar tomar la decisión de hacia donde redirigirse.
 
-Además el campo de juego cuenta con 3 soportes para balizas adicionales que están a disposición de cada equipo (ver figura \ref{balizas_campo}). Estos soportes están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante colocada en el soporte de una esquina del campo y un sensor de luz reflexivo en el robot puede ser utilizado para localizar una canasta que se encuentre en dicha esquina del campo.
+Además el campo de juego cuenta con 3 soportes para balizas adicionales que están a disposición de cada equipo (ver figura \ref{fig:balizas_campo}). Estos soportes están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante colocada en el soporte de una esquina del campo y un sensor de luz reflexivo en el robot puede ser utilizado para localizar una canasta que se encuentre en dicha esquina del campo.
 
 Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus dimensiones y peso:
 
@@ -80,17 +80,17 @@ Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus d
 \centering
 \includegraphics[height=.27\textheight]{balizas_robots}
 \caption{Altura de balizas y sensores. Vista de perfil de dos robots oponentes y el campo de juego. 1- Soporte para balizas del campo de juego. 2- Soporte para baliza del oponente. 3- Espacio para sensores de balizas.}
-\label{balizas_robots}
+\label{fig:balizas_robots}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=.27\textheight]{balizas_campo}
-\caption{Soportes para balizas del campo de juego. Campo de juego de Eurobot 2015. Soportes para balizas de los equipos A y B.}
-\label{balizas_campo}
+\caption{Campo de juego de Eurobot 2015. Soportes para balizas fijas de los equipos A y B.}
+\label{fig:balizas_campo}
 \end{figure}
 
-Por otro lado, el robot ha de ser capaz de resolver la temática del juego lo cual implica el manejo de los elementos o piezas propias del juego. Por ejemplo, en Eurobot 2015, juego titulado como Robomovies (temática sobre el cine), una de las cosas por las que los robots obtenían puntos era por hacer una torre con piezas cilíndricas coronada con una pelota de tenis que simbolizaba un foco de cine. 
+Por otro lado, el robot ha de ser capaz de resolver la temática del juego lo cual implica el manejo de los elementos o piezas propias del juego. Por ejemplo, en Eurobot 2015, juego titulado como \emph{Robomovies} (temática sobre el cine), una de las cosas por las que los robots obtenían puntos era por hacer una torre con piezas cilíndricas coronada con una pelota de tenis que simbolizaba un foco de cine. 
 
 Además, mecánicamente un robot ha de cumplir las siguientes restricciones dimensionales:
 
@@ -143,28 +143,43 @@ Cada una de estas partes principales de un robot de Eurobot tienen pueden implic
 \subsection{Estrategia de juego}
 \label{sec:estrategia_de_juego}
 
-La estrategia de juego constituye el nivel más abstracto del robot y tiene un desarrollo puramente software. La estrategia tiene en cuenta diferentes variables del juego (tareas por realizar, prioridad de tareas, posición del oponente, el tiempo transcurrido de partido, etc.) para tomar decisiones que maximicen la puntuación a conseguir y así ganar el partido.
+La estrategia de juego constituye el nivel más abstracto del robot y tiene un desarrollo puramente software. La estrategia tiene en cuenta diferentes variables del juego como se indica en la figura \ref{fig:variables_estrategia}(tareas por realizar, prioridad de tareas, posición del oponente, el tiempo transcurrido de partido, etc.) para tomar decisiones que maximicen la puntuación a conseguir y así ganar el partido.
 
-TODO: figura.
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{variables_estrategia}
+\caption{Estrategia de juego: variables a tener en cuenta en la toma de decisiones.}
+\label{fig:variables_estrategia}
+\end{figure}
 
 El desarrollo de la estrategia puede ser realizado en paralelo a otras partes del robot, pero ha de tener en cuenta los tiempos derivados de tareas que impliquen sistemas mecánicos, como por ejemplo coger una pelota y almacenarla o desplazarse de un punto del campo a otro. Dichos tiempos por lo general son mucho mayores (segundos o decenas de segundos) que el tiempo que tarda el algoritmo de estrategia implementado en tomar una decisión. Es por ello que dicho algoritmo estará la mayor parte del tiempo esperando a que otras partes terminen de realizar su función.
 
 \subsection{Desplazamiento y localización}
 \label{sec:desplazamiento_y_localizacion}
 
-Un robot de Eurobot está diseñado para funcionar en un entorno de dimensiones conocidas como es el campo de juego (un área de 2x3 m), o lo que es lo mismo un plano cartesiano. Así la posición del robot y otros objetos del campo, como elementos de juego o los robots oponentes, vendrá dada por sus coordenadas rectangulares $(x,y)$ y polares $(d,a)$ relativas al origen de coordenadas $(0,0)$.
+Un robot de Eurobot está diseñado para funcionar en un entorno de dimensiones conocidas como es el campo de juego (un área de 2x3 m), o lo que es lo mismo un plano cartesiano. Así la posición del robot y otros objetos del campo, como elementos de juego o los robots oponentes, vendrá dada por sus coordenadas rectangulares $(x,y)$ y polares $(d,a)$ relativas a un origen de coordenadas $(0,0)$ (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}).
 
-La localización permite al robot conocer su posición $(x_r,y_r)$ en el campo y poder calcular las distancias (rectangulares o polares) relativas a su posición de un punto de destino $(x_i,y_i)$. El desplazamiento permite recorrer dichas distancias a una velocidad $v$ y aceleración $a$ determinadas generando así \emph{trayectorias}.
+La localización permite al robot conocer su posición $(x_R,y_R)$ en el campo y poder calcular las distancias (rectangulares o polares) de un punto de destino $(x_i,y_i)$ relativas a su posición. El desplazamiento permite recorrer dichas distancias a una velocidad $v$ y aceleración $a$ determinadas generando así \emph{trayectorias}.
 
-TODO: figura.
+\begin{figure}[h]
+\centering
+\includegraphics[height=.4\textheight]{ejemplo_campo_cartesiano_y_trayectorias}
+\caption{Representación cartesiana del campo de Eurobot 2015 (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}) y ejemplo de generación de trayectorias. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
+\label{fig:ejemplo_campo_cartesiano_y_trayectorias}
+\end{figure}
 
-Mecánicamente es necesario desarrollar un sistema de tracción, que en el caso de los robots desarrollados un \emph{sistema de tracción diferencial}. Dicho sistema está compuesto por dos motores con reductora que mueven dos ruedas independientemente. Además para poder \emph{controlar velocidad y aceleración} de cada rueda se utilizan unos sensores tipo \emph{encoder} que miden cuanto gira cada rueda, o lo que es lo mismo su posición angular relativa. Utilizando la información medida por los encoders (u otro sistema similar) es posible medir la posición del robot de forma relativa a una posición de inicio mediante \emph{algoritmos de odometría}.
+Mecánicamente es necesario desarrollar un sistema de tracción, que en el caso de los robots desarrollados es un \emph{sistema de tracción diferencial}. Dicho sistema está compuesto por dos motores con reductora que mueven dos ruedas independientes que están en contacto con el campo de juego. Además para poder \emph{controlar velocidad y aceleración} de cada rueda se utilizan sensores tipo \emph{encoder} que miden cuanto gira cada rueda, o lo que es lo mismo su posición angular relativa. Utilizando la información medida por los encoders (u otro sistema similar) es posible medir la posición del robot de forma relativa a una posición de inicio mediante \emph{algoritmos de odometría}\footnote{De forma complementaria se pueden utilizar sistemas de medida de posición absoluta para corregir los errores de las medidas relativas}.
 
-La electrónica asociada ha de contar con una etapa de electrónica de potencia que permita la excitación de los motores (\emph{drivers} de motores), el acondicionamiento y decodificación de las señales de los encoders, y un microcontrolador donde se implementen los algoritmos de control de la velocidad y aceleración de los motores, y el algoritmo de odometría.
+Como muestra la figura \ref{fig:desplazamiento_y_localizacion_bloques} la electrónica asociada ha de contar con una etapa de electrónica de potencia que permita la excitación de los motores (\emph{drivers} de motores), el acondicionamiento y decodificación de las señales de los encoders, y un microcontrolador donde se implementen los algoritmos de control de posición, velocidad y aceleración de los motores, y el algoritmo de odometría.
 
-Dicho microcontrolador, además de implementar los algoritmos específicos de control de motores y odometría, ha de implementar funciones mucho más abstractas como la \emph{generación de trayectorias}. De forma que en última medida, el robot pueda desplazarse a un punto del campo de juego de forma autónoma o seguir un camino compuesto por varios puntos.
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{desplazamiento_y_localizacion_bloques}
+\caption{Desplazamiento y localización: diagrama de bloques del desarrollo mecánico, electrónico y software implicado.}
+\label{fig:desplazamiento_y_localizacion_bloques}
+\end{figure}
 
-TODO: figura.
+Dicho microcontrolador, además de implementar los algoritmos específicos de control de motores y odometría, ha de implementar funciones mucho más abstractas como la \emph{generación de trayectorias}. De forma que en última medida, el robot pueda desplazarse a un punto del campo de juego de forma autónoma o seguir un camino compuesto por varios puntos como el representado en la figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}.
 
 
 \subsection{Evitación de obstáculos}
