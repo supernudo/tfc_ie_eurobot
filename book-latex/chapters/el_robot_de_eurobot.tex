@@ -80,14 +80,14 @@ Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus d
 \begin{figure}[ht]
 \centering
 \includegraphics[height=.27\textheight]{balizas_robots}
-\caption{Altura de balizas y sensores. Vista de perfil de dos robots oponentes y el campo de juego. 1- Soporte para balizas del campo de juego. 2- Soporte para baliza del oponente. 3- Espacio para sensores de balizas.}
+\caption[Altura de balizas y sensores]{Altura de balizas y sensores. Vista de perfil de dos robots oponentes y el campo de juego. 1- Soporte para balizas del campo de juego. 2- Soporte para baliza del oponente. 3- Espacio para sensores de balizas.}
 \label{fig:balizas_robots}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=.27\textheight]{balizas_campo}
-\caption{Campo de juego de Eurobot 2015. Soportes para balizas fijas de los equipos A y B.}
+\caption[Soportes para balizas del campo de juego de Eurobot]{Campo de juego de Eurobot 2015. Soportes para balizas fijas de los equipos A y B.}
 \label{fig:balizas_campo}
 \end{figure}
 
@@ -132,7 +132,7 @@ Así, tal y como representa la figura \ref{fig:partes_robot_eurobot}, un único ro
 \begin{figure}[h]
 \centering
 \includegraphics[height=.4\textheight]{partes_robot_eurobot}
-\caption{Partes principales del desarrollo de un robot de Eurobot. En el fondo robot P.Tinto y Tirantes (robot secundario) desarrollados para Eurobot 2015 por el equipo Eurobotics Engineering}
+\caption[Partes principales del desarrollo de un robot de Eurobot]{Partes principales del desarrollo de un robot de Eurobot. En el fondo robot P.Tinto y Tirantes (robot secundario) desarrollados para Eurobot 2015 por el equipo Eurobotics Engineering}
 \label{fig:partes_robot_eurobot}
 \end{figure}
 
@@ -149,7 +149,7 @@ La estrategia de juego constituye el nivel más abstracto del robot y tiene un de
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{variables_estrategia}
-\caption{Estrategia de juego: variables a tener en cuenta en la toma de decisiones.}
+\caption[Estrategia de juego: variables a tener en cuenta en la toma de decisiones]{Estrategia de juego: variables a tener en cuenta en la toma de decisiones.}
 \label{fig:variables_estrategia}
 \end{figure}
 
@@ -165,7 +165,7 @@ La localización permite al robot conocer su posición $(x_R,y_R)$ en el campo y p
 \begin{figure}[h]
 \centering
 \includegraphics[height=.4\textheight]{ejemplo_campo_cartesiano_y_trayectorias}
-\caption{Representación cartesiana del campo de Eurobot 2015 (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}) y ejemplo de generación de trayectorias. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
+\caption[Representación cartesiana del campo de Eurobot 2015 y ejemplo de generación de trayectorias]{Representación cartesiana del campo de Eurobot 2015 (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}) y ejemplo de generación de trayectorias. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
 \label{fig:ejemplo_campo_cartesiano_y_trayectorias}
 \end{figure}
 
@@ -176,7 +176,7 @@ Como muestra la figura \ref{fig:desplazamiento_y_localizacion_bloques} la electr
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{desplazamiento_y_localizacion_bloques}
-\caption{Desplazamiento y localización: diagrama de bloques del desarrollo mecánico, electrónico y software implicado.}
+\caption[Desplazamiento y localización: diagrama de bloques de las partes a desarrollar]{Desplazamiento y localización: diagrama de bloques del desarrollo mecánico, electrónico y software implicado.}
 \label{fig:desplazamiento_y_localizacion_bloques}
 \end{figure}
 
@@ -190,7 +190,7 @@ El robot de Eurobot se encuentra con dos tipos de obstáculos a evitar en sus tra
 La evitación de obstáculos está directamente relacionada con la generación de trayectorias del robot, teniéndose en cuenta previamente al calculo de la trayectoria a realizar y durante la misma. Los sistemas de detección de obstáculos a desarrollar dependen de las diferente situaciones que se dan en un partido de Eurobot:
 
 \begin{description}
-\item \textbf{Objetos en trayectorias de un punto a otro del campo}
+\item \textbf{Obstáculo en trayectoria}
 
 Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
 
@@ -198,7 +198,7 @@ Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejempl
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{ejemplo_trayectorias_y_evitacion}
-\caption{Evitación de obstáculos en trayectorias de una zona a otra del campo. En el centro un robot oponente. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
+\caption[Ejemplo de evitación de obstáculos en trayectorias]{Evitación de obstáculos en trayectorias. En el centro un robot oponente. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
 \label{fig:ejemplo_trayectorias_y_evitacion}
 \end{figure}
 
@@ -212,12 +212,12 @@ Sea cual sea el sistema utilizado para localizar al robot oponente, debe de apor
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{medida_posicion_oponente}
-\caption{Ejemplo de sistema de medida de la posición del robot oponente que utiliza una baliza colocada en el oponente y un sensor en el robot. La medida obtenida es el ángulo y la distancia relativa al la posición del robot.}
+\caption[Ejemplo de sistema de medida de la posición del robot oponente basado en balizas]{Ejemplo de sistema de medida de la posición del robot oponente que utiliza una baliza colocada en el oponente y un sensor en el robot. La medida obtenida es el ángulo y la distancia relativa al la posición del robot.}
 \label{fig:medida_posicion_oponente}
 \end{figure}
 
 
-\item \textbf{Objeto inesperado en una trayectoria}
+\item \textbf{Obstáculo inesperado en una trayectoria}
 
 Iniciada una trayectoria, que a priori no tiene obstáculos, en cualquier punto de esta puede ocurrir que el robot oponente cambie su posición y se interponga en el camino del robot pudiendo producirse una colisión. En este caso, el robot ha de detectar este obstáculo inesperado y parar o modificar su trayectoria para evitar la colisión.
 
@@ -230,12 +230,12 @@ Suelen utilizarse sensores digitales de luz difusa (luz roja o infrarrojos) situ
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{deteccion_obstaculo_en_trayectoria}
-\caption{Ejemplo de sistema de detección de obstáculos en trayectoria. Tres sensores de corta distancia digitales detectan posibles colisiones.}
+\caption[Ejemplo de sistema de detección de obstáculos en trayectoria]{Ejemplo de sistema de detección de obstáculos en trayectoria. Tres sensores de corta distancia digitales detectan posibles colisiones.}
 \label{fig:deteccion_obstaculo_en_trayectoria}
 \end{figure}
 
 
-\item \textbf{Objeto que bloquea un elemento del juego}
+\item \textbf{Obstáculo que bloquea un elemento del juego}
 
 Caso en el que el robot se encuentra en una zona desde donde necesita acceder a un elemento de juego, por ejemplo un dispensador de fichas. Puede ocurrir que uno de los elementos de juego, por ejemplo una pelota u otro elemento, se encuentre entre el robot y el dicho dispensador. La probabilidad de que ocurra esto es mayor con los objetos esféricos y de poco peso, como por ejemplo pelotas de \emph{ping pong}, la manipulación de los mismos puede hacer que éstos rueden a lo largo del campo aleatoriamente con facilidad\footnote{Este tipo de objetos también puede entrar dentro de los sistemas mecánicos del robot e inutilízalos o bloquearlos}. 
 
@@ -253,7 +253,7 @@ Una tercera forma de detectar un objeto bloqueante es utilizando la localización
 En caso de disponer de dos robots por equipo hay diferentes formas de implementar una estrategia coordinada:
 
 \begin{enumerate}
-\item Que cada robot tenga asignado una zona de forma que no se estorben.
+\item Que cada robot tenga asignado un área del campo de forma que no se estorben.
 \item Que cada robot se mueva libremente por todo el campo y considere al robot compañero como un obstáculo más.
 \item Que exista una comunicación entre ambos de forma que cada uno conozca la posición del otro trabajen en cualquier zona del campo pero sin estorbarse.
 \end{enumerate}
@@ -262,17 +262,50 @@ Las dos primeras formas no implican un desarrollo añadido, los mismos sistemas d
 
 La tercera forma necesita del desarrollo de un sistema de comunicación entre ambos robots. Esto implica un desarrollo electrónico y de software principalmente. Es recomendable utilizar una tecnología que robusta y flexible que incluya capas de comunicación que aseguren una fiabilidad en la comunicación. Sobre todo porque el entorno en el que se desarrollan las competiciones suele tener muchas perturbaciones de radio frecuencia como equipos de audio y vídeo inalámbricos, redes Wifi o Bluetooth que pueden afectar a la comunicaciones entre los robots. 
 
-Como representa la figura \ref{}, cada robot necesita de un modulo de comunicación conectado a un microcontrolador. Bluetooth y Zigbee son dos de las tecnologías más utilizadas en comunicación inalámbrica, existen en el mercado módulos de comunicación de estas tecnologías que permiten crear enlaces de comunicación de forma sencilla. Dichos módulos electrónicos suelen tener una interfaz serie de comunicación (UART, SPI, I2C, ...) de forma que una vez establecido el canal de comunicación inalámbrico la comunicación entre dos microcontroladores es trasparente (similar a tener un canal cableado). 
+Como representa la figura \ref{fig:comunicacion_entre_robots}, cada robot necesita de un modulo de comunicación conectado a un microcontrolador. Bluetooth y Zigbee son dos de las tecnologías más utilizadas en comunicación inalámbrica, existen en el mercado módulos de comunicación de estas tecnologías que permiten crear enlaces de comunicación de forma sencilla. Dichos módulos electrónicos suelen tener una interfaz serie de comunicación (UART, SPI, I2C, ...) de forma que una vez establecido el canal de comunicación inalámbrico la comunicación entre dos microcontroladores es trasparente (similar a tener un canal cableado). 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{comunicacion_entre_robots}
+\caption[Diagrama de bloques del sistema de comunicación entre robots]{Sistema de comunicación entre robots. Ejemplo de diagrama de bloques de las diferentes capas HW y SW de la comunicación. De forma virtual existe una comunicación a nivel de cada capa software entre ambos robots.}
+\label{fig:comunicacion_entre_robots}
+\end{figure}
 
 Por la parte del software, es necesario desarrollar un protocolo de comunicación, común a los dos robots, a partir del cual enviar y/o recibir mensajes entre ellos.
-
-
 
 
 \subsection{Manipulación de elementos de juego} 
 \label{sec:manipulación_de_elementos_de_juego}
 
-\section{Fases y metodología de diseño}
+En una prueba de Eurobot la forma de conseguir puntos consiste en realizar ciertas tareas que implican la manipulación de elementos de juego. Las acciones a realizar con dichos elementos pueden ser recolectar, almacenar, clasificar y realizar construcciones, entre otras. Dicha manipulación suele ser realizada mediante sistemas mecánicos desarrollados expresamente para la prueba. Se ha considerado que cada sistema mecánico puede estar compuesto por uno o varios mecanismos, y estos a su vez formados por varios actuadores y sensores. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{sistema_stands}
+\caption[Mecanismos del sistema mecánico de \emph{stands} del robot P.Tinto (Eurobot 2015)]{Sistema mecánico de \emph{stands} del robot P.Tinto (Eurobot 2015) formado por varios mecanismos. Cada mecanismo esta formado por uno varios actuadores (motores y servomotores) y sensores.}
+\label{fig:sistema_stands}
+\end{figure}
+
+
+Por ejemplo como muestra la figura \ref{fig:sistema_stands}, el sistema de \emph{stands} del robot P.Tinto, desarrollado para Eurobot 2015, estaba compuesto por un mecanismo de puertas, un mecanismo clasificador, 2 mecanismos tipo pinza, 2 tipo ascensor y un mecanismo tipo carro. Este sistema era capaz de clasificar y almacenar de forma apilada elementos tipo \emph{stands} en dos torres y posteriormente construir una torre única. La torre junto con una pelota de tenis en su parte superior (bombilla) simbolizaba un foco de cine, cuanto mayor altura tenia el foco mayor era la puntuación obtenida.
+
+Al igual de la estrategia de juego (ver sección \ref{sec:estrategia_de_juego}), la manipulación de elementos de juego constituye un desarrollo específico de cada prueba de Eurobot. En este caso el desarrollo es principalmente mecánico, aunque necesita además de un desarrollo electrónico y de software. La figura \ref{fig:diagrama_bloques_mecanica} muestra los bloques genéricos implicados en el desarrollo HW y SW.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{diagrama_bloques_mecanica}
+\caption[Diagrama de bloques del las partes a desarrollar en un sistema mecánico]{Diagrama de bloques genérico de las partes a desarrollar en sistema mecánico destinado a la manipulación de elementos de juego.}
+\label{fig:diagrama_bloques_mecanica}
+\end{figure}
+
+%Los sistemas mecánicos suelen estar compuestos por mecanismos movidos por actuadores y realimentados mediante sensores. Los actuadores más comunes son los eléctricos (servomotores y motores), aunque se pueden utilizar actuadores neumáticos o hidráulicos (menos comunes). Los sensores más utilizados suelen ser de contacto y ópticos, aunque cabe la posibilidad de utilizar de cualquier otro tipo (magnético, inductivo, de ultrasonidos,...).
+
+La manipulación de elementos de juego necesita estar sincronizada con los movimientos de desplazamiento del robot, es por ello que es recomendable destinar un microcontrolador independiente para la gestión y control de los sistemas mecánicos.
+
+
+\section{Fases, metodología y criterio de desarrollo}
+
+
 
 \begin{itemize}
 \item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
