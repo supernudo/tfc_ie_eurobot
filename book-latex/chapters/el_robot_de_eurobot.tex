@@ -164,7 +164,7 @@ La localización permite al robot conocer su posición $(x_R,y_R)$ en el campo y p
 
 \begin{figure}[h]
 \centering
-\includegraphics[height=.4\textheight]{ejemplo_campo_cartesiano_y_trayectorias}
+\includegraphics[width=.6\textwidth]{ejemplo_campo_cartesiano_y_trayectorias}
 \caption[Representación cartesiana del campo de Eurobot 2015 y ejemplo de generación de trayectorias]{Representación cartesiana del campo de Eurobot 2015 (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}) y ejemplo de generación de trayectorias. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
 \label{fig:ejemplo_campo_cartesiano_y_trayectorias}
 \end{figure}
@@ -175,7 +175,7 @@ Como muestra la figura \ref{fig:desplazamiento_y_localizacion_bloques} la electr
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.8\textwidth]{desplazamiento_y_localizacion_bloques}
+\includegraphics[width=.7\textwidth]{desplazamiento_y_localizacion_bloques}
 \caption[Desplazamiento y localización: diagrama de bloques de las partes a desarrollar]{Desplazamiento y localización: diagrama de bloques del desarrollo mecánico, electrónico y software implicado.}
 \label{fig:desplazamiento_y_localizacion_bloques}
 \end{figure}
@@ -197,7 +197,7 @@ Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejempl
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.8\textwidth]{ejemplo_trayectorias_y_evitacion}
+\includegraphics[width=.6\textwidth]{ejemplo_trayectorias_y_evitacion}
 \caption[Ejemplo de evitación de obstáculos en trayectorias]{Evitación de obstáculos en trayectorias. En el centro un robot oponente. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
 \label{fig:ejemplo_trayectorias_y_evitacion}
 \end{figure}
@@ -211,7 +211,7 @@ Sea cual sea el sistema utilizado para localizar al robot oponente, debe de apor
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.8\textwidth]{medida_posicion_oponente}
+\includegraphics[width=.7\textwidth]{medida_posicion_oponente}
 \caption[Ejemplo de sistema de medida de la posición del robot oponente basado en balizas]{Ejemplo de sistema de medida de la posición del robot oponente que utiliza una baliza colocada en el oponente y un sensor en el robot. La medida obtenida es el ángulo y la distancia relativa al la posición del robot.}
 \label{fig:medida_posicion_oponente}
 \end{figure}
@@ -229,7 +229,7 @@ Suelen utilizarse sensores digitales de luz difusa (luz roja o infrarrojos) situ
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.8\textwidth]{deteccion_obstaculo_en_trayectoria}
+\includegraphics[width=.7\textwidth]{deteccion_obstaculo_en_trayectoria}
 \caption[Ejemplo de sistema de detección de obstáculos en trayectoria]{Ejemplo de sistema de detección de obstáculos en trayectoria. Tres sensores de corta distancia digitales detectan posibles colisiones.}
 \label{fig:deteccion_obstaculo_en_trayectoria}
 \end{figure}
@@ -305,24 +305,59 @@ La manipulación de elementos de juego necesita estar sincronizada con los movimi
 
 \section{Objetivos del desarrollo de un robot de Eurbot}
 
-Antes de nada hay que recordar que el desarrollo de un robot de Eurobot y la competición en sí misma tiene como objetivo la experimentación y el aprendizaje y compartición del conocimiento científico y de ingeniería que implica la robótica. Independientemente del resultado de la competición para un equipo la ganancia que tiene cada uno de los integrantes es el aprendizaje, la experiencia y las horas disfrutadas durante todo el desarrollo del robot. El desarrollo de un robot de Eurobot no supone un desarrollo de un producto comercial o similar que lleve implícito una ganancia económica puesto que ni siquiera ganar la competición tiene un premio económico. 
+Antes de nada hay que recordar que el desarrollo de un robot de Eurobot y la competición en sí misma tiene como objetivo la experimentación, el aprendizaje y compartición del conocimiento científico y de ingeniería que implica la robótica. Independientemente del resultado de la competición para un equipo, el beneficio que obtiene cada uno de los integrantes es el aprendizaje, la experiencia y el disfrute del proceso de desarrollo del robot. El desarrollo de un robot de Eurobot no supone un desarrollo de un producto comercial o similar que lleve implícito una ganancia económica puesto que ni siquiera ganar la competición tiene un premio económico. 
 
-Es muy recomendable que el equipo que va ha desarrollar los robots fijen unos objetivos comunes (a ser posible de forma escrita) de forma que focalicen sus esfuerzos en ellos. Unos objetivos poco realistas suelen tener resultados satisfactorios, ya que no se consigue disfrutar del proceso de desarrollo del robot y de la competición. La experiencia dice que esto nunca es así, ya que la escasez de tiempo suele implicar esfuerzos extra en el desarrollo lo cual implicar un menor disfrute. Aun así, intentar conseguir completar el 100\% de los objetivos con un 20\% menos de disfrute merece la pena.
+Es muy recomendable que el equipo que va ha desarrollar los robots fijen unos objetivos comunes (a ser posible de forma escrita) de forma que focalicen sus esfuerzos en ellos. Unos objetivos realistas suelen tener resultados  satisfactorios, consiguiendo disfrutar del proceso de desarrollo del robot y de la competición. La experiencia dice que esto nunca es así, ya que la escasez de tiempo suele implicar esfuerzos extra en el desarrollo lo cual implicar un menor disfrute. Aun así, intentar conseguir completar el 100\% de unos objetivos realistas con un 20\% menos de disfrute merece la pena.
 
-Si no se dispone de suficiente experiencia, tiempo y recursos humanos, es recomendable empezar con un desarrollo que implique una mecánica sencilla y focalizar el desarrollo en las partes que forman la \emph{plataforma robótica base} (ver \ref{sec:partes_robot_eurobot}) y en la estrategia de juego. Una vez se tenga desarrollada una plataforma base reutilizable, el desarrollo puede centrarse más en la parte mecánica y de estrategia. Aunque se desarrolle un robot que sea capaz de realizar todas las tareas del juego siempre quedaran partes que mejorar o nuevas tecnologías con las que experimentar y aprender.
+Si no se dispone de suficiente experiencia, tiempo y recursos humanos, es recomendable empezar con un desarrollo que implique una mecánica sencilla y focalizar el desarrollo en las partes que forman lo que se ha denominado la \emph{plataforma robótica base} (ver \ref{sec:partes_robot_eurobot}) y en la estrategia de juego. Una vez se tenga desarrollada una plataforma base reutilizable, el desarrollo puede centrarse más en la parte mecánica y de estrategia. En cualquier caso, aunque se desarrolle un robot que sea capaz de realizar todas las tareas del juego siempre quedaran partes que mejorar o nuevas tecnologías con las que experimentar y aprender.
 
-%TODO: Topolino Vs. Trompetero
+%Topolino Vs. Trompetero
 
-Resulta muy interesante comparar el desarrollo de robot Topolino (2008) con el del robot Trompetero (2010). Ambos robots fueron desarrollados principalmente por las dos mismas 2 personas\footnote{Diego Salazar y Javier Baliñas}: una persona dedicada a la mecánica y una dedicada a la electrónica y software. Topolino se construlló sobre una una plataforma robótica desarrollada anteriormente. Así se disponía casi por completo de las partes de desplazamiento y localización, además de un chasis sobre el que construir la mecánica específica de la prueba de Eurobot. El desarrollo se centró en un diseño mecánico muy sencillo y de bajo coste, en la implementación de un sistema de evitación de obstáculos, en la estrategia y manipulación de los elementos de juego. El resultado fue muy satisfactorio, se llegó a realizar casi el 100\% de los objetivos del robot, se obtuvo una buena clasificación en la competición e incluso Topolino ganó el premio \emph{Mejor concepto de robot}\footnote{Premio otorgado a robots que implementan soluciones originales y recursos materiales modestos}. Y lo más importante, los desarrolladores disfrutaron del proceso hasta el final.
+Resulta muy interesante comparar el desarrollo de robot Topolino (2008) con el del robot Trompetero (2010) (ver figura \ref{fig:robots_topolino_y_trompetero}. Ambos robots fueron desarrollados principalmente por las dos mismas 2 personas\footnote{Diego Salazar y Javier Baliñas}: una persona dedicada a la mecánica y una dedicada a la electrónica y software. Topolino (figura \ref{fig:robot_topolino} se construyó sobre una una plataforma robótica desarrollada anteriormente\footnote{Desarrollada por Diego Salazar, Marcelo Salazar y Sergio Arroyo}. Así se disponía casi por completo de las partes de desplazamiento y localización del robot, además de un chasis sobre el que construir la mecánica específica de la prueba de Eurobot. El desarrollo se centró en un diseño mecánico muy sencillo y de bajo coste, en la implementación de un sistema de evitación de obstáculos, en la estrategia y en la manipulación de los elementos de juego. El resultado fue muy satisfactorio, se llegó a realizar casi el 100\% de los objetivos del robot, se obtuvo una buena clasificación en la competición e incluso Topolino ganó el premio \emph{Mejor concepto de robot}\footnote{Premio otorgado a robots que implementan soluciones originales y recursos materiales modestos}. Y lo más importante, los desarrolladores disfrutaron del proceso hasta el final.
 
-Trompetero supuso un reto para los desarrolladores de Topolino, con el cual se alcanzó el techo de la tecnología con la que se construyó, y con Trompetero se quiso estar al nivel de los robots de primera linea. Trompetero partió de las librerías Aversive las cuales cuentan con partes del robot ya implementadas como el desplazamiento y localización. Aun así, Trompetero implicó el desarrollo mecánico, electronico y de software del resto de partes, además de la migración de las librerías Aversive al HW basado en microcontroladores dsPIC33 y su aprendizaje. Además la Trompetero tenía una mecánica compleja que abarcaba la manipulación de todos los elementos del juego de Eurobot 2010. En general un desarrollo muy ambicioso. Aunque el proceso de desarrollo de Trompetero supuso un aprendizaje muy satisfactorio y una evolución en el desarrollo de un robot de Eurobot, los imprevistos, la falta de tiempo y sueño hicieron que terminase en números rojos en términos de disfrute. Aunque se consiguieron desarrollar todas las partes del robot, estas tenían errores que no fueron solucionados a tiempo y al igual que la estrategia de juego. En consecuencia se consiguió una evolución a costa del disfrute.
+\begin{figure}[h]
+\centerline{
+	\subfloat[Robot Topolino (2008)]{\includegraphics[height=.2\textheight]{topolino}
+	\label{fig:robot_topolino}}
+	\hfil
+	\subfloat[Robot Trompetero (2010)]{\includegraphics[height=.2\textheight]{trompetero}
+	\label{fig:robot_trompetero}}
+	\hfil
+}
+\caption[Robots Topolino y Trompetero]{Robots desarrollados para Eurobot 2008 y 2010}
+\label{fig:robots_topolino_y_trompetero}
+\end{figure}
 
-Afortunadamente, la mayor parte del trabajo realizado en el desarrollo de Trompetero tuvo su retorno con el Zamorano (Eurobot 2011). Aprendida la lección, con Zamorano se volvió a la idea de mecánica sencilla, a un punto intermedio entre Topolino y Trompetero, centrando el desarrollo en la estrategia y en la optimización de la dinámica del robot. Aunque Zamorano tuvo un final amargo\footnote{Habiendo ganado el partido de cuartos de final en las finales de Eurobot en Rusia, Zamorano fue descalificado por una decisión arbitral injusta.}, consiguió cumplir los objetivos planteados por el equipo.  
+Trompetero (figura \ref{fig:robot_trompetero}) supuso un reto para los desarrolladores de Topolino, con el que se había alcanzado el techo de la tecnología con la que se construyó, y con Trompetero se quiso desarrollar un robot al nivel de los robots de primera linea de Eurobot. Trompetero partió de las librerías Aversive las cuales cuentan con partes del robot ya implementadas como el desplazamiento y localización. Aun así, Trompetero implicó el desarrollo de la mecánica, electrónica y del software del resto de partes, además de la migración de las librerías Aversive al HW basado en microcontroladores dsPIC33 y su aprendizaje. Trompetero tenía una mecánica compleja que abarcaba la manipulación de todos los elementos del juego de Eurobot 2010. En general un desarrollo muy ambicioso. Aunque el proceso de desarrollo de Trompetero supuso un gran aprendizaje y una evolución en el desarrollo de un robot de Eurobot, los imprevistos, la falta de tiempo y sueño hicieron que terminase en números rojos en términos de disfrute. Aunque se consiguieron desarrollar todas las partes del robot, estas tenían errores que no fueron solucionados a tiempo y al igual que la estrategia de juego. En consecuencia se consiguió una evolución a costa del disfrute.
+
+Afortunadamente, la mayor parte del trabajo realizado en el desarrollo de Trompetero tuvo su retorno con el robot Zamorano (Eurobot 2011). Aprendida la lección, con Zamorano se volvió a la idea de una mecánica sencilla, un punto intermedio entre Topolino y Trompetero, centrando el desarrollo en la estrategia y en la optimización de la dinámica del robot. Aunque Zamorano tuvo un final amargo\footnote{Habiendo ganado el partido de cuartos de final en las finales de Eurobot en Rusia, Zamorano fue descalificado por una decisión arbitral injusta.}, consiguió cumplir los objetivos planteados por el equipo.  
 
 
-\section{Planteamiento y fases del desarrollo del robot de Eurobot}
+\section{Desarrollo del robot de Eurobot}
 
-Al la hora de plantear el desarrollo de un robot lo más fácil es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. Es esta forma la estrategia implica ciertas restricciones de la mecánica y esta a su vez especificidades de la electrónica y en última medida del software.
+Al la hora de plantear el desarrollo de un robot de Eurobot es recomendable es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. De esta forma, la estrategia es la que impondrá las restricciones de la mecánica y ésta a su vez fijará las necesidades de la electrónica, y toda ellas las necesidades del software.
+
+El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
+
+\begin{enumerate}
+\item Diseño de la estrategia de juego
+\item Realización de prototipos mecánicos y pruebas de concepto
+\item Diseño y fabricación de la mecánica y la electrónica
+\item Implementación software de la funcionalidad y la estrategia de juego
+\item Depuración y mejoras
+\item Competición
+\end{enumerate}
+
+En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. ....
+
+
+\begin{itemize}
+\item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
+\item Desde la inexperiencia
+\item Grano fino / grano grueso
+\item Grano grueso puede limitar el diseño mecánico
+\end{itemize}
+
 
 Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Algunos de los factores a tener en cuenta en la estrategia son los siguientes:
 
@@ -350,12 +385,6 @@ La estrategia definitiva no va ha quedar definida desde un primer momento
 
 
 
-\begin{itemize}
-\item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
-\item Desde la inexperiencia
-\item Grano fino / grano grueso
-\item Grano grueso puede limitar el diseño mecánico
-\end{itemize}
 
 \section{Depuración y puesta en marcha}
 
