@@ -330,12 +330,12 @@ Resulta muy interesante comparar el desarrollo de robot Topolino (2008) con el d
 
 Trompetero (figura \ref{fig:robot_trompetero}) supuso un reto para los desarrolladores de Topolino, con el que se había alcanzado el techo de la tecnología con la que se construyó, y con Trompetero se quiso desarrollar un robot al nivel de los robots de primera linea de Eurobot. Trompetero partió de las librerías Aversive las cuales cuentan con partes del robot ya implementadas como el desplazamiento y localización. Aun así, Trompetero implicó el desarrollo de la mecánica, electrónica y del software del resto de partes, además de la migración de las librerías Aversive al HW basado en microcontroladores dsPIC33 y su aprendizaje. Trompetero tenía una mecánica compleja que abarcaba la manipulación de todos los elementos del juego de Eurobot 2010. En general un desarrollo muy ambicioso. Aunque el proceso de desarrollo de Trompetero supuso un gran aprendizaje y una evolución en el desarrollo de un robot de Eurobot, los imprevistos, la falta de tiempo y sueño hicieron que terminase en números rojos en términos de disfrute. Aunque se consiguieron desarrollar todas las partes del robot, estas tenían errores que no fueron solucionados a tiempo y al igual que la estrategia de juego. En consecuencia se consiguió una evolución a costa del disfrute.
 
-Afortunadamente, la mayor parte del trabajo realizado en el desarrollo de Trompetero tuvo su retorno con el robot Zamorano (Eurobot 2011). Aprendida la lección, con Zamorano se volvió a la idea de una mecánica sencilla, un punto intermedio entre Topolino y Trompetero, centrando el desarrollo en la estrategia y en la optimización de la dinámica del robot. Aunque Zamorano tuvo un final amargo\footnote{Habiendo ganado el partido de cuartos de final en las finales de Eurobot en Rusia, Zamorano fue descalificado por una decisión arbitral injusta.}, consiguió cumplir los objetivos planteados por el equipo.  
+Afortunadamente, la mayor parte del trabajo realizado en el desarrollo de Trompetero tuvo su retorno con el robot Zamorano (Eurobot 2011). Aprendida la lección, con Zamorano se volvió a la idea de una mecánica sencilla, un punto intermedio entre Topolino y Trompetero, centrando el desarrollo en la estrategia y en la optimización de la dinámica del robot. Aunque Zamorano tuvo un final amargo\footnote{Habiendo ganado el partido de cuartos de final en las finales de Eurobot en Rusia, Zamorano fue descalificado por una decisión arbitral injusta.}, consiguió cumplir los objetivos planteados por el equipo y supuso una gran satisfacción para sus desarrolladores.
 
 
 \section{Desarrollo del robot de Eurobot}
 
-Al la hora de plantear el desarrollo de un robot de Eurobot es recomendable es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. De esta forma, la estrategia es la que impondrá las restricciones de la mecánica y ésta a su vez fijará las necesidades de la electrónica, y toda ellas las necesidades del software.
+Al la hora de plantear el desarrollo de un robot de Eurobot es recomendable es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. De esta forma, la estrategia es la que impondrá las restricciones de la mecánica y ésta a su vez fijará las necesidades de la electrónica, y toda ellas, las necesidades del software.
 
 El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 
@@ -343,37 +343,55 @@ El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 \item Diseño de la estrategia de juego
 \item Realización de prototipos mecánicos y pruebas de concepto
 \item Diseño y fabricación de la mecánica y la electrónica
-\item Implementación software de la funcionalidad y la estrategia de juego
+\item Implementación software de la funcionalidad del robot y la estrategia de juego
 \item Depuración y mejoras
-\item Competición
+\item La competición
 \end{enumerate}
 
-En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. ....
+En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. Por ejemplo si centra el desarrollo en partes que que pueden considerarse básicas, como un sensor, no se estará desarrollando un robot, si no un sensor. Se ha de valorar que partes han de ser desarrolladas a medida y que partes han de ser compradas. En este aspecto el tamaño de las partes juega un papel importante ya que el espacio donde han de convivir mecánica y electrónica no suele abundar. Lo más normal es que el diseño mecánico se adapte a los motores y sensores disponibles, y la electrónica se diseñe a medida de la mecánica.  
 
+% desde la inexperiencia... ?
 
-\begin{itemize}
-\item Enfoque del proyecto y los esfuerzos: desarrollar un robot vs. desarrollar un sensor.
-\item Desde la inexperiencia
-\item Grano fino / grano grueso
-\item Grano grueso puede limitar el diseño mecánico
-\end{itemize}
+\subsection{Diseño de la estrategia de juego}
 
+Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego  y un campo de juego físico. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipo suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
 
-Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Algunos de los factores a tener en cuenta en la estrategia son los siguientes:
+\begin{figure}[h]
+\centering
+\includegraphics[width=.8\textwidth]{finde_robotico}
+\caption[Elementos y campo de juego utilizado para discutir las primeras estrategias de juego]{Elementos y campo de juego utilizado para discutir las primeras estrategias de juego}
+\label{fig:finde_robotico}
+\end{figure}
+
+Algunos de los factores a tener en cuenta en la estrategia son los siguientes:
 
 \begin{description}
 
-\item Tiempo que implica realizar una tarea del juego
-\item Trayectorias y distancias hasta los elementos de juego.
-\item Posición de los elementos de juego
-\item Accesibilidad de los elementos de juego
+\item \textbf{Tiempo de partido}
 
-\item Caminos alternativos de estrategia
-\item Riesgo de encontrarse al oponente
+El tiempo de partido es un factor importante a tener en cuenta. Al tiempo que cada robot necesita para llegar hasta los elementos de juego hay que añadir el tiempo que los robots dedicarán a evitar las colisiones entre ellos o a bloqueos desafortunados.
 
-\item 
+\item \textbf{Tiempo que implica realizar una tarea del juego}
 
-\item Tareas de cada robot (en caso de un equipo formado por dos robots).
+No es lo mismo tener que empujar un elemento para obtener puntos que tener que cogerlo, identificarlo, clasificarlo y almacenarlo. La estimación de dicho tiempo dependerá de la experiencia de los desarrolladores, pero ha de ser acotado mediante prototipos y pruebas de concepto.
+
+\item \textbf{Trayectorias y distancias hasta los elementos de juego}
+
+En los desplazamientos del robot la mayor parte del tiempo se destina a acelerar y a frenar. Es interesante que un robot tenga la capacidad de manipular elementos de juego cercanos y así optimizar las trayectorias. Lo ideal es que un robot realice una trayectoria continua de forma que sin detenerse sea capa de recolectar o puntuar al pasar por las zonas de los diferentes elementos de juego como lo hacía el robot del equipo Microb en Eurobot 2010 \cite{robot_microb_2010}. Si esto no es posible, se han ha de tratar de realizar trayectorias que que permita llegar hasta los elementos del juego en el menor desplazamiento y numero de movimientos. La optimización de las trayectorias permite ahorrar mucho tiempo y disponer de más tiempo para imprevistos del juego.
+
+\item \textbf{Acceso a los elementos de juego}
+
+Es importante tener en cuenta 
+
+\item \textbf{Puntuación objetivo}
+
+\item \textbf{Tareas de juego despreciables}
+
+\item \textbf{Caminos alternativos de estrategia}
+
+\item \textbf{Riesgo de encontrarse al oponente}
+
+\item \textbf{Tareas de cada robot}
 
 
 \end{description}
