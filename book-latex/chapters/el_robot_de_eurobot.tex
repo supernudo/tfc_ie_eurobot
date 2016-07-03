@@ -114,6 +114,56 @@ Por último, las reglas de Eurobot además especifican otros temas que deben de se
 \item Procedimientos de un partido.
 \end{itemize}
 
+\section{Elementos del juego y tareas de un robot de Eurobot}
+\label{sec:elementos_de_juego_y_tareas}
+
+Los elementos de juego en Eurobot varían cada año con la temática. Se pueden identificar 2 tipos de elementos básicos:
+
+\begin{itemize}
+\item \textbf{Elementos no compartidos} 
+Elementos que sólo pueden ser manipulados por cada robot contrincante y puntúan y pertenecen a cada robot. El número de elementos de este tipo es el mismo para cada robot. La manipulación de los elementos del robot oponente puede estar penalizada. 
+
+\item \textbf{Elementos compartidos}
+Elementos comunes a los robots contrincantes de un partido. Ambos robots pueden manipularlos y conseguir puntos por ellos, pero no pertenecen a ninguno, pueden ser utilizados por el contrincante sin penalización alguna.
+\end{itemize}
+
+Atendiendo a la posición de los elementos se obtiene la siguiente clasificación:
+
+\begin{itemize}
+\item \textbf{Elementos de posición conocida:}
+La posición en el campo (coordenadas) es conocida a priori.
+
+\item \textbf{Elementos de posición aleatoria:}
+La posición en el campo es aleatoria entre varias posiciones posibles. Por ejemplo, en Eurobot 2016 la posición de las estrellas de mar era aleatoria. Previamente a la colocación de los elementos de juego por los árbitros echaban a suertes la posición de las estrellas de mar de cada robot.
+
+\item \textbf{Elementos aportados por los robots:}
+Algunos elementos pueden ser aportados por los robots al partido. Así al iniciar éste ciertos elementos pueden estar inicialmente en los robots. Por ejemplo, es el caso de unas pelotas de \emph{scuash} que el Eurobot 2005 los robots podían disparar para derribar las torres de bolos del oponente. 
+
+\end{itemize}
+
+Los elementos del juego suelen tener asociada una tarea por la cual se obtienen puntos en un partido. Dichas tareas simbolizan acciones relacionadas con la temática de la prueba. Se pueden identificar varios tipos de tareas atendiendo a su grado de complejidad: 
+
+\begin{description}
+\item \textbf{Accionar o empujar una palanca o mecanismo:}\\
+Este tipo de tareas son las más sencillas, suele consistir en empujar un mecanismo simple. Por ejemplo, en Eurobot 2012 (\emph{Treasure Island}) los robots tenían que empujar un mecanismos, situado en una de las paredes del campo, por el cual se desplegaba un mensaje en rollado. Esto simbolizaba la acción de mandar un mensaje en una botella
+
+\item \textbf{Recolectar y almacenar:}\\
+Ciertas acciones consisten en recolectar elementos de juego y llevarlos hasta un sitio donde almacenarlos. Por ejemplo, en Eurobot 2015 (\emph{Robomovies}) los robots tenían que recolectar vasos de plástico con pelotas de poliestireno en su interior en su interior, que simbolizaban palomitas, y llevarlos hasta las zonas que simbolizaban los cines. Además, inicialmente los vasos no estaban completamente llenos de palomitas de forma que los robots podían ir hasta las máquinas de palomitas (unos dispensadores de pelotas) para rellenarlos y así conseguir más puntos.
+
+\item \textbf{Recolectar selectivamente y almacenar:}\\
+A veces, además de recolectar y almacenar elementos de juego, es necesario discriminar ciertos elementos que penalizan restando puntos. Es el caso de los frutos de Eurobot 2014 (\emph{Prehistobot}), de entre los frutos (corchos morados) que colgaban de los árboles había 2 colocados de forma aleatoria que eran tóxicos (corchos negros).
+
+\item \textbf{Recolectar y construir:}\\
+Este tipo de tareas consisten en construir un elemento de juego a partir de piezas de éste que son recolectadas por el campo. Por ejemplo, en Eurobot 2009 (\emph{Temples of Atlantis}) los robots tenían que recolectar partes de columnas (fichas cilíndricas) y linteles (fichas rectangulares) para construir templos de dos columnas lo más altos posibles.
+
+\item \textbf{De habilidad:}\\
+Algunos años los robots han tenido que demostrar cuanto de hábiles son desafiando la gravedad. Por ejemplo, en Eurobot 2015 (\emph{Robomovies}) los robots obtenían puntos por subir unas escaleras en las que previamente habían extendido la alfombra roja. O por ejemplo en Eurobot 2011 (\emph{Chess'Up!}), donde los robots tenían que acabar sentados sobre una de las fichas que simbolizaban peones de Ajedrez en su casilla de salida.
+
+\item \textbf{\emph{Funny acction}:}\\
+La \emph{Funny acction} es una acción que está pensada para ser realizada por los robots al finalizar el partido. Por ejemplo, en Eurobot 2016 (\emph{The Beach Bots}) al finalizar el partido los robots tenían que desplegar una sombrilla o toldo que llevaban consigo para protegerse del sol.
+
+\end{description}
+
 
 \section{Partes principales en el desarrollo de un robot de Eurobot}
 
@@ -190,7 +240,7 @@ El robot de Eurobot se encuentra con dos tipos de obstáculos a evitar en sus tra
 La evitación de obstáculos está directamente relacionada con la generación de trayectorias del robot, teniéndose en cuenta previamente al calculo de la trayectoria a realizar y durante la misma. Los sistemas de detección de obstáculos a desarrollar dependen de las diferente situaciones que se dan en un partido de Eurobot:
 
 \begin{description}
-\item \textbf{Obstáculo en trayectoria}
+\item \textbf{Obstáculo en trayectoria:}
 
 Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
 
@@ -217,7 +267,7 @@ Sea cual sea el sistema utilizado para localizar al robot oponente, debe de apor
 \end{figure}
 
 
-\item \textbf{Obstáculo inesperado en una trayectoria}
+\item \textbf{Obstáculo inesperado en una trayectoria:}
 
 Iniciada una trayectoria, que a priori no tiene obstáculos, en cualquier punto de esta puede ocurrir que el robot oponente cambie su posición y se interponga en el camino del robot pudiendo producirse una colisión. En este caso, el robot ha de detectar este obstáculo inesperado y parar o modificar su trayectoria para evitar la colisión.
 
@@ -235,7 +285,7 @@ Suelen utilizarse sensores digitales de luz difusa (luz roja o infrarrojos) situ
 \end{figure}
 
 
-\item \textbf{Obstáculo que bloquea un elemento del juego}
+\item \textbf{Obstáculo que bloquea un elemento del juego:}
 
 Caso en el que el robot se encuentra en una zona desde donde necesita acceder a un elemento de juego, por ejemplo un dispensador de fichas. Puede ocurrir que uno de los elementos de juego, por ejemplo una pelota u otro elemento, se encuentre entre el robot y el dicho dispensador. La probabilidad de que ocurra esto es mayor con los objetos esféricos y de poco peso, como por ejemplo pelotas de \emph{ping pong}, la manipulación de los mismos puede hacer que éstos rueden a lo largo del campo aleatoriamente con facilidad\footnote{Este tipo de objetos también puede entrar dentro de los sistemas mecánicos del robot e inutilízalos o bloquearlos}. 
 
@@ -342,8 +392,10 @@ El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 \begin{enumerate}
 \item Diseño de la estrategia de juego
 \item Realización de prototipos mecánicos y pruebas de concepto
-\item Diseño y fabricación de la mecánica y la electrónica
-\item Implementación software de la funcionalidad del robot y la estrategia de juego
+\item Diseño y fabricación de la mecánica
+\item Diseño y fabricación de la electrónica
+\item Implementación software de la funcionalidad del robot
+\item Implementación software de la estrategia de juego
 \item Depuración y mejoras
 \item La competición
 \end{enumerate}
@@ -353,6 +405,7 @@ En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo me
 % desde la inexperiencia... ?
 
 \subsection{Diseño de la estrategia de juego}
+\label{sec:diseño_estrategi_de_juego}
 
 Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego  y un campo de juego físico. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipo suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
 
@@ -367,31 +420,38 @@ Algunos de los factores a tener en cuenta en la estrategia son los siguientes:
 
 \begin{description}
 
-\item \textbf{Tiempo de partido}
+\item \textbf{Puntuación objetivo:}
+
+En función del objetivo del equipo Para ganan un partido de Eurobot 
+
+La puntuación objetivo a obtener en cada partido determina las tareas a realizar
+
+\item \textbf{Compromiso puntuación vs. complejidad}
+
+Es recomendable analizar la puntuación que supone cada elemento de juego o la tarea implicada frente a la complejidad o inconvenientes de llevarlo a cabo. Así una tarea que implique una complejidad grande y poca puntuación puede ser descartada. En cambio, aquellas tareas baja complejidad y mucha puntuación han de tener una prioridad alta. Este tipo de estudio permite determinar que tareas realizar para alcanzar una puntuación objetivo.
+
+\item \textbf{Tiempo de partido:}
 
 El tiempo de partido es un factor importante a tener en cuenta. Al tiempo que cada robot necesita para llegar hasta los elementos de juego hay que añadir el tiempo que los robots dedicarán a evitar las colisiones entre ellos o a bloqueos desafortunados.
 
-\item \textbf{Tiempo que implica realizar una tarea del juego}
+\item \textbf{Tiempo que implica realizar una tarea del juego:}
 
-No es lo mismo tener que empujar un elemento para obtener puntos que tener que cogerlo, identificarlo, clasificarlo y almacenarlo. La estimación de dicho tiempo dependerá de la experiencia de los desarrolladores, pero ha de ser acotado mediante prototipos y pruebas de concepto.
+No es lo mismo tener que empujar un elemento para obtener puntos que tener que cogerlo, identificarlo, clasificarlo y almacenarlo. La estimación de dicho tiempo dependerá de la experiencia de los desarrolladores, pero ha de ser acotado mediante prototipos y pruebas de concepto. 
 
-\item \textbf{Trayectorias y distancias hasta los elementos de juego}
+\item \textbf{Acceso a los elementos de juego:}
+
+Además hay que tener en cuenta cuanto de accesible es un elemento de juego. Por ejemplo si está muy cerca de las esquinas del campo, dependiendo de la forma de cada robot puede que el elemento no sea accesible o que sean necesarias muchas maniobras para llegar a él.
+
+\item \textbf{Trayectorias y distancias hasta los elementos de juego:}
 
 En los desplazamientos del robot la mayor parte del tiempo se destina a acelerar y a frenar. Es interesante que un robot tenga la capacidad de manipular elementos de juego cercanos y así optimizar las trayectorias. Lo ideal es que un robot realice una trayectoria continua de forma que sin detenerse sea capa de recolectar o puntuar al pasar por las zonas de los diferentes elementos de juego como lo hacía el robot del equipo Microb en Eurobot 2010 \cite{robot_microb_2010}. Si esto no es posible, se han ha de tratar de realizar trayectorias que que permita llegar hasta los elementos del juego en el menor desplazamiento y numero de movimientos. La optimización de las trayectorias permite ahorrar mucho tiempo y disponer de más tiempo para imprevistos del juego.
 
-\item \textbf{Acceso a los elementos de juego}
 
-Es importante tener en cuenta 
+\item \textbf{Caminos alternativos de estrategia:}
 
-\item \textbf{Puntuación objetivo}
+\item \textbf{Riesgo de encontrarse al oponente:}
 
-\item \textbf{Tareas de juego despreciables}
-
-\item \textbf{Caminos alternativos de estrategia}
-
-\item \textbf{Riesgo de encontrarse al oponente}
-
-\item \textbf{Tareas de cada robot}
+\item \textbf{Tareas de cada robot:}
 
 
 \end{description}
@@ -402,11 +462,26 @@ La estrategia definitiva no va ha quedar definida desde un primer momento
  Por ejemplo, en Eurobot 2015 se determinó la estrategia representada en la figura \ref{fig:estrategia_2015}. Por un lado el robot principal
 
 
+\subsection{Realización de prototipos mecánicos y pruebas de concepto}
+\label{prototipos_y_pruebas_de_concepto}
 
+\subsection{Diseño y fabricación de la mecánica}
+\label{sec:diseño_y_fabricacion_mecanica}
 
-\section{Depuración y puesta en marcha}
+\subsection{Diseño y fabricación de la electrónica}
+\label{sec:diseno_y_fabricación_electronica}
+
+\subsection{Implementación software de la funcionalidad del robot}
+\label{sec:implementacion_funcionalidad_del_robot}
+
+\subsection{Implementación software de la estrategia de juego}
+\label{sec:implementación_estrategia_de_juego}
+
+\subsection{Depuración y mejoras}
+\label{sec:depuracion_y_mejoras}
 
 Pruebas en campo costoso, todo lo no dependiente de la mecanica simulado.
+
 
 
 %%% Local Variables:
