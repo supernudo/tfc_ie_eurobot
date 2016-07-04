@@ -372,7 +372,6 @@ Resulta muy interesante comparar el desarrollo de robot Topolino (2008) con el d
 	\hfil
 	\subfloat[Robot Trompetero (2010)]{\includegraphics[height=.2\textheight]{trompetero}
 	\label{fig:robot_trompetero}}
-	\hfil
 }
 \caption[Robots Topolino y Trompetero]{Robots desarrollados para Eurobot 2008 y 2010}
 \label{fig:robots_topolino_y_trompetero}
@@ -385,7 +384,9 @@ Afortunadamente, la mayor parte del trabajo realizado en el desarrollo de Trompe
 
 \section{Desarrollo del robot de Eurobot}
 
-Al la hora de plantear el desarrollo de un robot de Eurobot es recomendable es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. De esta forma, la estrategia es la que impondrá las restricciones de la mecánica y ésta a su vez fijará las necesidades de la electrónica, y toda ellas, las necesidades del software.
+A la hora de afrontar el desarrollo de un robot de Eurobot lo ideal es desarrollar las partes que forman la plataforma robótica base (ver sección \ref{sec:partes_robot_eurobot}) antes de que las reglas de la temática del año sean publicadas. En otro caso, se recomienda focalizar los esfuerzos en desarrollar primero estas partes y una mecánica y estrategia sencilla que permitan participar en la prueba.
+
+Una vez que se dispone de las reglas del juego lo más sencillo es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. De esta forma, la estrategia es la que impondrá las restricciones de la mecánica y ésta a su vez fijará las necesidades de la electrónica, y toda ellas, las necesidades del software.
 
 El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 
@@ -407,12 +408,12 @@ En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo me
 \subsection{Diseño de la estrategia de juego}
 \label{sec:diseño_estrategi_de_juego}
 
-Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego  y un campo de juego físico. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipo suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
+Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego físicos y un campo de juego de dimensiones reales. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipos suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{finde_robotico}
-\caption[Elementos y campo de juego utilizado para discutir las primeras estrategias de juego]{Elementos y campo de juego utilizado para discutir las primeras estrategias de juego}
+\caption[Elementos y campo de juego utilizado para discutir las primeras estrategias de juego]{Elementos y campo de juego utilizado para discutir las primeras estrategias de juego de Eurobot 2015}
 \label{fig:finde_robotico}
 \end{figure}
 
@@ -422,9 +423,7 @@ Algunos de los factores a tener en cuenta en la estrategia son los siguientes:
 
 \item \textbf{Puntuación objetivo:}
 
-En función del objetivo del equipo Para ganan un partido de Eurobot 
-
-La puntuación objetivo a obtener en cada partido determina las tareas a realizar
+Es la puntuación media a obtener por partido y con la que se estima ganar al oponente. Normalmente es un porcentaje de la puntuación máxima que puede obtener un equipo. El primer objetivo durante la competición es clasificarse entre los 16 primeros equipos. Durante la fase de clasificación cada equipo juega 5 partidos. La puntuación de corte que permite estar entre los 16 primeros varia con la temática de cada año y depende de la dificultad de las acciones a realizar por los robots.
 
 \item \textbf{Compromiso puntuación vs. complejidad}
 
@@ -449,20 +448,70 @@ En los desplazamientos del robot la mayor parte del tiempo se destina a acelerar
 
 \item \textbf{Caminos alternativos de estrategia:}
 
-El tiempo en un partido de Eurobot es escaso, es por ello que un robot 
+El tiempo en un partido de Eurobot es escaso, es por ello que un robot tiene que tratar aprovecharlo. La estrategia debe de prever que no siempre el robot va a poder hacer cierta tarea en un momento dado, es por ello que en cada momento ha de preverse un camino o tarea alternativa. Sin embargo, a veces, cuando un robot se queda atrapado entre dos paredes del campo de juego y el robot oponente no queda otra que esperar a que éste libere el paso.
 
 \item \textbf{Riesgo de encontrarse al oponente:}
 
+A la hora de decidir que tareas o caminos seguir se recomienda tener en cuenta la probabilidad de encontrarse al oponente en la misma zona, de forma que la tarea se vea entorpecida o ralentizada.
+
 \item \textbf{Tareas de cada robot:}
 
+Si el equipo está formado por dos robots hay que definir que tareas realizarán cada uno de forma que resulte ventajoso para el resultado del partido.
 
 \end{description}
 
-La estrategia definitiva no va ha quedar definida desde un primer momento
+
+La figura \ref{fig:estrategia_2015} se representa la estrategia diseñada para Eurobot 2015 (\emph{Robomovies}). Cada equipo jugaba por un color (amarillo o verde) y se permitían hasta dos robots por equipo, los cuales al principio de partido empezaban desde la zona llamada \emph{Casa}. Cada robot podía partir con una bombilla (pelota de tenis) en su interior con la que construir un foco de cine. Se decidió crear dos robots: P.Tinto (principal) y Tirantes (secundario).  
+
+P.Tinto saldría primero al comenzar el partido y seguiría la siguiente estrategia:
+
+\begin{enumerate}
+\item Se dirigiría hacia el \emph{vaso de palomitas} del centro del campo para recolectar las palomitas de su interior y desechar el vaso. Los vasos de palomitas eran elementos compartidos por ambos equipos, además eran un número impar por lo que el vaso central tenía mucha probabilidad de ser un elemento muy disputado. En dicho camino recolectaría los dos \emph{stands} de su color en la trayectoria. 
+
+\item Tanto si P.Tinto fuese capaz de llegar al vaso, como si no (robot oponente más rápido) a continuación se dirigiría a cerrar la \emph{claqueta} de su color más cercana y en el camino recolectaría el \emph{stand} que hay en la trayectoria. 
+
+\item Seguidamente P.Tinto recolectaría el \emph{vaso de palomitas} de la esquina inferior, los dos \emph{stands} y cerraría la \emph{claqueta} de al lado.
+
+\item Si P.Tinto encontrase un camino libre y el oponente no estuviese en la esquina superior derecha, se desplazaría hacia dicha zona para llenar el \emph{vaso de palomitas} anteriormente recolectado con más palomitas y almacenar el sobrante en su interior. Posteriormente recolectaría el \emph{stand} huérfano de la esquina superior derecha y los dos situados al lado de las escalinatas.
+
+\item P.Tinto finalizaría volviendo a la \emph{casa} donde dejaría el \emph{vaso de palomitas} y las palomitas recolectadas y construiría un foco de cine con los \emph{stands} recolectados.
+\end{enumerate}
+
+Tirantes, más pequeño y ágil sería el encargado de defender el camino hacia la esquina superior derecha y hacer tareas en el otro lado del campo:
+
+\begin{enumerate}
+\item Tirantes comenzaría el partido en la \emph{casa} detrás de P.Tinto y saldría después de él a recolectar el \emph{vaso de palomitas} cercano a las escalinatas.
+
+\item Una vez capturado el vaso esperaría en esa posición a que P.Tinto hubiera terminado de recolectar los elementos de la zona interior. La máquina de palomitas era un elemento de juego común a ambos equipos, aunque lo más probable es que cada equipo fuese primero a recolectar palomitas de la máquina más cercana a su \emph{casa}, la posición de Tirantes ayudaría a disuadir a los robots oponentes. 
+
+\item Posteriormente se dirigiría a poner las alfombras en sus caminos. Las alfombrar rojas eran elementos del juego que portaban los robots desde el inicio en su interior. Si la zona de dejar las alfombras no se pudiese alcanzar Tirantes esperaría un tiempo antes de continuar con otra tarea.
+
+\item A continuación Tirantes se dirigiría a cerrar la \emph{claqueta} de su color del otro lado del campo. Si no pudiese se dirigiría a dejar el vaso de palomitas en el cine de arriba.
+
+\item Seguidamente dejaría el vaso de palomitas en el \emph{cine} de abajo o cerraría la \emph{claqueta} que le quedaba por cerrar. Según se hubiesen desarrollado los acontecimientos.
+
+\item Por último, Tirantes volvería a las escalinatas para subir las escaleras. Subir la escalinata era una acción de habilidad para los robots diseñados para desplazarse sobre una superficie lisa.
+\end{enumerate}
 
 
- Por ejemplo, en Eurobot 2015 se determinó la estrategia representada en la figura \ref{fig:estrategia_2015}. Por un lado el robot principal
+En esta estrategia se definieron los caminos alternativos descritos, en cualquier caso, si el robot no pudiese alcanzar alguna zona esperaría a que las condiciones fuesen favorables.
 
+\vfil
+\begin{figure}[H]
+\centerline{
+	\subfloat[Estrategia del robot P.Tinto)]{\includegraphics[width=.9\textwidth]{estrategia_ptinto}
+	\label{fig:estrategia_ptinto}}	
+}
+\vfil
+\centerline{
+	\subfloat[Estrategia del robot Tirantes]{\includegraphics[width=.9\textwidth]{estrategia_tirantes}
+	\label{fig:estrategia_ptinto}}
+}
+\caption[Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015]{Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015. Las lineas continuas representan la estrategia principal y las lineas discontinuas caminos alternativos de estrategia.}
+\label{fig:estrategia_2015}
+\end{figure}
+
+\vfil
 
 \subsection{Realización de prototipos mecánicos y pruebas de concepto}
 \label{prototipos_y_pruebas_de_concepto}
