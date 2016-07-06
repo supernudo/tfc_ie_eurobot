@@ -391,10 +391,10 @@ Una vez que se dispone de las reglas del juego lo más sencillo es empezar desde 
 El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 
 \begin{enumerate}
+\item Fabricación del campo de juego
 \item Diseño de la estrategia de juego
 \item Realización de prototipos mecánicos y pruebas de concepto
-\item Diseño y fabricación de la mecánica
-\item Diseño y fabricación de la electrónica
+\item Diseño y fabricación de la mecánica y de la electrónica
 \item Implementación software de la funcionalidad del robot
 \item Implementación software de la estrategia de juego
 \item Depuración y mejoras
@@ -404,6 +404,13 @@ El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. Por ejemplo si centra el desarrollo en partes que que pueden considerarse básicas, como un sensor, no se estará desarrollando un robot, si no un sensor. Se ha de valorar que partes han de ser desarrolladas a medida y que partes han de ser compradas. En este aspecto el tamaño de las partes juega un papel importante ya que el espacio donde han de convivir mecánica y electrónica no suele abundar. Lo más normal es que el diseño mecánico se adapte a los motores y sensores disponibles, y la electrónica se diseñe a medida de la mecánica.  
 
 % desde la inexperiencia... ?
+
+\subsection{Fabricación del campo de juego}
+\label{fabricacion_campo_de_juego}
+
+Disponer de un campo de juego con todos sus elementos supone una gran ayuda en todo el proceso de desarrollo del robot, desde el diseño de la estrategia, pasando por la validación de prototipos mecánicos y hasta la fase de depuración y mejoras. El campo de juego es el entorno del robot de Eurobot y por tanto cualquier prueba ha de realizarse en él para garantizan que las condiciones van a ha ser las mismas que en otros campos de juego.
+
+Es recomendable fabricar un campo de juego lo más parecido a como está especificado en las reglas del juego y contar con los elementos de juego reales lo antes posible.
 
 \subsection{Diseño de la estrategia de juego}
 \label{sec:diseño_estrategi_de_juego}
@@ -439,7 +446,7 @@ No es lo mismo tener que empujar un elemento para obtener puntos que tener que c
 
 \item \textbf{Acceso a los elementos de juego:}
 
-Además hay que tener en cuenta cuanto de accesible es un elemento de juego. Por ejemplo si está muy cerca de las esquinas del campo, dependiendo de la forma de cada robot puede que el elemento no sea accesible o que sean necesarias muchas maniobras para llegar a él.
+Además hay que tener en cuenta cuanto de accesible es un elemento de juego. Por ejemplo si está muy cerca de las esquinas del campo, dependiendo de la forma de cada robot puede que el elemento no sea accesible o que sean necesarias muchas maniobras para llegar a él. Aunque en esta fase no se disponga del robot definitivo, es una buena idea construir uno de cartón de las dimensiones máximas especificadas por las reglas del juego. La simulación de los movimientos de este \emph{robot de cartón} sobre un campo de juego de dimensiones reales permitirá comprobar si existe algún impedimento en realizar las trayectorias o movimientos pensados en la estrategia.
 
 \item \textbf{Trayectorias y distancias hasta los elementos de juego:}
 
@@ -461,7 +468,22 @@ Si el equipo está formado por dos robots hay que definir que tareas realizarán c
 \end{description}
 
 
-La figura \ref{fig:estrategia_2015} se representa la estrategia diseñada para Eurobot 2015 (\emph{Robomovies}). Cada equipo jugaba por un color (amarillo o verde) y se permitían hasta dos robots por equipo, los cuales al principio de partido empezaban desde la zona llamada \emph{Casa}. Cada robot podía partir con una bombilla (pelota de tenis) en su interior con la que construir un foco de cine. Se decidió crear dos robots: P.Tinto (principal) y Tirantes (secundario).  
+La figura \ref{fig:estrategia_2015} se representa la estrategia diseñada para Eurobot 2015 (\emph{Robomovies}). Cada equipo jugaba por un color (amarillo o verde) y se permitían hasta dos robots por equipo, los cuales al principio de partido empezaban desde la zona llamada \emph{Casa}. Cada robot podía partir con una bombilla (pelota de tenis) en su interior con la que construir un foco de cine. Se decidió crear dos robots: P.Tinto (principal) y Tirantes (secundario). 
+
+\begin{figure}[p]
+\centerline{
+	\subfloat[Estrategia del robot P.Tinto)]{\includegraphics[width=.9\textwidth]{estrategia_ptinto}
+	\label{fig:estrategia_ptinto}}	
+}
+\vfil
+\vfil
+\centerline{
+	\subfloat[Estrategia del robot Tirantes]{\includegraphics[width=.9\textwidth]{estrategia_tirantes}
+	\label{fig:estrategia_ptinto}}
+}
+\caption[Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015]{Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015. Las lineas continuas representan la estrategia principal y las lineas discontinuas caminos alternativos de estrategia.}
+\label{fig:estrategia_2015}
+\end{figure} 
 
 P.Tinto saldría primero al comenzar el partido y seguiría la siguiente estrategia:
 
@@ -496,23 +518,6 @@ Tirantes, más pequeño y ágil sería el encargado de defender el camino hacia la e
 
 En esta estrategia se definieron los caminos alternativos descritos, en cualquier caso, si el robot no pudiese alcanzar alguna zona esperaría a que las condiciones fuesen favorables.
 
-\vfil
-\begin{figure}[H]
-\centerline{
-	\subfloat[Estrategia del robot P.Tinto)]{\includegraphics[width=.9\textwidth]{estrategia_ptinto}
-	\label{fig:estrategia_ptinto}}	
-}
-\vfil
-\vfil
-\centerline{
-	\subfloat[Estrategia del robot Tirantes]{\includegraphics[width=.9\textwidth]{estrategia_tirantes}
-	\label{fig:estrategia_ptinto}}
-}
-\caption[Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015]{Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015. Las lineas continuas representan la estrategia principal y las lineas discontinuas caminos alternativos de estrategia.}
-\label{fig:estrategia_2015}
-\end{figure}
-
-\vfil
 
 \subsection{Realización de prototipos mecánicos y pruebas de concepto}
 \label{prototipos_y_pruebas_de_concepto}
@@ -552,16 +557,13 @@ La figura \ref{fig:boceto_maquina_palomitas} muestra una de las ideas pensadas i
 \label{fig:sistema_maquina_palomitas}
 \end{figure}
 
-
 Ninguna de estas ideas fueron las que se llevaron a cabo, pero la idea final si que contenía elementos de estas. El sistema final se muestra en la figura \ref{fig:sistema_maquina_palomitas}, dos brazos con forma de rampa empujan la primera pelota de los tubos donde se encuentran almacenadas las palomitas (máquina de palomitas). Una vez desplazada la primera pelota el resto de pelotas caen libres hacia dos compartimentos y un vaso de palomitas en el interior del robot P.Tinto.
 
 
 
-\subsection{Diseño y fabricación de la mecánica}
-\label{sec:diseño_y_fabricacion_mecanica}
+\subsection{Diseño y fabricación de la mecánica y de la electronica}
+\label{sec:diseño_y_fabricacion_mecanica_electronica}
 
-\subsection{Diseño y fabricación de la electrónica}
-\label{sec:diseno_y_fabricación_electronica}
 
 \subsection{Implementación software de la funcionalidad del robot}
 \label{sec:implementacion_funcionalidad_del_robot}
