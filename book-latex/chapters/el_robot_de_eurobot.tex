@@ -395,10 +395,10 @@ El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 \item Diseño de la estrategia de juego
 \item Realización de prototipos mecánicos y pruebas de concepto
 \item Diseño y fabricación de la mecánica y de la electrónica
+\item Montaje del robot y cableado
 \item Implementación software de la funcionalidad del robot
 \item Implementación software de la estrategia de juego
-\item Depuración y mejoras
-\item La competición
+\item Puesta en marcha, depuración y mejoras
 \end{enumerate}
 
 En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. Por ejemplo si centra el desarrollo en partes que que pueden considerarse básicas, como un sensor, no se estará desarrollando un robot, si no un sensor. Se ha de valorar que partes han de ser desarrolladas a medida y que partes han de ser compradas. En este aspecto el tamaño de las partes juega un papel importante ya que el espacio donde han de convivir mecánica y electrónica no suele abundar. Lo más normal es que el diseño mecánico se adapte a los motores y sensores disponibles, y la electrónica se diseñe a medida de la mecánica.  
@@ -560,19 +560,32 @@ La figura \ref{fig:boceto_maquina_palomitas} muestra una de las ideas pensadas i
 Ninguna de estas ideas fueron las que se llevaron a cabo, pero la idea final si que contenía elementos de estas. El sistema final se muestra en la figura \ref{fig:sistema_maquina_palomitas}, dos brazos con forma de rampa empujan la primera pelota de los tubos donde se encuentran almacenadas las palomitas (máquina de palomitas). Una vez desplazada la primera pelota el resto de pelotas caen libres hacia dos compartimentos y un vaso de palomitas en el interior del robot P.Tinto.
 
 
-
-\subsection{Diseño y fabricación de la mecánica y de la electronica}
+\subsection{Diseño y fabricación de la mecánica y de la electrónica}
 \label{sec:diseño_y_fabricacion_mecanica_electronica}
+
+Una vez validados los diferentes sistemas mecánicos del robot mediante prototipos o pruebas de concepto, es el momento de realizar un diseño conjunto del robot. Dependiendo del caso la electrónica necesaria para controlar la mecánica puede ser realizada a medida o mediante la integración de tarjetas desarrolladas anteriormente o comerciales. En el primer caso, la electrónica se podrá diseñar a medida de la mecánica de forma que se situé en los huecos libres, o en el segundo caso, la electrónica deberá ser tenida en cuenta como un componente más. En cualquier caso el diseño mecánico y de la electrónica han de realizarse de forma sincronizada. 
+
+El diseño mecánico del robot no sólo ha centrarse en su funcionalidad, hay otros factores a tener en cuenta como la accesibilidad a los elementos, la facilidad de montaje y desmontaje, y el cableado de los elementos electrónicos. El robot a desarrollar no es otra cosas que un prototipo más o menos elaborado, es por ello que durante su desarrollo y en la competición de Eurobot es inevitable que existan fallos de diseño o averías. En estos casos, una mecánica modular que permita acceder de forma sencilla e independiente a las diferentes partes del robot permitirá realizar reparaciones o modificaciones con un desmontaje mínimo y en poco tiempo.
+
+
+\subsection{Montaje del robot y cableado}
+\label{sec:montaje_robot_y_cableado}
+
+El montaje del robot y el cableado de los componentes electrónicos es una parte importante que no debe de ser subestimada. El tiempo de montaje puede llevar más o menos tiempo dependiendo de si durante la fase de diseño mecánico del robot se tuvo en cuenta como requisito la facilidad de montaje y desmontaje, y del número de piezas del que esté compuesto el robot. Así mismo la labor de cableado se simplificará si también en la fase de diseño mecánico se tuvo en cuenta el camino destinado a cables y conectores. 
+
+El cableado ha de ser claro, ordenado, gerarquico y respetando la coca de los cables utilizados. Las fijaciones de estos a la mecánica han de ser las mínimas necesarias de forma que los cables tengan cierto grado de libertad, un numero excesivo de fijaciones puede hacer que los cables se tensen o retuerzan debido al movimiento de las partes mecánicas móviles, o que en caso de reparación, la eliminación de la fijaciones supusiera un tiempo excesivo.
 
 
 \subsection{Implementación software de la funcionalidad del robot}
 \label{sec:implementacion_funcionalidad_del_robot}
 
+
+
 \subsection{Implementación software de la estrategia de juego}
 \label{sec:implementación_estrategia_de_juego}
 
-\subsection{Depuración y mejoras}
-\label{sec:depuracion_y_mejoras}
+\subsection{Puesta en marcha, depuración y mejoras}
+\label{sec:puesta_en_marcha_depuracion_y_mejoras}
 
 Pruebas en campo costoso, todo lo no dependiente de la mecanica simulado.
 
