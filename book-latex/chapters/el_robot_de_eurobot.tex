@@ -166,6 +166,7 @@ La \emph{Funny acction} es una acción que está pensada para ser realizada por lo
 
 
 \section{Partes principales en el desarrollo de un robot de Eurobot}
+\label{sec:partes_robot_eurobot}
 
 Teniendo en cuenta las especificaciones descritas en la sección anterior y la temática de la prueba de Eurobot, el desarrollo de un robot de Eurobot se puede dividir en las siguientes partes principales:
 
@@ -242,7 +243,7 @@ La evitación de obstáculos está directamente relacionada con la generación de tr
 \begin{description}
 \item \textbf{Obstáculo en trayectoria:}
 
-Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
+Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{fig:ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
 
 
 \begin{figure}[h]
@@ -255,7 +256,7 @@ Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejempl
 
 La evitación los obstáculo fijos del campo de juego se puede realizar utilizando la \emph{localización del robot}. Si el robot conoce su posición es sencillo evitar chocar con paredes o elementos fijos del campo de juego.
 
-Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver figura \ref{sec:especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado\ref{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
+Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver figura \ref{sec:especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado \cite{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
 
 Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición del robot (ver ejemplo de la figura \ref{fig:medida_posicion_oponente} o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
 
@@ -398,7 +399,7 @@ El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 \item Montaje del robot y cableado
 \item Implementación software de la funcionalidad del robot
 \item Implementación software de la estrategia de juego
-\item Puesta en marcha, depuración y mejoras
+\item Puesta en marcha y verificación
 \end{enumerate}
 
 En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. Por ejemplo si centra el desarrollo en partes que que pueden considerarse básicas, como un sensor, no se estará desarrollando un robot, si no un sensor. Se ha de valorar que partes han de ser desarrolladas a medida y que partes han de ser compradas. En este aspecto el tamaño de las partes juega un papel importante ya que el espacio donde han de convivir mecánica y electrónica no suele abundar. Lo más normal es que el diseño mecánico se adapte a los motores y sensores disponibles, y la electrónica se diseñe a medida de la mecánica.  
@@ -415,7 +416,7 @@ Es recomendable fabricar un campo de juego lo más parecido a como está especific
 \subsection{Diseño de la estrategia de juego}
 \label{sec:diseño_estrategi_de_juego}
 
-Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego físicos y un campo de juego de dimensiones reales. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipos suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
+Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego físicos y un campo de juego de dimensiones reales. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipos suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{fig:finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
 
 \begin{figure}[h]
 \centering
@@ -642,10 +643,11 @@ Por todo ello, poder ejecutar y probar la estrategia en un entorno simulado cons
 \subsection{Puesta en marcha y verificación}
 \label{sec:puesta_en_marcha_y_verificacion}
 
-La puesta en marcha y verificación constituye la fase más importante si cabe de todas. Cada parte nueva o mejora del robot ha de ser probada en condiciones reales y verificada, de forma que se asegure una perceptibilidad de su funcionamiento. Esto es así tanto para el funcionamiento mecánico y electrónico, como para el funcionamiento software. Así pues esta es una fase implícita en cualquiera de las otras fases o partes a desarrollar de un robot de Eurobot.
+La puesta en marcha y verificación constituye la fase más importante si cabe de todas. Cada parte a desarrollar o mejorar del robot ha de ser probada en condiciones reales y verificada de forma que se asegure una repetitividad en su funcionamiento. Esto es así tanto para partes mecánicas y electrónicas, como para el funcionamiento software. Así pues esta es una fase implícita en cualquiera de las otras fases o partes a desarrollar de un robot de Eurobot.
 
-A medida que se vaya probando.... prueba por partes..... errores a la luz en partidos .....
+Es recomendable realizar un desarrollo modular y estratificado desde los niveles más bajos y específicos hacia los más altos y abstractos. De esta forma cada parte desarrollada ha de contar con funciones o herramientas que permitan probar de forma independiente su funcionamiento y verifícalo. Si además dichas funciones de test están accesibles durante todo el proceso de desarrollo pueden ser útiles para la depuración de funciones más abstractas o de averías relacionadas con el cableado o componentes electrónicos. Por ejemplo, en caso de fallo en un actuador tipo servomotor una función que permita mover dicho actuador a nivel de driver de señal PWM puede ayudar a verificar si el fallo es del actuador o de capas superiores al driver. O por ejemplo una función que permita comprobar el estado de los sensores digitales permitirá comprobar si hay un fallo en algún sensor o el cableado. 
 
+Por otro lado, aunque el funcionamiento del robot este verificado es inevitable que durante los partidos surjan incompatibilidades en ciertas partes del desarrollo o funcionalidades que pueden ser mejoradas. Durante las competiciones, los partidos constituyen el mejor entorno de pruebas y son la mejor forma de pulir el funcionamiento y perfeccionar la estrategia del robot. Si es posible, se recomienda no limitarse a participar en la competición nacional del país de origen y participar en otras copas de Eurobot abiertas a participantes de otros países.
 
 
 
