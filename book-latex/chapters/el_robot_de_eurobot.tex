@@ -576,18 +576,77 @@ El montaje del robot y el cableado de los componentes electrónicos es una parte 
 El cableado ha de ser claro, ordenado, gerarquico y respetando la coca de los cables utilizados. Las fijaciones de estos a la mecánica han de ser las mínimas necesarias de forma que los cables tengan cierto grado de libertad, un numero excesivo de fijaciones puede hacer que los cables se tensen o retuerzan debido al movimiento de las partes mecánicas móviles, o que en caso de reparación, la eliminación de la fijaciones supusiera un tiempo excesivo.
 
 
-\subsection{Implementación software de la funcionalidad del robot}
+\subsection{Implementación software de las funcionalidades del robot}
 \label{sec:implementacion_funcionalidad_del_robot}
 
+Esta fase tiene como resultado un robot de Eurobot totalmente funcional, esto es, capacitado para competir en una prueba específica. Este es el punto que idealmente se debería alcanzar lo antes posible, una vez finalizado es como tener un \emph{juguete} con el que divertirse diseñando estrategias de juego. 
 
+Hay que resaltar que una vez alcanzado este punto tan sólo el 20\% del desarrollo del robot estará terminado, el 80\% restante se corresponde al desarrollo software, la puesta en marcha y pruebas del robot el campo de juego.
+
+La funcionalidad del robot es un nivel de abstracción que permite controlar el robot con funciones del tipo: 
+
+\begin{itemize}
+\item ¿Está el oponente en la zona X?
+\item Ir a la zona de recolección del elemento X.
+\item Recolectar elemento X.
+\item Ir a la zona de almacenamiento X.
+\item Almacenar el elemento X.
+\end{itemize}
+
+
+Son varias las partes de un robot de Eurobot (ver sección \ref{sec:partes_robot_eurobot}) implicadas en su funcionalidad:
+
+\begin{enumerate}
+\item Desplazamiento y localización
+\item Evitación de obstáculos
+\item Comunicación entre robots
+\item Manipulación de elementos de juego
+\end{enumerate}
+
+Las tres primeras pertenecen a lo que se ha denominado plataforma robótica base (partes independientes de la temática de Eurobot), si estas han sido desarrolladas con anterioridad sólo necesitarán de modificaciones relacionadas con aspectos específicos de la temática del juego como pueden ser:
+
+\begin{itemize}
+\item Obstáculos fijos del campo de juegos
+\item Comandos de la comunicación entre los robots compañeros
+\end{itemize}
+
+
+Respecto a la última parte, está necesita ser desarrollada casi en su totalidad al depender enteramente de los sistemas mecánicos diseñados expresamente para una prueba concreta.
 
 \subsection{Implementación software de la estrategia de juego}
 \label{sec:implementación_estrategia_de_juego}
 
-\subsection{Puesta en marcha, depuración y mejoras}
-\label{sec:puesta_en_marcha_depuracion_y_mejoras}
+La implementación de la estrategia supone ciertas funcionalidades del robot de Eurobot, entre ellas el desplazamiento y localización, la capacidad para manipular los elementos de juego y la detección de obstáculos y oponentes. Además, en caso de jugar con dos robots puede tener en cuenta las funcionalidades de ambos.
 
-Pruebas en campo costoso, todo lo no dependiente de la mecanica simulado.
+Un desarrollo software estratificado y modular permitirá implementar la estrategia de forma paralela al desarrollo del resto de las partes robot. La estrategia constituye la inteligencia del robot, siendo algunas de sus características deseables las siguientes:
+
+\begin{description}
+\item \textbf{Robusted:}\\
+Una estrategia suele tener varias ramificaciones dependiendo de las condiciones en cada momento. Cada uno de los posibles caminos han de volver siempre al camino principal de forma que no existan bloqueos o zonas muertas en la estrategia. Para ello, cada uno de los caminos implementados ha de estar probado para evitar dichas zonas muertas. Pero además, durante un partido de Eurobot se pueden dar situaciones muy diferentes dependiendo de la estrategia de los robots oponentes y del azar. 
+
+Una buena previsión de dichas situaciones evitará también bloqueos de la estrategia. Por ejemplo, la situación en la que un robot quiere llegar a una zona a la que se llega por dos caminos y uno esta ocupado por el oponente y el otro por el robot secundario. Si no se ha tenido en cuenta esta situación de forma que el robot secundario libere el camino, la estrategia de partido puede quedar bloqueada hasta el final del partido y los robots no podrían sumar los puntos suficientes para ganar el partido\footnote{Caso verídico por el cual los robots Crispín y Automático quedaron eliminados en cuartos de final en Eurobot 2012}.
+
+
+\item \textbf{Facilidad de modificación y flexibilidad:}\\
+La estrategia dota de cierta inteligencia al robot que le permite ejecutarla de forma autónoma. Pero igual que un entrenador de baloncesto da dirige a sus jugadores para seguir una estrategia concreta o adaptarla al contrincante, el equipo de desarrolladores han de poder hacer lo mismo con su robot de Eurobot. Así la implementación de la estrategia tiene que tener la flexibilidad suficiente para poder ejecutar variantes de esta o realizar modificaciones en tiempo real. 
+
+
+\item \textbf{Ejecución simulada:}\\
+La estrategia puede tener múltiples ramificaciones y variantes, y su ejecución en cada momento depende de múltiples variables, entre ellas variables dependientes del oponente. Las pruebas en el campo de juego implica reproducir cada momento y sus variables, necesita de uno o varios robots operativos y o varias personas que simulen el movimiento de robots oponentes. 
+
+Por todo ello, poder ejecutar y probar la estrategia en un entorno simulado constituye una característica de mucha utilidad. Un entorno de simulación software permite reproducir todas las variables de las que depende la estrategia en todo momento a un coste mucho menor que las pruebas realizadas en el campo de juego real con robots reales. De esta forma la verificación de la estrategia o modificaciones de esta supone muchos menos recursos y tiempo.
+
+
+\end{description}
+
+\subsection{Puesta en marcha y verificación}
+\label{sec:puesta_en_marcha_y_verificacion}
+
+La puesta en marcha y verificación constituye la fase más importante si cabe de todas. Cada parte nueva o mejora del robot ha de ser probada en condiciones reales y verificada, de forma que se asegure una perceptibilidad de su funcionamiento. Esto es así tanto para el funcionamiento mecánico y electrónico, como para el funcionamiento software. Así pues esta es una fase implícita en cualquiera de las otras fases o partes a desarrollar de un robot de Eurobot.
+
+A medida que se vaya probando.... prueba por partes..... errores a la luz en partidos .....
+
+
 
 
 
