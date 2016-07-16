@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+t%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
@@ -32,64 +32,197 @@
 
 \begin{FraseCelebre}
   \begin{Frase}
-    Desocupado lector, sin juramento me podrás creer que quisiera que este
-    libro [...] fuera el más hermoso, el más gallardo y más discreto que
-    pudiera imaginarse\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+La imaginación es más importante que el conocimiento. El conocimiento es limitado y la imaginación circunda el mundo.    
   \end{Frase}
   \begin{Fuente}
-    Miguel de Cervantes, Don Quijote de la Mancha
+Albert Einstein, en \emph{The Saturday Evening Post}
   \end{Fuente}
 \end{FraseCelebre}
 
 
 \section{Introducción}
 
-\section{Arquitectura mecánica}
-\label{sec:arquitectura_mecanica}
+En este capítulo se presenta la plataforma robótica base desarrollada y utilizada en los robots desarrollados a partir del año 2010. La plataforma implementa las tres funcionalidades básicas de un robot de Eurobot (ver capitulo \ref{cha:el_robot_de_eurobot}, sección \ref{sec:partes_robot_eurobot}):
 
-\section{Arquitectura hardware}
-\label{sec:arquitectura_hardware}
+%Se describen las características mecánicas, electrónicas y de software implicadas en su desarrollo, así como lo fundamentos de ingeniería sobre los que se apoya. 
 
-\section{Arquitectura software}
-\label{sec:arquitectura_software}
+\begin{itemize}
+\item Desplazamiento y localización
+\item Evitación de obstáculos
+\item Comunicación entre robots
+\end{itemize}
+
+La plataforma robótica base desarrollada se compone principalmente de 6 partes:
+
+\begin{enumerate}
+\item Sistema de tracción diferencial
+\item Sistema de control de posición polar
+\item Sistema de generación de trayectorias
+\item Sistema de detección de obstáculos
+\item Sistema de evitación de obstáculos
+\item Sistema de comunicación entre robots
+\end{enumerate}
+
+\section{Sistema de tracción diferencial}
+\label{sec:sistema_traccion_diferencial}
+
+El sistema de tracción desarrollado es uno de los más comunes en Eurobot. Como muestra la figura \ref{fig:sistema_traccion}, se trata de un sistema de tracción diferencial compuesto por dos ruedas motrices unidas a motores mediante una reductora y al menos 2 puntos de apoyo (dependiendo de la posición del eje motriz). La excitación de los motores la tarjeta electrónica desarrollada \emph{Eurobotics 2010}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=.3\textheight]{sistema_traccion}
+\caption[Sistema de tracción diferencial]{Sistema de tracción diferencial de la plataforma robótica base. Robot Zamorano (Eurobot 2011).}
+\label{fig:sistema_traccion}
+\end{figure}
+
+En este caso el eje motriz se encuentra centrado en la base del robot y necesita 4 puntos de apoyo. En caso de que el eje motriz se encuentre situado en uno de los extremos del robot se necesita dos puntos de apoyo situados en el extremo opuesto.
 
 
-\section{Dinámica de un sistema de tracción diferencial}
-\label{sec:dinamica_sma_traccion_diferencial}
+\subsection{Cinemática básica}
+\label{sec:cinematica_basica}
 
-	\subsection{Coeficiente de adherencia de las ruedas, cálculo experimental}
-	\subsection{Determinación de la aceleración máxima}
-	\subsection{Perfil de velocidad trapezoidal}
-	\subsection{Leyes mecánicas y térmicas de un motor DC}
-	\subsection{Condición de deslizamiento y dimensionamiento de la reductora}
-	\subsection{Elección de la velocidad y la aceleración}
+El sistema de tracción diferencial puede ser representado mediante el modelo cinemático propuesto por el equipo RCVA en \cite{rcva_10x}. La figura siguiente muestra dicho modelo para un robot de tracción diferencial con dos puntos de apoyo que se desplaza sobre el plano horizontal:
 
-\section{Control en posición de tipo polar}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{cinematica_basica}
+\caption[Modelo cinemático simple de un robot de tracción diferencial]{Modelo cinemático simple de un robot de tracción diferencial.}
+\label{fig:cinematica_basica}
+\end{figure}
+
+Siendo:
+
+$Fn$: fuerza normal o vertical del suelo en la rueda (opuesta a la fuerza de apoyo debida al peso del robot)
+
+$Fx$: fuerza de propulsión de en la rueda
+
+$F$: fuerza resultante del suelo en la rueda
+
+$a$: aceleración del robot
+
+$m$: masa del robot sobre las ruedas.
+
+Durante la fase de aceleración ($a>0$) $Fx$ es positiva y la masa del robot se encuentra repartida entre las ruedas y los puntos de apoyo. Durante la fase de velocidad constante ($a=0$) la fuerza de propulsión es nula siendo la fuerza resultante igual a la fuerza normal. Durante la fase de frenado ($a<0$) la fuerza $Fx$ es negativa y la masa del robot esta sobre las ruedas debido a la dirección de la fuerza de propulsión $F$. 
+
+
+
+\subsection{Coeficiente de adherencia de las ruedas, cálculo experimental}
+
+A partir del modelo cinemático descrito anteriormente y teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la segunda ley de Newton se deduce que la aceleración $a$ del robot es
+
+\begin{equation}
+  \label{eq:a=f(Fx)}
+  a = \frac{2Fx}{m}
+\end{equation}
+
+
+La aceleración máxima vendrá dada por la fuerza de propulsión de las ruedas máxima $Fx_{max}$ a partir de la cual se produce el deslizamiento de las ruedas. Por lo tanto $Fx<Fx_{max}$, siendo 
+
+\begin{equation}
+  \label{eq:fx_max=f(Ka)}
+  Fx_{max} = Ka \times Fn
+\end{equation}
+
+donde $Ka$ es el coeficiente de adherencia de las ruedas contra el suelo y sus valores teóricos se encuentran ente 0 y 1:
+
+$Ka=0$: adherencia nula
+
+$Ka=1$: adherencia teórica máxima\footnote{En la practica el coeficiente de adherencia puede superar valores de uno, por ejemplo si existe una carga aerodinámica extra como ocurre en los coches de carreras de la F1.}.
+
+Para un robot de Eurobot de una masa determinada, el valor de $Ka$ depende del material de neumático utilizado, su dureza, dimensiones y del acabado y limpieza del del campo de juego. En las mejores condiciones con un neumático de una dureza entre 20 y 30 \emph{shores} se pueden alcanzar valores de $Ka$ entorno a 1.
+
+El calculo de el valor de $Ka$ permite estimar, junto con otros factores que se explican más adelante, la aceleración máxima del robot.
+
+El cálculo del valor del coeficiente de adherencia se puede realizar mediante el propuesto en \cite{rcva_10x} o conocido como el \emph{método del cubo}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{metodo_cubo}
+\caption[]{Medodo de medida del coeficiente de adherencia de las ruedas.}
+\label{fig:metodo_cubo}
+\end{figure}
+
+
+El método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta de tres pasos:
+
+\begin{enumerate}
+\item Apollar las ruedas del robot sobre la báscula manteniendo el robot horizontal. Ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
+\item Bloquear las ruedas del robot bloqueadas. Fijar mediante una cuerda un cubo a la parte más baja y  cercana al eje motriz del robot. Hacer pasar la cuerda por una polea para disminuir el rozamiento. Añadir peso al cubo hasta que las ruedas comiencen a deslizar.
+\item Medir el peso del cubo $P2$, correspondiente a la fuerza de tracción máxima en el límite de deslizamiento.
+\end{enumerate}
+
+Una vez ejecutado el método el coeficiente de adherencia viene dado por la expresión
+
+\begin{equation}
+  \label{eq:ka=f(p1,p2)}
+  Ka = \frac{P2}{P1}
+\end{equation}
+
+
+Resultados
+
+
+
+\subsection{Determinación de la aceleración máxima}
+\subsection{Perfil de velocidad trapezoidal}
+\subsection{Leyes mecánicas y térmicas de un motor DC}
+\subsection{Condición de deslizamiento y dimensionamiento de la reductora}
+\subsection{Elección de la velocidad y la aceleración}
+
+\subsection{Control en posición de tipo polar}
 \label{sec:control_posicion_tipo_polar}
-
-	\subsection{Tipos de controladores}
-	\subsection{Ajuste del controlador PID}
-
-\section{Posicionamiento relativo mediante odometría}
-\label{sec:posicionamiento_relativo_mediante_odometria}
-
-	\subsection{Medida y corrección de errores sistemáticos}
-	\subsection{Compensación de la fuerza centrípeta}
-
-\section{Posicionamiento absoluto mediante balizas}
-\label{sec:posicionamiento_absoluto_mediante_balizas}
+\subsection{Ajuste del controlador PID}
 
 \section{Detección de bloqueos mecánicos}
 \label{sec:deteccion_bloqueos_mecanicos}
 
-\section{Generación de trayectorias}
+
+
+\section{Sistema de control de posición}
+\label{sec:sitema_posicionamiento_relativo}
+
+
+El control de los motore se realiza de forma indirecta utilizando las medida de posición de las ruedas libres.
+
+
+Esta configuración difiere de la configuración clásica en la que el encoder se encuentra conectado directamente al eje del motor. Dichas ruedas libres se utilizan para implementar el sistema de posicionamiento mediante odometría, la configuración del encoder desacoplado del motor permite mejorar el error acumulado de posicionamiento debido al derrape de las ruedas motrices.
+
+
+
+El desplazamiento del robot debido a las ruedas motrices es medida mediante encoders conectados a ruedas libres alineadas con las ruedas motrices. De esta forma se mide la posición de cada motor de forma indirecta e independiente de si las ruedas de tracción derrapan.
+
+
+Al no estar conectado el encoder directamente al eje del motor, la medida obtenida es independiente de la tracción de la rueda con el el suelo. 
+
+
+
+
+El control de posición es de tipo polar, es decir la posición del robot en todo momento viene dada por su distancia $d$ y ángulo $a$ absoluto respecto a un origen de coordenadas. 
+
+
+\subsection{Posicionamiento relativo mediante odometría}
+\label{sec:posicionamiento_relativo_mediante_odometria}
+
+\subsection{Medida y corrección de errores sistemáticos}
+\subsection{Compensación de la fuerza centrípeta}
+
+
+
+\section{Sistema de detección de obstáculos}
+\label{sec:sistema_deteccion_obstaculos}
+
+\subsection{Sistemas detección de obstáculos}
+\subsection{Detección de oponentes mediante baliza tipo faro}
+
+
+
+
+\section{Sistema de generación de trayectorias}
 \label{sec:generacion_de_trayectorias}
 
-\section{Evitación de obstáculos}
+\section{Sistema de evitación de obstáculos}
 \label{sec:evitacion_de_obstaculos}
 
-	\subsection{Sistemas detección de obstáculos}
-	\subsection{Detección de oponentes mediante baliza tipo faro}
 
 
 
