@@ -77,16 +77,16 @@ En este caso el eje motriz se encuentra centrado en la base del robot y necesita
 \label{fig:sistema_traccion}
 \end{figure}
 
-\subsection{Cinemática básica}
-\label{sec:cinematica_basica}
+\subsection{Dinamica básica}
+\label{sec:dinamica_basica}
 
-El sistema de tracción diferencial puede ser representado mediante el modelo cinemático propuesto por el equipo RCVA en \cite{rcva_10x}. La figura siguiente muestra dicho modelo para un robot de tracción diferencial con dos puntos de apoyo que se desplaza sobre el plano horizontal:
+Tal y como describe el equipo RCVA en \cite{rcva_10x}, el modelo en las fases de aceleración, velocidad constante y deceleración de un robot de tracción diferencial y dos puntos de apoyo que se desplaza por el plano horizontal, queda representado por la figura siguiente:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{cinematica_basica}
-\caption[Modelo cinemático simple de un robot de tracción diferencial]{Modelo cinemático simple de un robot de tracción diferencial.}
-\label{fig:cinematica_basica}
+\includegraphics[width=\textwidth]{dinamica_basica}
+\caption[Modelo dinámico simple de un robot de tracción diferencial]{Modelo dinámico simple de un robot de tracción diferencial.}
+\label{fig:dinamica_basica}
 \end{figure}
 
 Siendo:
@@ -101,16 +101,16 @@ $a$: aceleración del robot
 
 $m$: masa del robot sobre las ruedas.
 
-Durante la fase de aceleración ($a>0$) $Fx$ es positiva y la masa del robot se encuentra repartida entre las ruedas y los puntos de apoyo. Durante la fase de velocidad constante ($a=0$) la fuerza de propulsión es nula siendo la fuerza resultante igual a la fuerza normal. Durante la fase de frenado ($a<0$) la fuerza $Fx$ es negativa y la masa del robot esta sobre las ruedas debido a la dirección de la fuerza de propulsión $F$. 
+Considerando que el centro de gravedad del robot se encuentra sobre el eje motriz, durante la fase de aceleración ($a>0$) $Fx$ es positiva y la masa del robot se encuentra repartida entre las ruedas y los puntos de apoyo. Durante la fase de velocidad constante ($a=0$) la fuerza de propulsión es nula siendo la fuerza resultante igual a la fuerza normal. Por último, durante la fase de frenado ($a<0$) la fuerza $Fx$ es negativa y la masa del robot esta sobre las ruedas debido a la dirección de la fuerza de propulsión $F$. 
 
 
+\subsection{Coeficiente de adherencia de las ruedas y su cálculo experimental}
+\label{coeficiente_adherencia_y_calculo_experimental}
 
-\subsection{Coeficiente de adherencia de las ruedas, cálculo experimental}
-
-A partir del modelo cinemático descrito anteriormente y teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la segunda ley de Newton se deduce que la aceleración $a$ del robot es
+A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la primera ley de Newton se deduce que la aceleración $a$ del robot es
 
 \begin{equation}
-  \label{eq:a=f(Fx)}
+  \label{eq:a_f_fx}
   a = \frac{2Fx}{m}
 \end{equation}
 
@@ -118,8 +118,8 @@ A partir del modelo cinemático descrito anteriormente y teniendo en cuenta que e
 La aceleración máxima vendrá dada por la fuerza de propulsión de las ruedas máxima $Fx_{max}$ a partir de la cual se produce el deslizamiento de las ruedas. Por lo tanto $Fx<Fx_{max}$, siendo 
 
 \begin{equation}
-  \label{eq:fx_max=f(Ka)}
-  Fx_{max} = Ka \times Fn
+  \label{eq:fx_max_f_ka}
+  Fx_{max} = Ka \, Fn
 \end{equation}
 
 donde $Ka$ es el coeficiente de adherencia de las ruedas contra el suelo y sus valores teóricos se encuentran ente 0 y 1:
@@ -128,16 +128,9 @@ $Ka=0$: adherencia nula
 
 $Ka=1$: adherencia teórica máxima\footnote{En la practica el coeficiente de adherencia puede superar valores de uno, por ejemplo si existe una carga aerodinámica extra como ocurre en los coches de carreras de la F1.}.
 
+El valor de $Ka$ depende del tipo de neumático utilizado y de la calidad del campo de juego. Así para un neumático consistente en una junta tórica se consiguen valores de $Ka$ inferiores a $0,5$, en cambio un neumático de caucho de baja dureza (entre 20 y 30 shores) podría alcanzar valores de $Ka$ cercanos a 1. 
 
-
-El valor de $Ka$ depende del peso del robot, del neumático utilizado y la calidad del campo de juego. El coeficiente de adherencia de las ruedas será independiente de la masa del robot siempre que la presión del neumático contra el suelo sea la misma. 
-
-
-En las mejores condiciones se pueden alcanzar valores de $Ka$ entorno a 1.
-
-El calculo de el valor de $Ka$ permite estimar, junto con otros factores que se explican más adelante, la aceleración máxima del robot.
-
-El cálculo del valor del coeficiente de adherencia se puede realizar mediante el propuesto en \cite{rcva_10x} o conocido como el \emph{método del cubo}. 
+El coeficiente de adherencia permite calcular, junto con la posición del centro de gravedad del robot, la aceleración máxima del robot. El valor del coeficiente de adherencia se puede medir mediante el método propuesto en \cite{rcva_10x}, conocido como el \emph{método del cubo}. 
 
 \begin{figure}[H]
 \centering
@@ -150,46 +143,205 @@ El cálculo del valor del coeficiente de adherencia se puede realizar mediante el
 El método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta de tres pasos:
 
 \begin{enumerate}
-\item Apollar las ruedas del robot sobre la báscula manteniendo el robot horizontal. Ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
+\item Apoyar las ruedas del robot sobre la báscula manteniendo el robot horizontal. Ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
 \item Bloquear las ruedas del robot bloqueadas\footnote{El boqueo ha de ser un bloqueo mecánico, en caso de bloquear las ruedas manteniendo la consigna de posición del robot el motor puede resultar gravemente dañado.}. Fijar mediante una cuerda un cubo a la parte más baja y  cercana al eje motriz del robot. Hacer pasar la cuerda por una polea para disminuir el rozamiento. Añadir peso al cubo hasta que las ruedas comiencen a deslizar.
 \item Medir el peso del cubo $P2$, correspondiente a la fuerza de tracción máxima en el límite de deslizamiento.
 \end{enumerate}
 
-Una vez ejecutado el método el coeficiente de adherencia viene dado por las medidas realizadas según la expresión
+El coeficiente de adherencia viene dado por las medidas realizadas según la expresión
 
 \begin{equation}
   \label{eq:ka=f(p1,p2)}
-  Ka = \frac{P2}{P1}.
+  \boxed{Ka = \frac{P2}{P1}}.
+\end{equation}
+
+siendo el valor de $Ka$ es independiente del peso del robot.
+
+TODO: ejemplo robots Eurobotics...
+
+
+\subsection{Determinación de la aceleración máxima en fases de aceleración y frenado}
+
+A partir de la posición del centro de gravedad del robot y el coeficiente de adherencia al suelo de la ruedas motrices es posible calcular la aceleración máxima que en caso de superarse producirá un deslizamiento de las ruedas o que el robot se levante haciendo \emph{el caballito}.
+
+Un robot con tracción diferencial permite dos tipos de configuraciones:
+
+\begin{enumerate}
+\item Robot con ruedas atrás y dos puntos de apoyo.
+\item Robot con ruedas en el medio y cuatro puntos de apoyo (robot simétrico).
+\end{enumerate}
+
+En \cite{rcva_10x} se estudia el valor máximo aceleración durante las fases de aceleración y frenado de un robot de estas características utilizando los los modelos dinámicos de la siguiente figura:
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{dinamica_a_max}
+\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas atrás y en el medio.}
+\label{fig:dinamica_a_max}
+\end{figure}
+
+Donde:
+
+$G$: centro de gravedad del robot.
+
+$Fx$: fuerza de propulsión de en la rueda.
+
+$F1$: fuerza normal del suelo en la rueda.
+
+$F2$: fuerza normal del suelo en el punto delantero.
+
+$F3$: fuerza normal del suelo en el punto de apoyo trasero.
+
+$a$: aceleración del robot
+
+$-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
+
+$d1$:  distancia entre el centro de gravedad y el eje motriz.
+
+$d2$: distancia entre el centro de gravedad y el punto de apoyo delantero.
+
+$d$: distancia entre el eje motriz y un punto de apoyo (d = d1 + d2).
+
+$h$: altura del centro de gravedad del robot.
+
+
+A partir de las relaciones de la mecánica que garantizan que el sistema está en equilibrio.
+
+Suma de fuerzas verticales:
+\begin{equation}
+\label{eq:suma_fuerzas_verticales}
+2F1 + 2F2 - mg = 0
+\end{equation}
+
+Suma de fuerzas horizontales:
+\begin{equation}
+\label{eq:suma_fuerzas_horizontales}
+2Fx = ma
+\end{equation}
+
+Suma de torsiones aplicadas al punto G
+\begin{equation}
+\label{eq:suma_torsiones_punto_g}
+F2d2 - F1d1 + Fx \, h = 0
+\end{equation}
+
+Se obtienen las ecuaciones que representan la distribución de pesos en las fases de aceleración y frenado:
+
+\begin{align}
+\label{eq:distribucion_pesos}
+(2F1)/mg &= d2/d + (a/g)(h/d)\\
+(2F2)/mg &= d1/d - (a/g)(h/d)
+\end{align}
+
+Donde $(2F1)/mg$ representa la distribución de pesos en el eje motriz, $(2F2)/mg$ representa el reparto de pesos en la parte delantera, $d2/d$ y $d1/d$ representan las distribuciones de pesos en estático ($a=0$), y $(a/g)(h/d)$ representa la transferencia de masa del robot.
+
+Así pues, en fase de aceleración ($a>0$) la transferencia de masa se produce hacia la parte trasera del robot por lo que el robot avanza y tiende a hacer \emph{el caballito}. Mientras que en la fase de frenado ($a<0$) la transferencia de masa se produce hacia la parte delantera de forma que las ruedas tienen a deslizar o derrapar sobre el suelo.
+
+La condición para no derrapar en la fase de aceleración viene dada por la ecuación \eqref{eq:fx_max_f_ka} expresada como 
+
+\begin{equation}
+\label{eq:condicion_derrape_aceleracion}
+Fx < Ka \, F1
+\end{equation}
+
+y para la fase de frenado como
+
+\begin{equation}
+\label{eq:condicion_derrape_frenada}
+|Fx| < Ka \, F1.
 \end{equation}
 
 
-En la practica
+Por otro lado, la condición para que el robot no haga \emph{el caballito} durante la fase de aceleración es
+
+\begin{equation}
+\label{eq:condicion_caballito_aceleracion}
+F2 > 0
+\end{equation}
+
+y para la fase de frenado es
+
+\begin{equation}
+\label{eq:condicion_caballito_frenado}
+F1 > 0
+\end{equation}
+
+A partir de las ecuaciones \eqref{eq:distribucion_pesos}, \eqref{eq:suma_fuerzas_horizontales} y las condiciones mencionadas anteriormente se obtienen las aceleraciones máximas para cada fase y condición.
+
+Fase de aceleración ($a>0$):
 
 
+\begin{empheq}[box=\fbox]{align}
+\label{eq:a_max_aceleracion}
+a_{max1} &= g\,\frac{Ka \, d2}{d-(Ka \, h)}\\
+a_{max2} &= g\,\frac{d1}{h}
+\end{empheq}
 
 
+Fase de frenado ($a<0$):
+
+\begin{empheq}[box=\fbox]{align}
+\label{eq:amax_frenado}
+a_{max1} &= g\,\frac{Ka \, d2}{d+(Ka \, h)}\\
+a_{max2} &= g\,\frac{d2}{h}
+\end{empheq}
+
+Siendo $a_{max1}$ la aceleración máxima para no derrapar y $a_{max2}$ la aceleración máxima para no hacer \emph{el caballito}. Para cada fase la aceleración máxima vendrá dada por el valor mínimo de estas:
 
 
-\subsection{Determinación de la aceleración máxima}
+\begin{equation}
+\label{eq:a_aceleracion}
+a_{max} = Min\{a_{max1}, a_{max2}\}.
+\end{equation}
+
+
+A partir del modelo de la figura \ref{fig:dinamica_a_max} y siguiendo un análisis igual al realizado para robots con ruedas en un extremo en \cite{rcva_10x} se obtienen las ecuaciones que definen las aceleraciones máximas para el caso del robot simétrico. Debido a que el robot tiene 4 puntos de apoyo no es posible que el robot haga \emph{el caballito}, la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
+
+ 
+\begin{equation}
+\label{eq:a_max_simetrico}
+\boxed{a_{max} = g\,\frac{Ka}{1 + Ka\,(h/d)}}
+\end{equation}
+
+Por ejemplo, ....
+
+
+%Recordamos que estos cálculos sólo se refieren a los desplazamientos de translación
+%no a giros. Estos cálculos permiten maximizar la aceleración en terminos de
+%rendimiento máximo. Más adelante veremos como escoger una reductora capaz de
+%entregar esta aceleración.
+%Tenga en cuenta que la simplicidad de estos calculos sólo dependen de la posición
+%del centro de gravedad y el coeficiente de fricción de las ruedas del suelo. En
+%particular el peso del robot no interviene, lo que parecía obvio a priori.
+
+%Nos llevan a las siguientes conclusiones:
+%Interesa tener el máximo apollo en el eje motriz, aumentando así en la medida de lo
+%posible el termino (2.F1)/m.g, es el termino estático d2/d, lo que lleva el centro de
+%gravedad más cerca del eje de las ruedas.
+%Cuando la transferencia de masa dinámica (a/g).(z/g) cambia de signo por la
+%aceleración, se consigue una buena fase de aceleración pero una detestable fase de
+%frenado.
+%Como los robots en los partidos no hacen mas que acelerar y frenar, parece
+%razonable que se reduzca tanto como sea posible la transferencia de masa que
+%15
+%depende sólo de la relación (z/d), es decir bajando el centro de gravedad.
+
+%Para evitar el deslizamiento debido a errores del cálculo de ka, se recomienda utilizar
+%un factor de seguridad (por ejemplo 0,8. a_ max).
+
 \subsection{Perfil de velocidad trapezoidal}
+
+
 \subsection{Leyes mecánicas y térmicas de un motor DC}
 \subsection{Condición de deslizamiento y dimensionamiento de la reductora}
 \subsection{Elección de la velocidad y la aceleración}
-
-\subsection{Control en posición de tipo polar}
-\label{sec:control_posicion_tipo_polar}
-\subsection{Ajuste del controlador PID}
-
-\section{Detección de bloqueos mecánicos}
-\label{sec:deteccion_bloqueos_mecanicos}
-
-
 
 \section{Sistema de control de posición}
 \label{sec:sitema_posicionamiento_relativo}
 
 
-El control de los motore se realiza de forma indirecta utilizando las medida de posición de las ruedas libres.
+El control de los motores se realiza de forma indirecta utilizando las medida de posición de las ruedas libres.
 
 
 Esta configuración difiere de la configuración clásica en la que el encoder se encuentra conectado directamente al eje del motor. Dichas ruedas libres se utilizan para implementar el sistema de posicionamiento mediante odometría, la configuración del encoder desacoplado del motor permite mejorar el error acumulado de posicionamiento debido al derrape de las ruedas motrices.
@@ -205,6 +357,14 @@ Al no estar conectado el encoder directamente al eje del motor, la medida obteni
 
 
 El control de posición es de tipo polar, es decir la posición del robot en todo momento viene dada por su distancia $d$ y ángulo $a$ absoluto respecto a un origen de coordenadas. 
+
+\subsection{Control en posición de tipo polar}
+\label{sec:control_posicion_tipo_polar}
+\subsection{Ajuste del controlador PID}
+
+\subsection{Detección de bloqueos mecánicos}
+\label{sec:deteccion_bloqueos_mecanicos}
+
 
 
 \subsection{Posicionamiento relativo mediante odometría}
