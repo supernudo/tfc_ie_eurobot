@@ -52,7 +52,7 @@ En este capítulo se presenta la plataforma robótica base desarrollada y utilizad
 \item Comunicación entre robots
 \end{itemize}
 
-La plataforma robótica base desarrollada se compone principalmente de 6 partes:
+Y se compone de los siguientes sistemas:
 
 \begin{enumerate}
 \item Sistema de tracción diferencial
@@ -68,15 +68,14 @@ La plataforma robótica base desarrollada se compone principalmente de 6 partes:
 
 El sistema de tracción desarrollado es uno de los más comunes en Eurobot. Como muestra la figura \ref{fig:sistema_traccion}, se trata de un sistema de tracción diferencial compuesto por dos ruedas motrices unidas a motores mediante una reductora y al menos 2 puntos de apoyo (dependiendo de la posición del eje motriz). La excitación de los motores la tarjeta electrónica desarrollada \emph{Eurobotics 2010}.
 
-\begin{figure}[h]
+En este caso el eje motriz se encuentra centrado en la base del robot y necesita 4 puntos de apoyo. En caso de que el eje motriz se encuentre situado en uno de los extremos del robot se necesita dos puntos de apoyo situados en el extremo opuesto.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[height=.3\textheight]{sistema_traccion}
 \caption[Sistema de tracción diferencial]{Sistema de tracción diferencial de la plataforma robótica base. Robot Zamorano (Eurobot 2011).}
 \label{fig:sistema_traccion}
 \end{figure}
-
-En este caso el eje motriz se encuentra centrado en la base del robot y necesita 4 puntos de apoyo. En caso de que el eje motriz se encuentre situado en uno de los extremos del robot se necesita dos puntos de apoyo situados en el extremo opuesto.
-
 
 \subsection{Cinemática básica}
 \label{sec:cinematica_basica}
@@ -129,7 +128,12 @@ $Ka=0$: adherencia nula
 
 $Ka=1$: adherencia teórica máxima\footnote{En la practica el coeficiente de adherencia puede superar valores de uno, por ejemplo si existe una carga aerodinámica extra como ocurre en los coches de carreras de la F1.}.
 
-Para un robot de Eurobot de una masa determinada, el valor de $Ka$ depende del material de neumático utilizado, su dureza, dimensiones y del acabado y limpieza del del campo de juego. En las mejores condiciones con un neumático de una dureza entre 20 y 30 \emph{shores} se pueden alcanzar valores de $Ka$ entorno a 1.
+
+
+El valor de $Ka$ depende del peso del robot, del neumático utilizado y la calidad del campo de juego. El coeficiente de adherencia de las ruedas será independiente de la masa del robot siempre que la presión del neumático contra el suelo sea la misma. 
+
+
+En las mejores condiciones se pueden alcanzar valores de $Ka$ entorno a 1.
 
 El calculo de el valor de $Ka$ permite estimar, junto con otros factores que se explican más adelante, la aceleración máxima del robot.
 
@@ -147,19 +151,22 @@ El método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta 
 
 \begin{enumerate}
 \item Apollar las ruedas del robot sobre la báscula manteniendo el robot horizontal. Ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
-\item Bloquear las ruedas del robot bloqueadas. Fijar mediante una cuerda un cubo a la parte más baja y  cercana al eje motriz del robot. Hacer pasar la cuerda por una polea para disminuir el rozamiento. Añadir peso al cubo hasta que las ruedas comiencen a deslizar.
+\item Bloquear las ruedas del robot bloqueadas\footnote{El boqueo ha de ser un bloqueo mecánico, en caso de bloquear las ruedas manteniendo la consigna de posición del robot el motor puede resultar gravemente dañado.}. Fijar mediante una cuerda un cubo a la parte más baja y  cercana al eje motriz del robot. Hacer pasar la cuerda por una polea para disminuir el rozamiento. Añadir peso al cubo hasta que las ruedas comiencen a deslizar.
 \item Medir el peso del cubo $P2$, correspondiente a la fuerza de tracción máxima en el límite de deslizamiento.
 \end{enumerate}
 
-Una vez ejecutado el método el coeficiente de adherencia viene dado por la expresión
+Una vez ejecutado el método el coeficiente de adherencia viene dado por las medidas realizadas según la expresión
 
 \begin{equation}
   \label{eq:ka=f(p1,p2)}
-  Ka = \frac{P2}{P1}
+  Ka = \frac{P2}{P1}.
 \end{equation}
 
 
-Resultados
+En la practica
+
+
+
 
 
 
