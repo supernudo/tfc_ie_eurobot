@@ -167,18 +167,20 @@ A partir de la posición del centro de gravedad del robot y el coeficiente de adh
 Un robot con tracción diferencial permite dos tipos de configuraciones:
 
 \begin{enumerate}
-\item Robot con ruedas atrás y dos puntos de apoyo.
-\item Robot con ruedas en el medio y cuatro puntos de apoyo (robot simétrico).
+\item Robot con ruedas atrás.
+\item Robot con ruedas en el medio simétrico.
+\item Robot con ruedas en el medio no simétrico.
 \end{enumerate}
 
-En \cite{rcva_10x} se estudia el valor máximo aceleración durante las fases de aceleración y frenado de un robot de estas características utilizando los los modelos dinámicos de la siguiente figura:
+El estudio de el valor máximo de aceleración durante las fases de aceleración y frenado para los dos primeros casos se realiza en \cite{rcva_10x}. El estudio del tercer caso es aportado por este trabajo.
 
+El estudio parte del modelo dinámico del robot representado por la siguiente figura:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{dinamica_a_max}
-\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas atrás y en el medio.}
-\label{fig:dinamica_a_max}
+\includegraphics[width=.5\textwidth]{dinamica_a_max_ruedas_atras}
+\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas atrás y dos puntos de apoyo.}
+\label{fig:dinamica_a_max_ruedas_atras}
 \end{figure}
 
 Donde:
@@ -190,8 +192,6 @@ $Fx$: fuerza de propulsión de en la rueda.
 $F1$: fuerza normal del suelo en la rueda.
 
 $F2$: fuerza normal del suelo en el punto delantero.
-
-$F3$: fuerza normal del suelo en el punto de apoyo trasero.
 
 $a$: aceleración del robot
 
@@ -270,8 +270,6 @@ F1 > 0
 A partir de las ecuaciones \eqref{eq:distribucion_pesos}, \eqref{eq:suma_fuerzas_horizontales} y las condiciones mencionadas anteriormente se obtienen las aceleraciones máximas para cada fase y condición.
 
 Fase de aceleración ($a>0$):
-
-
 \begin{empheq}[box=\fbox]{align}
 \label{eq:a_max_aceleracion}
 a_{max1} &= g\,\frac{Ka \, d2}{d-(Ka \, h)}\\
@@ -280,7 +278,6 @@ a_{max2} &= g\,\frac{d1}{h}
 
 
 Fase de frenado ($a<0$):
-
 \begin{empheq}[box=\fbox]{align}
 \label{eq:amax_frenado}
 a_{max1} &= g\,\frac{Ka \, d2}{d+(Ka \, h)}\\
@@ -289,22 +286,113 @@ a_{max2} &= g\,\frac{d2}{h}
 
 Siendo $a_{max1}$ la aceleración máxima para no derrapar y $a_{max2}$ la aceleración máxima para no hacer \emph{el caballito}. Para cada fase la aceleración máxima vendrá dada por el valor mínimo de estas:
 
-
 \begin{equation}
 \label{eq:a_aceleracion}
 a_{max} = Min\{a_{max1}, a_{max2}\}.
 \end{equation}
 
 
-A partir del modelo de la figura \ref{fig:dinamica_a_max} y siguiendo un análisis igual al realizado para robots con ruedas en un extremo en \cite{rcva_10x} se obtienen las ecuaciones que definen las aceleraciones máximas para el caso del robot simétrico. Debido a que el robot tiene 4 puntos de apoyo no es posible que el robot haga \emph{el caballito}, la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
+La figura \ref{fig:ejemplo_a_max} representa el caso de dos robots con ruedas atrás iguales excepto por la altura de su centro de gravedad.
+
+
+Los valores del cálculo de las aceleraciones máximas para estos robots se muestran en la tabla \ref{tab:ejemplo_a_max}.
+
+\begin{table}[h]
+\centering
+\caption{Ejemplo de aceleraciones máximas en función del centro de gravedad}
+\label{tab:ejemplo_a_max}
+
+\begin{tabular}{ c|c|c|c|c| }
+\cline{2-5}
+			&\multicolumn{2}{c}{Robot 1} & \multicolumn{2}{|c|}{Robot 2} \\
+\cline{2-5}
+			& Aceleración & Frenado & Aceleración & Frenado \\
+\cline{1-5}
+\multicolumn{1}{|c|}{$a_{max1}$} 	& $1,2g$ 		& $0,4g$ 		& $3g$ 			& $0,3g$ 	\\
+\multicolumn{1}{|c|}{$a_{max2}$} 	& $0,8g$ 		& $1,2g$ 		& $0,5g$ 		& $0,75g$ 	\\
+\hline
+\multicolumn{1}{|c|}{$a_{max}$} 	& $0,8g$ 		& $0,4g$ 		& $0,5g$ 		& $0,3g$ 	\\
+									& $~8\,m/s$ 	& $~4\,m/s$ 	& $~5\,m/s$ 	& $~3\,m/s$ 	\\
+\hline
+\end{tabular}
+\end{table}
+
+Observar que estos cálculos sólo se refieren a desplazamientos de translación y no a giros, permitiendo maximizar la aceleración. Que el robot sea capaz de alcanzar dicha aceleración va a depender de la elección de los motores y su reductora.
+
+Por otro lado, hay que tener en cuenta que estos cálculo dependen únicamente del centro de gravedad del robot y del coeficiente de adherencia de las ruedas. El peso del robot no interviene.
+
+En conclusión:
+
+\begin{itemize}
+\item Interesa tener el máximo apoyo en el eje motriz aumentando el termino $(2F1)/mg$, o el termino estático $d2/d$, de forma que el centro de gravedad esté lo más cerca posible del eje motriz.
+
+\item Cuando la transferencia de masa dinámica $(a/g)(h/d)$ cambia de signo debido a la aceleración, se consiguen una buena fase de deceleración pero una fase de frenado peor.
+
+\item Como los robots en un partido no hacer otra cosas que acelerar y frenar, interesa reducir lo máximo la transferencia de masa que depende únicamente de la relación $(h/d)$. Por lo tanto interesa bajar el centro de gravedad.
+\end{itemize}
+
+
+Para los casos de un robot con ruedas en el medio los modelos dinámicos correspondientes se representan en la siguiente figura:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{dinamica_a_max_ruedas_medio}
+\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas en el medio y cuatro puntos de apoyo.}
+\label{fig:dinamica_a_max_ruedas_medio}
+\end{figure}
+
+Donde:
+
+$G$: centro de gravedad del robot.
+
+$Fx$: fuerza de propulsión de en la rueda.
+
+$F1$: fuerza normal del suelo en la rueda.
+
+$F2$: fuerza normal del suelo en el punto delantero.
+
+$F3$: fuerza normal del suelo en el punto de apoyo trasero.
+
+$a$: aceleración del robot
+
+$-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
+
+$d1$: distancia entre el centro de gravedad y el eje motriz.
+
+$d2$: distancia entre el centro de gravedad y el punto de apoyo trasero.
+
+$d2'$: distancia entre el centro de gravedad y el punto de apoyo delantero.
+
+$h$: altura del centro de gravedad del robot.
+
+
+
+A partir del modelo de robot simétrico de la figura \ref{fig:dinamica_a_max_ruedas_atras} y siguiendo un análisis igual al realizado para robots con ruedas en un extremo, en \cite{rcva_10x0}, se obtienen las ecuaciones que definen las aceleraciones máximas para el caso del robot simétrico. Debido a que el robot tiene 4 puntos de apoyo no es posible que el robot haga \emph{el caballito}, la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
 
  
 \begin{equation}
 \label{eq:a_max_simetrico}
-\boxed{a_{max} = g\,\frac{Ka}{1 + Ka\,(h/d)}}
+\boxed{a_{max} = g\,\frac{Ka}{1 + Ka\,(h/d2)}}
 \end{equation}
 
-Por ejemplo, ....
+
+Se ha estudiado el tercer caso en el que no existe una simetría y el centro de gravedad cae entre el eje motriz y los puntos de apoyo de uno de los extremos del robot. Al igual que en el caso anterior la condición de hacer \emph{el caballito} no existe al tener el robot 4 puntos de apoyo. Sin embargo, la aceleración máxima es distinta dependiendo la fase de aceleración o frenado debido a la asimetría.
+
+Fase de aceleración ($a>0$):
+\begin{equation}
+\label{eq:a_max_pos_no_simetrico}
+\boxed{a_{max} = g\,\frac{Ka}{(d1+d2)/d2 + Ka\,(h/d2)}}
+\end{equation}
+
+
+Fase de frenado ($a<0$):
+\begin{equation}
+\label{eq:a_max_neg_no_simetrico}
+\boxed{a_{max} = g\,\frac{Ka}{(d2'-d1)/d2' + Ka\,(h/d2')}}
+\end{equation}
+
+Se comprueba que si $d1=0$, el modelo se corresponde con el de un robot simétrico y las equaciones \eqref{eq:a_max_pos_no_simetrico} y \eqref{eq:a_max_neg_no_simetrico} coinciden con la ecuación \eqref{eq:a_max_simetrico} del dicho modelo.
+
 
 
 %Recordamos que estos cálculos sólo se refieren a los desplazamientos de translación
