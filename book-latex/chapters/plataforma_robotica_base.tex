@@ -42,9 +42,7 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 
 \section{Introducción}
 
-En este capítulo se presenta la plataforma robótica base desarrollada y utilizada en los robots desarrollados a partir del año 2010. La plataforma implementa las tres funcionalidades básicas de un robot de Eurobot (ver capitulo \ref{cha:el_robot_de_eurobot}, sección \ref{sec:partes_robot_eurobot}):
-
-%Se describen las características mecánicas, electrónicas y de software implicadas en su desarrollo, así como lo fundamentos de ingeniería sobre los que se apoya. 
+En el año 2010 se desarrollo una plataforma robótica base, cuyo diseño fue reutilizado en el desarrollo de robots posteriores. Como se ha visto en la sección \ref{sec:partes_robot_eurobot}, capitulo \ref{cha:el_robot_de_eurobot}, las funcionalidades y partes de esta plataforma no dependen de la temática del juego del Eurobot. Así la plataforma desarrollada implementa las siguientes funcionalidades básicas de un robot de Eurobot:
 
 \begin{itemize}
 \item Desplazamiento y localización
@@ -52,7 +50,7 @@ En este capítulo se presenta la plataforma robótica base desarrollada y utilizad
 \item Comunicación entre robots
 \end{itemize}
 
-Y se compone de los siguientes sistemas:
+A su vez esta plataforma robótica se compone de las siguientes partes o sistemas:
 
 \begin{enumerate}
 \item Sistema de tracción diferencial
@@ -63,12 +61,22 @@ Y se compone de los siguientes sistemas:
 \item Sistema de comunicación entre robots
 \end{enumerate}
 
+Cada una de estas partes implicó un desarrollo mecánico, hardware y software, o alguno de ellos.
+
+
 \section{Sistema de tracción diferencial}
 \label{sec:sistema_traccion_diferencial}
 
 El sistema de tracción desarrollado es uno de los más comunes en Eurobot. Como muestra la figura \ref{fig:sistema_traccion}, se trata de un sistema de tracción diferencial compuesto por dos ruedas motrices unidas a motores mediante una reductora y al menos 2 puntos de apoyo (dependiendo de la posición del eje motriz). La excitación de los motores la tarjeta electrónica desarrollada \emph{Eurobotics 2010}.
 
 En este caso el eje motriz se encuentra centrado en la base del robot y necesita 4 puntos de apoyo. En caso de que el eje motriz se encuentre situado en uno de los extremos del robot se necesita dos puntos de apoyo situados en el extremo opuesto.
+
+De esta forma, dependiendo de la posición del eje motriz y de los puntos de apoyo se dan 2 tipos de configuraciones:
+
+\begin{enumerate}
+\item Robot con ruedas atrás y dos puntos de apoyo delanteros.
+\item Robot con ruedas en el medio y cuatro puntos de apoyo.
+\end{enumerate}
 
 \begin{figure}[ht]
 \centering
@@ -77,10 +85,26 @@ En este caso el eje motriz se encuentra centrado en la base del robot y necesita
 \label{fig:sistema_traccion}
 \end{figure}
 
+Como se verá más adelante, interesa un robot con ruedas en el medio y que tenga una simetría total de forma que todo el peso del robot recaiga sobre el eje motriz. Además, los puntos de apoyo han de estar a la mayor distancia posible del eje motriz. Esta situación no siempre se da ya que existe un compromiso con el resto de elementos mecánicos del robot.
+
+Los puntos de apoyo utilizado normalmente son de tipo \emph{rollon}, en caso de no disponer espacio suficiente también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón como muestra la figura \ref{fig:sistema_traccion_rollones}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=.3\textheight]{sistema_traccion_rollones}
+\caption[]{Sistema de tracción del robot Automático (Eurobot 2013) visto desde abajo.}
+\label{fig:sistema_traccion_rollones}
+\end{figure}
+
+Mecánicamente el conjunto de los motores, reductora y ruedas forma lo que se denomina \emph{bloque motor}. El bloque motor se reutiliza como una parte independiente en cada diseño de forma que se sitúa sobre la base del robot adaptándose al resto de la mecánica del robot.
+
+
 \subsection{Dinamica básica}
 \label{sec:dinamica_basica}
 
-Tal y como describe el equipo RCVA en \cite{rcva_10x}, el modelo en las fases de aceleración, velocidad constante y deceleración de un robot de tracción diferencial y dos puntos de apoyo que se desplaza por el plano horizontal, queda representado por la figura siguiente:
+Es importante entender la dinámica de un robot de Eurobot y tenerla en cuenta durante el diseño mecánico del mismo. El movimiento más común de un robot de Eurobot son los desplazamientos entre dos puntos. Durante dichos desplazamientos el robot parte de parado, recorre una distancia y vuelve a detenerse. Así, a cada desplazamiento le corresponde una fase de aceleración, velocidad constante y otra de frenado.
+
+Para el caso de un robot con ruedas atrás y dos puntos de apoyo, el modelo dinámico del robot, según describe el equipo RCVA en \cite{rcva_10x}, queda representado por la figura siguiente:
 
 \begin{figure}[H]
 \centering
@@ -101,13 +125,16 @@ $a$: aceleración del robot
 
 $m$: masa del robot sobre las ruedas.
 
-Considerando que el centro de gravedad del robot se encuentra sobre el eje motriz, durante la fase de aceleración ($a>0$) $Fx$ es positiva y la masa del robot se encuentra repartida entre las ruedas y los puntos de apoyo. Durante la fase de velocidad constante ($a=0$) la fuerza de propulsión es nula siendo la fuerza resultante igual a la fuerza normal. Por último, durante la fase de frenado ($a<0$) la fuerza $Fx$ es negativa y la masa del robot esta sobre las ruedas debido a la dirección de la fuerza de propulsión $F$. 
+
+Durante la fase de aceleración ($a>0$) se necesita una fuerza de propulsión $Fx$ positiva de forma que la fuerza resultante $F$ provoque un desplazamiento hacia delante. Una vez alcanzada la fase de velocidad constante ($a=0$), teóricamente no es necesario realizar ninguna fuerza de propulsión\footnote{En la práctica, dado que existen perdidas por rozamiento $Fx$ no es nula} y la fuerza resultante es igual a la fuerza normal sobre la rueda. En la última fase, la fuerza de tracción $Fx$ ha de ser negativa de forma que la fuerza resultante se oponga al movimiento del robot provocando una desaceleración o frenado.  
+
+Para conseguir desplazamientos en un periodo de tiempo corto, las fases de aceleración y frenado han de durar lo menos posible. El valor de la aceleración durante esas fases va a depender por un lado del coeficiente de adherencia de las ruedas, y por otro, de la posición del centro de gravedad del robot.
 
 
 \subsection{Coeficiente de adherencia de las ruedas y su cálculo experimental}
 \label{coeficiente_adherencia_y_calculo_experimental}
 
-A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la primera ley de Newton se deduce que la aceleración $a$ del robot es
+A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la primera ley de Newton ($F = ma$) se deduce que la aceleración sobre el eje horizontal del robot se corresponde con la expresión:
 
 \begin{equation}
   \label{eq:a_f_fx}
@@ -115,7 +142,14 @@ A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el r
 \end{equation}
 
 
-La aceleración máxima vendrá dada por la fuerza de propulsión de las ruedas máxima $Fx_{max}$ a partir de la cual se produce el deslizamiento de las ruedas. Por lo tanto $Fx<Fx_{max}$, siendo 
+La aceleración máxima vendrá dada por la fuerza de propulsión de las ruedas máxima $Fx_{max}$ a partir de la cual se produce el deslizamiento de las ruedas. Por lo tanto ha de cumplirse la condición
+
+\begin{equation}
+  \label{eq:condicion_fx}
+   Fx<Fx_{max}
+\end{equation}
+
+siendo
 
 \begin{equation}
   \label{eq:fx_max_f_ka}
@@ -128,9 +162,9 @@ $Ka=0$: adherencia nula
 
 $Ka=1$: adherencia teórica máxima\footnote{En la practica el coeficiente de adherencia puede superar valores de uno, por ejemplo si existe una carga aerodinámica extra como ocurre en los coches de carreras de la F1.}.
 
-El valor de $Ka$ depende del tipo de neumático utilizado y de la calidad del campo de juego. Así para un neumático consistente en una junta tórica se consiguen valores de $Ka$ inferiores a $0,5$, en cambio un neumático de caucho de baja dureza (entre 20 y 30 shores) podría alcanzar valores de $Ka$ cercanos a 1. 
+El valor de $Ka$ depende del tipo de neumático utilizado y de la calidad y limpieza del campo de juego. Así para un neumático consistente en una junta tórica se consiguen valores de $Ka$ inferiores a $0,5$. En cambio un neumático de caucho de baja dureza (entre 20 y 30 shores) podría alcanzar valores de $Ka$ cercanos a 1. 
 
-El coeficiente de adherencia permite calcular, junto con la posición del centro de gravedad del robot, la aceleración máxima del robot. El valor del coeficiente de adherencia se puede medir mediante el método propuesto en \cite{rcva_10x}, conocido como el \emph{método del cubo}. 
+El coeficiente de adherencia permite calcular, junto con la posición del centro de gravedad del robot, la aceleración máxima del robot. El valor del coeficiente de adherencia se puede medir experimentalmente mediante el método propuesto por Jacques Coulon en \cite{rcva_10x}, conocido como el \emph{método del cubo}. 
 
 \begin{figure}[H]
 \centering
@@ -140,12 +174,12 @@ El coeficiente de adherencia permite calcular, junto con la posición del centro 
 \end{figure}
 
 
-El método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta de tres pasos:
+Dicho método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta de tres pasos:
 
 \begin{enumerate}
-\item Apoyar las ruedas del robot sobre la báscula manteniendo el robot horizontal. Ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
-\item Bloquear las ruedas del robot bloqueadas\footnote{El boqueo ha de ser un bloqueo mecánico, en caso de bloquear las ruedas manteniendo la consigna de posición del robot el motor puede resultar gravemente dañado.}. Fijar mediante una cuerda un cubo a la parte más baja y  cercana al eje motriz del robot. Hacer pasar la cuerda por una polea para disminuir el rozamiento. Añadir peso al cubo hasta que las ruedas comiencen a deslizar.
-\item Medir el peso del cubo $P2$, correspondiente a la fuerza de tracción máxima en el límite de deslizamiento.
+\item Apoyar las ruedas del robot sobre una báscula manteniendo el robot horizontal. Ayudarse de un soporte sobre los puntos de apoyo del robot. El peso medido $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
+\item Bloquear las ruedas del robot\footnote{El boqueo ha de ser un bloqueo mecánico, en caso de bloquear las ruedas manteniendo la consigna de posición del robot el motor puede resultar gravemente dañado.} y fijar a la parte más baja y cercana al eje motriz del robot una cuerda atada a un cubo. Hacer pasar la cuerda por una polea para disminuir el rozamiento. Añadir peso al cubo hasta que las ruedas comiencen a deslizar.
+\item Medir el peso del cubo $P2$, el cual se corresponde con la fuerza de tracción máxima en el límite de deslizamiento.
 \end{enumerate}
 
 El coeficiente de adherencia viene dado por las medidas realizadas según la expresión
@@ -155,9 +189,25 @@ El coeficiente de adherencia viene dado por las medidas realizadas según la expr
   \boxed{Ka = \frac{P2}{P1}}.
 \end{equation}
 
-siendo el valor de $Ka$ es independiente del peso del robot.
+Notar que el valor de $Ka$ es independiente del peso del robot.
 
-TODO: ejemplo robots Eurobotics...
+La validez de este método se comprueba en la practica. El método se aplicó a robots de diferente peso y de ruedas idénticas obteniendo los resultados de la tabla siguiente:
+
+
+\begin{table}[h]
+\centering
+\caption{Resultados de la medida del coeficiente de adherencia de las ruedas}
+\label{tab:resultados_medida_ka}
+\begin{tabular}{lccc}
+\hline
+Robot & P1 & P2 & Ka \\
+\hline
+Automático (2014) & 1   & 1   & 1   \\
+P.Tinto (2015)    & 1   & 1   & 1   \\
+\hline
+\end{tabular}
+\end{table}
+
 
 
 \subsection{Determinación de la aceleración máxima en fases de aceleración y frenado}
