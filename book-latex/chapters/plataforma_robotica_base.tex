@@ -42,7 +42,7 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 
 \section{Introducción}
 
-En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado en el desarrollo de robots posteriores. Esto es posible a que las funcionalidades y partes de esta plataforma no dependen de la temática del juego del Eurobot, como se ha visto en la sección \ref{sec:partes_robot_eurobot} del capitulo \ref{cha:el_robot_de_eurobot}. Así la plataforma desarrollada implementa las siguientes funcionalidades básicas de un robot de Eurobot:
+En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado en el desarrollo de robots posteriores. Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en  la sección \ref{sec:partes_robot_eurobot} del capitulo \ref{cha:el_robot_de_eurobot}.:
 
 \begin{itemize}
 \item Desplazamiento y localización
@@ -50,7 +50,7 @@ En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reuti
 \item Comunicación entre robots
 \end{itemize}
 
-A su vez esta plataforma robótica se compone de las siguientes partes o sistemas:
+Esta plataforma robótica se compone de las siguientes partes o sistemas:
 
 \begin{enumerate}
 \item Sistema de tracción diferencial
@@ -470,9 +470,31 @@ Para los cálculos de la aceleración máxima del robot es necesario conocer la pos
 
 La operación se repite sobre la base del robot situando la barra paralela al eje motriz, de forma que se determina la distancia del centro de gravedad a dicho eje. Por último, se puede realizar la medida con la barra situada perpendicularmente al eje motriz con el fin de comprobar que el robot es simétrico en dicho eje y que el peso soportado por cada rueda es el mismo.
 
-
-
 \subsection{Perfil de velocidad trapezoidal}
+
+Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se divide en una fase de aceleración, otra de frenado y una fase intermedia de velocidad constante. Dichas fases se corresponden con un perfil de velocidad trapezoidal como el representado en la figura \ref{fig:perfil_trapezoidal}. 
+
+\begin{figure}[h]
+\centering
+%\includegraphics[width=.4\textwidth]{}
+\caption[]{Fases de un perfil trapezoidal de velocidad: aceleración, velocidad y distancia recorrida}
+\label{fig:perfil_trapezoidal}
+\end{figure}
+
+En dicho perfil se pueden identificar las fases de aceleración, velocidad constante y frenado. A cada una de estas fases le corresponde una distancia recorrida ($d1,d2,d3$) y un tiempo ($t1,t2,t3$).
+
+La optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas.La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
+
+\begin{equation}
+\label{eq:a_seguridad}
+a = 0.8\,a_{max}
+\end{equation}
+
+Respecto a la velocidad máxima, dependerá en última medida del motor y reductora utilizada. No obstante, dadas las dimensiones del campo y que los robots han de ser capaces de evitar colisiones entre ellos una velocidad de $1m/s$ suele ser un buen valor de compromiso.
+
+Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), igual aceleración ($a=2\,m/s$) y distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable y por lo que se deduce que para distancias cortas la ganancia de tiempo vendrá dada por la aceleración y no por la velocidad del robot.
+
+Por otro lado,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo} esta curva de distancia representa una consigna de distancia.
 
 
 \subsection{Leyes mecánicas y térmicas de un motor DC}
