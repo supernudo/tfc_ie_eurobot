@@ -42,7 +42,12 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 
 \section{Introducción}
 
-En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado en el desarrollo de robots posteriores. Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en  la sección \ref{sec:partes_robot_eurobot} del capitulo \ref{cha:el_robot_de_eurobot}.:
+Una plataforma robótica base permite desarrollar robots de Eurobot desde
+
+En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado en el desarrollo de robots posteriores. 
+
+
+Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en  la sección \ref{sec:partes_robot_eurobot} del capitulo \ref{cha:el_robot_de_eurobot}.:
 
 \begin{itemize}
 \item Desplazamiento y localización
@@ -50,24 +55,51 @@ En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reuti
 \item Comunicación entre robots
 \end{itemize}
 
-Esta plataforma robótica se compone de las siguientes partes o sistemas:
+\section{Partes de la plataforma robótica}
+\label{sec:partes_plataforma_robotica}
 
-\begin{enumerate}
-\item Sistema de tracción diferencial
-\item Sistema de control de posición polar
-\item Sistema de generación de trayectorias
-\item Sistema de detección de obstáculos
-\item Sistema de evitación de obstáculos
-\item Sistema de comunicación entre robots
-\end{enumerate}
+La plataforma robótica desarrollada se compone de un \emph{sistema de tracción diferencial}, un \emph{sistema de control de posición}, y un \emph{sistema de evitación de obstáculos}. La plataforma también incluye una electrónica con capacidad de gestionar e implementar estos sistemas y los sistemas mecánicos a diseñar específicamente para la prueba de Eurobot. Además, la electrónica dispone de una interfaz inalámbrica que permite comunicar dos robots basados en la misma plataforma robótica. 
 
-Cada una de estas partes lleva implícito un desarrollo mecánico, hardware y software, o alguno de ellos.
+El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig:plataforma_partes_control_posicion}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, el control de posición polar.
+
+\begin{figure}[h]
+\centering
+%\includegraphics[height=.3\textheight]{sistema_traccion}
+\caption[]{Partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
+\label{fig:plataforma_partes_control_posicion}
+\end{figure}
+
+La electrónica se compone principalmente de una fuente de alimentación de 24V, la \emph{tarjeta Eurobotics 2010} y tarjetas de expansión de entradas y salidas. 
+
+El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig:plataforma_parte_sensores} y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig:plataforma_parte_baliza}.
+
+\begin{figure}[h]
+\centering
+%\includegraphics[height=.3\textheight]{sistema_traccion}
+\caption[]{Partes del sistema de evitación de obstaculos. Robot XXX}
+\label{fig:plataforma_partes_control_posicion}
+\end{figure}
+
+
+La implementación de todos los sistemas y funcionalidades la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías son una migración de las librerías Aversive \cite{aversive} (microcontroladores AVR) a microcontroladores dsPIC y PIC24.
+
+%Esta plataforma robótica se compone de las siguientes partes o sistemas:
+
+%\begin{enumerate}
+%\item Sistema de control de posición polar
+%\item Sistema de generación de trayectorias
+%\item Sistema de detección de obstáculos
+%\item Sistema de evitación de obstáculos
+%\item Sistema de comunicación entre robots
+%\end{enumerate}
+
+%Cada una de estas partes lleva implícito un desarrollo mecánico, hardware y software, o alguno de ellos.
 
 
 \section{Sistema de tracción diferencial}
 \label{sec:sistema_traccion_diferencial}
 
-El sistema de tracción desarrollado es uno de los más comunes en Eurobot. Como muestra la figura \ref{fig:sistema_traccion}, se trata de un sistema de tracción diferencial compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo.
+El sistema de tracción diferencial es uno de los más comunes en Eurobot. Como muestra la figura \ref{fig:sistema_traccion}, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo.
 
 En este caso el eje motriz se encuentra centrado en la base del robot y necesita 4 puntos de apoyo. En caso de que el eje motriz se encuentre situado en uno de los extremos del robot se necesitarían sólo 2 puntos de apoyo situados en el extremo opuesto.
 
@@ -87,7 +119,7 @@ De esta forma, dependiendo de la posición del eje motriz y de los puntos de apoy
 
 Como se verá más adelante, interesa un robot con ruedas en el medio y que tenga una simetría total de forma que todo el peso del robot recaiga sobre el eje motriz. Además, los puntos de apoyo han de estar a la mayor distancia posible del eje motriz. Esta situación no siempre se da ya que existe un compromiso con el resto de elementos mecánicos del robot.
 
-Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}, en caso de no disponer espacio suficiente también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón, como muestra la figura \ref{fig:sistema_traccion_rollones}.
+Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}, en caso de no disponer de espacio suficiente también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón (ver figura \ref{fig:sistema_traccion_rollones}).
 
 \begin{figure}[h]
 \centering
@@ -96,7 +128,7 @@ Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}, en caso de
 \label{fig:sistema_traccion_rollones}
 \end{figure}
 
-Mecánicamente el conjunto de los motores, reductora y ruedas forma lo que se denomina \emph{bloque motor}. El bloque motor se reutiliza como una parte independiente en cada diseño de forma que se sitúa sobre la base del robot adaptándose al resto de la mecánica.
+Mecánicamente el conjunto de los motores, reductora y ruedas se denomina \emph{bloque motor}. El bloque motor se reutiliza como una parte independiente en cada diseño de un nuevo robot de forma que se sitúa sobre la base del robot adaptándose al resto de la mecánica.
 
 
 \subsection{Dinamica básica}
@@ -472,29 +504,29 @@ La operación se repite sobre la base del robot situando la barra paralela al eje
 
 \subsection{Perfil de velocidad trapezoidal}
 
-Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se divide en una fase de aceleración, otra de frenado y una fase intermedia de velocidad constante. Dichas fases se corresponden con un perfil de velocidad trapezoidal como el representado en la figura \ref{fig:perfil_trapezoidal}. 
+Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se divide en una fase de aceleración, otra de frenado y una fase intermedia de velocidad constante. Dichas fases se suelen implementar mediante un perfil trapezoidal de velocidad como el representado en la figura \ref{fig:perfil_trapezoidal}. 
 
 \begin{figure}[h]
 \centering
-%\includegraphics[width=.4\textwidth]{}
+\includegraphics[width=.8\textwidth]{perfil_trapezoidal}
 \caption[]{Fases de un perfil trapezoidal de velocidad: aceleración, velocidad y distancia recorrida}
 \label{fig:perfil_trapezoidal}
 \end{figure}
 
-En dicho perfil se pueden identificar las fases de aceleración, velocidad constante y frenado. A cada una de estas fases le corresponde una distancia recorrida ($d1,d2,d3$) y un tiempo ($t1,t2,t3$).
+%En dicho perfil se pueden identificar las fases de aceleración, velocidad constante y frenado. A cada una de estas fases le corresponde una distancia recorrida ($d1,d2,d3$) y un tiempo ($t1,t2,t3$).
 
-La optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas.La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
+La optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas. La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
 
 \begin{equation}
 \label{eq:a_seguridad}
 a = 0.8\,a_{max}
 \end{equation}
 
-Respecto a la velocidad máxima, dependerá en última medida del motor y reductora utilizada. No obstante, dadas las dimensiones del campo y que los robots han de ser capaces de evitar colisiones entre ellos una velocidad de $1m/s$ suele ser un buen valor de compromiso.
+Respecto a la velocidad máxima, dependerá en última medida del motor y reductora utilizada. No obstante, dadas las dimensiones del campo y que los robots han de ser capaces de evitar colisiones entre ellos, una velocidad de $1m/s$ suele ser un buen valor de compromiso.
 
-Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), igual aceleración ($a=2\,m/s$) y distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable y por lo que se deduce que para distancias cortas la ganancia de tiempo vendrá dada por la aceleración y no por la velocidad del robot.
+Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), de igual aceleración ($a=2\,m/s$) y para una misma distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable y de lo que se deduce que para distancias cortas no es tan importante la velocidad si no la aceleración del robot.
 
-Por otro lado,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo} esta curva de distancia representa una consigna de distancia.
+Por otro lado,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo} esta curva de representa una consigna de distancia para el sistema de control de posición.
 
 
 \subsection{Leyes mecánicas y térmicas de un motor DC}
