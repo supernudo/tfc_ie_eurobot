@@ -1568,11 +1568,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="201.38861"
-     inkscape:cy="-2.3742563"
+     inkscape:zoom="5.6568544"
+     inkscape:cx="380.89565"
+     inkscape:cy="93.61864"
      inkscape:document-units="px"
-     inkscape:current-layer="g3600-8"
+     inkscape:current-layer="g3978"
      showgrid="true"
      showguides="false"
      inkscape:snap-grids="true"
@@ -1608,7 +1608,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1977,24 +1977,45 @@
              sodipodi:linespacing="125%"
              id="text11641-7-1"
              y="554.09808"
-             x="232.44629"
+             x="230.87602"
              style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
              xml:space="preserve"><tspan
                y="554.09808"
-               x="232.44629"
+               x="230.87602"
                id="tspan11643-1-5"
                sodipodi:role="line">d1=8 cm</tspan></text>
           <text
              sodipodi:linespacing="125%"
              id="text11641-7-1-9"
-             y="567.09808"
-             x="232.44629"
+             y="570.75189"
+             x="230.87602"
              style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
              xml:space="preserve"><tspan
-               y="567.09808"
-               x="232.44629"
+               y="570.75189"
+               x="230.87602"
                id="tspan11643-1-5-4"
                sodipodi:role="line">d2=12 cm</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text11641-7-1-9-3"
+             y="587.09808"
+             x="230.44633"
+             style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               y="587.09808"
+               x="230.44633"
+               id="tspan11643-1-5-4-6"
+               sodipodi:role="line">Ka = 1</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:144px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="458.20517"
+             y="81.520477"
+             id="text3293"
+             sodipodi:linespacing="125%"
+             transform="translate(-214.53688,515.9374)"><tspan
+               sodipodi:role="line"
+               id="tspan3295"></tspan></text>
         </g>
       </g>
     </g>

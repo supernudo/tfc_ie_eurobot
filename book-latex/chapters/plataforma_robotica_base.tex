@@ -60,71 +60,50 @@ Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot v
 
 La plataforma robótica desarrollada se compone de un \emph{sistema de tracción diferencial}, un \emph{sistema de control de posición}, y un \emph{sistema de evitación de obstáculos}. La plataforma también incluye una electrónica con capacidad de gestionar e implementar estos sistemas y los sistemas mecánicos a diseñar específicamente para la prueba de Eurobot. Además, la electrónica dispone de una interfaz inalámbrica que permite comunicar dos robots basados en la misma plataforma robótica. 
 
-El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig:plataforma_partes_control_posicion}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, el control de posición polar.
+El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig:plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, el control de posición polar.
 
 \begin{figure}[h]
 \centering
-%\includegraphics[height=.3\textheight]{sistema_traccion}
-\caption[]{Partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
-\label{fig:plataforma_partes_control_posicion}
+\includegraphics[height=.3\textheight]{plataforma_partes_1}
+\caption[Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición]{Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
+\label{fig:plataforma_partes_1}
 \end{figure}
 
 La electrónica se compone principalmente de una fuente de alimentación de 24V, la \emph{tarjeta Eurobotics 2010} y tarjetas de expansión de entradas y salidas. 
 
-El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig:plataforma_parte_sensores} y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig:plataforma_parte_baliza}.
+El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig:plataforma_partes_2}) y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig:plataforma_partes_2}.
 
 \begin{figure}[h]
 \centering
-%\includegraphics[height=.3\textheight]{sistema_traccion}
-\caption[]{Partes del sistema de evitación de obstaculos. Robot XXX}
-\label{fig:plataforma_partes_control_posicion}
+\includegraphics[height=.3\textheight]{plataforma_partes_2}
+\caption[Plataforma robótica base: partes del sistema de evitación de obstáculos]{Plataforma robótica base: partes del sistema de evitación de obstáculos. Robot Zamorano (Eurobot 2011).}
+\label{fig:plataforma_partes_2}
 \end{figure}
 
-
-La implementación de todos los sistemas y funcionalidades la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías son una migración de las librerías Aversive \cite{aversive} (microcontroladores AVR) a microcontroladores dsPIC y PIC24.
-
-%Esta plataforma robótica se compone de las siguientes partes o sistemas:
-
-%\begin{enumerate}
-%\item Sistema de control de posición polar
-%\item Sistema de generación de trayectorias
-%\item Sistema de detección de obstáculos
-%\item Sistema de evitación de obstáculos
-%\item Sistema de comunicación entre robots
-%\end{enumerate}
-
-%Cada una de estas partes lleva implícito un desarrollo mecánico, hardware y software, o alguno de ellos.
+La implementación de todos los sistemas y funcionalidades la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src} (microcontroladores AVR) a microcontroladores dsPIC y PIC24.
 
 
 \section{Sistema de tracción diferencial}
 \label{sec:sistema_traccion_diferencial}
+El sistema de tracción diferencial es uno de los más comunes en Eurobot, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo (ver figura \ref{fig:plataforma_partes_1}). 
 
-El sistema de tracción diferencial es uno de los más comunes en Eurobot. Como muestra la figura \ref{fig:sistema_traccion}, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo.
-
-En este caso el eje motriz se encuentra centrado en la base del robot y necesita 4 puntos de apoyo. En caso de que el eje motriz se encuentre situado en uno de los extremos del robot se necesitarían sólo 2 puntos de apoyo situados en el extremo opuesto.
-
-De esta forma, dependiendo de la posición del eje motriz y de los puntos de apoyo se dan 2 tipos de configuraciones:
+Dependiendo de la posición del eje motriz se dan 2 tipos de robots:
 
 \begin{enumerate}
-\item Robot con ruedas atrás y dos puntos de apoyo delanteros.
-\item Robot con ruedas en el medio y cuatro puntos de apoyo.
+\item Robot con ruedas atrás: necesitan de dos puntos de apoyo delanteros.
+\item Robot con ruedas en el medio: necesitan de puntos de apoyo delanteros y traseros.
 \end{enumerate}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=.3\textheight]{sistema_traccion}
-\caption[Sistema de tracción diferencial]{Sistema de tracción diferencial de la plataforma robótica base. Robot Zamorano (Eurobot 2011).}
-\label{fig:sistema_traccion}
-\end{figure}
+Los robots con ruedas atrás suelen tener dos puntos de poyo delanteros. En cambio, los robots con ruedas en el medio suelen tener dos puntos de apoyo delanteros y otros dos traseros. Aunque a veces en uno de los extremos sólo llevan un punto de apoyo, 3 puntos de apoyo en total.
 
-Como se verá más adelante, interesa un robot con ruedas en el medio y que tenga una simetría total de forma que todo el peso del robot recaiga sobre el eje motriz. Además, los puntos de apoyo han de estar a la mayor distancia posible del eje motriz. Esta situación no siempre se da ya que existe un compromiso con el resto de elementos mecánicos del robot.
+Como se verá más adelante, interesa un robot con ruedas en el medio y que tenga una simetría total de forma que todo el peso del robot recaiga sobre el eje motriz. Además, los puntos de apoyo han de estar a la mayor distancia posible del eje motriz. Esta situación no siempre se cumple, ya que existe un compromiso con el resto de elementos mecánicos del robot.
 
-Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}, en caso de no disponer de espacio suficiente también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón (ver figura \ref{fig:sistema_traccion_rollones}).
+Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}. En caso de no disponer de espacio suficiente para ellos también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón (ver figura \ref{fig:sistema_traccion_rollones}).
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=.3\textheight]{sistema_traccion_rollones}
-\caption[]{Sistema de tracción del robot Automático (Eurobot 2013) visto desde abajo.}
+\caption[]{Sistema de tracción diferencial del robot Automático (Eurobot 2013) visto desde abajo.}
 \label{fig:sistema_traccion_rollones}
 \end{figure}
 
@@ -147,7 +126,7 @@ Para el caso de un robot con ruedas atrás y dos puntos de apoyo, el modelo dinám
 
 Siendo:
 
-$Fn$: fuerza normal o vertical del suelo en la rueda (opuesta a la fuerza de apoyo debida al peso del robot)
+$Fn$: fuerza normal o vertical del suelo (opuesta a la fuerza de apoyo debida al peso del robot)
 
 $Fx$: fuerza de propulsión de en la rueda
 
@@ -196,7 +175,8 @@ $Ka=1$: adherencia teórica máxima\footnote{En la practica el coeficiente de adhe
 
 El valor de $Ka$ depende del tipo de neumático utilizado y de la calidad y limpieza del campo de juego. Así para un neumático consistente en una junta tórica se consiguen valores de $Ka$ inferiores a $0,5$. En cambio un neumático de caucho de baja dureza (entre 20 y 30 shores) podría alcanzar valores de $Ka$ cercanos a 1. 
 
-El coeficiente de adherencia permite calcular, junto con la posición del centro de gravedad del robot, la aceleración máxima del mismo. El valor del coeficiente de adherencia se puede medir experimentalmente mediante el método propuesto por Jacques Coulon en \cite{rcva_10x}, conocido como el \emph{método del cubo}. 
+%El coeficiente de adherencia permite calcular, junto con la posición del centro de gravedad del robot, la aceleración máxima del mismo. 
+El valor del coeficiente de adherencia se puede medir experimentalmente mediante el método propuesto por Jacques Coulon en \cite{rcva_10x}, conocido como el \emph{método del cubo}. 
 
 \begin{figure}[H]
 \centering
@@ -209,9 +189,9 @@ El coeficiente de adherencia permite calcular, junto con la posición del centro 
 Dicho método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta de tres pasos:
 
 \begin{enumerate}
-\item Apoyar las ruedas del robot sobre una báscula manteniendo el robot horizontal. Para ello, ayudarse de un soporte sobre los puntos de apoyo del robot. El peso medido por la bascula $P1$ se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
-\item Bloquear las ruedas del robot\footnote{El boqueo ha de ser un bloqueo mecánico, en caso de bloquear las ruedas manteniendo la consigna de posición del robot el motor puede resultar gravemente dañado.} y fijar a la parte más baja y cercana al eje motriz del robot una cuerda atada a un cubo. Hacer pasar la cuerda por una polea para disminuir el rozamiento y añadir peso al cubo hasta que las ruedas comiencen a deslizar.
-\item Medir el peso del cubo $P2$, el cual se corresponde con la fuerza de tracción máxima en el límite de deslizamiento.
+\item Apoyar las ruedas del robot sobre una báscula manteniendo el robot horizontal. Para ello, ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ medido por la bascula se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
+\item Bloquear las ruedas del robot\footnote{El boqueo ha de ser un bloqueo mecánico, en caso de bloquear las ruedas manteniendo la consigna de posición del robot el motor puede resultar gravemente dañado.} y fijar a la parte más baja y cercana al eje motriz una cuerda atada a un cubo. Hacer pasar la cuerda por una polea para disminuir el rozamiento y añadir peso al cubo hasta que las ruedas comiencen a deslizar.
+\item Medir el peso $P2$ del cubo, el cual se corresponde con la fuerza de tracción máxima en el límite de deslizamiento.
 \end{enumerate}
 
 El coeficiente de adherencia viene dado por las medidas realizadas según la expresión
@@ -223,14 +203,14 @@ El coeficiente de adherencia viene dado por las medidas realizadas según la expr
 
 Notar que el valor de $Ka$ es independiente del peso del robot.
 
-La validez de este método se comprueba en la practica. El método se aplicó a robots de diferente peso y de ruedas idénticas obteniendo los resultados de la tabla siguiente:
+La validez de este método se ha comprobado en la practica. El método se aplicó a robots de diferente peso y de ruedas idénticas obteniendo los resultados de la tabla siguiente:
 
 
 \begin{table}[h]
 \centering
 \caption{Resultados de la medida del coeficiente de adherencia de las ruedas}
 \label{tab:resultados_medida_ka}
-\begin{tabular}{cccc}
+\begin{tabular}{lccc}
 \hline
 Robot & P1 & P2 & Ka \\
 \hline
@@ -240,7 +220,7 @@ Automático (2012)   & 17,6   & 17,3   & 0,983  \\
 \end{tabular}
 \end{table}
 
-Las ruedas de ambos robots se muestra en la figura \ref{fig:ruedas_foam_silicona}. Están construidas a partir de ruedas de coche de radio control de espuma de 60mm de diámetro y 45mm de ancho. Además se les ha añadido una capa de silicona para mejorar el agarre. Este tipo de ruedas ha sido utilizado en todos los robots desde el año 2011 dado su alto coeficiente de adherencia. 
+Las ruedas de ambos robots se muestra en la figura \ref{fig:ruedas_foam_silicona}. Están construidas a partir de ruedas de coche de radio control de espuma, 60mm de diámetro y 45mm de ancho. Además se les ha añadido una capa de silicona para mejorar la adherencia. Este tipo de ruedas ha sido utilizado en todos los robots desarrollados desde el año 2011 dado su alto coeficiente de adherencia. 
 
 \begin{figure}[h]
 \centering
@@ -251,17 +231,19 @@ Las ruedas de ambos robots se muestra en la figura \ref{fig:ruedas_foam_silicona
 
 
 \subsection{Determinación de la aceleración máxima en las fases de aceleración y frenado}
-La aceleración máxima de un robot viene dado por la condición para la que se produce el deslizamiento de las ruedas y la condición para la que el robot se levanta de sus puntos de apoyo, haciendo \emph{el caballito}.
 
-Se estudian tres casos:
+La aceleración máxima durante las fases de aceleración o frenado depende de dos condiciones. La primera es la condición para la cual las ruedas derrapen o deslicen. Y la segunda, en caso de robots con ruedas atrás, es la condición para la cual el robot pierde contacto con el suelo en su parte delantera (como un caballo que se pone sobre sus patas trasera), pudiendo volcar hacia atrás.
+
+Por otro lado, el valor de la aceleración máxima para cada condición depende del coeficiente de adherencia de las ruedas ($Ka$) y la posición del centro de gravedad del robot, respecto al eje motriz y los puntos de apoyo. 
+
+A continuación describe como determinar el valor máximo de aceleración para los siguientes tipos de robot:
 
 \begin{enumerate}
-\item Robot con ruedas atrás.
-\item Robot con ruedas en el medio simétrico.
-\item Robot con ruedas en el medio no simétrico.
+\item Robot con ruedas atrás
+\item Robot con ruedas en el medio
 \end{enumerate}
 
-El estudio del valor máximo de aceleración durante las fases de aceleración y frenado para los dos primeros casos se realiza en \cite{rcva_10x}. El estudio del tercer caso es aportado por este trabajo.
+El desarrollo completo puede encontrarse en \cite{rcva_10x}. Aquí sólo se presentan los desarrollos que se han considerado importantes para el entendimiento la dinámica del robot y los resultados finales. Además, este trabajo añade el resultado para el caso de un robot con ruedas en el medio asimétrico, no estudiado en \cite{rcva_10x}.
 
 \subsubsection{Robots con ruedas atrás}
 
@@ -270,54 +252,58 @@ Se parte del modelo dinámico del robot representado por la siguiente figura:
 \begin{figure}[H]
 \centering
 \includegraphics[width=.4\textwidth]{dinamica_a_max_ruedas_atras}
-\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas atrás y dos puntos de apoyo.}
+\caption[]{Modelo dinámico en fase de aceleración y frenado para robots con ruedas atrás.}
 \label{fig:dinamica_a_max_ruedas_atras}
 \end{figure}
 
 Donde:
+\begin{description}
 
-$G$: centro de gravedad del robot.
+\item $G$: centro de gravedad del robot.
 
-$Fx$: fuerza de propulsión de en la rueda.
+\item $Fx$: fuerza de propulsión de en la rueda.
 
-$F1$: fuerza normal del suelo en la rueda.
+\item $F1$: fuerza normal del suelo en la rueda.
 
-$F2$: fuerza normal del suelo en el punto delantero.
+\item $F2$: fuerza normal del suelo en el punto delantero.
 
-$a$: aceleración del robot
+\item $a$: aceleración del robot
 
-$-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
+\item $-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
 
-$d1$:  distancia entre el centro de gravedad y el eje motriz.
+\item $d1$:  distancia entre el centro de gravedad y el eje motriz.
 
-$d2$: distancia entre el centro de gravedad y el punto de apoyo delantero.
+\item $d2$: distancia entre el centro de gravedad y el punto de apoyo delantero.
 
-$d$: distancia entre el eje motriz y un punto de apoyo (d = d1 + d2).
+\item $d$: distancia entre el eje motriz y un punto de apoyo (d = d1 + d2).
 
-$h$: altura del centro de gravedad del robot.
+\item $h$: altura del centro de gravedad del robot.
+\end{description}
 
+Las ecuaciones que garantiza que el sistema esta en equilibrio son las siguientes:	
 
-A partir de las relaciones de la mecánica que garantizan que el sistema está en equilibrio.
-
-Suma de fuerzas verticales:
+\begin{description}
+\item Suma de fuerzas verticales\\
 \begin{equation}
 \label{eq:suma_fuerzas_verticales}
 2F1 + 2F2 - mg = 0
 \end{equation}
 
-Suma de fuerzas horizontales:
+\item Suma de fuerzas horizontales\\
 \begin{equation}
 \label{eq:suma_fuerzas_horizontales}
 2Fx = ma
 \end{equation}
 
-Suma de torsiones aplicadas al punto G
+\item Suma de torsiones aplicadas al punto G\\	
 \begin{equation}
 \label{eq:suma_torsiones_punto_g}
 F2d2 - F1d1 + Fx \, h = 0
 \end{equation}
+\end{description}
 
-Se obtienen las ecuaciones que representan la distribución de pesos en las fases de aceleración y frenado:
+
+A partir las ecuaciones \eqref{eq:suma_fuerzas_verticales}, \eqref{eq:suma_fuerzas_horizontales} y \eqref{eq:suma_torsiones_punto_g}	, se obtienen las ecuaciones que representan la distribución de pesos en las fases de aceleración y frenado:
 
 \begin{align}
 \label{eq:distribucion_pesos}
@@ -325,11 +311,22 @@ Se obtienen las ecuaciones que representan la distribución de pesos en las fases
 (2F2)/mg &= d1/d - (a/g)(h/d)
 \end{align}
 
-$(2F1)/mg$ representa la distribución de pesos en el eje motriz y $(2F2)/mg$ representa el reparto de pesos en la parte delantera. $d2/d$ y $d1/d$ representan las distribuciones de pesos en estático ($a=0$), y $(a/g)(h/d)$ representa la transferencia de masa del robot durante la aceleración o frenado.
+Notar que el término $(2F1)/mg$ representa la distribución de pesos en el eje motriz, mientras que el termino $(2F2)/mg$ representa el reparto de pesos en la parte delantera. Los términos $d2/d$ y $d1/d$ representan las distribuciones de pesos en estático, cuando la aceleración es nula ($a=0$). Y el término  $(a/g)(h/d)$ representa la transferencia de masa del robot durante la aceleración o frenado.
 
 Así pues, en fase de aceleración ($a>0$) la transferencia de masa se produce hacia la parte trasera del robot por lo que el robot avanza y tiende a hacer \emph{el caballito}. Mientras que en la fase de frenado ($a<0$) la transferencia de masa se produce hacia la parte delantera de forma que las ruedas tienen a deslizar o derrapar sobre el suelo.
 
-La condición para no derrapar en la fase de aceleración viene dada por la ecuación \eqref{eq:fx_max_f_ka} expresada como 
+Se deducen algunas conclusiones al respecto:
+
+\begin{itemize}
+\item Interesa tener el máximo apoyo en el eje motriz aumentando el termino $(2F1)/mg$ o el termino estático $d2/d$, de forma que el centro de gravedad esté lo más cerca posible del eje motriz.
+
+\item Cuando el término de transferencia de masa dinámica $(a/g)(h/d)$ cambia de signo debido a la aceleración, se consiguen una buena fase de aceleración pero una fase peor de frenado.
+
+\item Como los robots en un partido no hacer otra cosas que acelerar y frenar, interesa reducir lo máximo la transferencia de masa, la cual depende únicamente de la relación $(h/d)$. Por lo tanto interesa bajar el centro de gravedad lo máximo posible.
+\end{itemize}
+
+
+Continuando con el cálculo, la condición para no derrapar en la fase de aceleración viene dada por la ecuación \eqref{eq:fx_max_f_ka} expresada como 
 
 \begin{equation}
 \label{eq:condicion_derrape_aceleracion}
@@ -383,7 +380,7 @@ a_{max} = Min\{a_{max1}, a_{max2}\}.
 \end{equation}
 
 
-Por ejemplo, la figura \ref{fig:ejemplo_a_max} representa el caso de dos robots con ruedas atrás iguales excepto por la altura de su centro de gravedad.	
+Por ejemplo, la figura \ref{fig:ejemplo_a_max} representa el caso de dos robots iguales excepto por la altura de su centro de gravedad.	
 
 \begin{figure}[h]
 \centering
@@ -392,7 +389,7 @@ Por ejemplo, la figura \ref{fig:ejemplo_a_max} representa el caso de dos robots 
 \label{fig:ejemplo_a_max}
 \end{figure}
 
-Las aceleraciones máximas para estos robots se muestran en la tabla \ref{tab:ejemplo_a_max}.
+Las aceleraciones máximas calculadas para estos robots se muestran en la tabla \ref{tab:ejemplo_a_max}.
 
 \begin{table}[h]
 \centering
@@ -405,9 +402,8 @@ Las aceleraciones máximas para estos robots se muestran en la tabla \ref{tab:eje
 \hline
 $a_{max1}$ 	& $1,2g$ 		& $0,4g$ 		& $3,0g$ 		& $0,3g$ 	\\
 $a_{max2}$ 	& $0,8g$ 		& $1,2g$ 		& $0,5g$ 		& $0,75g$ 	\\
-\hline
 $a_{max}$ 	& $0,8g$ 		& $0,4g$ 		& $0,5g$ 		& $0,3g$ 	\\
-$\approx$	& $8\,m/s$ 		& $4\,m/s$ 		& $5\,m/s$ 		& $3\,m/s$  \\
+			& ($8\,m/s$) 		& ($4\,m/s$) 		& ($5\,m/s$) 		& ($3\,m/s$)  \\
 \hline
 \end{tabular}
 
@@ -415,55 +411,48 @@ $\approx$	& $8\,m/s$ 		& $4\,m/s$ 		& $5\,m/s$ 		& $3\,m/s$  \\
 
 Observar que estos cálculos sólo se refieren a desplazamientos de translación y no a giros, permitiendo maximizar la aceleración. Que el robot sea capaz de alcanzar dicha aceleración va a depender de la elección de los motores y su reductora.
 
-Por otro lado, hay que tener en cuenta que estos cálculo dependen únicamente del centro de gravedad del robot y del coeficiente de adherencia de las ruedas. El peso del robot no interviene.
+Por otro lado, hay que tener en cuenta que estos cálculos dependen únicamente del centro de gravedad del robot y del coeficiente de adherencia de las ruedas. El peso del robot no interviene.
 
-Se deducen algunas conclusiones al respecto:
-
-\begin{itemize}
-\item Interesa tener el máximo apoyo en el eje motriz aumentando el termino $(2F1)/mg$, o el termino estático $d2/d$, de forma que el centro de gravedad esté lo más cerca posible del eje motriz.
-
-\item Cuando la transferencia de masa dinámica $(a/g)(h/d)$ cambia de signo debido a la aceleración, se consiguen una buena fase de deceleración pero una fase de frenado peor.
-
-\item Como los robots en un partido no hacer otra cosas que acelerar y frenar, interesa reducir lo máximo la transferencia de masa, la cual depende únicamente de la relación $(h/d)$. Por lo tanto interesa bajar el centro de gravedad.
-\end{itemize}
 
 \subsubsection{Robots con ruedas en el medio}
 
-Los casos de un robot con ruedas en el medio se representan por los modelos dinámicos de la siguiente figura:
+Un robot que tiene las ruedas en el medio puede ser que tenga su centro de gravedad exactamente sobre el eje motriz, de forma que el robot es simétrico. Si el centro de gravedad esta desplazado se habla de un robot asimétrico.
+
+Los modelos dinámicos para estos casos se corresponden con la siguiente figura:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{dinamica_a_max_ruedas_medio}
-\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas en el medio y cuatro puntos de apoyo.}
+\caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas en el medio.}
 \label{fig:dinamica_a_max_ruedas_medio}
 \end{figure}
 
 Donde:
+\begin{description}
+\item $G$: centro de gravedad del robot.
 
-$G$: centro de gravedad del robot.
+\item $Fx$: fuerza de propulsión de en la rueda.
 
-$Fx$: fuerza de propulsión de en la rueda.
+\item $F1$: fuerza normal del suelo en la rueda.
 
-$F1$: fuerza normal del suelo en la rueda.
+\item $F2$: fuerza normal del suelo en el punto delantero.
 
-$F2$: fuerza normal del suelo en el punto delantero.
+\item $F3$: fuerza normal del suelo en el punto de apoyo trasero.
 
-$F3$: fuerza normal del suelo en el punto de apoyo trasero.
+\item $a$: aceleración del robot
 
-$a$: aceleración del robot
+\item $-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
 
-$-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
+\item $d1$: distancia entre el centro de gravedad y el eje motriz.
 
-$d1$: distancia entre el centro de gravedad y el eje motriz.
+\item $d2$: distancia entre el centro de gravedad y el punto de apoyo trasero.
 
-$d2$: distancia entre el centro de gravedad y el punto de apoyo trasero.
+\item $d2'$: distancia entre el centro de gravedad y el punto de apoyo delantero.
 
-$d2'$: distancia entre el centro de gravedad y el punto de apoyo delantero.
+\item $h$: altura del centro de gravedad del robot.
+\end{description}
 
-$h$: altura del centro de gravedad del robot.
-
-
-A partir del modelo de robot simétrico de la figura \ref{fig:dinamica_a_max_ruedas_atras} y siguiendo un análisis igual al realizado para robots con ruedas atrás, se obtienen las ecuaciones que definen las aceleraciones máximas para el caso del robot simétrico. Debido a que el robot tiene 4 puntos de apoyo no es posible que éste haga \emph{el caballito}, por lo que la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
+Para el caso del robot simétrico de la figura \ref{fig:dinamica_a_max_ruedas_atras} y siguiendo un análisis igual al realizado para robots con ruedas atrás, se obtienen las ecuaciones que definen las aceleraciones máximas. Debido a que el robot tiene 4 puntos de apoyo no es posible que éste haga \emph{el caballito}, por lo que la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
 
  
 \begin{equation}
@@ -472,7 +461,7 @@ A partir del modelo de robot simétrico de la figura \ref{fig:dinamica_a_max_rued
 \end{equation}
 
 
-En el tercer caso no existe una simetría y el centro de gravedad cae entre el eje motriz y los puntos de apoyo de uno de los extremos del robot. Al igual que en el caso anterior la condición de hacer \emph{el caballito} no existe al tener el robot 4 puntos de apoyo. Sin embargo, la aceleración máxima es distinta para la fase de aceleración y la de frenado debido a la asimetría del robot.
+Por otro lado, en el caso del robot asimétrico, el centro de gravedad cae entre el eje motriz y los puntos de apoyo de uno de los extremos del robot. Al igual que en el caso anterior la condición de hacer \emph{el caballito} no existe al tener el robot 4 puntos de apoyo. Sin embargo, la aceleración máxima es distinta para la fase de aceleración y la de frenado debido a la asimetría del robot.
 
 Fase de aceleración ($a>0$):
 \begin{equation}
@@ -487,11 +476,11 @@ Fase de frenado ($a<0$):
 \boxed{a_{max} = g\,\frac{Ka}{(d2'-d1)/d2' + Ka\,(h/d2')}}
 \end{equation}
 
-Se comprueba que si $d1=0$, el modelo se corresponde con el de un robot simétrico y las equaciones \eqref{eq:a_max_pos_no_simetrico} y \eqref{eq:a_max_neg_no_simetrico} coinciden con la ecuación \eqref{eq:a_max_simetrico} del dicho modelo.
+Se comprueba que si $d1=0$, el modelo se corresponde con el de un robot simétrico y las ecuaciones \eqref{eq:a_max_pos_no_simetrico} y \eqref{eq:a_max_neg_no_simetrico} coinciden con la ecuación \eqref{eq:a_max_simetrico}.
 
 \subsubsection{Medida del centro de gravedad del robot}
 
-Para los cálculos de la aceleración máxima del robot es necesario conocer la posición del centro de gravedad del robot. Éste puede ser medido fácilmente utilizando una regla y una barra lo suficientemente larga. Por ejemplo para medir la altura del centro de gravedad se procedería a apoyar el robot sobre la barra por una de sus caras como muestra la figura \ref{fig:medida_centro_gravedad} hasta dar con una posición en la que el robot se encuentre en equilibrio. Una vez llegada a la posición de equilibrio se mide la distancia de la base del robot al centro de la barra, la cual se corresponde con la altura del centro de gravedad. 
+Se ha visto que para los cálculos de la aceleración máxima del robot es necesario conocer la posición del centro de gravedad del mismo. Su valor puede ser medido fácilmente utilizando una regla y una barra lo suficientemente larga. Por ejemplo para medir la altura del centro de gravedad se procedería a apoyar el robot sobre la barra por una de sus caras como muestra la figura \ref{fig:medida_centro_gravedad} hasta dar con una posición en la que el robot se encuentre en equilibrio. Una vez obtenida la posición de equilibrio se mide la distancia que hay de la base del robot al centro de la barra, la cual se corresponde con la altura del centro de gravedad. 
 
 \begin{figure}[h]
 \centering
@@ -500,7 +489,7 @@ Para los cálculos de la aceleración máxima del robot es necesario conocer la pos
 \label{fig:medida_centro_gravedad}
 \end{figure}
 
-La operación se repite sobre la base del robot situando la barra paralela al eje motriz, de forma que se determina la distancia del centro de gravedad a dicho eje. Por último, se puede realizar la medida con la barra situada perpendicularmente al eje motriz con el fin de comprobar que el robot es simétrico en dicho eje y que el peso soportado por cada rueda es el mismo.
+La operación se repite sobre la base del robot situando la barra paralela al eje motriz, de forma que se determina la distancia del centro de gravedad a dicho eje. Y por último, se puede realizar la medida con la barra situada perpendicularmente al eje motriz con el fin de comprobar que el robot es simétrico en dicho eje y que el peso soportado por cada rueda es el mismo.
 
 \subsection{Perfil de velocidad trapezoidal}
 
@@ -515,23 +504,25 @@ Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se 
 
 %En dicho perfil se pueden identificar las fases de aceleración, velocidad constante y frenado. A cada una de estas fases le corresponde una distancia recorrida ($d1,d2,d3$) y un tiempo ($t1,t2,t3$).
 
-La optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas. La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
+Como se sabe, la optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas. La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
 
 \begin{equation}
 \label{eq:a_seguridad}
 a = 0.8\,a_{max}
 \end{equation}
 
-Respecto a la velocidad máxima, dependerá en última medida del motor y reductora utilizada. No obstante, dadas las dimensiones del campo y que los robots han de ser capaces de evitar colisiones entre ellos, una velocidad de $1m/s$ suele ser un buen valor de compromiso.
+Respecto a la velocidad máxima, dependerá en última medida del motor y la reductora utilizada. No obstante, dadas las dimensiones del campo y que los robots han de ser capaces de evitar colisiones entre ellos, una velocidad de $1m/s$ suele ser un buen valor de compromiso.
 
-Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), de igual aceleración ($a=2\,m/s$) y para una misma distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable y de lo que se deduce que para distancias cortas no es tan importante la velocidad si no la aceleración del robot.
+Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), de igual aceleración ($a=2\,m/s$) y para una misma distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad de $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable. Esto es debido a que el tiempo de la fase de velocidad constante del perfil de $1.4m/s$ es muy pequeño respecto al tiempo que se invierte en acelerar y frenar. De esto se deduce que para distancias cortas no es tan importante la velocidad como la aceleración del robot.
 
-Por otro lado,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo} esta curva de representa una consigna de distancia para el sistema de control de posición.
+Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
 
+\subsection{Dimensionamiento de la reductora}
+\subsection{Dimensionamiento de los motores}
 
-\subsection{Leyes mecánicas y térmicas de un motor DC}
-\subsection{Condición de deslizamiento y dimensionamiento de la reductora}
-\subsection{Elección de la velocidad y la aceleración}
+elección de la velocidad y la aceleración
+
+\subsection{Resultados experimentales}
 
 \section{Sistema de control de posición}
 \label{sec:sitema_posicionamiento_relativo}
