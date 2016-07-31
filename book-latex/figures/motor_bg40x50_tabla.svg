@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="329.61832"
+   height="223.48698"
+   id="svg7282"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="motor_bg40x50_tabla.svg"
+   inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/motor_bg40x50_tabla.png"
+   inkscape:export-xdpi="198"
+   inkscape:export-ydpi="198">
+  <defs
+     id="defs7284" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="102.94616"
+     inkscape:cy="130.62942"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7287">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(501.62964,-189.22886)">
+    <path
+       d="m -480.94964,210.66261 209.6325,0 0,-21.26 -209.6325,0 0,21.26 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path1050"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m -501.31714,210.26636 318.2725,0 0,180.075 -318.2725,0 0,-180.075 z"
+       style="fill:none;stroke:#231f20;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       id="path1052"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m -313.83464,210.38225 0,179.76786"
+       style="fill:none;stroke:#231f20;stroke-width:0.49999997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       id="path1072"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="m -501.31714,189.71511 318.27125,0 0,20.635 -318.27125,0 0,-20.635 z"
+       style="fill:none;stroke:#123a88;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       id="path1078"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m -501.62964,210.66261 21.26,0 0,-21.26 -21.26,0 0,21.26 z"
+       style="fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path1080"
+       inkscape:connector-curvature="0" />
+    <text
+       style="font-size:14.67222214px"
+       y="205.383"
+       x="-422.54208"
+       transform="matrix(1,0,-0.21255384,1,0,0)"
+       id="text1086">
+      <tspan
+         style="font-size:16.25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-422.54208 -410.61783 -401.35858 -395.41434"
+         y="205.383"
+         sodipodi:role="line"
+         id="tspan1088">Data</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="205.383"
+       x="-417.47226"
+       id="text1090">
+      <tspan
+         style="font-size:16.25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-417.47226 -405.66177"
+         y="205.383"
+         sodipodi:role="line"
+         id="tspan1092">/</tspan>
+      <tspan
+         style="font-size:16.25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-393.32965 -384.26376 -375.08417 -371.59201 -362.8674 -356.92154 -347.66064 -338.23727 -328.92764 -320.20303 -310.87714 -301.61627 -295.67041 -286.49078"
+         y="205.383"
+         sodipodi:role="line"
+         id="tspan1094">Leistungsdaten</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="220.07399"
+       x="-419.41873"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1096">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-419.41873 -413.28586 -408.29922 -405.0976 -400.15472 -395.13309 -391.81335 -387.85046 -382.86386 -380.99222 -377.79059 -372.80399 -367.79111"
+         y="220.07399"
+         sodipodi:role="line"
+         id="tspan1098">Rated voltage</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="220.07399"
+       x="-409.62463"
+       id="text1100">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-409.62463"
+         y="220.07399"
+         id="tspan1102">/</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="230.07397"
+       x="-466.19702"
+       id="text1104">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19702 -459.34665 -454.40378 -449.32965 -444.25552 -439.55765 -434.54477 -429.55814 -424.48401 -419.40988 -414.42328 -409.34915 -404.33627"
+         y="230.07397"
+         sodipodi:role="line"
+         id="tspan1106">Nennspannung</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="242.57397"
+       x="-414.6362"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1108">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-414.6362 -408.81833 -403.8317 -398.75757 -395.55594 -393.67557 -388.60144 -383.61481 -378.6282 -373.64157 -368.9437 -365.62393 -361.75732 -356.77069 -353.56906 -348.62619 -343.60455 -340.28479 -335.58694 -330.57407 -325.6312 -320.68832"
+         y="242.57397"
+         sodipodi:role="line"
+         id="tspan1110">Continuous rated speed</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="242.57397"
+       x="-367.22839"
+       id="text1112">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-367.22839"
+         y="242.57397"
+         id="tspan1114">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19702 -459.34665 -454.40378 -449.32965 -444.25552 -439.23389 -435.36728 -430.42441 -425.35028 -421.37863 -416.39203 -411.3179"
+         y="252.57436"
+         sodipodi:role="line"
+         id="tspan1116">Nenndrehzahl</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="265.07397"
+       x="-409.85367"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1118">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-409.85367 -404.03577 -399.04916 -393.97504 -390.77341 -388.89304 -383.81891 -378.83228 -373.84564 -368.85904 -364.16116 -360.8414 -356.97479 -351.98816 -348.78653 -343.84366 -338.82202 -335.50229 -332.30066 -327.31403 -323.44739 -318.41702 -313.43039"
+         y="265.07397"
+         sodipodi:role="line"
+         id="tspan1120">Continuous rated torque</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="265.07397"
+       x="-364.83365"
+       id="text1122">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-364.83365"
+         y="265.07397"
+         id="tspan1124">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19714 -459.34677 -454.4039 -449.32977 -444.25565 -439.23401 -435.3674 -430.42453 -425.3504 -417.31003 -412.32339 -404.28302 -399.34015 -394.26602"
+         y="275.07437"
+         sodipodi:role="line"
+         id="tspan1126">Nenndrehmoment</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="287.57397"
+       x="-405.07111"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1128">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-405.07111 -399.25323 -394.26663 -389.1925 -385.99088 -384.1105 -379.03638 -374.04974 -369.06311 -364.07651 -359.3786 -356.05975 -351.28311 -346.29651 -342.42987 -338.56323 -333.62036 -328.54623"
+         y="287.57397"
+         sodipodi:role="line"
+         id="tspan1130">Continuous current</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="287.57397"
+       x="-386.47427"
+       id="text1132">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-386.47427"
+         y="287.57397"
+         id="tspan1134">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19727 -459.34689 -454.40402 -449.3299 -444.25577 -439.55789 -436.35626 -432.48965 -427.50302"
+         y="297.57437"
+         sodipodi:role="line"
+         id="tspan1136">Nennstrom</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="310.07397"
+       x="-400.28857"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1138">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-400.28857 -394.78571 -391.58408 -386.59747 -382.41583 -379.2142 -377.33383 -372.2597 -367.24683 -363.92709 -360.72546 -355.73883 -351.87219 -346.84183 -341.85519"
+         y="310.07397"
+         sodipodi:role="line"
+         id="tspan1140">Starting torque</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="310.07397"
+       x="-402.82077"
+       id="text1142">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-402.82077"
+         y="310.07397"
+         id="tspan1144">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19702 -460.20416 -455.13004 -453.25839 -448.27179 -443.28516 -440.64352 -432.60315 -427.61652 -419.57614 -414.63327 -409.55914 -406.35751"
+         y="320.07434"
+         sodipodi:role="line"
+         id="tspan1146">Anlaufmoment</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="332.57397"
+       x="-395.50604"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1148">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-395.50604 -390.00317 -386.80154 -381.81491 -377.6333 -374.43167 -372.5513 -367.47717 -362.46429 -359.14456 -354.36792 -349.38129 -345.51468 -341.64804 -336.70517 -331.63104"
+         y="332.57397"
+         sodipodi:role="line"
+         id="tspan1150">Starting current</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="332.57397"
+       x="-399.12076"
+       id="text1152">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-399.12076"
+         y="332.57397"
+         id="tspan1154">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19739 -460.20538 -455.13214 -453.26141 -448.27563 -443.28989 -440.64914 -435.95215 -432.7514 -428.88565 -423.8999"
+         y="342.57434"
+         sodipodi:role="line"
+         id="tspan1156">Anlaufstrom</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="355.07397"
+       x="-390.72351"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1158">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-390.72351 -384.59064 -379.604 -376.40237 -371.41577 -367.54913 -364.2294 -362.349 -357.2749 -352.332 -348.15039 -344.94876 -343.06839"
+         y="355.07397"
+         sodipodi:role="line"
+         id="tspan1160">Rotor inertia</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="355.07397"
+       x="-413.5574"
+       id="text1162">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-413.5574"
+         y="355.07397"
+         id="tspan1164">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19739 -461.72614 -457.85953 -452.87289 -447.86002 -442.78589 -437.84302 -435.96265 -432.76102 -428.06314 -420.02277 -415.03613 -406.99576 -402.05289 -396.97876 -393.77713"
+         y="365.07434"
+         sodipodi:role="line"
+         id="tspan1166">Trägheitsmoment</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="377.57397"
+       x="-385.94098"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1168">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-385.94098 -376.61435 -371.67148 -369.79111 -364.77823 -359.7041 -356.50247 -353.18274 -348.19611 -345.55447 -342.23471 -334.19437 -329.20773 -326.0061 -321.01947"
+         y="377.57397"
+         sodipodi:role="line"
+         id="tspan1170">Weight of motor</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="377.57397"
+       x="-397.40903"
+       id="text1172">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-397.40903"
+         y="377.57397"
+         id="tspan1174">/</tspan>
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#0077c0;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-466.19714 -457.75427 -452.76764 -449.56601 -444.57938 -440.71277 -435.69989 -430.75702 -424.1604 -422.28 -417.50339 -412.42926 -409.22763"
+         y="387.57434"
+         sodipodi:role="line"
+         id="tspan1176">Motorgewicht</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="250.32474"
+       x="-306.38928"
+       id="text1178">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-306.38928 -301.69409 -295.60703"
+         y="250.32474"
+         sodipodi:role="line"
+         id="tspan1180">rpm</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="247.84973"
+       x="-285.84229"
+       id="text1182">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-285.84229 -280.66953"
+         y="247.84973"
+         sodipodi:role="line"
+         id="tspan1184">*)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="272.82474"
+       x="-308.05728"
+       id="text1186">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-308.05728 -299.73895 -293.93878"
+         y="272.82474"
+         sodipodi:role="line"
+         id="tspan1188">Ncm</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="270.34973"
+       x="-284.17429"
+       id="text1190">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-284.17429 -279.00153"
+         y="270.34973"
+         sodipodi:role="line"
+         id="tspan1192">*)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="295.32474"
+       x="-299.75391"
+       id="text1194">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-299.75391"
+         y="295.32474"
+         id="tspan1196">A</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="292.84973"
+       x="-292.47766"
+       id="text1198">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-292.47766 -287.3049"
+         y="292.84973"
+         sodipodi:role="line"
+         id="tspan1200">*)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="317.82474"
+       x="-310.64453"
+       id="text1202">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-310.64453 -302.3262 -296.52603"
+         y="317.82474"
+         sodipodi:role="line"
+         id="tspan1204">Ncm</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="315.34973"
+       x="-286.76166"
+       id="text1206">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-286.76166 -281.58813 -276.41464"
+         y="315.34973"
+         sodipodi:role="line"
+         id="tspan1208">**)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="340.32474"
+       x="-302.34116"
+       id="text1210">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-302.34116"
+         y="340.32474"
+         id="tspan1212">A</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="337.84973"
+       x="-295.06503"
+       id="text1214">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-295.06503 -289.89154 -284.71802"
+         y="337.84973"
+         sodipodi:role="line"
+         id="tspan1216">**)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="362.82474"
+       x="-305.77264"
+       id="text1218">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-305.77264 -299.68558 -293.88541"
+         y="362.82474"
+         sodipodi:role="line"
+         id="tspan1220">gcm</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="360.34973"
+       x="-284.12064"
+       id="text1222">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-284.12064"
+         y="360.34973"
+         id="tspan1224">2</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="385.32474"
+       x="-297.98965"
+       id="text1226">
+      <tspan
+         style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-297.98965 -292.81738"
+         y="385.32474"
+         sodipodi:role="line"
+         id="tspan1228">kg</tspan>
+    </text>
+    <path
+       d="m -271.31589,189.47886 0,200.67125"
+       style="fill:none;stroke:#231f20;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       id="path1230"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g7847"
+       transform="translate(-282,0)">
+      <text
+         id="text1082"
+         x="-173.3277"
+         y="205.06886"
+         style="font-size:15px">
+        <tspan
+           id="tspan1084"
+           sodipodi:role="line"
+           x="30.413542 39.087341 50.372314 58.996033 67.619812 73.293579 73.293579 81.917297"
+           style="font-size:12.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">BG40x5 0</tspan>
+      </text>
+      <text
+         id="text1232"
+         x="-163.9146"
+         y="225.32474"
+         style="font-size:15px">
+        <tspan
+           id="tspan1266"
+           sodipodi:role="line"
+           y="225.31836 225.31836"
+           x="39.827217 39.827217 47.157417 54.487617 58.518745 65.349556 73.147224"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">224 VDC</tspan>
+        <tspan
+           id="tspan1268"
+           sodipodi:role="line"
+           y="250.31792"
+           x="45.358589 52.688789 60.01899 67.349129"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">3640</tspan>
+        <tspan
+           id="tspan1270"
+           sodipodi:role="line"
+           y="272.81741"
+           x="29.950207 37.280407 40.944954 48.275154 52.306282 55.620247 62.950386 66.614937 73.945137 77.612923 81.278511 84.94416 86.776993"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">8,0 (9.6*** )</tspan>
+        <tspan
+           id="tspan1272"
+           sodipodi:role="line"
+           y="295.31693"
+           x="50.857063 58.187202 61.851753 69.181953"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">2.1</tspan>
+        <tspan
+           id="tspan1274"
+           sodipodi:role="line"
+           y="317.81641"
+           x="47.191414 54.521614 61.851753 65.516365"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">37.4</tspan>
+        <tspan
+           id="tspan1276"
+           sodipodi:role="line"
+           y="340.31592"
+           x="50.857063 58.187202 61.851753"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">8.4</tspan>
+        <tspan
+           id="tspan1278"
+           sodipodi:role="line"
+           y="362.81543"
+           x="52.689827 60.020027"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">64</tspan>
+        <tspan
+           id="tspan1280"
+           sodipodi:role="line"
+           y="385.31491"
+           x="50.857063 58.187202 61.851753"
+           style="font-size:10.625px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile">0.6</tspan>
+      </text>
+    </g>
+    <text
+       style="font-size:15px"
+       y="410.24084"
+       x="-501.63"
+       id="text1284">
+      <tspan
+         style="font-size:9.375px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-501.63 -496.45782"
+         y="410.24084"
+         sodipodi:role="line"
+         id="tspan1286">*)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="410.24084"
+       x="-492.56253"
+       id="text1288">
+      <tspan
+         style="font-size:9.375px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         x="-492.56253 -486.82501"
+         y="410.24084"
+         sodipodi:role="line"
+         id="tspan1290">∆ϑ</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="412.71585"
+       x="-480.91226"
+       id="text1292">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-480.91226"
+         y="412.71585"
+         id="tspan1294">w</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="410.24084"
+       x="-472.69226"
+       id="text1296">
+      <tspan
+         style="font-size:9.375px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-472.69226 -466.24695 -461.07291 -454.60416 -445.22446 -438.86819 -435.63382 -432.07602 -426.90289 -421.72977"
+         y="410.24084"
+         sodipodi:role="line"
+         id="tspan1298">=100K; **)</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="410.24084"
+       x="-416.86508"
+       id="text1300">
+      <tspan
+         style="font-size:9.375px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         x="-416.86508"
+         y="410.24084"
+         id="tspan1302">ϑ</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="412.71585"
+       x="-410.95078"
+       id="text1304">
+      <tspan
+         style="font-size:7.5px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-410.95078"
+         y="412.71585"
+         id="tspan1306">R</tspan>
+    </text>
+    <text
+       style="font-size:15px"
+       y="410.24084"
+       x="-402.82614"
+       id="text1308">
+      <tspan
+         style="font-size:9.375px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-402.82614 -395.0871 -388.61926 -380.8577 -377.10864 -370.87616 -367.64178 -363.76144 -359.88113 -355.99991"
+         y="410.24084"
+         sodipodi:role="line"
+         id="tspan1310">=20°C;***)</tspan>
+    </text>
+    <text
+       style="font-size:14.6722126px"
+       y="410.24084"
+       x="-263.61252"
+       transform="matrix(1,0,-0.21255713,1,0,0)"
+       id="text1312">
+      <tspan
+         style="font-size:8.75px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#123a88;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Eurostile;-inkscape-font-specification:Eurostile"
+         x="-263.61252 -257.37201 -252.61028 -247.77853 -243.01678 -238.12378 -233.28328 -228.76653 -225.6279 -220.8224 -215.9294 -212.79077 -207.89778 -203.13603 -198.33052 -195.31004 -192.1714 -187.33089 -185.63164 -181.11491 -176.59816 -174.89891 -170.06715 -165.26164 -162.24117 -160.54189 -155.7364 -150.8434 -147.70479 -145.24428 -141.55876 -136.75328 -128.89403 -125.75538 -122.7349 -117.8419 -113.08015 -109.94151 -102.08225 -97.276772 -94.256264 -89.450752 -89.450752 -85.765266 -46.237129 -40.38163"
+         y="410.24084"
+         sodipodi:role="line"
+         id="tspan1314">Depends on heat dissipation from the motor</tspan>
+    </text>
+  </g>
+</svg>
