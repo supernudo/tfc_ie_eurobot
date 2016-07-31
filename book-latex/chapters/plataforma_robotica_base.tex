@@ -125,17 +125,13 @@ Para el caso de un robot con ruedas atrás y dos puntos de apoyo, el modelo dinám
 \end{figure}
 
 Siendo:
-
-$Fn$: fuerza normal o vertical del suelo (opuesta a la fuerza de apoyo debida al peso del robot)
-
-$Fx$: fuerza de propulsión de en la rueda
-
-$F$: fuerza resultante del suelo en la rueda
-
-$a$: aceleración del robot
-
-$m$: masa del robot sobre las ruedas.
-
+\begin{description}
+\item $Fn$: fuerza normal o vertical del suelo (opuesta a la fuerza de apoyo debida al peso del robot)
+\item $Fx$: fuerza de propulsión de en la rueda
+\item $F$: fuerza resultante del suelo en la rueda
+\item $a$: aceleración del robot
+\item $m$: masa del robot sobre las ruedas.
+\end{description}
 
 Durante la fase de aceleración ($a>0$) se necesita una fuerza de propulsión $Fx$ positiva de forma que la fuerza resultante $F$ provoque un desplazamiento hacia delante. Una vez alcanzada la fase de velocidad constante ($a=0$), teóricamente no es necesario realizar ninguna fuerza de propulsión\footnote{En la práctica, dado que existen perdidas por rozamiento $Fx$ no es nula} y la fuerza resultante es igual a la fuerza normal sobre la rueda. En la última fase, la fuerza de tracción $Fx$ ha de ser negativa de forma que la fuerza resultante se oponga al movimiento del robot provocando una desaceleración o frenado.  
 
@@ -146,7 +142,6 @@ Para conseguir desplazamientos en un periodo de tiempo corto, las fases de acele
 \label{coeficiente_adherencia_y_calculo_experimental}
 
 A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la primera ley de Newton ($F = ma$) se deduce que la aceleración sobre el eje horizontal del robot se corresponde con la expresión:
-
 \begin{equation}
   \label{eq:a_f_fx}
   a = \frac{2Fx}{m}
@@ -154,14 +149,12 @@ A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el r
 
 
 La aceleración máxima vendrá dada por la fuerza máxima de propulsión de las ruedas $Fx_{max}$ a partir de la cual se produce el deslizamiento de las ruedas. Por lo tanto ha de cumplirse la condición
-
 \begin{equation}
   \label{eq:condicion_fx}
    Fx<Fx_{max}
 \end{equation}
 
 siendo
-
 \begin{equation}
   \label{eq:fx_max_f_ka}
   Fx_{max} = Ka \, Fn,
@@ -195,7 +188,6 @@ Dicho método se encuentra representado en la figura \ref{fig:metodo_cubo} y cons
 \end{enumerate}
 
 El coeficiente de adherencia viene dado por las medidas realizadas según la expresión
-
 \begin{equation}
   \label{eq:ka=f(p1,p2)}
   \boxed{Ka = \frac{P2}{P1}}.
@@ -258,25 +250,15 @@ Se parte del modelo dinámico del robot representado por la siguiente figura:
 
 Donde:
 \begin{description}
-
 \item $G$: centro de gravedad del robot.
-
 \item $Fx$: fuerza de propulsión de en la rueda.
-
 \item $F1$: fuerza normal del suelo en la rueda.
-
 \item $F2$: fuerza normal del suelo en el punto delantero.
-
 \item $a$: aceleración del robot
-
 \item $-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
-
 \item $d1$:  distancia entre el centro de gravedad y el eje motriz.
-
 \item $d2$: distancia entre el centro de gravedad y el punto de apoyo delantero.
-
 \item $d$: distancia entre el eje motriz y un punto de apoyo (d = d1 + d2).
-
 \item $h$: altura del centro de gravedad del robot.
 \end{description}
 
@@ -304,11 +286,9 @@ F2d2 - F1d1 + Fx \, h = 0
 
 
 A partir las ecuaciones \eqref{eq:suma_fuerzas_verticales}, \eqref{eq:suma_fuerzas_horizontales} y \eqref{eq:suma_torsiones_punto_g}	, se obtienen las ecuaciones que representan la distribución de pesos en las fases de aceleración y frenado:
-
 \begin{align}
-\label{eq:distribucion_pesos}
-(2F1)/mg &= d2/d + (a/g)(h/d)\\
-(2F2)/mg &= d1/d - (a/g)(h/d)
+(2F1)/mg &= d2/d + (a/g)(h/d) \label{eq:distribucion_pesos_rueda}\\
+(2F2)/mg &= d1/d - (a/g)(h/d) \label{eq:distribucion_pesos_apoyo}
 \end{align}
 
 Notar que el término $(2F1)/mg$ representa la distribución de pesos en el eje motriz, mientras que el termino $(2F2)/mg$ representa el reparto de pesos en la parte delantera. Los términos $d2/d$ y $d1/d$ representan las distribuciones de pesos en estático, cuando la aceleración es nula ($a=0$). Y el término  $(a/g)(h/d)$ representa la transferencia de masa del robot durante la aceleración o frenado.
@@ -327,14 +307,12 @@ Se deducen algunas conclusiones al respecto:
 
 
 Continuando con el cálculo, la condición para no derrapar en la fase de aceleración viene dada por la ecuación \eqref{eq:fx_max_f_ka} expresada como 
-
 \begin{equation}
 \label{eq:condicion_derrape_aceleracion}
 Fx < Ka \, F1
 \end{equation}
 
 y para la fase de frenado como
-
 \begin{equation}
 \label{eq:condicion_derrape_frenada}
 |Fx| < Ka \, F1.
@@ -342,38 +320,33 @@ y para la fase de frenado como
 
 
 Por otro lado, la condición para que el robot no haga \emph{el caballito} durante la fase de aceleración es
-
 \begin{equation}
 \label{eq:condicion_caballito_aceleracion}
 F2 > 0
 \end{equation}
 
 y para la fase de frenado es
-
 \begin{equation}
 \label{eq:condicion_caballito_frenado}
 F1 > 0
 \end{equation}
 
-A partir de las ecuaciones \eqref{eq:distribucion_pesos}, \eqref{eq:suma_fuerzas_horizontales} y las condiciones mencionadas anteriormente se obtienen las aceleraciones máximas para cada fase y condición.
+A partir de las ecuaciones \eqref{eq:distribucion_pesos_rueda}, \eqref{eq:distribucion_pesos_apoyo}, \eqref{eq:suma_fuerzas_horizontales} y las condiciones mencionadas anteriormente se obtienen las aceleraciones máximas para cada fase y condición.
 
 Fase de aceleración ($a>0$):
 \begin{empheq}[box=\fbox]{align}
-\label{eq:a_max_aceleracion}
-a_{max1} &= g\,\frac{Ka \, d2}{d-(Ka \, h)}\\
-a_{max2} &= g\,\frac{d1}{h}
+a_{max1} &= g\,\frac{Ka \, d2}{d-(Ka \, h)} \label{eq:a_max_aceleracion_derrape}\\
+a_{max2} &= g\,\frac{d1}{h} \label{eq:a_max_aceleracion_caballito}
 \end{empheq}
 
 
 Fase de frenado ($a<0$):
 \begin{empheq}[box=\fbox]{align}
-\label{eq:amax_frenado}
-a_{max1} &= g\,\frac{Ka \, d2}{d+(Ka \, h)}\\
-a_{max2} &= g\,\frac{d2}{h}
+a_{max1} &= g\,\frac{Ka \, d2}{d+(Ka \, h)} \label{eq:amax_frenado_derrape}\\
+a_{max2} &= g\,\frac{d2}{h} \label{eq:amax_frenado_caballito}
 \end{empheq}
 
 Siendo $a_{max1}$ la aceleración máxima para no derrapar y $a_{max2}$ la aceleración máxima para no hacer \emph{el caballito}. Para cada fase, la aceleración máxima vendrá dada por el valor mínimo de estas:
-
 \begin{equation}
 \label{eq:a_aceleracion}
 a_{max} = Min\{a_{max1}, a_{max2}\}.
@@ -430,31 +403,19 @@ Los modelos dinámicos para estos casos se corresponden con la siguiente figura:
 Donde:
 \begin{description}
 \item $G$: centro de gravedad del robot.
-
 \item $Fx$: fuerza de propulsión de en la rueda.
-
 \item $F1$: fuerza normal del suelo en la rueda.
-
 \item $F2$: fuerza normal del suelo en el punto delantero.
-
 \item $F3$: fuerza normal del suelo en el punto de apoyo trasero.
-
 \item $a$: aceleración del robot
-
 \item $-mg$: fuerza de la gravedad aplicada en el centro de gravedad.
-
 \item $d1$: distancia entre el centro de gravedad y el eje motriz.
-
 \item $d2$: distancia entre el centro de gravedad y el punto de apoyo trasero.
-
 \item $d2'$: distancia entre el centro de gravedad y el punto de apoyo delantero.
-
 \item $h$: altura del centro de gravedad del robot.
 \end{description}
 
 Para el caso del robot simétrico de la figura \ref{fig:dinamica_a_max_ruedas_atras} y siguiendo un análisis igual al realizado para robots con ruedas atrás, se obtienen las ecuaciones que definen las aceleraciones máximas. Debido a que el robot tiene 4 puntos de apoyo no es posible que éste haga \emph{el caballito}, por lo que la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
-
- 
 \begin{equation}
 \label{eq:a_max_simetrico}
 \boxed{a_{max} = g\,\frac{Ka}{1 + Ka\,(h/d2)}}
@@ -505,7 +466,6 @@ Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se 
 %En dicho perfil se pueden identificar las fases de aceleración, velocidad constante y frenado. A cada una de estas fases le corresponde una distancia recorrida ($d1,d2,d3$) y un tiempo ($t1,t2,t3$).
 
 Como se sabe, la optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas. La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
-
 \begin{equation}
 \label{eq:a_seguridad}
 a = 0.8\,a_{max}
@@ -517,7 +477,81 @@ Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de l
 
 Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
 
-\subsection{Dimensionamiento de la reductora}
+\subsection{Dimensionamiento del motor y su reductora}
+
+Como se ha visto, las ruedas del eje motriz se encuentran conectadas al motor por medio de una reductora. La figura \ref{fig:} representa el modelo mecánico de uno de los motores. 
+
+
+Donde:
+\begin{description}
+\item $\omega_i$: velocidades angulares ($rad/s$)
+\item $M_i$: par o momentos de fuerza ($N\,m$)
+\item $P_i$: potencias mecánicas ($Nm/(rad/s)$)
+\item $K$: relación de reducción de la reductora
+\item $Rd$: rendimiento de la reductora
+\item $D$: diámetro de la rueda
+\end{description}
+
+La potencia mecánica en el motor $P1$ y en el eje de salida de la reductora $P2$ viene dada como:
+\begin{align}
+P1 &= M1\,\omega1 \label{eq:potencia_mecanica_motor} \\
+P2 &= M2\,\omega2 \label{eq:potencia_mecanica_reductora}
+\end{align}
+
+Dichas potencias se relacionan mediante la reductora de la siguiente manera:
+\begin{align}
+\omega2 &= \frac{\omega1}{K} \label{eq:relacion_w1_w1} \\
+M2 &= M1\,Rd\,K \label{eq:relacion_M2_M1} \\
+P2 &= P1\,Rd \label{eq:relacion_P2_P1} 
+\end{align}
+
+Observar que la relación entre potencias en \eqref{eq:relacion_P2_P1} no depende de $K$. Si $K$ aumenta el par de la rueda $M2$ aumenta pero la velocidad $w2$ disminuye.
+
+Por otro, del modelo en régimen permanente de un motor de corriente contínua, se sabe que la tensión de armadura del motor $U$ y el par motor $M$ se corresponden con:
+\begin{align}
+U &= r\,i + Kv\,\omega \label{eq:tension_armadura} \\
+M &= Km\,i \label{eq:par_motor}
+\end{align}
+
+Siendo:
+\begin{description}
+\item $r$: resistencia de la armadura ($\Omega$)
+\item $i$: corriente de la armadura (A)
+\item $Kv:$ constante de fuerza electromecánica (V/(rad/s))
+\item $Km$: constante de par motor (Nm/A)
+\end{description}
+
+A la hora de dimensionar la reductora se busca determinar el valor de reducción de la misma ($K$) que genere un par suficiente en la rueda $M3$ para vencer las fuerzas aplicadas en la misma que se oponen al movimiento (ver \ref{fig:dinamica_a_max_ruedas_atras}).
+
+No obstante existe una condición más restrictiva a la hora de dimensionar la reductora. Es el caso en el que las ruedas queden bloqueadas debido a que el robot a dado con un obstáculo imprevisto. Por ejemplo una pared debido a un error de posicionamiento, o que haya un objeto inesperado entre el robot y la pared. En ese caso el controlador de posición reacciona aumentando la tensión del motor hasta su valor máximo $U_{max}$ y se corre el riesgo de que el motor se queme. Este caso es analizado en \ref{rcva_10x} a partir de modelo térmico del motor. El análisis determina que en caso de bloqueo de una rueda la vida útil del motor es de 2,3s, a menos que el driver del motor sirva de fusible y se rompa antes o que exista un mecanismo de protección.
+
+Teniendo en cuenta este caso, un dimensionamiento más correcto de la reductora es aquel que permita que las ruedas derrapen antes de que la tensión del motor alcance su valor máximo.
+
+Por un lado se calcula el par en el motor $M1$ necesario para producir deslizamiento a partir del par en la rueda $M3$, el cual depende de a su vez la fuerza de propulsión máxima de las ruedas $Fx_{max}$.
+\begin{align}
+\end{align}
+
+La fuerza aplicada sobre las ruedas $F1$ depende de la distribución de pesos sobre el eje motriz y se corresponde con el peso $P1$ medido durante el la medida experimental del coeficiente de adherencia $Ka$.
+\begin{align}
+\end{align}
+
+Sustituyendo 3 en 2 en resultado en 1 se obtiene el par del motor $M1$ necesario en el límite del deslizamiento.
+
+Por otro lado, a partir de las ecuaciones del modelo del motor se obtiene el par máximo que puede dar el motor a la salida de la reductora $M2$.
+
+La condición que garantiza el deslizamiento de las ruedas en una situación de bloqueo es que el par máximo del motor sea mayor que el par en el límite de deslizamiento de la rueda. Para asegurar dicha condición se añade un margen de un 20\% de forma que el deslizamiento sea apreciable:
+\begin{equation}
+\end{equation}
+
+El valor de la reductora mínima $K_{min}$ se obtiene despejando de (4):
+\begin{equation}
+\end{equation}
+
+
+Notar que $K_{min}$ aumenta si los términos $Ka\,F1$, $D$ o $r$ aumentan, o $Km$, $U_{max}$ disminuye.
+
+
+
 \subsection{Dimensionamiento de los motores}
 
 elección de la velocidad y la aceleración
