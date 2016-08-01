@@ -513,7 +513,7 @@ P2 &= P1\,Rd \label{eq:relacion_P2_P1}
 
 Observar que la relación entre potencias en \eqref{eq:relacion_P2_P1} no depende de $K$. Si $K$ aumenta el par de la reductora $M2$ aumenta pero la velocidad $w2$ disminuye.	
 
-Por otro lado, del modelo en régimen permanente de un motor de corriente continua, se sabe que la tensión de armadura del motor $U$ y el par motor $M$ vienen dados por las expresiones:
+Por otro lado, del modelo del motor de corriente continua se sabe que la tensión de armadura del motor $U$ y el par motor $M$ vienen dados por las expresiones:
 \begin{align}
 U &= r\,i + K_v\,\omega \label{eq:tension_armadura} \\
 M &= K_m\,i \label{eq:par_motor}
@@ -529,7 +529,7 @@ Siendo:
 
 A la hora de dimensionar la reductora se busca determinar el valor de reducción ($K$) que genere un par suficiente en la rueda para vencer las fuerzas aplicadas en la misma que se oponen al movimiento.
 
-No obstante existe una condición más restrictiva a la hora de dimensionar la reductora. Es el caso en el que las ruedas queden bloqueadas debido a que el robot se encuentra con un obstáculo imprevisto. Por ejemplo una pared debido a un error de posicionamiento, o que haya un objeto inesperado entre el robot y la pared. En ese caso el controlador de posición reaccionará aumentando la tensión del motor hasta su valor máximo $U_{max}$ (tensión de la batería $V_{bat}$) y se corre el riesgo de que el motor se queme. Este caso es analizado en \ref{rcva_10x} a partir de modelo térmico del motor. El análisis determina que en caso de bloqueo de una rueda la vida útil del motor es de 2,3s, a menos que el driver del motor sirva de fusible y se rompa antes o que exista un mecanismo de protección.
+No obstante existe una condición más restrictiva a la hora de dimensionar la reductora. Es el caso en el que las ruedas queden bloqueadas debido a que el robot se encuentra con un obstáculo imprevisto. Por ejemplo una pared debido a un error de posicionamiento, o que haya un objeto inesperado entre el robot y la pared. En ese caso el controlador de posición reaccionará aumentando la tensión del motor hasta su valor máximo $U_{max}$ (tensión de saturación $v_{sat}$) y se corre el riesgo de que el motor se queme. Este caso es analizado en \ref{rcva_10x} a partir de modelo térmico del motor. El análisis determina que en caso de bloqueo de una rueda la vida útil del motor es de 2,3s, a menos que el driver del motor sirva de fusible y se rompa antes o que exista un mecanismo de protección.
 
 Teniendo en cuenta este caso, un dimensionamiento más correcto de la reductora es aquel que permita que las ruedas derrapen antes de que la tensión del motor alcance su valor máximo.
 
@@ -553,9 +553,9 @@ M1 = \frac{K_a\,mg\,(d2/d)}{K\,Rd\,D}
 
 Por otro lado, a partir de las ecuaciones del modelo del motor \eqref{eq:tension_armadura} y \eqref{eq:par_motor}, se obtiene el par máximo que puede dar el motor a la salida de la reductora $M2$ para la situación de bloqueo ($\omega = 0$):
 \begin{align}
-U &= U_{max} = V_{bat} \label{eq:V_{bat}} \\
-i|_{\omega = 0} &= \frac{V_{bat}}{r} \label{eq:i_w_zero} \\
-M2 &= K_m\,i = K_m\,\frac{V_{bat}}{r} \label{eq:M2}
+U &= U_{max} = v_{sat} \label{eq:v_{sat}} \\
+i|_{\omega = 0} &= \frac{v_{sat}}{r} \label{eq:i_w_zero} \\
+M2 &= K_m\,i = K_m\,\frac{v_{sat}}{r} \label{eq:M2}
 \end{align}
 
 
@@ -566,7 +566,7 @@ M2 >= 1,2\,M1 \label{eq:condicion_kmin}
 
 El valor mínimo de la reductora $K_{min}$ se obtiene al sustituir \eqref{eq:M1} y \eqref{eq:M2} en \eqref{eq:condicion_kmin} y despejar $K$:
 \begin{equation}
-\boxed{K_{min} = 1,2\,\frac{K_a\,mg\,(d2/d)\,D\,r}{4\,K_m\,Rd\,V_{bat}}} \label{eq:kmin}
+\boxed{K_{min} = 1,2\,\frac{K_a\,mg\,(d2/d)\,D\,r}{4\,K_m\,Rd\,v_{sat}}} \label{eq:kmin}
 \end{equation}
 
 Notar que $K_{min}$ aumenta si los términos $K_a\,F1$, $D$ o $r$ aumentan, o $K_m$, $U_{max}$ disminuye.
@@ -605,6 +605,7 @@ D &= 0,6 m\\
 d &= 0,131 m\\
 d2 &= 0,112 m\\
 K_a &= 1\\
+V_{bat}&= 24V
 \end{align*}
 
 Por último, sustituyendo en \eqref{eq:kmin} se obtiene un valor de 
@@ -618,7 +619,31 @@ A partir de este valor, se escogió un factor de reducción 2:1 para la segunda et
 
 \subsection{Dimensionamiento de los motores}
 
-elección de la velocidad y la aceleración
+Los motores se dimensionan de forma que el controlador de estos no llegue nunca a saturación. Esto es, la tensión $U$ de los motores ha de estar por debajo de la tensión de saturación $v_{sat}$. Interesa conocer cual es el margen entre estas dos tensiones necesario para realizar un control sobre los motores sin bloqueos.
+
+El análisis a realizar parte de la premisa de utilizar un perfil de velocidad trapezoidal. Para ello se considera que el perfil de velocidad constituye una consigna de velocidad para el controlador \cite{rcva_10x}.
+
+El análisis parte del perfil perfil de velocidad representado en la figura \ref{fig:} y de las ecuaciones que describen el modelo del motor de continua
+\begin{align}
+U &= r\,i + K_v\,\omega,\label{eq:tension_armadura2} \\
+M &= K_m\,i \label{eq:par_motor2}
+\end{align}
+
+Se observa que durante las fases de aceleración y frenado la aceleración del robot es constante, por lo que el par motor\footnote{$M=F\times\,d = m\,a\times\,d$. Si $a=\text{cte}$, $M=\text{cte}$} y la corriente son constantes\footnote{$M=K_m\,i$. Si $M=\text{cte}$, $i=\text{cte}$}. La tensión de armadura $U$ del motor es la suma del termino óhmico $r\,i$ y del termino de velocidad angular $K_v\,\omega$. Por lo tanto durante las fases de aceleración y frenado, el término óhmico será constante y el término de velocidad proporcional a esta. De esta forma el valor máximo de la tensión de armadura del motor $U$ se alcanza, al final de la fase de aceleración, en el instante $t1$.
+
+Por otro lado, hay que recordar que el calculo de la reductora también se realiza en base a la tensión de saturación $v_{sat}$, la cual, una vez alcanzada haría deslizar las ruedas para evitar el bloque del motor. Es por ello que el instante $t1$ constituye el punto más crítico de las fases del perfil trapezoidal.
+
+De esta forma, el límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:tension_armadura2}, valida en el instante $t1$. El valor de la corriente de armadura se obtiene a partir del par del motor $M1$ comocalculado a partir de la relación 
+
+i = \frac{M1}{K_m}
+M1 = \frac{M3}{K\,Rd}
+M3 = \frac{F1\,D}{2}
+2Fx = m\,a
+
+\omega1 = K\,\omega3
+v = \frac{2\omega3}{D}
+
+
 
 \subsection{Resultados experimentales}
 
