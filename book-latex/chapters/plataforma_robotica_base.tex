@@ -633,15 +633,53 @@ Se observa que durante las fases de aceleración y frenado la aceleración del rob
 
 Por otro lado, hay que recordar que el calculo de la reductora también se realiza en base a la tensión de saturación $v_{sat}$, la cual, una vez alcanzada haría deslizar las ruedas para evitar el bloque del motor. Es por ello que el instante $t1$ constituye el punto más crítico de las fases del perfil trapezoidal.
 
-De esta forma, el límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:tension_armadura2}, valida en el instante $t1$. El valor de la corriente de armadura se obtiene a partir del par del motor $M1$ comocalculado a partir de la relación 
+El límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:tension_armadura2}, valida en el instante $t1$. Por un lado, la corriente de armadura se puede expresar en función de la aceleración $a$ del robot del siguiente modo:
+\begin{equation}
+\begin{split}
+i &= \frac{M1}{K_m}\\
+M1 &= \frac{M3}{K\,Rd}\\
+M3 &= \frac{F1\,D}{2}\\
+2Fx &= m\,a \label{eq:desarllo_i_func_a}
+\end{split}
+\end{equation}
 
-i = \frac{M1}{K_m}
-M1 = \frac{M3}{K\,Rd}
-M3 = \frac{F1\,D}{2}
-2Fx = m\,a
+Por otro lado, la velocidad angular $\omega$ se puede expresar en función de la velocidad $v$ del robot como:
+\begin{equation}
+\begin{split}
+\omega1 &= K\,\omega3\\
+v &= \frac{2\omega3}{D} \label{eq:w_func_v}
+\end{split}
+\end{equation}
 
-\omega1 = K\,\omega3
-v = \frac{2\omega3}{D}
+Sustituyendo en \eqref{eq:tension_armadura2} se obtiene\footnote{$K_v$ ha sido sustituido por $K_m$ ya que coinciden si ambas constantes se expresan en $[V/(rad/s)]$ y $Nm/A$, respectivamente}:
+\begin{equation}
+U = (\frac{r\,m\,D}{4K\,Rd\,K_m})\,a + (\frac{2K_m\,K}{D})\,v \label{u_func_a_v}
+\end{equation}
+
+Representando la velocidad $v$ en función de la aceleración $a$ se obtiene la ecuación de la recta 
+\begin{equation}
+v = v_o - \frac{v_o}{a_o}\,a \label{v_func_a}
+\end{equation}
+
+Donde
+\begin{align}
+v_o &= \frac{\,U\,D}{2K\,K_m} \label{v_o} \\ 
+a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
+\end{align}
+
+
+Dicha recta se representa en la figura \ref{fig:recta_v_func_a}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
+
+Recapitulando y simplificando \eqref{v_func_a}, la velocidad máxima del robot $v_{max}$ al límite de saturación y deslizamiento para una aceleración dada se obtiene a partir de la expresión
+\begin{empheq}[box=\fbox]{align}
+v_{max} &= v_o - (1-\frac{a_{max}}{a_o}) \label{v_max_func_a_max}\\
+v_o &= \frac{\,U\,D}{2K\,K_m} \label{v_o} \\ 
+a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
+\end{empheq}
+
+Por ejemplo, para el reductora, se obtiene los resultados de la figura \ref{fig:dimensionamiento_motor_ptinto}. Se fija una aceleración $a = 0,8\,a_{max} = $
+
+
 
 
 
