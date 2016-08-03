@@ -477,11 +477,12 @@ Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de l
 
 Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
 
-\subsection{Dimensionamiento del motor y su reductora}
+\newpage
+\subsection{Dimensionamiento de la reductora}
 
 Como se ha visto, las ruedas del eje motriz se encuentran conectadas al motor por medio de una reductora. La figura \ref{fig:modelo_reductora_motor} representa el modelo mecánico de uno de los motores. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{modelo_reductora_motor}
 \caption[]{Modelo mecánico de uno de los motores del sistema de tracción diferencial.}
@@ -617,28 +618,36 @@ $$K_{min} = 7.$$
 
 A partir de este valor, se escogió un factor de reducción 2:1 para la segunda etapa.
 
-\subsection{Dimensionamiento de los motores}
+\subsection{Calculo de la velocidad máxima}
 
 Los motores se dimensionan de forma que el controlador de estos no llegue nunca a saturación. Esto es, la tensión $U$ de los motores ha de estar por debajo de la tensión de saturación $v_{sat}$. Interesa conocer cual es el margen entre estas dos tensiones necesario para realizar un control sobre los motores sin bloqueos.
 
 El análisis a realizar parte de la premisa de utilizar un perfil de velocidad trapezoidal. Para ello se considera que el perfil de velocidad constituye una consigna de velocidad para el controlador \cite{rcva_10x}.
 
-El análisis parte del perfil perfil de velocidad representado en la figura \ref{fig:} y de las ecuaciones que describen el modelo del motor de continua
+El análisis parte del perfil perfil de velocidad representado en la figura \ref{fig:dimensionamiento_motores} y de las ecuaciones que describen el modelo del motor de continua
 \begin{align}
 U &= r\,i + K_v\,\omega,\label{eq:tension_armadura2} \\
 M &= K_m\,i \label{eq:par_motor2}
 \end{align}
 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{dimensionamiento_motores}
+\caption[]{Tensión de armadura del motor en el límite de saturación para un perfil de velocidad trapezoidal.}
+\label{fig:dimensionamiento_motores}
+\end{figure}
+
 Se observa que durante las fases de aceleración y frenado la aceleración del robot es constante, por lo que el par motor\footnote{$M=F\times\,d = m\,a\times\,d$. Si $a=\text{cte}$, $M=\text{cte}$} y la corriente son constantes\footnote{$M=K_m\,i$. Si $M=\text{cte}$, $i=\text{cte}$}. La tensión de armadura $U$ del motor es la suma del termino óhmico $r\,i$ y del termino de velocidad angular $K_v\,\omega$. Por lo tanto durante las fases de aceleración y frenado, el término óhmico será constante y el término de velocidad proporcional a esta. De esta forma el valor máximo de la tensión de armadura del motor $U$ se alcanza, al final de la fase de aceleración, en el instante $t1$.
 
-Por otro lado, hay que recordar que el calculo de la reductora también se realiza en base a la tensión de saturación $v_{sat}$, la cual, una vez alcanzada haría deslizar las ruedas para evitar el bloque del motor. Es por ello que el instante $t1$ constituye el punto más crítico de las fases del perfil trapezoidal.
+Por otro lado, hay que recordar que el calculo de la reductora también se realiza en base a la tensión de saturación $V_{sat}$, para la cual las ruedas comenzarían a deslizar para evitar el bloqueo del motor. Es por ello que el instante $t1$ constituye el punto más crítico de las fases del perfil trapezoidal.
 
-El límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:tension_armadura2}, valida en el instante $t1$. Por un lado, la corriente de armadura se puede expresar en función de la aceleración $a$ del robot del siguiente modo:
+El límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:tension_armadura2}, valida en el instante $t1$. Por un lado, la corriente de armadura $i$ se puede expresar en función de la aceleración $a$ del robot del siguiente modo:
 \begin{equation}
 \begin{split}
 i &= \frac{M1}{K_m}\\
 M1 &= \frac{M3}{K\,Rd}\\
-M3 &= \frac{F1\,D}{2}\\
+M3 &= Fx\,\frac{D}{2}\\
 2Fx &= m\,a \label{eq:desarllo_i_func_a}
 \end{split}
 \end{equation}
@@ -668,22 +677,64 @@ a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
 \end{align}
 
 
-Dicha recta se representa en la figura \ref{fig:recta_v_func_a}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=.65\textwidth]{recta_velocidad_maxima}
+\caption[]{Recta de velocidad máxima para una aceleración dada y zona útil de funcionamiento sin saturación y deslizamiento.}
+\label{fig:recta_velocidad_maxima}
+\end{figure}
+
+
+Dicha recta se representa en la figura \ref{fig:recta_velocidad_maxima}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
 
 Recapitulando y simplificando \eqref{v_func_a}, la velocidad máxima del robot $v_{max}$ al límite de saturación y deslizamiento para una aceleración dada se obtiene a partir de la expresión
 \begin{empheq}[box=\fbox]{align}
-v_{max} &= v_o - (1-\frac{a_{max}}{a_o}) \label{v_max_func_a_max}\\
+v_{max} &= v_o\, (1-\frac{a_{max}}{a_o}) \label{v_max_func_a_max}\\
 v_o &= \frac{\,U\,D}{2K\,K_m} \label{v_o} \\ 
 a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
 \end{empheq}
 
-Por ejemplo, para el reductora, se obtiene los resultados de la figura \ref{fig:dimensionamiento_motor_ptinto}. Se fija una aceleración $a = 0,8\,a_{max} = $
+Siguiendo con el ejemplo del dimensionamiento de la reductora del robot P.Tinto, a partir de los datos ya conocidos del motor Dunkermotoren BG40x50 y de las expresiones \eqref{v_o} y \eqref{a_o}, se obtiene la recta velocidad-aceleración representada en la figura \ref{fig:recta_velocidad_maxima_ptinto} donde 
+\begin{align}
+v_o &=  1,93 m/s \label{v_o_ptinto} \\ 
+a_o &=  11,29 m/s^2\,\,(1,15g)\label{a_o_ptinto}
+\end{align}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{recta_velocidad_maxima_ptinto}
+\caption[]{Velocidad y aceleración del robot P.Tinto para un funcionamiento sin saturación y deslizamiento.}
+\label{fig:recta_velocidad_maxima_ptinto}
+\end{figure}
 
 
+P.Tinto es un robot tipo con ruedas en el medio no simétrico como el de la figura \ref{fig:dinamica_a_max_ruedas_medio}. A partir del coeficiente de adherencia de las ruedas $K_a = 1$ y las medidas del centro de gravedad respecto al eje motriz:
+\begin{equation}
+\begin{split}
+d1 &= 19,18 mm\\
+d2 &= 111,8 mm\\
+d2' &= 139,68 mm\\
+h &= 122,9 mm
+\end{split}
+\end{equation}
+
+Mediante las ecuaciónes \eqref{eq:a_max_neg_no_simetrico} y \eqref{eq:a_max_pos_no_simetrico} se determina una aceleración máxima 
+\begin{equation}
+a_{max} = 0,44g\,\,(4,32m/s²)
+\end{equation}
+
+Teniendo en cuenta un margen de seguridad del 20\% se fija la aceleración del robot a un valor de &0,35g& ($3,45 m/s^2$). A partir de la ecuación \eqref{v_max_func_a_max} se obtiene la velocidad correspondiente para un funcionamiento sin saturación y deslizamiento:
+\begin{equation}
+v_{max} = 1,2 m/s
+\end{equation}
 
 
+Observar la segunda recta de la figura \ref{fig:recta_velocidad_maxima_ptinto}, correspondiente a un motor de la mitad de potencia. Para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
 
 \subsection{Resultados experimentales}
+
+\vfill
+\newpage
 
 \section{Sistema de control de posición}
 \label{sec:sitema_posicionamiento_relativo}
@@ -692,7 +743,7 @@ Por ejemplo, para el reductora, se obtiene los resultados de la figura \ref{fig:
 El control de los motores se realiza de forma indirecta utilizando las medida de posición de las ruedas libres.
 
 
-Esta configuración difiere de la configuración clásica en la que el encoder se encuentra conectado directamente al eje del motor. Dichas ruedas libres se utilizan para implementar el sistema de posicionamiento mediante odometría, la configuración del encoder desacoplado del motor permite mejorar el error acumulado de posicionamiento debido al derrape de las ruedas motrices.
+Esta configuración difiere de la configuración clásica en la que el encoder se encuentra conectado directamente al eje del motor. Dichas ruedas libres se utilizan para implementar el sistema de posicionam iento mediante odometría, la configuración del encoder desacoplado del motor permite mejorar el error acumulado de posicionamiento debido al derrape de las ruedas motrices.
 
 
 
