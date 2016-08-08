@@ -28,7 +28,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introducción al proyecto}
-\label{cha:introduccion}
+\label{cha_introduccion}
 
 \begin{FraseCelebre}
   \begin{Frase}
@@ -41,12 +41,12 @@ Todo el mundo es capaz de hacer cosas extraordinarias, cada uno a su manera. Alg
 
 
 \section{Presentación}
-\label{sec:presentacion}
+\label{sec_presentacion}
 
 Este trabajo de fin de carrera trata sobre el desarrollo de robots para la competición de robots Eurobot \cite{eurobot}. Pretende ser un manual de referencia para todo aquel que quiera construir un robot para participar en Eurobot\footnote{O para desarrollar un robot de similares características para cualquier otro cometido}. Todo lo que se expone en este libro esta se sustenta en la experiencia adquirida en el desarrollo de robots participantes en Eurobot entre los años 2003 y 2015. Especialmente en el periodo entre 2010 y 2015.
 
 \section{La competición Eurobot}
-\label{sec:la_competicion_eurobot}
+\label{sec_la_competicion_eurobot}
 
 Eurobot es un concurso internacional de robótica creado en 1998 a partir de la Copa de Francia de la robótica \cite{cdr} (Coupe de France de robotique). El concurso está abierto a equipos de jóvenes, organizados ya sea en proyectos de estudiantes o en clubes independientes. Eurobot se lleva a cabo en Europa, pero da la bienvenida a los equipos de todos los continentes.
 
@@ -71,7 +71,7 @@ La comunidad de Eurobot se comunica principalmente a través de sus foros \cite{f
 Eurobot está organizada gracias la asociación internacional de Eurobot y a la asociación francesa \emph{Planet Sciences} \cite{planet_sciences} y a muchas otras asociaciones, escuelas, universidades y personas voluntarias de los países participantes. Es increíble la cantidad de personas que apoyan Eurobot y trabajan de forma voluntaria sin ninguna remuneración más que la satisfacción de estar implicados y formar parte de esta fiesta que es Eurobot. Y esto incluye a los participantes, ya que ganar Eurobot no implica ningún premio económico. En total, un montón de gente que trabaja para disfrutar y divertirse con la robótica.
 
 \section{El equipo \emph{Eurobotics Engineering}, historia y antecedentes}
-\label{sec:equipo_eurobotics}
+\label{sec_equipo_eurobotics}
 
 \emph{Eurobotics Engineering} \cite{arc_robots} es un equipo participante en Eurobot formado por entusiastas de la robótica. Está formado por estudiantes de la Universidad de Alcalá (UAH): ingenieros de telecomunicación, de electrónica, de telemática y de electrónica industrial.
 
@@ -83,7 +83,7 @@ La siguiente tabla muestra un resumen de los robots desarrollados para la compet
 
 \begin{center}
 	\begin{longtable}{|c|c|c|p{5cm}|}
-    \caption{Robots desarrollados para la competición Eurobot (2003-2015).} \label{tab:robots_desarrollados} \\
+    \caption{Robots desarrollados para la competición Eurobot (2003-2015).} \label{tab_robots_desarrollados} \\
     
     \hline 
 	\multicolumn{1}{|c|}{\textbf{Año}} & 
@@ -277,7 +277,7 @@ La siguiente tabla muestra un resumen de los robots desarrollados para la compet
 	
 
 \section{La robótica educativa}
-\label{sec:robotica_educativa}
+\label{sec_robotica_educativa}
 
 A día de hoy la robótica constituye una herramienta educativa muy potente. Permite aprender y poner en practica diferentes ramas de la ciencia. Lo hace a través de la ingeniería y las áreas de la ciencia en las que se sustenta (matemáticas, física, química, entre otras) y utilizando la tecnología actual. Este tipo de educación se denomina STEM \cite{stem} acrónimo del inglés \emph{Science, Technology, Engineering and Mathematics} (Ciencia, Tecnología, Ingeniería y Matemáticas). Además permite potenciar la creatividad de las tecnologías digitales, más allá de la simple explotación de ellas \cite{strategy_1_0}.
 
@@ -303,7 +303,7 @@ Durante el desarrollo de la robótica, puede parecer que es una actividad poco ag
 
 
 \section{Aprendiendo de gigantes.}
-\label{sec:aprendiendo_de_gigantes}
+\label{sec_aprendiendo_de_gigantes}
 
 Hoy en día es casi impensable que una sola persona pueda realizar avances en los diferentes campos de la ciencia equiparables a los descubrimientos de los grandes científicos de la historia. Así la investigación y el desarrollo tecnológico son llevados a cabo por grupos de personas cada cual experta en ciertos tema concretos. Por otro lado la tecnología y sus aplicaciones cada vez son más complejas y eso es en gran parte a que los nuevos desarrollos se apoyan en desarrollos anteriores que permiten abstraerse de aquello que se encuentra fuera del alcance de un objetivo concreto.
 
@@ -313,23 +313,23 @@ En cierta forma, esta manera de abordar el aprendizaje y el desarrollo de aplica
 
 Pues bien este proyecto no es una excepción y también se ha apoyado en hombros de gigantes. El código fuente de los microcontroladores de algunos de los robots desarrollados (Husillo, Joselito o Campanolo) fue escrito desde cero. Otros (Electrococo, Mr.Proper y Topolino) se ayudaron del código escrito en años anteriores para para otros robots. Y finalmente a partir del año 2010 los robots (Trompetero, Zamorano, Crispín, Automático, Grosnik, Seskäpa, P.Tinto y Tirantes) se desarrollaron a partir del código abierto escrito por terceros.
 
-El utilizar código abierto de terceros vino dado por el objetivo de evolucionar tecnológicamente los robots a desarrollar para Eurobot. Para ello se estudió los fundamentos técnicos y tecnológicos de los robots por aquella época obtenían muy buenos resultados como RCVA \cite{rcva}, Microb Tecnology \cite{microb}, RCA Archen \cite{rca_aachen} o Turak \cite{turak}. Al final de dicho estudio se establecieron los requisitos de la mecánica, hardware y software necesarios, y se desarrollo una plataforma robótica base (el \emph{Dummy robot}, ver \ref{fig:dummy_robot}) con una mecánica y una electrónica de acuerdo a los requisitos buscados.
+El utilizar código abierto de terceros vino dado por el objetivo de evolucionar tecnológicamente los robots a desarrollar para Eurobot. Para ello se estudió los fundamentos técnicos y tecnológicos de los robots por aquella época obtenían muy buenos resultados como RCVA \cite{rcva}, Microb Tecnology \cite{microb}, RCA Archen \cite{rca_aachen} o Turak \cite{turak}. Al final de dicho estudio se establecieron los requisitos de la mecánica, hardware y software necesarios, y se desarrollo una plataforma robótica base (el \emph{Dummy robot}, ver \ref{fig_dummy_robot}) con una mecánica y una electrónica de acuerdo a los requisitos buscados.
 
 \begin{figure}[h]
 \centerline{
 	\subfloat[Diseño 3D]{\includegraphics[height=.2\textheight]{dummy_robot_1}
-	\label{fig:dummy_robot_3d}}
+	\label{fig_dummy_robot_3d}}
 	\hfil
 	\subfloat[Prototipo mecánico]{\includegraphics[height=.2\textheight]{dummy_robot_2}
-	\label{fig:dummy_robot_prototipo}}
+	\label{fig_dummy_robot_prototipo}}
 }
 \centerline{
 	\subfloat[Tarjeta electronica dsPIC33]{\includegraphics[height=.2\textheight]{dummy_robot_tarjeta_dspic33}
-	\label{fig:dummy_robot_tarjeta_dspic33}}
+	\label{fig_dummy_robot_tarjeta_dspic33}}
 }
 
 \caption[Plataforma robótica \emph{Dummy robot}]{\emph{Dummy robot}. Plataforma robótica base desarrollada en 2010 por el equipo Eurobotics Engineering. Diseño 3D, prototipo mecánico y electrónica basada en microcontrolador dsPIC33.}
-\label{fig:dummy_robot}
+\label{fig_dummy_robot}
 \end{figure}
 
 
@@ -341,7 +341,7 @@ La decisión de utilizar estas librerías y portarlas permitió no solo aprender a 
 
 
 \section{Motivación y objetivos}
-\label{sec:motivacion_y_objetivos}
+\label{sec_motivacion_y_objetivos}
 
 Todo el trabajo realizado en el desarrollo de los diferentes robots viene principalmente motivado por la afición a la robótica, la electrónica, los sistemas embebidos y por la inquietud de inventar y crear cosas.
 
@@ -356,7 +356,7 @@ Por otro lado, el objetivo fundamental de este trabajo es la divulgación del con
 \end{itemize}
 
 \section{Organización del libro}
-\label{sec:organizacion_del_libro}
+\label{sec_organizacion_del_libro}
 
 El libro cuenta con 5 capítulos adicionales a este capítulo:
 

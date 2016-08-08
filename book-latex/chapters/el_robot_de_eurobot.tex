@@ -28,7 +28,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{El robot de Eurobot}
-\label{cha:el_robot_de_eurobot}
+\label{cha_el_robot_de_eurobot}
 
 \begin{FraseCelebre}
   \begin{Frase}
@@ -43,10 +43,10 @@ Bernardo de Chatres, en \emph{Metalogicon} de Juan de Salisbury
 
 %\section{Introducción}
 
-Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha:introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si se comparan las reglas del juego de varios años se observan características comunes que repercuten en el diseño de la mecánica, de la electrónica o del software.
+Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha_introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si se comparan las reglas del juego de varios años se observan características comunes que repercuten en el diseño de la mecánica, de la electrónica o del software.
 
 \section{Especificaciones del robot de Eurobot}
-\label{sec:especificaciones_del_robot_de_eurobot}
+\label{sec_especificaciones_del_robot_de_eurobot}
 
 Un robot de Eurobot tiene especificaciones independientes de la temática del juego y otras dependientes totalmente. Las primera permiten que una vez estén desarrolladas y validadas puedan ser reutilizadas o mejoradas en futuros diseños. Esto quiere decir que pueden ser un bloque totalmente modular, por ejemplo una tarjeta electrónica, o diseños reutilizables como el diseño electrónico de la tarjeta, cuyo PCB\footnote{Del inglés \emph{Printed Circuit Board}, Tarjeta de Circuito Impreso} puede diseñarse a medida del robot y en función del espacio disponible.
 
@@ -61,11 +61,11 @@ Un robot de Eurobot ha de ser completamente autónomo y básicamente ser capaz de:
 
 Además, si las reglas permiten dos robots por equipo: un robot principal y uno secundario, es recomendable que ambos robots sean capaces de comunicarse entre sí con el fin jugar de forma cooperativa.
 
-Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{fig:balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
+Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{fig_balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
 
 Estas balizas pueden ser activas o pasivas. Por ejemplo, un sistema compuesto por una baliza maciza y un sensor de ultrasonidos puede ser utilizado para detectar a que distancia y dirección se encuentra un robot oponente antes de tomar tomar la decisión de hacia donde redirigirse.
 
-Además el campo de juego cuenta con 3 soportes para balizas adicionales que están a disposición de cada equipo (ver figura \ref{fig:balizas_campo}). Estos soportes están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante colocada en el soporte de una esquina del campo y un sensor de luz reflexivo en el robot puede ser utilizado para localizar una canasta que se encuentre en dicha esquina del campo.
+Además el campo de juego cuenta con 3 soportes para balizas adicionales que están a disposición de cada equipo (ver figura \ref{fig_balizas_campo}). Estos soportes están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante colocada en el soporte de una esquina del campo y un sensor de luz reflexivo en el robot puede ser utilizado para localizar una canasta que se encuentre en dicha esquina del campo.
 
 Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus dimensiones y peso:
 
@@ -79,14 +79,14 @@ Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus d
 \centering
 \includegraphics[height=.27\textheight]{balizas_robots}
 \caption[Altura de balizas y sensores]{Altura de balizas y sensores. Vista de perfil de dos robots oponentes y el campo de juego. 1- Soporte para balizas del campo de juego. 2- Soporte para baliza del oponente. 3- Espacio para sensores de balizas.}
-\label{fig:balizas_robots}
+\label{fig_balizas_robots}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=.27\textheight]{balizas_campo}
 \caption[Soportes para balizas del campo de juego de Eurobot]{Campo de juego de Eurobot 2015. Soportes para balizas fijas de los equipos A y B.}
-\label{fig:balizas_campo}
+\label{fig_balizas_campo}
 \end{figure}
 
 Por otro lado, el robot ha de ser capaz de resolver la temática del juego lo cual implica el manejo de los elementos o piezas propias del juego. Por ejemplo, en Eurobot 2015, juego titulado como \emph{Robomovies} (temática sobre el cine), una de las cosas por las que los robots obtenían puntos era por hacer una torre con piezas cilíndricas coronada con una pelota de tenis que simbolizaba un foco de cine. 
@@ -113,7 +113,7 @@ Por último, las reglas de Eurobot además especifican otros temas que deben de se
 \end{itemize}
 
 \section{Elementos del juego y tareas de un robot de Eurobot}
-\label{sec:elementos_de_juego_y_tareas}
+\label{sec_elementos_de_juego_y_tareas}
 
 Los elementos de juego en Eurobot varían cada año con la temática. Se pueden identificar 2 tipos de elementos básicos:
 
@@ -164,7 +164,7 @@ La \emph{Funny acction} es una acción que está pensada para ser realizada por lo
 
 
 \section{Partes principales en el desarrollo de un robot de Eurobot}
-\label{sec:partes_robot_eurobot}
+\label{sec_partes_robot_eurobot}
 
 Teniendo en cuenta las especificaciones descritas en la sección anterior y la temática de la prueba de Eurobot, el desarrollo de un robot de Eurobot se puede dividir en las siguientes partes principales:
 
@@ -176,13 +176,13 @@ Teniendo en cuenta las especificaciones descritas en la sección anterior y la te
 \item Manipulación de elementos de juego. 
 \end{enumerate}
 
-Así, tal y como representa la figura \ref{fig:partes_robot_eurobot}, un único robot está compuesto por las tres primera partes y sólo en caso de contar con 2 o más robots es necesaria la parte de comunicación entre robots. 
+Así, tal y como representa la figura \ref{fig_partes_robot_eurobot}, un único robot está compuesto por las tres primera partes y sólo en caso de contar con 2 o más robots es necesaria la parte de comunicación entre robots. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=.4\textheight]{partes_robot_eurobot}
 \caption[Partes principales del desarrollo de un robot de Eurobot]{Partes principales del desarrollo de un robot de Eurobot. En el fondo robot P.Tinto y Tirantes (robot secundario) desarrollados para Eurobot 2015 por el equipo Eurobotics Engineering}
-\label{fig:partes_robot_eurobot}
+\label{fig_partes_robot_eurobot}
 \end{figure}
 
 Por otro lado, las partes 2, 3 y 4 forman lo que se ha denominado \emph{plataforma robótica base}. Esta plataforma base está compuesta por las partes que permiten un desarrollo independientemente de la temática de la prueba de Eurobot. Así, esta plataforma robótica constituye un desarrollo reutilizable en la concepción de nuevos robots de Eurobot. 
@@ -191,48 +191,48 @@ Cada una de estas partes principales de un robot de Eurobot tienen pueden implic
 
 
 \subsection{Estrategia de juego}
-\label{sec:estrategia_de_juego}
+\label{sec_estrategia_de_juego}
 
-La estrategia de juego constituye el nivel más abstracto del robot y tiene un desarrollo puramente software. La estrategia tiene en cuenta diferentes variables del juego como se indica en la figura \ref{fig:variables_estrategia}(tareas por realizar, prioridad de tareas, posición del oponente, el tiempo transcurrido de partido, etc.) para tomar decisiones que maximicen la puntuación a conseguir y así ganar el partido.
+La estrategia de juego constituye el nivel más abstracto del robot y tiene un desarrollo puramente software. La estrategia tiene en cuenta diferentes variables del juego como se indica en la figura \ref{fig_variables_estrategia}(tareas por realizar, prioridad de tareas, posición del oponente, el tiempo transcurrido de partido, etc.) para tomar decisiones que maximicen la puntuación a conseguir y así ganar el partido.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{variables_estrategia}
 \caption[Estrategia de juego: variables a tener en cuenta en la toma de decisiones]{Estrategia de juego: variables a tener en cuenta en la toma de decisiones.}
-\label{fig:variables_estrategia}
+\label{fig_variables_estrategia}
 \end{figure}
 
 El desarrollo de la estrategia puede ser realizado en paralelo a otras partes del robot, pero ha de tener en cuenta los tiempos derivados de tareas que impliquen sistemas mecánicos, como por ejemplo coger una pelota y almacenarla o desplazarse de un punto del campo a otro. Dichos tiempos por lo general son mucho mayores (segundos o decenas de segundos) que el tiempo que tarda el algoritmo de estrategia implementado en tomar una decisión. Es por ello que dicho algoritmo estará la mayor parte del tiempo esperando a que otras partes terminen de realizar su función.
 
 \subsection{Desplazamiento y localización}
-\label{sec:desplazamiento_y_localizacion}
+\label{sec_desplazamiento_y_localizacion}
 
-Un robot de Eurobot está diseñado para funcionar en un entorno de dimensiones conocidas como es el campo de juego (un área de 2x3 m), o lo que es lo mismo un plano cartesiano. Así la posición del robot y otros objetos del campo, como elementos de juego o los robots oponentes, vendrá dada por sus coordenadas rectangulares $(x,y)$ y polares $(d,a)$ relativas a un origen de coordenadas $(0,0)$ (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}).
+Un robot de Eurobot está diseñado para funcionar en un entorno de dimensiones conocidas como es el campo de juego (un área de 2x3 m), o lo que es lo mismo un plano cartesiano. Así la posición del robot y otros objetos del campo, como elementos de juego o los robots oponentes, vendrá dada por sus coordenadas rectangulares $(x,y)$ y polares $(d,a)$ relativas a un origen de coordenadas $(0,0)$ (ver figura \ref{fig_ejemplo_campo_cartesiano_y_trayectorias}).
 
 La localización permite al robot conocer su posición $(x_R,y_R)$ en el campo y poder calcular las distancias (rectangulares o polares) de un punto de destino $(x_i,y_i)$ relativas a su posición. El desplazamiento permite recorrer dichas distancias a una velocidad $v$ y aceleración $a$ determinadas generando así \emph{trayectorias}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.6\textwidth]{ejemplo_campo_cartesiano_y_trayectorias}
-\caption[Representación cartesiana del campo de Eurobot 2015 y ejemplo de generación de trayectorias]{Representación cartesiana del campo de Eurobot 2015 (ver figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}) y ejemplo de generación de trayectorias. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
-\label{fig:ejemplo_campo_cartesiano_y_trayectorias}
+\caption[Representación cartesiana del campo de Eurobot 2015 y ejemplo de generación de trayectorias]{Representación cartesiana del campo de Eurobot 2015 (ver figura \ref{fig_ejemplo_campo_cartesiano_y_trayectorias}) y ejemplo de generación de trayectorias. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
+\label{fig_ejemplo_campo_cartesiano_y_trayectorias}
 \end{figure}
 
 Mecánicamente es necesario desarrollar un sistema de tracción, que en el caso de los robots desarrollados es un \emph{sistema de tracción diferencial}. Dicho sistema está compuesto por dos motores con reductora que mueven dos ruedas independientes que están en contacto con el campo de juego. Además para poder \emph{controlar velocidad y aceleración} de cada rueda se utilizan sensores tipo \emph{encoder} que miden cuanto gira cada rueda, o lo que es lo mismo su posición angular relativa. Utilizando la información medida por los encoders (u otro sistema similar) es posible medir la posición del robot de forma relativa a una posición de inicio mediante \emph{algoritmos de odometría}\footnote{De forma complementaria se pueden utilizar sistemas de medida de posición absoluta para corregir los errores de las medidas relativas}.
 
-Como muestra la figura \ref{fig:desplazamiento_y_localizacion_bloques} la electrónica asociada ha de contar con una etapa de electrónica de potencia que permita la excitación de los motores (\emph{drivers} de motores), el acondicionamiento y decodificación de las señales de los encoders, y un microcontrolador donde se implementen los algoritmos de control de posición, velocidad y aceleración de los motores, y el algoritmo de odometría.
+Como muestra la figura \ref{fig_desplazamiento_y_localizacion_bloques} la electrónica asociada ha de contar con una etapa de electrónica de potencia que permita la excitación de los motores (\emph{drivers} de motores), el acondicionamiento y decodificación de las señales de los encoders, y un microcontrolador donde se implementen los algoritmos de control de posición, velocidad y aceleración de los motores, y el algoritmo de odometría.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.7\textwidth]{desplazamiento_y_localizacion_bloques}
 \caption[Desplazamiento y localización: diagrama de bloques de las partes a desarrollar]{Desplazamiento y localización: diagrama de bloques del desarrollo mecánico, electrónico y software implicado.}
-\label{fig:desplazamiento_y_localizacion_bloques}
+\label{fig_desplazamiento_y_localizacion_bloques}
 \end{figure}
 
-Dicho microcontrolador, además de implementar los algoritmos específicos de control de motores y odometría, ha de implementar funciones mucho más abstractas como la \emph{generación de trayectorias}. De forma que en última medida, el robot pueda desplazarse a un punto del campo de juego de forma autónoma o seguir un camino compuesto por varios puntos como el representado en la figura \ref{fig:ejemplo_campo_cartesiano_y_trayectorias}.
+Dicho microcontrolador, además de implementar los algoritmos específicos de control de motores y odometría, ha de implementar funciones mucho más abstractas como la \emph{generación de trayectorias}. De forma que en última medida, el robot pueda desplazarse a un punto del campo de juego de forma autónoma o seguir un camino compuesto por varios puntos como el representado en la figura \ref{fig_ejemplo_campo_cartesiano_y_trayectorias}.
 
 \subsection{Evitación de obstáculos}
-\label{sec:evitacion_de_obstaculos}
+\label{sec_evitacion_de_obstaculos}
 
 El robot de Eurobot se encuentra con dos tipos de obstáculos a evitar en sus trayectorias. Por un lado están los obstáculos fijos y de posición conocida como pueden ser partes del campo de juego o elementos de juego al inicio del partido. Y por otro lado, objetos de posición desconocida como son los robots oponentes o elementos de juego que han sido movidos de su posición inicial.
 
@@ -241,28 +241,28 @@ La evitación de obstáculos está directamente relacionada con la generación de tr
 \begin{description}
 \item \textbf{Obstáculo en trayectoria:}
 
-Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{fig:ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
+Es el caso en el que el robot quiere ir de una zona del campo a otra, por ejemplo para coger o dejar un elemento de juego. El camino a seguir hasta la zona de destino ha de tener en cuenta los espacios libres del campo de juego y la posición de los robots oponentes para así seguir trayectorias libres de obstáculos. Como muestra el ejemplo de la figura \ref{fig_ejemplo_trayectorias_y_evitacion}, entre el punto origen y destino además de los objetos fijos del campo de juego se encuentra el robot oponente. La generación de trayectorias tiene en cuenta estos obstáculos y genera trayectorias que rodean los obstáculos siguiendo el camino más corto.
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.6\textwidth]{ejemplo_trayectorias_y_evitacion}
 \caption[Ejemplo de evitación de obstáculos en trayectorias]{Evitación de obstáculos en trayectorias. En el centro un robot oponente. En horizontal el eje $x[mm]$, vertical el eje $y[mm]$. Los cuadrados rojos representan obstáculos y el cuadrado azul de rayas la zona útil de desplazamiento del robot. El punto azul grande con flecha indica la posición de inicio y los puntos azules grandes sin flecha indican un punto de destino. Los puntos azules pequeños indican puntos de la trayectoria.}
-\label{fig:ejemplo_trayectorias_y_evitacion}
+\label{fig_ejemplo_trayectorias_y_evitacion}
 \end{figure}
 
 
 La evitación los obstáculo fijos del campo de juego se puede realizar utilizando la \emph{localización del robot}. Si el robot conoce su posición es sencillo evitar chocar con paredes o elementos fijos del campo de juego.
 
-Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver figura \ref{sec:especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado \cite{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
+Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver figura \ref{sec_especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado \cite{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
 
-Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición del robot (ver ejemplo de la figura \ref{fig:medida_posicion_oponente} o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
+Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición del robot (ver ejemplo de la figura \ref{fig_medida_posicion_oponente} o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.7\textwidth]{medida_posicion_oponente}
 \caption[Ejemplo de sistema de medida de la posición del robot oponente basado en balizas]{Ejemplo de sistema de medida de la posición del robot oponente que utiliza una baliza colocada en el oponente y un sensor en el robot. La medida obtenida es el ángulo y la distancia relativa al la posición del robot.}
-\label{fig:medida_posicion_oponente}
+\label{fig_medida_posicion_oponente}
 \end{figure}
 
 
@@ -274,13 +274,13 @@ La detección de un objeto inesperado en una trayectoria se puede realizar utiliz
 
 El sistema a desarrollar permite detectar un objeto cercano (0 a 30cm aproximadamente) en las dirección de avance del robot (parte delantera y trasera) y opcionalmente detectar un objeto situado a los lados del robot (lado izquierdo y derecho). El rango depende de principalmente de la distancia de frenado del robot a velocidad máxima, de forma que la detección de un objeto permita evitar la colisión. 
 
-Suelen utilizarse sensores digitales de luz difusa (luz roja o infrarrojos) situados estratégicamente a una altura determinada. En parte delantera y trasera del robot tres sensores son suficientes para detectar un objeto (dos si el robot es estrecho), dos de ellos se sitúan en los extremos de del robot y si fuera necesario un tercero en el punto medio entre ellos (ver figura \ref{fig:deteccion_obstaculo_en_trayectoria}). Para la detección de objetos a izquierda y derecha del robot un sensor a cada lado es suficiente. El fundamento es simple, si cualquiera de los dos sensores de los extremos de robot detecta un objeto hay posibilidad de colisión.
+Suelen utilizarse sensores digitales de luz difusa (luz roja o infrarrojos) situados estratégicamente a una altura determinada. En parte delantera y trasera del robot tres sensores son suficientes para detectar un objeto (dos si el robot es estrecho), dos de ellos se sitúan en los extremos de del robot y si fuera necesario un tercero en el punto medio entre ellos (ver figura \ref{fig_deteccion_obstaculo_en_trayectoria}). Para la detección de objetos a izquierda y derecha del robot un sensor a cada lado es suficiente. El fundamento es simple, si cualquiera de los dos sensores de los extremos de robot detecta un objeto hay posibilidad de colisión.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.7\textwidth]{deteccion_obstaculo_en_trayectoria}
 \caption[Ejemplo de sistema de detección de obstáculos en trayectoria]{Ejemplo de sistema de detección de obstáculos en trayectoria. Tres sensores de corta distancia digitales detectan posibles colisiones.}
-\label{fig:deteccion_obstaculo_en_trayectoria}
+\label{fig_deteccion_obstaculo_en_trayectoria}
 \end{figure}
 
 
@@ -297,7 +297,7 @@ Una tercera forma de detectar un objeto bloqueante es utilizando la localización
 \end{description}
 
 \subsection{Comunicación entre robots}
-\label{sec:comunicacion_entre_robots}
+\label{sec_comunicacion_entre_robots}
 
 En caso de disponer de dos robots por equipo hay diferentes formas de implementar una estrategia coordinada:
 
@@ -311,20 +311,20 @@ Las dos primeras formas no implican un desarrollo añadido, los mismos sistemas d
 
 La tercera forma necesita del desarrollo de un sistema de comunicación entre ambos robots. Esto implica un desarrollo electrónico y de software principalmente. Es recomendable utilizar una tecnología que robusta y flexible que incluya capas de comunicación que aseguren una fiabilidad en la comunicación. Sobre todo porque el entorno en el que se desarrollan las competiciones suele tener muchas perturbaciones de radio frecuencia como equipos de audio y vídeo inalámbricos, redes Wifi o Bluetooth que pueden afectar a la comunicaciones entre los robots. 
 
-Como representa la figura \ref{fig:comunicacion_entre_robots}, cada robot necesita de un modulo de comunicación conectado a un microcontrolador. Bluetooth y Zigbee son dos de las tecnologías más utilizadas en comunicación inalámbrica, existen en el mercado módulos de comunicación de estas tecnologías que permiten crear enlaces de comunicación de forma sencilla. Dichos módulos electrónicos suelen tener una interfaz serie de comunicación (UART, SPI, I2C, ...) de forma que una vez establecido el canal de comunicación inalámbrico la comunicación entre dos microcontroladores es trasparente (similar a tener un canal cableado). 
+Como representa la figura \ref{fig_comunicacion_entre_robots}, cada robot necesita de un modulo de comunicación conectado a un microcontrolador. Bluetooth y Zigbee son dos de las tecnologías más utilizadas en comunicación inalámbrica, existen en el mercado módulos de comunicación de estas tecnologías que permiten crear enlaces de comunicación de forma sencilla. Dichos módulos electrónicos suelen tener una interfaz serie de comunicación (UART, SPI, I2C, ...) de forma que una vez establecido el canal de comunicación inalámbrico la comunicación entre dos microcontroladores es trasparente (similar a tener un canal cableado). 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{comunicacion_entre_robots}
 \caption[Diagrama de bloques del sistema de comunicación entre robots]{Sistema de comunicación entre robots. Ejemplo de diagrama de bloques de las diferentes capas HW y SW de la comunicación. De forma virtual existe una comunicación a nivel de cada capa software entre ambos robots.}
-\label{fig:comunicacion_entre_robots}
+\label{fig_comunicacion_entre_robots}
 \end{figure}
 
 Por la parte del software, es necesario desarrollar un protocolo de comunicación, común a los dos robots, a partir del cual enviar y/o recibir mensajes entre ellos.
 
 
 \subsection{Manipulación de elementos de juego} 
-\label{sec:manipulación_de_elementos_de_juego}
+\label{sec_manipulación_de_elementos_de_juego}
 
 En una prueba de Eurobot la forma de conseguir puntos consiste en realizar ciertas tareas que implican la manipulación de elementos de juego. Las acciones a realizar con dichos elementos pueden ser recolectar, almacenar, clasificar y realizar construcciones, entre otras. Dicha manipulación suele ser realizada mediante sistemas mecánicos desarrollados expresamente para la prueba. Se ha considerado que cada sistema mecánico puede estar compuesto por uno o varios mecanismos, y estos a su vez formados por varios actuadores y sensores. 
 
@@ -332,19 +332,19 @@ En una prueba de Eurobot la forma de conseguir puntos consiste en realizar ciert
 \centering
 \includegraphics[width=.8\textwidth]{sistema_stands}
 \caption[Mecanismos del sistema mecánico de \emph{stands} del robot P.Tinto (Eurobot 2015)]{Sistema mecánico de \emph{stands} del robot P.Tinto (Eurobot 2015) formado por varios mecanismos. Cada mecanismo esta formado por uno varios actuadores (motores y servomotores) y sensores.}
-\label{fig:sistema_stands}
+\label{fig_sistema_stands}
 \end{figure}
 
 
-Por ejemplo como muestra la figura \ref{fig:sistema_stands}, el sistema de \emph{stands} del robot P.Tinto (desarrollado para Eurobot 2015) estaba compuesto por un mecanismo de puertas, un mecanismo clasificador, 2 mecanismos tipo pinza, 2 tipo ascensor y un mecanismo tipo carro. Este sistema era capaz de clasificar y almacenar de forma apilada elementos tipo \emph{stands} en dos torres y posteriormente construir una torre única. La torre junto con una pelota de tenis en su parte superior (bombilla) simbolizaba un foco de cine, cuanto mayor altura tenia el foco mayor era la puntuación obtenida.
+Por ejemplo como muestra la figura \ref{fig_sistema_stands}, el sistema de \emph{stands} del robot P.Tinto (desarrollado para Eurobot 2015) estaba compuesto por un mecanismo de puertas, un mecanismo clasificador, 2 mecanismos tipo pinza, 2 tipo ascensor y un mecanismo tipo carro. Este sistema era capaz de clasificar y almacenar de forma apilada elementos tipo \emph{stands} en dos torres y posteriormente construir una torre única. La torre junto con una pelota de tenis en su parte superior (bombilla) simbolizaba un foco de cine, cuanto mayor altura tenia el foco mayor era la puntuación obtenida.
 
-Al igual de la estrategia de juego (ver sección \ref{sec:estrategia_de_juego}), la manipulación de elementos de juego constituye un desarrollo específico de cada prueba de Eurobot. En este caso el desarrollo es principalmente mecánico, aunque necesita además de un desarrollo electrónico y de software. Dicho desarrollo se muestra representado en la figura \ref{fig:diagrama_bloques_mecanica}.
+Al igual de la estrategia de juego (ver sección \ref{sec_estrategia_de_juego}), la manipulación de elementos de juego constituye un desarrollo específico de cada prueba de Eurobot. En este caso el desarrollo es principalmente mecánico, aunque necesita además de un desarrollo electrónico y de software. Dicho desarrollo se muestra representado en la figura \ref{fig_diagrama_bloques_mecanica}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{diagrama_bloques_mecanica}
 \caption[Diagrama de bloques del las partes a desarrollar en un sistema mecánico]{Diagrama de bloques genérico de las partes a desarrollar en un sistema mecánico destinado a la manipulación de elementos de juego.}
-\label{fig:diagrama_bloques_mecanica}
+\label{fig_diagrama_bloques_mecanica}
 \end{figure}
 
 %Los sistemas mecánicos suelen estar compuestos por mecanismos movidos por actuadores y realimentados mediante sensores. Los actuadores más comunes son los eléctricos (servomotores y motores), aunque se pueden utilizar actuadores neumáticos o hidráulicos (menos comunes). Los sensores más utilizados suelen ser de contacto y ópticos, aunque cabe la posibilidad de utilizar de cualquier otro tipo (magnético, inductivo, de ultrasonidos,...).
@@ -358,32 +358,32 @@ Antes de nada hay que recordar que el desarrollo de un robot de Eurobot y la com
 
 Es muy recomendable que el equipo que va ha desarrollar los robots fijen unos objetivos comunes (a ser posible de forma escrita) de forma que focalicen sus esfuerzos en ellos. Unos objetivos realistas suelen tener resultados  satisfactorios, consiguiendo disfrutar del proceso de desarrollo del robot y de la competición. La experiencia dice que esto nunca es así, ya que la escasez de tiempo suele implicar esfuerzos extra en el desarrollo lo cual implicar un menor disfrute. Aun así, intentar conseguir completar el 100\% de unos objetivos realistas con un 20\% menos de disfrute merece la pena.
 
-Si no se dispone de suficiente experiencia, tiempo y recursos humanos, es recomendable empezar con un desarrollo que implique una mecánica sencilla y focalizar el desarrollo en las partes que forman lo que se ha denominado la \emph{plataforma robótica base} (ver \ref{sec:partes_robot_eurobot}) y en la estrategia de juego. Una vez se tenga desarrollada una plataforma base reutilizable, el desarrollo puede centrarse más en la parte mecánica y de estrategia. En cualquier caso, aunque se desarrolle un robot que sea capaz de realizar todas las tareas del juego siempre quedaran partes que mejorar o nuevas tecnologías con las que experimentar y aprender.
+Si no se dispone de suficiente experiencia, tiempo y recursos humanos, es recomendable empezar con un desarrollo que implique una mecánica sencilla y focalizar el desarrollo en las partes que forman lo que se ha denominado la \emph{plataforma robótica base} (ver \ref{sec_partes_robot_eurobot}) y en la estrategia de juego. Una vez se tenga desarrollada una plataforma base reutilizable, el desarrollo puede centrarse más en la parte mecánica y de estrategia. En cualquier caso, aunque se desarrolle un robot que sea capaz de realizar todas las tareas del juego siempre quedaran partes que mejorar o nuevas tecnologías con las que experimentar y aprender.
 
 %Topolino Vs. Trompetero
 
-Resulta muy interesante comparar el desarrollo de robot Topolino (2008) con el del robot Trompetero (2010) (ver figura \ref{fig:robots_topolino_y_trompetero}. Ambos robots fueron desarrollados principalmente por las dos mismas 2 personas\footnote{Diego Salazar y Javier Baliñas}: una persona dedicada a la mecánica y una dedicada a la electrónica y software. Topolino (figura \ref{fig:robot_topolino} se construyó sobre una una plataforma robótica desarrollada anteriormente\footnote{Desarrollada por Diego Salazar, Marcelo Salazar y Sergio Arroyo}. Así se disponía casi por completo de las partes de desplazamiento y localización del robot, además de un chasis sobre el que construir la mecánica específica de la prueba de Eurobot. El desarrollo se centró en un diseño mecánico muy sencillo y de bajo coste, en la implementación de un sistema de evitación de obstáculos, en la estrategia y en la manipulación de los elementos de juego. El resultado fue muy satisfactorio, se llegó a realizar casi el 100\% de los objetivos del robot, se obtuvo una buena clasificación en la competición e incluso Topolino ganó el premio \emph{Mejor concepto de robot}\footnote{Premio otorgado a robots que implementan soluciones originales y recursos materiales modestos}. Y lo más importante, los desarrolladores disfrutaron del proceso hasta el final.
+Resulta muy interesante comparar el desarrollo de robot Topolino (2008) con el del robot Trompetero (2010) (ver figura \ref{fig_robots_topolino_y_trompetero}. Ambos robots fueron desarrollados principalmente por las dos mismas 2 personas\footnote{Diego Salazar y Javier Baliñas}: una persona dedicada a la mecánica y una dedicada a la electrónica y software. Topolino (figura \ref{fig_robot_topolino} se construyó sobre una una plataforma robótica desarrollada anteriormente\footnote{Desarrollada por Diego Salazar, Marcelo Salazar y Sergio Arroyo}. Así se disponía casi por completo de las partes de desplazamiento y localización del robot, además de un chasis sobre el que construir la mecánica específica de la prueba de Eurobot. El desarrollo se centró en un diseño mecánico muy sencillo y de bajo coste, en la implementación de un sistema de evitación de obstáculos, en la estrategia y en la manipulación de los elementos de juego. El resultado fue muy satisfactorio, se llegó a realizar casi el 100\% de los objetivos del robot, se obtuvo una buena clasificación en la competición e incluso Topolino ganó el premio \emph{Mejor concepto de robot}\footnote{Premio otorgado a robots que implementan soluciones originales y recursos materiales modestos}. Y lo más importante, los desarrolladores disfrutaron del proceso hasta el final.
 
 \begin{figure}[h]
 \centerline{
 	\subfloat[Robot Topolino (2008)]{\includegraphics[height=.2\textheight]{topolino}
-	\label{fig:robot_topolino}}
+	\label{fig_robot_topolino}}
 	\hfil
 	\subfloat[Robot Trompetero (2010)]{\includegraphics[height=.2\textheight]{trompetero}
-	\label{fig:robot_trompetero}}
+	\label{fig_robot_trompetero}}
 }
 \caption[Robots Topolino y Trompetero]{Robots desarrollados para Eurobot 2008 y 2010}
-\label{fig:robots_topolino_y_trompetero}
+\label{fig_robots_topolino_y_trompetero}
 \end{figure}
 
-Trompetero (figura \ref{fig:robot_trompetero}) supuso un reto para los desarrolladores de Topolino, con el que se había alcanzado el techo de la tecnología con la que se construyó, y con Trompetero se quiso desarrollar un robot al nivel de los robots de primera linea de Eurobot. Trompetero partió de las librerías Aversive las cuales cuentan con partes del robot ya implementadas como el desplazamiento y localización. Aun así, Trompetero implicó el desarrollo de la mecánica, electrónica y del software del resto de partes, además de la migración de las librerías Aversive al HW basado en microcontroladores dsPIC33 y su aprendizaje. Trompetero tenía una mecánica compleja que abarcaba la manipulación de todos los elementos del juego de Eurobot 2010. En general un desarrollo muy ambicioso. Aunque el proceso de desarrollo de Trompetero supuso un gran aprendizaje y una evolución en el desarrollo de un robot de Eurobot, los imprevistos, la falta de tiempo y sueño hicieron que terminase en números rojos en términos de disfrute. Aunque se consiguieron desarrollar todas las partes del robot, estas tenían errores que no fueron solucionados a tiempo y al igual que la estrategia de juego. En consecuencia se consiguió una evolución a costa del disfrute.
+Trompetero (figura \ref{fig_robot_trompetero}) supuso un reto para los desarrolladores de Topolino, con el que se había alcanzado el techo de la tecnología con la que se construyó, y con Trompetero se quiso desarrollar un robot al nivel de los robots de primera linea de Eurobot. Trompetero partió de las librerías Aversive las cuales cuentan con partes del robot ya implementadas como el desplazamiento y localización. Aun así, Trompetero implicó el desarrollo de la mecánica, electrónica y del software del resto de partes, además de la migración de las librerías Aversive al HW basado en microcontroladores dsPIC33 y su aprendizaje. Trompetero tenía una mecánica compleja que abarcaba la manipulación de todos los elementos del juego de Eurobot 2010. En general un desarrollo muy ambicioso. Aunque el proceso de desarrollo de Trompetero supuso un gran aprendizaje y una evolución en el desarrollo de un robot de Eurobot, los imprevistos, la falta de tiempo y sueño hicieron que terminase en números rojos en términos de disfrute. Aunque se consiguieron desarrollar todas las partes del robot, estas tenían errores que no fueron solucionados a tiempo y al igual que la estrategia de juego. En consecuencia se consiguió una evolución a costa del disfrute.
 
 Afortunadamente, la mayor parte del trabajo realizado en el desarrollo de Trompetero tuvo su retorno con el robot Zamorano (Eurobot 2011). Aprendida la lección, con Zamorano se volvió a la idea de una mecánica sencilla, un punto intermedio entre Topolino y Trompetero, centrando el desarrollo en la estrategia y en la optimización de la dinámica del robot. Aunque Zamorano tuvo un final amargo\footnote{Habiendo ganado el partido de cuartos de final en las finales de Eurobot en Rusia, Zamorano fue descalificado por una decisión arbitral injusta.}, consiguió cumplir los objetivos planteados por el equipo y supuso una gran satisfacción para sus desarrolladores.
 
 
 \section{Desarrollo del robot de Eurobot}
 
-A la hora de afrontar el desarrollo de un robot de Eurobot lo ideal es desarrollar las partes que forman la plataforma robótica base (ver sección \ref{sec:partes_robot_eurobot}) antes de que las reglas de la temática del año sean publicadas. En otro caso, se recomienda focalizar los esfuerzos en desarrollar primero estas partes y una mecánica y estrategia sencilla que permitan participar en la prueba.
+A la hora de afrontar el desarrollo de un robot de Eurobot lo ideal es desarrollar las partes que forman la plataforma robótica base (ver sección \ref{sec_partes_robot_eurobot}) antes de que las reglas de la temática del año sean publicadas. En otro caso, se recomienda focalizar los esfuerzos en desarrollar primero estas partes y una mecánica y estrategia sencilla que permitan participar en la prueba.
 
 Una vez que se dispone de las reglas del juego lo más sencillo es empezar desde el diseño de la estrategia, siguiendo con la mecánica y por último el diseño electrónico y software. De esta forma, la estrategia es la que impondrá las restricciones de la mecánica y ésta a su vez fijará las necesidades de la electrónica, y toda ellas, las necesidades del software.
 
@@ -412,15 +412,15 @@ Disponer de un campo de juego con todos sus elementos supone una gran ayuda en t
 Es recomendable fabricar un campo de juego lo más parecido a como está especificado en las reglas del juego y contar con los elementos de juego reales lo antes posible.
 
 \subsection{Diseño de la estrategia de juego}
-\label{sec:diseño_estrategi_de_juego}
+\label{sec_diseño_estrategi_de_juego}
 
-Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego físicos y un campo de juego de dimensiones reales. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipos suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{fig:finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
+Diseñar una estrategia es un proceso en el que puede participar cualquier persona y la parte más divertida ya que se cuenta con recursos ilimitados: la imaginación. Aun así es de mucha utilidad contar con los elementos del juego físicos y un campo de juego de dimensiones reales. Antes de nada es necesario y recomendable leer y estudiar bien las reglas del juego. Algunos equipos suelen organizar fines de semana en los que dedican el tiempo a estudiar las reglas y diseñar la estrategia\footnote{Este tipo de actividades además ayudan a unir al equipo de Eurobot y a que sus integrantes se conozcan mejor}. La figura \ref{fig_finde_robotico} muestra el campo y elementos de juegos construidos rudimentariamente durante un fin de semana \emph{robótico} y que se utilizaron para simular las primeras estrategias de juego.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{finde_robotico}
 \caption[Elementos y campo de juego utilizado para discutir las primeras estrategias de juego]{Elementos y campo de juego utilizado para discutir las primeras estrategias de juego de Eurobot 2015}
-\label{fig:finde_robotico}
+\label{fig_finde_robotico}
 \end{figure}
 
 Algunos de los factores a tener en cuenta en la estrategia son los siguientes:
@@ -467,21 +467,21 @@ Si el equipo está formado por dos robots hay que definir que tareas realizarán c
 \end{description}
 
 
-La figura \ref{fig:estrategia_2015} se representa la estrategia diseñada para Eurobot 2015 (\emph{Robomovies}). Cada equipo jugaba por un color (amarillo o verde) y se permitían hasta dos robots por equipo, los cuales al principio de partido empezaban desde la zona llamada \emph{Casa}. Cada robot podía partir con una bombilla (pelota de tenis) en su interior con la que construir un foco de cine. Se decidió crear dos robots: P.Tinto (principal) y Tirantes (secundario). 
+La figura \ref{fig_estrategia_2015} se representa la estrategia diseñada para Eurobot 2015 (\emph{Robomovies}). Cada equipo jugaba por un color (amarillo o verde) y se permitían hasta dos robots por equipo, los cuales al principio de partido empezaban desde la zona llamada \emph{Casa}. Cada robot podía partir con una bombilla (pelota de tenis) en su interior con la que construir un foco de cine. Se decidió crear dos robots: P.Tinto (principal) y Tirantes (secundario). 
 
 \begin{figure}[p]
 \centerline{
 	\subfloat[Estrategia del robot P.Tinto)]{\includegraphics[width=.9\textwidth]{estrategia_ptinto}
-	\label{fig:estrategia_ptinto}}	
+	\label{fig_estrategia_ptinto}}	
 }
 \vfil
 \vfil
 \centerline{
 	\subfloat[Estrategia del robot Tirantes]{\includegraphics[width=.9\textwidth]{estrategia_tirantes}
-	\label{fig:estrategia_ptinto}}
+	\label{fig_estrategia_ptinto}}
 }
 \caption[Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015]{Estrategia de los robot P.Tinto y Tirantes en Eurobot 2015. Las lineas continuas representan la estrategia principal y las lineas discontinuas caminos alternativos de estrategia.}
-\label{fig:estrategia_2015}
+\label{fig_estrategia_2015}
 \end{figure} 
 
 P.Tinto saldría primero al comenzar el partido y seguiría la siguiente estrategia:
@@ -532,35 +532,35 @@ A la hora de desarrollar estos prototipos se recomienda plasmar las ideas sobre 
 \begin{figure}[h]
 \centerline{
 	\subfloat[Boceto idea turbina]{\includegraphics[width=.4\textwidth]{boceto_maquina_palomitas_1}
-	\label{fig:boceto_maquina_palomitas}}	
+	\label{fig_boceto_maquina_palomitas}}	
 	\hfil
 	\subfloat[Prototipo idea turbina]{\includegraphics[width=.5\textwidth]{prototipo_maquina_palomitas}
-	\label{fig:prototipo_maquina_palomitas}}
+	\label{fig_prototipo_maquina_palomitas}}
 }
 \caption[Prototipo recolección maquinas palomitas de Eurobot 2015]{Prototipo de sistema de recolección de palomitas de las maquinas de palomitas en Eurobot 2015.}
-\label{fig:prototipos_maquina_palomitas}
+\label{fig_prototipos_maquina_palomitas}
 \end{figure}
 
-La figura \ref{fig:boceto_maquina_palomitas} muestra una de las ideas pensadas inicialmente para recolectar las palomitas de las maquinas de palomitas en Eurobot 2015. Esta se fundamentaba en utilizar una turbina para aspirar las pelotas de poliestireno (palomitas) y almacenarlas en columnas verticales y el exceso de palomitas en un vaso. La figura \ref{fig:prototipo_maquina_palomitas} muestra uno de los prototipos realizados para la validación de la idea, este esta realizado a partir de un cartón de zumo, una botella de plástico y una turbina.
+La figura \ref{fig_boceto_maquina_palomitas} muestra una de las ideas pensadas inicialmente para recolectar las palomitas de las maquinas de palomitas en Eurobot 2015. Esta se fundamentaba en utilizar una turbina para aspirar las pelotas de poliestireno (palomitas) y almacenarlas en columnas verticales y el exceso de palomitas en un vaso. La figura \ref{fig_prototipo_maquina_palomitas} muestra uno de los prototipos realizados para la validación de la idea, este esta realizado a partir de un cartón de zumo, una botella de plástico y una turbina.
 
 
 \begin{figure}[h]
 \centerline{
 	\subfloat[Diseño CAD (vista frontal)]{\includegraphics[width=.45\textwidth]{sistema_maquina_palomitas_cad}
-	\label{fig:sistema_maquina_palomitas_cad}}	
+	\label{fig_sistema_maquina_palomitas_cad}}	
 	\hfil
 	\subfloat[Sistema real (vista desde arriba)]{\includegraphics[width=.45\textwidth]{sistema_maquina_palomitas_real}
-	\label{fig:sistema_maquina_palomitas_real}}
+	\label{fig_sistema_maquina_palomitas_real}}
 }
 \caption[Sistema de recolección maquinas palomitas de Eurobot 2015]{Sistema desarrollado para la recolección de palomitas de las máquinas de palomitas en Eurobot 2015.}
-\label{fig:sistema_maquina_palomitas}
+\label{fig_sistema_maquina_palomitas}
 \end{figure}
 
-Ninguna de estas ideas fueron las que se llevaron a cabo, pero la idea final si que contenía elementos de estas. El sistema final se muestra en la figura \ref{fig:sistema_maquina_palomitas}, dos brazos con forma de rampa empujan la primera pelota de los tubos donde se encuentran almacenadas las palomitas (máquina de palomitas). Una vez desplazada la primera pelota el resto de pelotas caen libres hacia dos compartimentos y un vaso de palomitas en el interior del robot P.Tinto.
+Ninguna de estas ideas fueron las que se llevaron a cabo, pero la idea final si que contenía elementos de estas. El sistema final se muestra en la figura \ref{fig_sistema_maquina_palomitas}, dos brazos con forma de rampa empujan la primera pelota de los tubos donde se encuentran almacenadas las palomitas (máquina de palomitas). Una vez desplazada la primera pelota el resto de pelotas caen libres hacia dos compartimentos y un vaso de palomitas en el interior del robot P.Tinto.
 
 
 \subsection{Diseño y fabricación de la mecánica y de la electrónica}
-\label{sec:diseño_y_fabricacion_mecanica_electronica}
+\label{sec_diseño_y_fabricacion_mecanica_electronica}
 
 Una vez validados los diferentes sistemas mecánicos del robot mediante prototipos o pruebas de concepto, es el momento de realizar un diseño conjunto del robot. Dependiendo del caso la electrónica necesaria para controlar la mecánica puede ser realizada a medida o mediante la integración de tarjetas desarrolladas anteriormente o comerciales. En el primer caso, la electrónica se podrá diseñar a medida de la mecánica de forma que se situé en los huecos libres, o en el segundo caso, la electrónica deberá ser tenida en cuenta como un componente más. En cualquier caso el diseño mecánico y de la electrónica han de realizarse de forma sincronizada. 
 
@@ -568,7 +568,7 @@ El diseño mecánico del robot no sólo ha centrarse en su funcionalidad, hay otros
 
 
 \subsection{Montaje del robot y cableado}
-\label{sec:montaje_robot_y_cableado}
+\label{sec_montaje_robot_y_cableado}
 
 El montaje del robot y el cableado de los componentes electrónicos es una parte importante que no debe de ser subestimada. El tiempo de montaje puede llevar más o menos tiempo dependiendo de si durante la fase de diseño mecánico del robot se tuvo en cuenta como requisito la facilidad de montaje y desmontaje, y del número de piezas del que esté compuesto el robot. Así mismo la labor de cableado se simplificará si también en la fase de diseño mecánico se tuvo en cuenta el camino destinado a cables y conectores. 
 
@@ -576,7 +576,7 @@ El cableado ha de ser claro, ordenado, gerarquico y respetando la coca de los ca
 
 
 \subsection{Implementación software de las funcionalidades del robot}
-\label{sec:implementacion_funcionalidad_del_robot}
+\label{sec_implementacion_funcionalidad_del_robot}
 
 Esta fase tiene como resultado un robot de Eurobot totalmente funcional, esto es, capacitado para competir en una prueba específica. Este es el punto que idealmente se debería alcanzar lo antes posible, una vez finalizado es como tener un \emph{juguete} con el que divertirse diseñando estrategias de juego. 
 
@@ -593,7 +593,7 @@ La funcionalidad del robot es un nivel de abstracción que permite controlar el r
 \end{itemize}
 
 
-Son varias las partes de un robot de Eurobot (ver sección \ref{sec:partes_robot_eurobot}) implicadas en su funcionalidad:
+Son varias las partes de un robot de Eurobot (ver sección \ref{sec_partes_robot_eurobot}) implicadas en su funcionalidad:
 
 \begin{enumerate}
 \item Desplazamiento y localización
@@ -613,7 +613,7 @@ Las tres primeras pertenecen a lo que se ha denominado plataforma robótica base 
 Respecto a la última parte, está necesita ser desarrollada casi en su totalidad al depender enteramente de los sistemas mecánicos diseñados expresamente para una prueba concreta.
 
 \subsection{Implementación software de la estrategia de juego}
-\label{sec:implementación_estrategia_de_juego}
+\label{sec_implementación_estrategia_de_juego}
 
 La implementación de la estrategia supone ciertas funcionalidades del robot de Eurobot, entre ellas el desplazamiento y localización, la capacidad para manipular los elementos de juego y la detección de obstáculos y oponentes. Además, en caso de jugar con dos robots puede tener en cuenta las funcionalidades de ambos.
 
@@ -639,7 +639,7 @@ Por todo ello, poder ejecutar y probar la estrategia en un entorno simulado cons
 \end{description}
 
 \subsection{Puesta en marcha y verificación}
-\label{sec:puesta_en_marcha_y_verificacion}
+\label{sec_puesta_en_marcha_y_verificacion}
 
 La puesta en marcha y verificación constituye la fase más importante si cabe de todas. Cada parte a desarrollar o mejorar del robot ha de ser probada en condiciones reales y verificada de forma que se asegure una repetitividad en su funcionamiento. Esto es así tanto para partes mecánicas y electrónicas, como para el funcionamiento software. Así pues esta es una fase implícita en cualquiera de las otras fases o partes a desarrollar de un robot de Eurobot.
 

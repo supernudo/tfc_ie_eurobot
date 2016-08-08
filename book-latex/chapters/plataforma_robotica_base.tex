@@ -28,7 +28,7 @@ t%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Plataforma robótica base}
-\label{cha:plataforma_robotica_base}
+\label{cha_plataforma_robotica_base}
 
 \begin{FraseCelebre}
   \begin{Frase}
@@ -42,7 +42,7 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 
 %\section{Introducción}
 
-En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado y mejorado en el desarrollo de robots posteriores. Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en el capitulo \ref{cha:el_robot_de_eurobot}:
+En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado y mejorado en el desarrollo de robots posteriores. Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en el capitulo \ref{cha_el_robot_de_eurobot}:
 
 \begin{itemize}
 \item Desplazamiento y localización
@@ -54,36 +54,36 @@ El desarrollo de cada una de estas funcionalidades constituye en sí una la labor
 
 
 \section{Partes de la plataforma robótica}
-\label{sec:partes_plataforma_robotica}
+\label{sec_partes_plataforma_robotica}
 
 La plataforma robótica desarrollada se compone de un \emph{sistema de tracción diferencial}, un \emph{sistema de control de posición} y un \emph{sistema de evitación de obstáculos}. La plataforma también incluye una electrónica con capacidad de gestionar e implementar estos sistemas y los sistemas mecánicos a diseñar específicamente para la prueba de Eurobot. Además, la electrónica dispone de una interfaz inalámbrica que permite comunicar dos robots basados en la misma plataforma robótica. 
 
-El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig:plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, un \emph{control de posición}.
+El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig_plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, un \emph{control de posición}.
 
 \begin{figure}[p]
 \centering
 \includegraphics[height=.3\textheight]{plataforma_partes_2}
 \caption[Plataforma robótica base: partes del sistema de evitación de obstáculos]{Plataforma robótica base: partes del sistema de evitación de obstáculos. Robot Zamorano (Eurobot 2011).}
-\label{fig:plataforma_partes_2}
+\label{fig_plataforma_partes_2}
 \end{figure}
 
 La electrónica se compone principalmente de una fuente de alimentación de 24V, la \emph{tarjeta Eurobotics 2010} y tarjetas de expansión de entradas y salidas. 
 
-El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig:plataforma_partes_2}) y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig:plataforma_partes_2}).
+El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig_plataforma_partes_2}).
 
 \begin{figure}[p]
 \centering
 \includegraphics[height=.3\textheight]{plataforma_partes_1}
 \caption[Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición]{Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
-\label{fig:plataforma_partes_1}
+\label{fig_plataforma_partes_1}
 \end{figure}
 
 La implementación de todos los sistemas y funcionalidades la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src} (microcontroladores AVR) a microcontroladores dsPIC y PIC24.
 
 
 \section{Sistema de tracción diferencial}
-\label{sec:sistema_traccion_diferencial}
-El sistema de tracción diferencial es uno de los más comunes en Eurobot, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo (ver figura \ref{fig:plataforma_partes_1}). 
+\label{sec_sistema_traccion_diferencial}
+El sistema de tracción diferencial es uno de los más comunes en Eurobot, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo (ver figura \ref{fig_plataforma_partes_1}). 
 
 Dependiendo de la posición del eje motriz se dan 2 tipos de robots:
 
@@ -96,20 +96,20 @@ Los robots con ruedas atrás suelen tener dos puntos de apoyo delanteros. En camb
 
 Como se verá más adelante, interesa un robot con ruedas en el medio y que tenga una simetría total de forma que todo el peso del robot recaiga sobre el eje motriz. Además, los puntos de apoyo han de estar a la mayor distancia posible del eje motriz. Esta situación no siempre se cumple, ya que existe un compromiso con el resto de elementos mecánicos del robot.
 
-Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}. En caso de no disponer de espacio suficiente para ellos también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón (ver figura \ref{fig:sistema_traccion_rollones}).
+Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}. En caso de no disponer de espacio suficiente para ellos también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón (ver figura \ref{fig_sistema_traccion_rollones}).
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=.3\textheight]{sistema_traccion_rollones}
 \caption[]{Sistema de tracción diferencial del robot Automático (Eurobot 2013) visto desde abajo.}
-\label{fig:sistema_traccion_rollones}
+\label{fig_sistema_traccion_rollones}
 \end{figure}
 
 Mecánicamente el conjunto de los motores, reductora y ruedas se denomina \emph{bloque motor}. El bloque motor se reutiliza como una parte independiente en cada diseño de un nuevo robot de forma que se sitúa sobre la base del robot adaptándose al resto de la mecánica.
 
 
 \subsection{Dinamica básica}
-\label{sec:dinamica_basica}
+\label{sec_dinamica_basica}
 
 Es importante entender la dinámica de un robot de Eurobot y tenerla en cuenta durante el diseño mecánico del mismo. El movimiento más común de un robot de Eurobot son los desplazamientos entre dos puntos. Durante dichos desplazamientos el robot parte de parado, recorre una distancia y vuelve a detenerse. Así, a cada desplazamiento le corresponde una fase de aceleración, una fase de velocidad constante y otra fase de frenado.
 
@@ -119,7 +119,7 @@ Para el caso de un robot con ruedas atrás y dos puntos de apoyo, el modelo dinám
 \centering
 \includegraphics[width=\textwidth]{dinamica_basica}
 \caption[Modelo dinámico simple de un robot de tracción diferencial]{Modelo dinámico simple de un robot de tracción diferencial.}
-\label{fig:dinamica_basica}
+\label{fig_dinamica_basica}
 \end{figure}
 
 Siendo:
@@ -141,20 +141,20 @@ Para conseguir desplazamientos en un periodo de tiempo corto, las fases de acele
 
 A partir del modelo dinámico descrito anteriormente, teniendo en cuenta que el robot dispone de dos ruedas (un motor por rueda) y a partir de la primera ley de Newton ($F = ma$) se deduce que la aceleración sobre el eje horizontal del robot se corresponde con la expresión:
 \begin{equation}
-  \label{eq:a_f_fx}
+  \label{eq_a_f_fx}
   a = \frac{2F_x}{m}
 \end{equation}
 
 
 La aceleración máxima vendrá dada por la fuerza máxima de propulsión de las ruedas $F_{x\,max}$ a partir de la cual se produce el deslizamiento de las ruedas. Por lo tanto ha de cumplirse la condición
 \begin{equation}
-  \label{eq:condicion_fx}
+  \label{eq_condicion_fx}
    F_x<F_{x\,max}
 \end{equation}
 
 siendo
 \begin{equation}
-  \label{eq:fx_max_f_ka}
+  \label{eq_fx_max_f_ka}
   F_{x\,max} = K_a \, F_n,
 \end{equation}
 
@@ -173,11 +173,11 @@ El valor del coeficiente de adherencia se puede medir experimentalmente mediante
 \centering
 \includegraphics[width=\textwidth]{metodo_cubo}
 \caption[]{Medodo de medida del coeficiente de adherencia de las ruedas.}
-\label{fig:metodo_cubo}
+\label{fig_metodo_cubo}
 \end{figure}
 
 
-Dicho método se encuentra representado en la figura \ref{fig:metodo_cubo} y consta de tres pasos:
+Dicho método se encuentra representado en la figura \ref{fig_metodo_cubo} y consta de tres pasos:
 
 \begin{enumerate}
 \item Apoyar las ruedas del robot sobre una báscula manteniendo el robot horizontal. Para ello, ayudarse de un soporte sobre los puntos de apoyo del robot. El peso $P1$ medido por la bascula se corresponde con la fuerza con la que las ruedas apoyan en el suelo.
@@ -187,7 +187,7 @@ Dicho método se encuentra representado en la figura \ref{fig:metodo_cubo} y cons
 
 El coeficiente de adherencia viene dado por las medidas realizadas según la expresión
 \begin{equation}
-  \label{eq:ka=f(p1,p2)}
+  \label{eq_ka=f(p1,p2)}
   \boxed{K_a = \frac{P2}{P1}}.
 \end{equation}
 
@@ -199,7 +199,7 @@ La validez de este método se ha comprobado en la practica. El método se aplicó a
 \begin{table}[ht]
 \centering
 \caption{Resultados de la medida del coeficiente de adherencia de las ruedas}
-\label{tab:resultados_medida_ka}
+\label{tab_resultados_medida_ka}
 \begin{tabular}{lccc}
 \hline
 Robot & $P1$ & $P2$ & $K_a$ \\
@@ -210,13 +210,13 @@ Automático (2012)   & 17,6   & 17,3   & 0,983  \\
 \end{tabular}
 \end{table}
 
-Las ruedas de ambos robots se muestra en la figura \ref{fig:ruedas_foam_silicona}. Están construidas a partir de ruedas de coche de radio control de espuma, 60mm de diámetro y 45mm de ancho. Además se les ha añadido una capa de silicona para mejorar la adherencia. Este tipo de ruedas ha sido utilizado en todos los robots desarrollados desde el año 2011 dado su alto coeficiente de adherencia. 
+Las ruedas de ambos robots se muestra en la figura \ref{fig_ruedas_foam_silicona}. Están construidas a partir de ruedas de coche de radio control de espuma, 60mm de diámetro y 45mm de ancho. Además se les ha añadido una capa de silicona para mejorar la adherencia. Este tipo de ruedas ha sido utilizado en todos los robots desarrollados desde el año 2011 dado su alto coeficiente de adherencia. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=.2\textheight]{ruedas_foam_silicona}
 \caption[]{Ruedas utilizadas en los robots}
-\label{fig:ruedas_foam_silicona}
+\label{fig_ruedas_foam_silicona}
 \end{figure}
 
 
@@ -243,7 +243,7 @@ Se parte del modelo dinámico del robot representado por la siguiente figura:
 \centering
 \includegraphics[width=.4\textwidth]{dinamica_a_max_ruedas_atras}
 \caption[]{Modelo dinámico en fase de aceleración y frenado para robots con ruedas atrás.}
-\label{fig:dinamica_a_max_ruedas_atras}
+\label{fig_dinamica_a_max_ruedas_atras}
 \end{figure}
 
 Donde:
@@ -265,28 +265,28 @@ Las ecuaciones que garantiza que el sistema esta en equilibrio son las siguiente
 \begin{description}
 \item Suma de fuerzas verticales\\
 \begin{equation}
-\label{eq:suma_fuerzas_verticales}
+\label{eq_suma_fuerzas_verticales}
 2F1 + 2F2 - mg = 0
 \end{equation}
 
 \item Suma de fuerzas horizontales\\
 \begin{equation}
-\label{eq:suma_fuerzas_horizontales}
+\label{eq_suma_fuerzas_horizontales}
 2F_x = ma
 \end{equation}
 
 \item Suma de torsiones aplicadas al punto G\\	
 \begin{equation}
-\label{eq:suma_torsiones_punto_g}
+\label{eq_suma_torsiones_punto_g}
 F2d2 - F1d1 + F_x \, h = 0
 \end{equation}
 \end{description}
 
 
-A partir las ecuaciones \eqref{eq:suma_fuerzas_verticales}, \eqref{eq:suma_fuerzas_horizontales} y \eqref{eq:suma_torsiones_punto_g}	, se obtienen las ecuaciones que representan la distribución de pesos en las fases de aceleración y frenado:
+A partir las ecuaciones \eqref{eq_suma_fuerzas_verticales}, \eqref{eq_suma_fuerzas_horizontales} y \eqref{eq_suma_torsiones_punto_g}	, se obtienen las ecuaciones que representan la distribución de pesos en las fases de aceleración y frenado:
 \begin{align}
-(2F1)/mg &= d2/d + (a/g)(h/d) \label{eq:distribucion_pesos_rueda}\\
-(2F2)/mg &= d1/d - (a/g)(h/d) \label{eq:distribucion_pesos_apoyo}
+(2F1)/mg &= d2/d + (a/g)(h/d) \label{eq_distribucion_pesos_rueda}\\
+(2F2)/mg &= d1/d - (a/g)(h/d) \label{eq_distribucion_pesos_apoyo}
 \end{align}
 
 Notar que el término $(2F1)/mg$ representa la distribución de pesos en el eje motriz, mientras que el termino $(2F2)/mg$ representa el reparto de pesos en la parte delantera. Los términos $d2/d$ y $d1/d$ representan las distribuciones de pesos en estático, cuando la aceleración es nula ($a=0$). Y el término  $(a/g)(h/d)$ representa la transferencia de masa del robot durante la aceleración o frenado.
@@ -304,68 +304,68 @@ Se deducen algunas conclusiones al respecto:
 \end{itemize}
 
 
-Continuando con el cálculo, la condición para no derrapar en la fase de aceleración viene dada por la ecuación \eqref{eq:fx_max_f_ka} expresada como 
+Continuando con el cálculo, la condición para no derrapar en la fase de aceleración viene dada por la ecuación \eqref{eq_fx_max_f_ka} expresada como 
 \begin{equation}
-\label{eq:condicion_derrape_aceleracion}
+\label{eq_condicion_derrape_aceleracion}
 F_x < K_a \, F1
 \end{equation}
 
 y para la fase de frenado como
 \begin{equation}
-\label{eq:condicion_derrape_frenada}
+\label{eq_condicion_derrape_frenada}
 |F_x| < K_a \, F1.
 \end{equation}
 
 
 Por otro lado, la condición para que el robot no haga \emph{el caballito} durante la fase de aceleración es
 \begin{equation}
-\label{eq:condicion_caballito_aceleracion}
+\label{eq_condicion_caballito_aceleracion}
 F2 > 0
 \end{equation}
 
 y para la fase de frenado es
 \begin{equation}
-\label{eq:condicion_caballito_frenado}
+\label{eq_condicion_caballito_frenado}
 F1 > 0
 \end{equation}
 
-A partir de las ecuaciones \eqref{eq:distribucion_pesos_rueda}, \eqref{eq:distribucion_pesos_apoyo}, \eqref{eq:suma_fuerzas_horizontales} y las condiciones mencionadas anteriormente se obtienen las aceleraciones máximas para cada fase y condición.
+A partir de las ecuaciones \eqref{eq_distribucion_pesos_rueda}, \eqref{eq_distribucion_pesos_apoyo}, \eqref{eq_suma_fuerzas_horizontales} y las condiciones mencionadas anteriormente se obtienen las aceleraciones máximas para cada fase y condición.
 
 Fase de aceleración ($a>0$):
 \begin{empheq}[box=\fbox]{align}
-a_{max1} &= g\,\frac{K_a \, d2}{d-(K_a \, h)} \label{eq:a_max_aceleracion_derrape}\\
-a_{max2} &= g\,\frac{d1}{h} \label{eq:a_max_aceleracion_caballito}
+a_{max1} &= g\,\frac{K_a \, d2}{d-(K_a \, h)} \label{eq_a_max_aceleracion_derrape}\\
+a_{max2} &= g\,\frac{d1}{h} \label{eq_a_max_aceleracion_caballito}
 \end{empheq}
 
 
 Fase de frenado ($a<0$):
 \begin{empheq}[box=\fbox]{align}
-a_{max1} &= g\,\frac{K_a \, d2}{d+(K_a \, h)} \label{eq:amax_frenado_derrape}\\
-a_{max2} &= g\,\frac{d2}{h} \label{eq:amax_frenado_caballito}
+a_{max1} &= g\,\frac{K_a \, d2}{d+(K_a \, h)} \label{eq_amax_frenado_derrape}\\
+a_{max2} &= g\,\frac{d2}{h} \label{eq_amax_frenado_caballito}
 \end{empheq}
 
 Siendo $a_{max1}$ la aceleración máxima para no derrapar y $a_{max2}$ la aceleración máxima para no hacer \emph{el caballito}. Para cada fase, la aceleración máxima vendrá dada por el valor mínimo de estas:
 \begin{equation}
-\label{eq:a_aceleracion}
+\label{eq_a_aceleracion}
 a_{max} = Min\{a_{max1}, a_{max2}\}.
 \end{equation}
 
 
-Por ejemplo, la figura \ref{fig:ejemplo_a_max} representa el caso de dos robots iguales excepto por la altura de su centro de gravedad.	
+Por ejemplo, la figura \ref{fig_ejemplo_a_max} representa el caso de dos robots iguales excepto por la altura de su centro de gravedad.	
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{ejemplo_a_max}
 \caption[]{Ejemplo de calculo de la aceleración máxima en las fases de aceleración y frenado}
-\label{fig:ejemplo_a_max}
+\label{fig_ejemplo_a_max}
 \end{figure}
 
-Las aceleraciones máximas calculadas para estos robots se muestran en la tabla \ref{tab:ejemplo_a_max}.
+Las aceleraciones máximas calculadas para estos robots se muestran en la tabla \ref{tab_ejemplo_a_max}.
 
 \begin{table}[h]
 \centering
 \caption{Ejemplo de aceleraciones máximas en función del centro de gravedad}
-\label{tab:ejemplo_a_max}
+\label{tab_ejemplo_a_max}
 
 \begin{tabular}{ lcccc }
 \hline
@@ -395,7 +395,7 @@ Los modelos dinámicos para estos casos se corresponden con la siguiente figura:
 \centering
 \includegraphics[width=.8\textwidth]{dinamica_a_max_ruedas_medio}
 \caption[]{Modelo dinámico fase de aceleración y frenado para robots con ruedas en el medio.}
-\label{fig:dinamica_a_max_ruedas_medio}
+\label{fig_dinamica_a_max_ruedas_medio}
 \end{figure}
 
 Donde:
@@ -413,9 +413,9 @@ Donde:
 \item $h$: altura del centro de gravedad del robot.
 \end{description}
 
-Para el caso del robot simétrico de la figura \ref{fig:dinamica_a_max_ruedas_atras} y siguiendo un análisis igual al realizado para robots con ruedas atrás, se obtienen las ecuaciones que definen las aceleraciones máximas. Debido a que el robot tiene 4 puntos de apoyo no es posible que éste haga \emph{el caballito}, por lo que la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
+Para el caso del robot simétrico de la figura \ref{fig_dinamica_a_max_ruedas_atras} y siguiendo un análisis igual al realizado para robots con ruedas atrás, se obtienen las ecuaciones que definen las aceleraciones máximas. Debido a que el robot tiene 4 puntos de apoyo no es posible que éste haga \emph{el caballito}, por lo que la aceleración máxima vendrá dada únicamente para la condición de derrape de las ruedas y es la misma para las fases de aceleración y frenado dada la simetría del robot:
 \begin{equation}
-\label{eq:a_max_simetrico}
+\label{eq_a_max_simetrico}
 \boxed{a_{max} = g\,\frac{K_a}{1 + K_a\,(h/d2)}}
 \end{equation}
 
@@ -424,48 +424,48 @@ Por otro lado, en el caso del robot asimétrico, el centro de gravedad cae entre 
 
 Fase de aceleración ($a>0$):
 \begin{equation}
-\label{eq:a_max_pos_no_simetrico}
+\label{eq_a_max_pos_no_simetrico}
 \boxed{a_{max} = g\,\frac{K_a}{(d1+d2)/d2 + K_a\,(h/d2)}}
 \end{equation}
 
 
 Fase de frenado ($a<0$):
 \begin{equation}
-\label{eq:a_max_neg_no_simetrico}
+\label{eq_a_max_neg_no_simetrico}
 \boxed{a_{max} = g\,\frac{K_a}{(d2'-d1)/d2' + K_a\,(h/d2')}}
 \end{equation}
 
-Se comprueba que si $d1=0$, el modelo se corresponde con el de un robot simétrico y las ecuaciones \eqref{eq:a_max_pos_no_simetrico} y \eqref{eq:a_max_neg_no_simetrico} coinciden con la ecuación \eqref{eq:a_max_simetrico}.
+Se comprueba que si $d1=0$, el modelo se corresponde con el de un robot simétrico y las ecuaciones \eqref{eq_a_max_pos_no_simetrico} y \eqref{eq_a_max_neg_no_simetrico} coinciden con la ecuación \eqref{eq_a_max_simetrico}.
 
 \subsubsection{Medida del centro de gravedad del robot}
 
-Se ha visto que para los cálculos de la aceleración máxima del robot es necesario conocer la posición del centro de gravedad del mismo. Su valor puede ser medido fácilmente utilizando una regla y una barra lo suficientemente larga. Por ejemplo para medir la altura del centro de gravedad se procedería a apoyar el robot sobre la barra por una de sus caras como muestra la figura \ref{fig:medida_centro_gravedad} hasta dar con una posición en la que el robot se encuentre en equilibrio. Una vez obtenida la posición de equilibrio se mide la distancia que hay de la base del robot al centro de la barra, la cual se corresponde con la altura del centro de gravedad. 
+Se ha visto que para los cálculos de la aceleración máxima del robot es necesario conocer la posición del centro de gravedad del mismo. Su valor puede ser medido fácilmente utilizando una regla y una barra lo suficientemente larga. Por ejemplo para medir la altura del centro de gravedad se procedería a apoyar el robot sobre la barra por una de sus caras como muestra la figura \ref{fig_medida_centro_gravedad} hasta dar con una posición en la que el robot se encuentre en equilibrio. Una vez obtenida la posición de equilibrio se mide la distancia que hay de la base del robot al centro de la barra, la cual se corresponde con la altura del centro de gravedad. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.4\textwidth]{medida_centro_gravedad}
 \caption[]{Ejemplo de medida de la altura del centro de gravedad del robot}
-\label{fig:medida_centro_gravedad}
+\label{fig_medida_centro_gravedad}
 \end{figure}
 
 La operación se repite sobre la base del robot situando la barra paralela al eje motriz, de forma que se determina la distancia del centro de gravedad a dicho eje. Y por último, se puede realizar la medida con la barra situada perpendicularmente al eje motriz con el fin de comprobar que el robot es simétrico en dicho eje y que el peso soportado por cada rueda es el mismo.
 
 \subsection{Perfil de velocidad trapezoidal}
 
-Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se divide en una fase de aceleración, otra de frenado y una fase intermedia de velocidad constante. Dichas fases se suelen implementar mediante un perfil trapezoidal de velocidad como el representado en la figura \ref{fig:perfil_trapezoidal}. 
+Como ya se ha visto, el desplazamiento de un robot sobre un plano horizontal se divide en una fase de aceleración, otra de frenado y una fase intermedia de velocidad constante. Dichas fases se suelen implementar mediante un perfil trapezoidal de velocidad como el representado en la figura \ref{fig_perfil_trapezoidal}. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{perfil_trapezoidal}
 \caption[]{Fases de un perfil trapezoidal de velocidad: aceleración, velocidad y distancia recorrida}
-\label{fig:perfil_trapezoidal}
+\label{fig_perfil_trapezoidal}
 \end{figure}
 
 %En dicho perfil se pueden identificar las fases de aceleración, velocidad constante y frenado. A cada una de estas fases le corresponde una distancia recorrida ($d1,d2,d3$) y un tiempo ($t1,t2,t3$).
 
 Como se sabe, la optimización de dicho perfil pasa por la determinación de las aceleraciones y velocidad máximas. La aceleración máxima se corresponde con aquella para la que el robot se encuentre al limite del deslizamiento o de hacer \emph{el caballito} y se calcula de la forma que se ha descrito en la sección anterior. En la práctica, nunca se trabaja con la aceleración máxima teórica y si no que se utiliza una aceleración de seguridad que suele se el 80\% de la teórica:
 \begin{equation}
-\label{eq:a_seguridad}
+\label{eq_a_seguridad}
 a = 0.8\,a_{max}
 \end{equation}
 
@@ -473,17 +473,17 @@ Respecto a la velocidad máxima, dependerá en última medida del motor y la reduct
 
 Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), de igual aceleración ($a=2\,m/s$) y para una misma distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad de $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable. Esto es debido a que el tiempo de la fase de velocidad constante del perfil de $1.4m/s$ es muy pequeño respecto al tiempo que se invierte en acelerar y frenar. De esto se deduce que para distancias cortas no es tan importante la velocidad como la aceleración del robot.
 
-Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
+Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec_sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
 
 \subsection{Dimensionamiento de la reductora}
 
-Como se sabe, las ruedas del eje motriz se encuentran conectadas al motor por medio de una reductora. El modelo mecánico de dicho sistema se muestra en la figura \ref{fig:modelo_reductora_motor}. 
+Como se sabe, las ruedas del eje motriz se encuentran conectadas al motor por medio de una reductora. El modelo mecánico de dicho sistema se muestra en la figura \ref{fig_modelo_reductora_motor}. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{modelo_reductora_motor}
 \caption[]{Modelo mecánico de uno de los motores del sistema de tracción diferencial.}
-\label{fig:modelo_reductora_motor}
+\label{fig_modelo_reductora_motor}
 \end{figure}
 
 Donde:
@@ -498,23 +498,23 @@ Donde:
 
 La potencia mecánica en el motor $P1$ y en el eje de salida de la reductora $P2$ viene dada como:
 \begin{align}
-P1 &= M1\,\omega1 \label{eq:potencia_mecanica_motor} \\
-P2 &= M2\,\omega2 \label{eq:potencia_mecanica_reductora}
+P1 &= M1\,\omega1 \label{eq_potencia_mecanica_motor} \\
+P2 &= M2\,\omega2 \label{eq_potencia_mecanica_reductora}
 \end{align}
 
 Dichas potencias se relacionan mediante la reductora de la siguiente manera:
 \begin{align}
-\omega2 &= \frac{\omega1}{K} \label{eq:relacion_w1_w1} \\
-M2 &= M1\,Rd\,K \label{eq:relacion_M2_M1} \\
-P2 &= P1\,Rd \label{eq:relacion_P2_P1} 
+\omega2 &= \frac{\omega1}{K} \label{eq_relacion_w1_w1} \\
+M2 &= M1\,Rd\,K \label{eq_relacion_M2_M1} \\
+P2 &= P1\,Rd \label{eq_relacion_P2_P1} 
 \end{align}
 
-Observar que la relación entre potencias en \eqref{eq:relacion_P2_P1} no depende de $K$. Si $K$ aumenta el par de la reductora $M2$ aumenta pero la velocidad $w2$ disminuye.	
+Observar que la relación entre potencias en \eqref{eq_relacion_P2_P1} no depende de $K$. Si $K$ aumenta el par de la reductora $M2$ aumenta pero la velocidad $w2$ disminuye.	
 
 Por otro lado, del modelo del motor de corriente continua se sabe que la tensión de armadura del motor $U$ y el par motor $M$ vienen dados por las expresiones:
 \begin{align}
-U &= r\,i + K_v\,\omega \label{eq:tension_armadura} \\
-M &= K_m\,i \label{eq:par_motor}
+U &= r\,i + K_v\,\omega \label{eq_tension_armadura} \\
+M &= K_m\,i \label{eq_par_motor}
 \end{align}
 
 Siendo:
@@ -533,14 +533,14 @@ Teniendo en cuenta este caso, un dimensionamiento más correcto de la reductora e
 
 Por un lado se calcula el par en el motor $M1$ necesario para producir deslizamiento a partir del par en la rueda $M3$, el cual depende de a su vez la fuerza de propulsión máxima de las ruedas $F_{x\,max}$.
 \begin{align}
-M1 &= \frac{M3}{K\,Rd} \label{eq:M1} \\
-M3 &= F_{x\,max}\,\frac{D}{2} \label{eq:M3} \\
-F_{x\,max} &= \frac{K_a\,F1}{2} \label{eq:fx_max}
+M1 &= \frac{M3}{K\,Rd} \label{eq_M1} \\
+M3 &= F_{x\,max}\,\frac{D}{2} \label{eq_M3} \\
+F_{x\,max} &= \frac{K_a\,F1}{2} \label{eq_fx_max}
 \end{align}
 
 La fuerza aplicada sobre las ruedas $F1$ depende de la distribución de pesos sobre el eje motriz y se corresponde con el peso $P1$ medido durante el la medida experimental del coeficiente de adherencia $K_a$. De forma general $F1$ se calcula como:
 \begin{equation}
-F1 = mg\,\frac{d2}{d} \label{eq:F1}
+F1 = mg\,\frac{d2}{d} \label{eq_F1}
 \end{equation}
 
 El par en el motor $M1$ resulta:
@@ -549,47 +549,47 @@ M1 = \frac{K_a\,mg\,(d2/d)}{K\,Rd\,D}
 \end{equation}
 
 
-Por otro lado, a partir de las ecuaciones del modelo del motor \eqref{eq:tension_armadura} y \eqref{eq:par_motor}, se obtiene el par máximo que puede dar el motor a la salida de la reductora $M2$ para la situación de bloqueo ($\omega = 0$):
+Por otro lado, a partir de las ecuaciones del modelo del motor \eqref{eq_tension_armadura} y \eqref{eq_par_motor}, se obtiene el par máximo que puede dar el motor a la salida de la reductora $M2$ para la situación de bloqueo ($\omega = 0$):
 \begin{align}
-U &= U_{max} = v_{sat} \label{eq:v_{sat}} \\
-i|_{\omega = 0} &= \frac{v_{sat}}{r} \label{eq:i_w_zero} \\
-M2 &= K_m\,i = K_m\,\frac{v_{sat}}{r} \label{eq:M2}
+U &= U_{max} = v_{sat} \label{eq_v_{sat}} \\
+i|_{\omega = 0} &= \frac{v_{sat}}{r} \label{eq_i_w_zero} \\
+M2 &= K_m\,i = K_m\,\frac{v_{sat}}{r} \label{eq_M2}
 \end{align}
 
 
 La condición que garantiza el deslizamiento de las ruedas en una situación de bloqueo es que el par máximo del motor sea mayor que el par en el límite de deslizamiento de la rueda. Para asegurar dicha condición se añade un margen de un 20\% de forma que el deslizamiento sea apreciable:
 \begin{equation}
-M2 >= 1,2\,M1 \label{eq:condicion_kmin}
+M2 >= 1,2\,M1 \label{eq_condicion_kmin}
 \end{equation}
 
-El valor mínimo de la reductora $K_{min}$ se obtiene al sustituir \eqref{eq:M1} y \eqref{eq:M2} en \eqref{eq:condicion_kmin} y despejar $K$:
+El valor mínimo de la reductora $K_{min}$ se obtiene al sustituir \eqref{eq_M1} y \eqref{eq_M2} en \eqref{eq_condicion_kmin} y despejar $K$:
 \begin{equation}
-\boxed{K_{min} = 1,2\,\frac{K_a\,mg\,(d2/d)\,D\,r}{4\,K_m\,Rd\,v_{sat}}} \label{eq:kmin}
+\boxed{K_{min} = 1,2\,\frac{K_a\,mg\,(d2/d)\,D\,r}{4\,K_m\,Rd\,v_{sat}}} \label{eq_kmin}
 \end{equation}
 
 Notar que $K_{min}$ aumenta si los términos $K_a\,F1$, $D$ o $r$ aumentan, o $K_m$, $U_{max}$ disminuye.
 
-Por ejemplo, el sistema de tracción diferencial de la plataforma desatollada utiliza unos motores \emph{brushless} Dunkermotoren BG40x50 alimentados a 24V de 30W. Aunque no se trata de un motor de corriente continua se sabe por \cite{bercerra14} que se puede modelizar como tal y que su funcionamiento queda representado por las mismas curvas del motor de continua como muestra la figura \ref{fig:motor_bg40x50_curvas}
+Por ejemplo, el sistema de tracción diferencial de la plataforma desatollada utiliza unos motores \emph{brushless} Dunkermotoren BG40x50 alimentados a 24V de 30W. Aunque no se trata de un motor de corriente continua se sabe por \cite{bercerra14} que se puede modelizar como tal y que su funcionamiento queda representado por las mismas curvas del motor de continua como muestra la figura \ref{fig_motor_bg40x50_curvas}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth]{motor_bg40x50_curvas}
 \caption[]{Curvas del motor Dunkermotoren BG40x50 24V dada por el fabricante.}
-\label{fig:motor_bg40x50_curvas}
+\label{fig_motor_bg40x50_curvas}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.6\textwidth]{motor_bg40x50_tabla}
 \caption[]{Parámetros del motor Dunkermotoren BG40x50 24V dadas por el fabricante.}
-\label{fig:motor_bg40x50_tabla}
+\label{fig_motor_bg40x50_tabla}
 \end{figure}
 
-A partir de los parámetros y curvas dadas por el fabricante (ver figura \ref{fig:motor_bg40x50_tabla} y \ref{fig:motor_bg40x50_curvas}) se deducen las variables necesarias para el cálculo de la reductora. La resistencia equivalente se obtiene de \eqref{eq:tension_armadura} a partir del la tensión nominal $U_n$ y la corriente de arranque $i_o$ como
+A partir de los parámetros y curvas dadas por el fabricante (ver figura \ref{fig_motor_bg40x50_tabla} y \ref{fig_motor_bg40x50_curvas}) se deducen las variables necesarias para el cálculo de la reductora. La resistencia equivalente se obtiene de \eqref{eq_tension_armadura} a partir del la tensión nominal $U_n$ y la corriente de arranque $i_o$ como
 
 $$r = \frac{U_n}{i_o} = \frac{24V}{8,4A} = 2,86\Omega$$
 
-Por otro lado la constante mecánica $K_m$ se obtiene a partir de la pendiente de la recta $i=f(M)$ de la figura \ref{fig:motor_bg40x50_curvas} los puntos $(M_n, i_n)$ y $(M_o, i_o)$ como:
+Por otro lado la constante mecánica $K_m$ se obtiene a partir de la pendiente de la recta $i=f(M)$ de la figura \ref{fig_motor_bg40x50_curvas} los puntos $(M_n, i_n)$ y $(M_o, i_o)$ como:
 
 $$ K_m = \frac{M_o - M_n}{i_o - i_n} =  \frac{(37,4-8)[Ncm]}{(8,4-2,1)[A]} \times \frac{1[m]}{100[cm]} = 46,7 mN\,m/A $$
 
@@ -606,7 +606,7 @@ K_a &= 1\\
 V_{bat}&= 24V
 \end{align*}
 
-Por último, sustituyendo en \eqref{eq:kmin} se obtiene un valor de 
+Por último, sustituyendo en \eqref{eq_kmin} se obtiene un valor de 
 $$K_{min} = 6,37.$$ 
 Puesto que es menor que 8 el rendimiento utilizado de la reductora es válido. La reductora del fabricante de valor cercano por exceso es la reductora PLG42S 8:1. 
 
@@ -621,10 +621,10 @@ Asumiendo que los motores del robot tienen asociado un controlador de posición o
 
 El análisis a realizar parte de la premisa de utilizar un perfil de velocidad trapezoidal. Para ello se considera que el perfil de velocidad constituye una consigna de velocidad para el controlador \cite{rcva_10x}.
 
-El análisis parte del perfil perfil de velocidad representado en la figura \ref{fig:dimensionamiento_motores} y de las ecuaciones que describen el modelo del motor de continua
+El análisis parte del perfil perfil de velocidad representado en la figura \ref{fig_dimensionamiento_motores} y de las ecuaciones que describen el modelo del motor de continua
 \begin{align}
-U &= r\,i + K_v\,\omega,\label{eq:tension_armadura2} \\
-M &= K_m\,i \label{eq:par_motor2}
+U &= r\,i + K_v\,\omega,\label{eq_tension_armadura2} \\
+M &= K_m\,i \label{eq_par_motor2}
 \end{align}
 
 
@@ -632,20 +632,20 @@ M &= K_m\,i \label{eq:par_motor2}
 \centering
 \includegraphics[width=.7\textwidth]{dimensionamiento_motores}
 \caption[]{Tensión de armadura del motor en el límite de saturación para un perfil de velocidad trapezoidal.}
-\label{fig:dimensionamiento_motores}
+\label{fig_dimensionamiento_motores}
 \end{figure}
 
 Se observa que durante las fases de aceleración y frenado la aceleración del robot es constante, por lo que el par motor\footnote{$M=F\times\,d = m\,a\times\,d$. Si $a=\text{cte}$, $M=\text{cte}$} y la corriente son constantes\footnote{$M=K_m\,i$. Si $M=\text{cte}$, $i=\text{cte}$}. La tensión de armadura $U$ del motor es la suma del termino óhmico $r\,i$ y del termino de velocidad angular $K_v\,\omega$. Por lo tanto durante las fases de aceleración y frenado, el término óhmico será constante y el término de velocidad proporcional a esta. De esta forma el valor máximo de la tensión de armadura del motor $U$ se alcanza, al final de la fase de aceleración, en el instante $t1$.
 
 Por otro lado, hay que recordar que el calculo de la reductora también se realiza en base a la tensión de saturación $V_{sat}$, para la cual las ruedas comenzarían a deslizar para evitar el bloqueo del motor. Es por ello que el instante $t1$ constituye el punto más crítico de las fases del perfil trapezoidal.
 
-El límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:tension_armadura2}, valida en el instante $t1$. Por un lado, la corriente de armadura $i$ se puede expresar en función de la aceleración $a$ del robot del siguiente modo:
+El límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq_tension_armadura2}, valida en el instante $t1$. Por un lado, la corriente de armadura $i$ se puede expresar en función de la aceleración $a$ del robot del siguiente modo:
 \begin{equation}
 \begin{split}
 i &= \frac{M1}{K_m}\\
 M1 &= \frac{M3}{K\,Rd}\\
 M3 &= Fx\,\frac{D}{2}\\
-2Fx &= m\,a \label{eq:desarrollo_i_func_a}
+2Fx &= m\,a \label{eq_desarrollo_i_func_a}
 \end{split}
 \end{equation}
 
@@ -653,11 +653,11 @@ Por otro lado, la velocidad angular $\omega$ se puede expresar en función de la 
 \begin{equation}
 \begin{split}
 \omega1 &= K\,\omega3\\
-v &= \frac{2\omega3}{D} \label{eq:w_func_v}
+v &= \frac{2\omega3}{D} \label{eq_w_func_v}
 \end{split}
 \end{equation}
 
-Sustituyendo los desarrollos \eqref{eq:desarrollo_i_func_a} y \eqref{eq:w_func_v} en \eqref{eq:tension_armadura2} se obtiene\footnote{$K_v$ ha sido sustituido por $K_m$ ya que coinciden si ambas constantes se expresan en $[V/(rad/s)]$ y $Nm/A$, respectivamente}:
+Sustituyendo los desarrollos \eqref{eq_desarrollo_i_func_a} y \eqref{eq_w_func_v} en \eqref{eq_tension_armadura2} se obtiene\footnote{$K_v$ ha sido sustituido por $K_m$ ya que coinciden si ambas constantes se expresan en $[V/(rad/s)]$ y $Nm/A$, respectivamente}:
 \begin{equation}
 U = \Big(\frac{r\,m\,D}{4K\,Rd\,K_m}\Big)\,a + \Big(\frac{2K_m\,K}{D}\Big)\,v \label{u_func_a_v}
 \end{equation}
@@ -673,20 +673,20 @@ v_o &= \frac{\,U\,D}{2K\,K_m} \label{v_o} \\
 a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
 \end{align}
 
-Dicha recta se representa en la figura \ref{fig:recta_velocidad_maxima}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
+Dicha recta se representa en la figura \ref{fig_recta_velocidad_maxima}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=.65\textwidth]{recta_velocidad_maxima}
 \caption[]{Recta de velocidad máxima para una aceleración dada y zona útil de funcionamiento sin saturación y deslizamiento.}
-\label{fig:recta_velocidad_maxima}
+\label{fig_recta_velocidad_maxima}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=.7\textwidth]{recta_velocidad_maxima_ptinto}
 \caption[]{Velocidad y aceleración del robot P.Tinto para un funcionamiento sin saturación y deslizamiento.}
-\label{fig:recta_velocidad_maxima_ptinto}
+\label{fig_recta_velocidad_maxima_ptinto}
 \end{figure}
 
 Recapitulando y simplificando \eqref{v_func_a}, la velocidad máxima del robot $v_{max}$ al límite de saturación y deslizamiento para una aceleración dada se obtiene a partir de la expresión
@@ -696,13 +696,13 @@ v_o &= \frac{\,U\,D}{2K\,K_m} \label{v_o} \\
 a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
 \end{empheq}
 
-Siguiendo con el ejemplo del dimensionamiento de la reductora del robot P.Tinto, a partir de los datos ya conocidos del motor Dunkermotoren BG40x50 y de las expresiones \eqref{v_o} y \eqref{a_o}, se obtiene la recta velocidad-aceleración representada en la figura \ref{fig:recta_velocidad_maxima_ptinto} donde 
+Siguiendo con el ejemplo del dimensionamiento de la reductora del robot P.Tinto, a partir de los datos ya conocidos del motor Dunkermotoren BG40x50 y de las expresiones \eqref{v_o} y \eqref{a_o}, se obtiene la recta velocidad-aceleración representada en la figura \ref{fig_recta_velocidad_maxima_ptinto} donde 
 \begin{align}
 v_o &=  1,93 m/s \label{v_o_ptinto} \\ 
 a_o &=  11,29 m/s^2\,\,(1,15g)\label{a_o_ptinto}
 \end{align}
 
-P.Tinto es un robot tipo con ruedas en el medio no simétrico como el de la figura \ref{fig:dinamica_a_max_ruedas_medio}. A partir del coeficiente de adherencia de las ruedas $K_a = 1$ y las medidas del centro de gravedad respecto al eje motriz:
+P.Tinto es un robot tipo con ruedas en el medio no simétrico como el de la figura \ref{fig_dinamica_a_max_ruedas_medio}. A partir del coeficiente de adherencia de las ruedas $K_a = 1$ y las medidas del centro de gravedad respecto al eje motriz:
 \begin{equation}
 \begin{split}
 d1 &= 19,18 mm\\
@@ -712,55 +712,60 @@ h &= 122,9 mm
 \end{split}
 \end{equation}
 
-Mediante las ecuaciónes \eqref{eq:a_max_neg_no_simetrico} y \eqref{eq:a_max_pos_no_simetrico} se determina una aceleración máxima 
+Mediante las ecuaciónes \eqref{eq_a_max_neg_no_simetrico} y \eqref{eq_a_max_pos_no_simetrico} se determina una aceleración máxima 
 \begin{equation}
 a_{max} = 0,44g\,\,(4,32m/s²)
 \end{equation}
 
-Teniendo en cuenta un margen de seguridad del 20\% se fija la aceleración del robot a un valor de &0,35g& ($3,45 m/s^2$). A partir de la ecuación \eqref{v_max_func_a_max} se obtiene la velocidad correspondiente para un funcionamiento sin saturación y deslizamiento:
+Teniendo en cuenta un margen de seguridad del 20\% se fija la aceleración del robot a un valor de $0,35g$ ($3,45 m/s^2$). A partir de la ecuación \eqref{v_max_func_a_max} se obtiene la velocidad correspondiente para un funcionamiento sin saturación y deslizamiento:
 \begin{equation}
 v_{max} = 1,2 m/s
 \end{equation}
 
 
-Se ha representado una segunda recta en la figura \ref{fig:recta_velocidad_maxima_ptinto} correspondiente a un motor de la mitad de potencia. Observar que para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
+Se ha representado una segunda recta en la figura \ref{fig_recta_velocidad_maxima_ptinto} correspondiente a un motor de la mitad de potencia. Observar que para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
 
 %\subsection{Resultados experimentales}
 %\vfill
 %\newpage
 
 \section{Sistema de control de posición}
-\label{sec:sitema_posicionamiento_relativo}
+\label{sec_sitema_posicionamiento_relativo}
+
+La plataforma robótica desarrollada implementa un control de la posición del robot. La medida de la posición del robot se realiza mediante dos ruedas libres unidas a sensores tipo encoders. A través de la medida de posición se implementa indirectamente el control de posición de los motores del sistema de tracción y de forma directa el sistema de posicionamiento por odometría del robot. Esta configuración difiere del esquema clásico en el que el encoder se encuentra conectado directamente al eje del motor y permite reducir los errores sistemáticos de odometría \cite{bor96_cap5} y que un posible deslizamiento o derrape de las ruedas motrices no afecte al control de posición del robot.
 
 
-El control de los motores se realiza de forma indirecta utilizando las medida de posición de las ruedas libres.
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{ruedas_libres_lineal}
+\caption[]{Sistema de ruedas libres lineal}
+\label{fig_ruedas_libres_lineal}
+\end{figure}
 
 
-Esta configuración difiere de la configuración clásica en la que el encoder se encuentra conectado directamente al eje del motor. Dichas ruedas libres se utilizan para implementar el sistema de posicionam iento mediante odometría, la configuración del encoder desacoplado del motor permite mejorar el error acumulado de posicionamiento debido al derrape de las ruedas motrices.
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{ruedas_libres_pivotante}
+\caption[]{Sistema de ruedas libres pivotante}
+\label{fig_ruedas_libres_pivotante}
+\end{figure}
 
-
-
-El desplazamiento del robot debido a las ruedas motrices es medida mediante encoders conectados a ruedas libres alineadas con las ruedas motrices. De esta forma se mide la posición de cada motor de forma indirecta e independiente de si las ruedas de tracción derrapan.
-
-
-Al no estar conectado el encoder directamente al eje del motor, la medida obtenida es independiente de la tracción de la rueda con el el suelo. 
-
-
-
-
-El control de posición es de tipo polar, es decir la posición del robot en todo momento viene dada por su distancia $d$ y ángulo $a$ absoluto respecto a un origen de coordenadas. 
 
 \subsection{Control en posición de tipo polar}
-\label{sec:control_posicion_tipo_polar}
+\label{sec_control_posicion_tipo_polar}
+
+El control de posición implementado es de tipo polar, es decir la posición del robot viene dada por su distancia $d$ y ángulo $a$ absoluto respecto a un origen de coordenadas. 
+
+
 \subsection{Ajuste del controlador PID}
 
 \subsection{Detección de bloqueos mecánicos}
-\label{sec:deteccion_bloqueos_mecanicos}
+\label{sec_deteccion_bloqueos_mecanicos}
 
 
 
 \subsection{Posicionamiento relativo mediante odometría}
-\label{sec:posicionamiento_relativo_mediante_odometria}
+\label{sec_posicionamiento_relativo_mediante_odometria}
 
 \subsection{Medida y corrección de errores sistemáticos}
 \subsection{Compensación de la fuerza centrípeta}
@@ -768,7 +773,7 @@ El control de posición es de tipo polar, es decir la posición del robot en todo 
 
 
 \section{Sistema de detección de obstáculos}
-\label{sec:sistema_deteccion_obstaculos}
+\label{sec_sistema_deteccion_obstaculos}
 
 \subsection{Sistemas detección de obstáculos}
 \subsection{Detección de oponentes mediante baliza tipo faro}
@@ -777,10 +782,10 @@ El control de posición es de tipo polar, es decir la posición del robot en todo 
 
 
 \section{Sistema de generación de trayectorias}
-\label{sec:generacion_de_trayectorias}
+\label{sec_generacion_de_trayectorias}
 
 \section{Sistema de evitación de obstáculos}
-\label{sec:evitacion_de_obstaculos}
+\label{sec_evitacion_de_obstaculos}
 
 
 
