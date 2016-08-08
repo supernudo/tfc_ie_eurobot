@@ -50,15 +50,16 @@ En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reuti
 \item Comunicación entre robots
 \end{itemize}
 
-El desarrollo de cada una de estas funcionalidades constituye en sí una la labor de ingeniería muy interesante que implica la aplicación de fundamentos de diferentes campos de la ciencia y la ingeniería.  
+El desarrollo de cada una de estas funcionalidades constituye en sí una la labor de ingeniería muy interesante que implica la aplicación de fundamentos de diferentes campos de la ciencia y la ingeniería. 
+
+En las secciones de este capítulo se aborda la implementación mecánica, hardware y software relacionada con las funcionalidades básicas mencionadas, así como los fundamentos implícitos en ellas que se han considerado oportunos.  
 
 
-\section{Partes de la plataforma robótica}
-\label{sec_partes_plataforma_robotica}
+\section{Descripción general de la plataforma robótica}
 
-La plataforma robótica desarrollada se compone de un \emph{sistema de tracción diferencial}, un \emph{sistema de control de posición} y un \emph{sistema de evitación de obstáculos}. La plataforma también incluye una electrónica con capacidad de gestionar e implementar estos sistemas y los sistemas mecánicos a diseñar específicamente para la prueba de Eurobot. Además, la electrónica dispone de una interfaz inalámbrica que permite comunicar dos robots basados en la misma plataforma robótica. 
+La funcionalidad de \textbf{desplazamiento y localización} de la plataforma robótica, se implementa a partir de un \emph{sistema de tracción diferencial} y un \emph{sistema de posicionamiento por odometría}. Mediante la unión de estos dos sistemas se implementa a su vez un \emph{control de posición polar} del robot, a partir del cual, se gestiona la \emph{generación de trayectorias}.
 
-El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig_plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, un \emph{control de posición}.
+Mecánicamente el sistema de tracción diferencial consiste en un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y, junto con el bloque motor, el control de posición del robot.
 
 \begin{figure}[p]
 \centering
@@ -67,9 +68,9 @@ El sistema de tracción diferencial lo compone un bloque motor formado por dos mo
 \label{fig_plataforma_partes_2}
 \end{figure}
 
-La electrónica se compone principalmente de una fuente de alimentación de 24V, la \emph{tarjeta Eurobotics 2010} y tarjetas de expansión de entradas y salidas. 
+El hardware de la plataforma robótica lo compone principalmente una tarjeta de alimentación, la tarjeta \emph{Eurobotics 2010} y una tarjeta de expansión de entradas y salidas. La tarjeta \emph{Eurobotics 2010} tiene la capacidad de gestionar e implementar los sistemas mencionados anteriormente, así como los sistemas mecánicos específicos de la prueba de Eurobot, destinados a la manipulación de elementos de juego.
 
-El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig_plataforma_partes_2}).
+Respecto a la \textbf{evitación de obstáculos}, esta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y un sistema específicamente desarrollado para la detección de la posición del oponente. Este sistema hace uso de los soportes y espacios destinados a sistemas de balizas. Concretamente, el sistema desarrollado está basado en un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_2}). El sensor tipo faro es un sistema totalmente autónomo que se comunica mediante un enlace \emph{Bluetooth} con la tarjeta \emph{Eurobotics 2010}.
 
 \begin{figure}[p]
 \centering
@@ -78,10 +79,14 @@ El sistema de evitación de obstáculos está compuesto por varios sensores de cort
 \label{fig_plataforma_partes_1}
 \end{figure}
 
-La implementación de todos los sistemas y funcionalidades la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src} (microcontroladores AVR) a microcontroladores dsPIC y PIC24.
+La implementación de todos los sistemas y funcionalidades mencionadas de la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src} (microcontroladores AVR) a microcontroladores dsPIC y PIC24, utilizados por la tarjeta \emph{Eurobotics 2010}. Estas librerías constituyen una plataforma software para la implementación de sistemas de control y de robots.
+
+Por último, utilizando la interfaz \emph{Bluetooth} de la tarjeta \emph{Eurobotics 2010} se implementa la funcionalidad de \textbf{comunicación entre dos robots}: uno principal y uno secundario. En este caso, la arquitectura mecánica, hardware y software del robot principal es duplicada en el robot secundario, y la comunicación entre ambos se realiza mediante un enlace serie \emph{Bluetooth} entre las tarjetas \emph{Eurobotic 2010}.
 
 
-\section{Sistema de tracción diferencial}
+\section{Sistemas mecánicos}
+
+\subsection{Sistema de tracción diferencial}
 \label{sec_sistema_traccion_diferencial}
 El sistema de tracción diferencial es uno de los más comunes en Eurobot, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo (ver figura \ref{fig_plataforma_partes_1}). 
 
@@ -108,8 +113,36 @@ Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}. En caso de
 Mecánicamente el conjunto de los motores, reductora y ruedas se denomina \emph{bloque motor}. El bloque motor se reutiliza como una parte independiente en cada diseño de un nuevo robot de forma que se sitúa sobre la base del robot adaptándose al resto de la mecánica.
 
 
-\subsection{Dinamica básica}
-\label{sec_dinamica_basica}
+\subsection{Sistema de posicionamiento y control de posición}
+
+La medida de la posición del robot se realiza mediante dos ruedas libres unidas a sensores tipo encoders. A partir de dicha medida de posición se implementa indirectamente el control de posición de los motores del sistema de tracción y de forma directa el sistema de posicionamiento por odometría del robot. Esta configuración difiere del esquema clásico en el que el encoder se encuentra conectado directamente al eje del motor, permite reducir los errores sistemáticos de odometría \cite{bor96_cap5} y que un posible deslizamiento o derrape de las ruedas motrices no afecte al control de posición del robot.
+
+Es posible que además los motores tengan un encoder conectado directamente su eje de forma que se implemente un doble lazo de control: un control de posición o velocidad de los motores y un control de posición del robot. Sin embargo, el uso de encoders incrementales de al menos 2000 pulsos por vuelta en las ruedas libres y el hecho de que el robot siempre está en contacto con el suelo, hace que los encoders de los motores resultarían redundantes e incrementen el procesado software y los recursos necesarios del hardware.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{ruedas_libres_lineal}
+\caption[]{Sistema de ruedas libres lineal}
+\label{fig_ruedas_libres_lineal}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{ruedas_libres_pivotante}
+\caption[]{Sistema de ruedas libres pivotante}
+\label{fig_ruedas_libres_pivotante}
+\end{figure}
+
+Inicialmente, para el robot Trompetero (Eurobot 2010) se implemento un sistema de ruedas libres lineal como el de la figura \ref{fig_ruedas_libres_lineal}. Este sistema esta compuesto por una rueda que como neumático tiene una junta tórica de goma. Dicha rueda se encuentra conectada con un encoder incremental de dos canales en cuadratura. El conjunto rueda y encoder se encuentran fijados a la base del robot mediante un sistema de dos guías lineales con amortiguación. La amortiguación permite asegurar que ante cualquier desperfecto del campo la rueda siempre esté en contacto con el suelo. Cada guia tiene dos rodamientos lineales para disminuir el rozamiento. La implementación de este sistema mecánico es complejo y necesita de un ajuste de cierta precisión de forma que las dos guías lineales se encuentre perfectamente paralelas para que no existan rozamientos que impliquen errores no sistemáticos.
+
+Un sistema mecánico más sencillo tanto en implementación y como en ajuste es el sistema de ruedas libres pivotante (ver figura \ref{fig_ruedas_libres_pivotante}). Este sistema fue implementado por primera vez en el robot secundario Seskapa (Eurobot 2014) dado el poco espacio disponible y posteriormente en los robots P.Tinto y Tirantes (Eurobot 2015). En este sistema, el conjunto rueda y encoder pivotan sobre un eje paralelo al eje motriz. Dicho eje se encuentra fijado a la base del robot mediante dos piezas con rodamientos de bolas separadas por un casquillo que evita que el eje se desplace. Este sistema tiene menos puntos de ajuste que el sistema lineal. Además la amortiguación del sistema es casi innecesaria debido al bajo rozamiento del eje con los rodamientos de bolas. El propio peso del conjunto rueda y encoder garantiza el contacto con el suelo. No obstante como se ve en la figura \ref{fig_ruedas_libres_pivotante} se utilizó unas gomas elásticas para asegurar el contacto con el suelo. El inconveniente de este sistema se debe al propio pivote, si el suelo tiene muchas imperfecciones, al pivotar la rueda esta se desalinea respecto al eje motriz, lo cual puede generar errores de medida de posición. Este echo es despreciable frente a la simplicidad de implementación mecánica y a que el suelo del campo de juego es plano.
+
+
+\section{Estudio y diseño de robots de tracción diferencial}
+
+\subsection{Dinámica básica}
 
 Es importante entender la dinámica de un robot de Eurobot y tenerla en cuenta durante el diseño mecánico del mismo. El movimiento más común de un robot de Eurobot son los desplazamientos entre dos puntos. Durante dichos desplazamientos el robot parte de parado, recorre una distancia y vuelve a detenerse. Así, a cada desplazamiento le corresponde una fase de aceleración, una fase de velocidad constante y otra fase de frenado.
 
@@ -729,63 +762,34 @@ Se ha representado una segunda recta en la figura \ref{fig_recta_velocidad_maxim
 %\vfill
 %\newpage
 
-\section{Sistema de control de posición}
-\label{sec_sitema_posicionamiento_relativo}
-
-La plataforma robótica desarrollada implementa un control de la posición del robot. La medida de la posición del robot se realiza mediante dos ruedas libres unidas a sensores tipo encoders. A través de la medida de posición se implementa indirectamente el control de posición de los motores del sistema de tracción y de forma directa el sistema de posicionamiento por odometría del robot. Esta configuración difiere del esquema clásico en el que el encoder se encuentra conectado directamente al eje del motor y permite reducir los errores sistemáticos de odometría \cite{bor96_cap5} y que un posible deslizamiento o derrape de las ruedas motrices no afecte al control de posición del robot.
 
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=.9\textwidth]{ruedas_libres_lineal}
-\caption[]{Sistema de ruedas libres lineal}
-\label{fig_ruedas_libres_lineal}
-\end{figure}
-
-
-\begin{figure}[p]
-\centering
-\includegraphics[width=.9\textwidth]{ruedas_libres_pivotante}
-\caption[]{Sistema de ruedas libres pivotante}
-\label{fig_ruedas_libres_pivotante}
-\end{figure}
-
-
-\subsection{Control en posición de tipo polar}
-\label{sec_control_posicion_tipo_polar}
+\section{Control en posición de tipo polar}
 
 El control de posición implementado es de tipo polar, es decir la posición del robot viene dada por su distancia $d$ y ángulo $a$ absoluto respecto a un origen de coordenadas. 
 
+\subsection{Ajuste del controlador de posición}
+\subsection{Estimación de bloqueos mecánicos en el lazo de controlador}
 
-\subsection{Ajuste del controlador PID}
-
-\subsection{Detección de bloqueos mecánicos}
-\label{sec_deteccion_bloqueos_mecanicos}
-
-
-
-\subsection{Posicionamiento relativo mediante odometría}
-\label{sec_posicionamiento_relativo_mediante_odometria}
-
+\section{Posicionamiento mediante odometría}
 \subsection{Medida y corrección de errores sistemáticos}
 \subsection{Compensación de la fuerza centrípeta}
 
+\section{Arquitectura hardware}
 
 
-\section{Sistema de detección de obstáculos}
-\label{sec_sistema_deteccion_obstaculos}
+\section{Implementación software}
 
-\subsection{Sistemas detección de obstáculos}
-\subsection{Detección de oponentes mediante baliza tipo faro}
+\subsection{Sistema de generación de trayectorias}
+\subsection{Módulo de gestión de trayectorias\\ \texttt{trayectory\_manager}}
+\subsection{Módulo de gestión de la posición\\ \texttt{position\_manager}}
+\subsection{Módulo de gestión de controladores en lazo cerrado\\ \texttt{control\_system\_manager}}
+\subsection{Módulo de detección de bloqueos mecánicos\\ \texttt{blocking\_detection\_manager\_manager}}
+\subsection{Modulo de evitación de obstáculos\\ \texttt{obstacle\_avoidance}}
 
 
 
 
-\section{Sistema de generación de trayectorias}
-\label{sec_generacion_de_trayectorias}
-
-\section{Sistema de evitación de obstáculos}
-\label{sec_evitacion_de_obstaculos}
 
 
 
