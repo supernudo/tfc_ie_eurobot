@@ -40,14 +40,9 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 \end{FraseCelebre}
 
 
-\section{Introducción}
+%\section{Introducción}
 
-Una plataforma robótica base permite desarrollar robots de Eurobot desde
-
-En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado en el desarrollo de robots posteriores. 
-
-
-Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en  la sección \ref{sec:partes_robot_eurobot} del capitulo \ref{cha:el_robot_de_eurobot}.:
+En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado y mejorado en el desarrollo de robots posteriores. Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en el capitulo \ref{cha:el_robot_de_eurobot}:
 
 \begin{itemize}
 \item Desplazamiento y localización
@@ -55,29 +50,32 @@ Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot v
 \item Comunicación entre robots
 \end{itemize}
 
+El desarrollo de cada una de estas funcionalidades constituye en sí una la labor de ingeniería muy interesante que implica la aplicación de fundamentos de diferentes campos de la ciencia y la ingeniería.  
+
+
 \section{Partes de la plataforma robótica}
 \label{sec:partes_plataforma_robotica}
 
-La plataforma robótica desarrollada se compone de un \emph{sistema de tracción diferencial}, un \emph{sistema de control de posición}, y un \emph{sistema de evitación de obstáculos}. La plataforma también incluye una electrónica con capacidad de gestionar e implementar estos sistemas y los sistemas mecánicos a diseñar específicamente para la prueba de Eurobot. Además, la electrónica dispone de una interfaz inalámbrica que permite comunicar dos robots basados en la misma plataforma robótica. 
+La plataforma robótica desarrollada se compone de un \emph{sistema de tracción diferencial}, un \emph{sistema de control de posición} y un \emph{sistema de evitación de obstáculos}. La plataforma también incluye una electrónica con capacidad de gestionar e implementar estos sistemas y los sistemas mecánicos a diseñar específicamente para la prueba de Eurobot. Además, la electrónica dispone de una interfaz inalámbrica que permite comunicar dos robots basados en la misma plataforma robótica. 
 
-El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig:plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, el control de posición polar.
+El sistema de tracción diferencial lo compone un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas (ver figura \ref{fig:plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar un \emph{sistema de posicionamiento por odometría} y, junto con el bloque motor, un \emph{control de posición}.
 
-\begin{figure}[h]
-\centering
-\includegraphics[height=.3\textheight]{plataforma_partes_1}
-\caption[Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición]{Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
-\label{fig:plataforma_partes_1}
-\end{figure}
-
-La electrónica se compone principalmente de una fuente de alimentación de 24V, la \emph{tarjeta Eurobotics 2010} y tarjetas de expansión de entradas y salidas. 
-
-El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig:plataforma_partes_2}) y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig:plataforma_partes_2}.
-
-\begin{figure}[h]
+\begin{figure}[p]
 \centering
 \includegraphics[height=.3\textheight]{plataforma_partes_2}
 \caption[Plataforma robótica base: partes del sistema de evitación de obstáculos]{Plataforma robótica base: partes del sistema de evitación de obstáculos. Robot Zamorano (Eurobot 2011).}
 \label{fig:plataforma_partes_2}
+\end{figure}
+
+La electrónica se compone principalmente de una fuente de alimentación de 24V, la \emph{tarjeta Eurobotics 2010} y tarjetas de expansión de entradas y salidas. 
+
+El sistema de evitación de obstáculos está compuesto por varios sensores de corto alcance situados en las caras del robot (ver figura \ref{fig:plataforma_partes_2}) y un sistema de detección del oponente de largo alcance basado en un sensor tipo faro y balizas reflectantes (ver figura \ref{fig:plataforma_partes_2}).
+
+\begin{figure}[p]
+\centering
+\includegraphics[height=.3\textheight]{plataforma_partes_1}
+\caption[Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición]{Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
+\label{fig:plataforma_partes_1}
 \end{figure}
 
 La implementación de todos los sistemas y funcionalidades la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src} (microcontroladores AVR) a microcontroladores dsPIC y PIC24.
@@ -94,13 +92,13 @@ Dependiendo de la posición del eje motriz se dan 2 tipos de robots:
 \item Robot con ruedas en el medio: necesitan de puntos de apoyo delanteros y traseros.
 \end{enumerate}
 
-Los robots con ruedas atrás suelen tener dos puntos de poyo delanteros. En cambio, los robots con ruedas en el medio suelen tener dos puntos de apoyo delanteros y otros dos traseros. Aunque a veces en uno de los extremos sólo llevan un punto de apoyo, 3 puntos de apoyo en total.
+Los robots con ruedas atrás suelen tener dos puntos de apoyo delanteros. En cambio, los robots con ruedas en el medio suelen tener dos puntos de apoyo delanteros y otros dos traseros. Aunque a veces en uno de los extremos sólo llevan un punto de apoyo, 3 puntos de apoyo en total.
 
 Como se verá más adelante, interesa un robot con ruedas en el medio y que tenga una simetría total de forma que todo el peso del robot recaiga sobre el eje motriz. Además, los puntos de apoyo han de estar a la mayor distancia posible del eje motriz. Esta situación no siempre se cumple, ya que existe un compromiso con el resto de elementos mecánicos del robot.
 
 Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}. En caso de no disponer de espacio suficiente para ellos también es posible utilizar materiales de bajo coeficiente de rozamiento como el teflón (ver figura \ref{fig:sistema_traccion_rollones}).
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[height=.3\textheight]{sistema_traccion_rollones}
 \caption[]{Sistema de tracción diferencial del robot Automático (Eurobot 2013) visto desde abajo.}
@@ -133,7 +131,7 @@ Siendo:
 \item $m$: masa del robot sobre las ruedas.
 \end{description}
 
-Durante la fase de aceleración ($a>0$) se necesita una fuerza de propulsión $F_x$ positiva de forma que la fuerza resultante $F$ provoque un desplazamiento hacia delante. Una vez alcanzada la fase de velocidad constante ($a=0$), teóricamente no es necesario realizar ninguna fuerza de propulsión\footnote{En la práctica, dado que existen perdidas por rozamiento $F_x$ no es nula} y la fuerza resultante es igual a la fuerza normal sobre la rueda. En la última fase, la fuerza de tracción $F_x$ ha de ser negativa de forma que la fuerza resultante se oponga al movimiento del robot provocando una desaceleración o frenado.  
+Durante la fase de aceleración ($a>0$) se necesita una fuerza de propulsión $F_x$ positiva de forma que la fuerza resultante $F$ provoque un desplazamiento hacia delante. Una vez alcanzada la fase de velocidad constante ($a=0$), teóricamente no es necesario realizar ninguna fuerza de propulsión\footnote{En la práctica, dado que existen perdidas por rozamiento $F_x$ no es nula. Aun así la fuerza para mantener una velocidad constante es menor que la necesaria para acelerar el robot hasta esa velocidad. El efecto es el mismo experimentado al mover un armario, una vez vencida la fuerza de rozamiento inicial la fuerza necesaria para desplazarlo es mínima.} y la fuerza resultante es igual a la fuerza normal sobre la rueda. En la última fase, la fuerza de tracción $F_x$ ha de ser negativa de forma que la fuerza resultante se oponga al movimiento del robot provocando una desaceleración o frenado.  
 
 Para conseguir desplazamientos en un periodo de tiempo corto, las fases de aceleración y frenado han de durar lo menos posible. El valor de la aceleración durante esas fases va a depender por un lado del coeficiente de adherencia de las ruedas, y por otro, de la posición del centro de gravedad del robot.
 
@@ -198,7 +196,7 @@ Notar que el valor de $K_a$ es independiente del peso del robot.
 La validez de este método se ha comprobado en la practica. El método se aplicó a robots de diferente peso y de ruedas idénticas obteniendo los resultados de la tabla siguiente:
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Resultados de la medida del coeficiente de adherencia de las ruedas}
 \label{tab:resultados_medida_ka}
@@ -477,10 +475,9 @@ Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de l
 
 Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec:sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
 
-\newpage
 \subsection{Dimensionamiento de la reductora}
 
-Como se ha visto, las ruedas del eje motriz se encuentran conectadas al motor por medio de una reductora. La figura \ref{fig:modelo_reductora_motor} representa el modelo mecánico de uno de los motores. 
+Como se sabe, las ruedas del eje motriz se encuentran conectadas al motor por medio de una reductora. El modelo mecánico de dicho sistema se muestra en la figura \ref{fig:modelo_reductora_motor}. 
 
 \begin{figure}[H]
 \centering
@@ -530,7 +527,7 @@ Siendo:
 
 A la hora de dimensionar la reductora se busca determinar el valor de reducción ($K$) que genere un par suficiente en la rueda para vencer las fuerzas aplicadas en la misma que se oponen al movimiento.
 
-No obstante existe una condición más restrictiva a la hora de dimensionar la reductora. Es el caso en el que las ruedas queden bloqueadas debido a que el robot se encuentra con un obstáculo imprevisto. Por ejemplo una pared debido a un error de posicionamiento, o que haya un objeto inesperado entre el robot y la pared. En ese caso el controlador de posición reaccionará aumentando la tensión del motor hasta su valor máximo $U_{max}$ (tensión de saturación $v_{sat}$) y se corre el riesgo de que el motor se queme. Este caso es analizado en \ref{rcva_10x} a partir de modelo térmico del motor. El análisis determina que en caso de bloqueo de una rueda la vida útil del motor es de 2,3s, a menos que el driver del motor sirva de fusible y se rompa antes o que exista un mecanismo de protección.
+No obstante existe una condición más restrictiva a la hora de dimensionar la reductora. Es el caso en el que las ruedas queden bloqueadas debido a que el robot se encuentra con un obstáculo imprevisto. Por ejemplo una pared debido a un error de posicionamiento, o que haya un objeto inesperado entre el robot y la pared. En ese caso el controlador de posición reaccionará aumentando la tensión del motor hasta su valor máximo $U_{max}$ (tensión de saturación $v_{sat}$) y se corre el riesgo de que el motor se queme. Este caso es analizado en \cite{rcva_10x} a partir de modelo térmico del motor. El análisis determina que en caso de bloqueo de una rueda la vida útil del motor es de 2,3s, a menos que el driver del motor sirva de fusible y se rompa antes o que exista un mecanismo de protección.
 
 Teniendo en cuenta este caso, un dimensionamiento más correcto de la reductora es aquel que permita que las ruedas derrapen antes de que la tensión del motor alcance su valor máximo.
 
@@ -616,11 +613,11 @@ Puesto que es menor que 8 el rendimiento utilizado de la reductora es válido. La
 En el caso real, ya se disponían de estos motores y además ya venían con una reductora PLG42S de factor de reducción 4:1\footnote{Estos motores se compraron en el año 2010 a un vendedor de eBay. Los motores nuevos son caros y por que entonces no había presupuesto suficiente para comprar unos nuevos a demanda de los requisitos del robot.}. Se optó por añadir una segunda etapa de reducción. Esta segunda etapa se implemento mediante una reducción por correa dentada, cuyo rendimiento es del 90\%. Recalculando $K_{min}$ para un rendimiento de $0,9²$ se obtiene una 
 $$K_{min} = 7.$$	
 
-A partir de este valor, se escogió un factor de reducción 2:1 para la segunda etapa.
+A partir de este valor, se escogió un factor de reducción 2:1 para la segunda etapa obteniendo un factor de reducción total de 8:1.
 
 \subsection{Calculo de la velocidad máxima}
 
-Los motores se dimensionan de forma que el controlador de estos no llegue nunca a saturación. Esto es, la tensión $U$ de los motores ha de estar por debajo de la tensión de saturación $v_{sat}$. Interesa conocer cual es el margen entre estas dos tensiones necesario para realizar un control sobre los motores sin bloqueos.
+Asumiendo que los motores del robot tienen asociado un controlador de posición o velocidad, el dimensionamiento de estos se realiza de forma que el controlador no llegue nunca a la tensión de saturación. Esto es, la tensión $U$ de los motores ha de estar por debajo de la tensión de saturación $v_{sat}$. Interesa conocer cual es el margen entre estas dos tensiones necesario para realizar un control sobre los motores sin bloqueos.
 
 El análisis a realizar parte de la premisa de utilizar un perfil de velocidad trapezoidal. Para ello se considera que el perfil de velocidad constituye una consigna de velocidad para el controlador \cite{rcva_10x}.
 
@@ -648,7 +645,7 @@ El límite de funcionamiento sin saturación es dado por la ecuación \eqref{eq:ten
 i &= \frac{M1}{K_m}\\
 M1 &= \frac{M3}{K\,Rd}\\
 M3 &= Fx\,\frac{D}{2}\\
-2Fx &= m\,a \label{eq:desarllo_i_func_a}
+2Fx &= m\,a \label{eq:desarrollo_i_func_a}
 \end{split}
 \end{equation}
 
@@ -660,9 +657,9 @@ v &= \frac{2\omega3}{D} \label{eq:w_func_v}
 \end{split}
 \end{equation}
 
-Sustituyendo en \eqref{eq:tension_armadura2} se obtiene\footnote{$K_v$ ha sido sustituido por $K_m$ ya que coinciden si ambas constantes se expresan en $[V/(rad/s)]$ y $Nm/A$, respectivamente}:
+Sustituyendo los desarrollos \eqref{eq:desarrollo_i_func_a} y \eqref{eq:w_func_v} en \eqref{eq:tension_armadura2} se obtiene\footnote{$K_v$ ha sido sustituido por $K_m$ ya que coinciden si ambas constantes se expresan en $[V/(rad/s)]$ y $Nm/A$, respectivamente}:
 \begin{equation}
-U = (\frac{r\,m\,D}{4K\,Rd\,K_m})\,a + (\frac{2K_m\,K}{D})\,v \label{u_func_a_v}
+U = \Big(\frac{r\,m\,D}{4K\,Rd\,K_m}\Big)\,a + \Big(\frac{2K_m\,K}{D}\Big)\,v \label{u_func_a_v}
 \end{equation}
 
 Representando la velocidad $v$ en función de la aceleración $a$ se obtiene la ecuación de la recta 
@@ -676,16 +673,21 @@ v_o &= \frac{\,U\,D}{2K\,K_m} \label{v_o} \\
 a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m} \label{a_o}
 \end{align}
 
+Dicha recta se representa en la figura \ref{fig:recta_velocidad_maxima}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
 
-\begin{figure}[h]
+\begin{figure}[p]
 \centering
 \includegraphics[width=.65\textwidth]{recta_velocidad_maxima}
 \caption[]{Recta de velocidad máxima para una aceleración dada y zona útil de funcionamiento sin saturación y deslizamiento.}
 \label{fig:recta_velocidad_maxima}
 \end{figure}
 
-
-Dicha recta se representa en la figura \ref{fig:recta_velocidad_maxima}, donde se puede observar que la aceleración máxima $a_{max}$ define la zona útil de funcionamiento sin saturación y deslizamiento. 
+\begin{figure}[p]
+\centering
+\includegraphics[width=.7\textwidth]{recta_velocidad_maxima_ptinto}
+\caption[]{Velocidad y aceleración del robot P.Tinto para un funcionamiento sin saturación y deslizamiento.}
+\label{fig:recta_velocidad_maxima_ptinto}
+\end{figure}
 
 Recapitulando y simplificando \eqref{v_func_a}, la velocidad máxima del robot $v_{max}$ al límite de saturación y deslizamiento para una aceleración dada se obtiene a partir de la expresión
 \begin{empheq}[box=\fbox]{align}
@@ -699,14 +701,6 @@ Siguiendo con el ejemplo del dimensionamiento de la reductora del robot P.Tinto,
 v_o &=  1,93 m/s \label{v_o_ptinto} \\ 
 a_o &=  11,29 m/s^2\,\,(1,15g)\label{a_o_ptinto}
 \end{align}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=.7\textwidth]{recta_velocidad_maxima_ptinto}
-\caption[]{Velocidad y aceleración del robot P.Tinto para un funcionamiento sin saturación y deslizamiento.}
-\label{fig:recta_velocidad_maxima_ptinto}
-\end{figure}
-
 
 P.Tinto es un robot tipo con ruedas en el medio no simétrico como el de la figura \ref{fig:dinamica_a_max_ruedas_medio}. A partir del coeficiente de adherencia de las ruedas $K_a = 1$ y las medidas del centro de gravedad respecto al eje motriz:
 \begin{equation}
@@ -729,12 +723,11 @@ v_{max} = 1,2 m/s
 \end{equation}
 
 
-Observar la segunda recta de la figura \ref{fig:recta_velocidad_maxima_ptinto}, correspondiente a un motor de la mitad de potencia. Para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
+Se ha representado una segunda recta en la figura \ref{fig:recta_velocidad_maxima_ptinto} correspondiente a un motor de la mitad de potencia. Observar que para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
 
-\subsection{Resultados experimentales}
-
-\vfill
-\newpage
+%\subsection{Resultados experimentales}
+%\vfill
+%\newpage
 
 \section{Sistema de control de posición}
 \label{sec:sitema_posicionamiento_relativo}

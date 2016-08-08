@@ -41,7 +41,7 @@ Bernardo de Chatres, en \emph{Metalogicon} de Juan de Salisbury
 
 
 
-\section{Introducción}
+%\section{Introducción}
 
 Cada robot que participa en Eurobot es único y diferente al resto, sin embargo todos tienen en común ciertas características o funcionalidades que vienen determinadas o derivadas de las reglas del juego. Como se ha comentado en el capitulo \ref{cha:introduccion} cada año la prueba en la que competir o a resolver es diferente, esto tiene una implicación directa en el diseño mecánico especialmente en los mecanismos diseñados para manipular los elementos de juego propios de la prueba. Sin embargo, si se comparan las reglas del juego de varios años se observan características comunes que repercuten en el diseño de la mecánica, de la electrónica o del software.
 
@@ -646,10 +646,6 @@ La puesta en marcha y verificación constituye la fase más importante si cabe de 
 Es recomendable realizar un desarrollo modular y estratificado desde los niveles más bajos y específicos hacia los más altos y abstractos. De esta forma cada parte desarrollada ha de contar con funciones o herramientas que permitan probar de forma independiente su funcionamiento y verifícalo. Si además dichas funciones de test están accesibles durante todo el proceso de desarrollo pueden ser útiles para la depuración de funciones más abstractas o de averías relacionadas con el cableado o componentes electrónicos. Por ejemplo, en caso de fallo en un actuador tipo servomotor una función que permita mover dicho actuador a nivel de driver de señal PWM puede ayudar a verificar si el fallo es del actuador o de capas superiores al driver. O por ejemplo una función que permita comprobar el estado de los sensores digitales permitirá comprobar si hay un fallo en algún sensor o el cableado. 
 
 Por otro lado, aunque el funcionamiento del robot este verificado es inevitable que durante los partidos surjan incompatibilidades en ciertas partes del desarrollo o funcionalidades que pueden ser mejoradas. Durante las competiciones, los partidos constituyen el mejor entorno de pruebas y son la mejor forma de pulir el funcionamiento y perfeccionar la estrategia del robot. Si es posible, se recomienda no limitarse a participar en la competición nacional del país de origen y participar en otras copas de Eurobot abiertas a participantes de otros países.
-
-
-
-
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
