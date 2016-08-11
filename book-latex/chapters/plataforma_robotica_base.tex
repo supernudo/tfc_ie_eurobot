@@ -84,9 +84,9 @@ La implementación de todos los sistemas y funcionalidades mencionadas de la plat
 Por último, utilizando la interfaz \emph{Bluetooth} de la tarjeta \emph{Eurobotics 2010} se implementa la funcionalidad de \textbf{comunicación entre dos robots}: uno principal y uno secundario. En este caso, la arquitectura mecánica, hardware y software del robot principal es duplicada en el robot secundario, y la comunicación entre ambos se realiza mediante un enlace serie \emph{Bluetooth} entre las tarjetas \emph{Eurobotic 2010}.
 
 
-\section{Sistemas mecánicos}
+%\section{Sistemas mecánicos}
 
-\subsection{Sistema de tracción diferencial}
+\section{Sistema de tracción diferencial}
 \label{sec_sistema_traccion_diferencial}
 El sistema de tracción diferencial es uno de los más comunes en Eurobot, está compuesto por dos ruedas motrices unidas a motores mediante una reductora y varios puntos de apoyo (ver figura \ref{fig_plataforma_partes_1}). 
 
@@ -113,7 +113,7 @@ Los puntos de apoyo utilizados normalmente son de tipo \emph{rollon}. En caso de
 Mecánicamente el conjunto de los motores, reductora y ruedas se denomina \emph{bloque motor}. El bloque motor se reutiliza como una parte independiente en cada diseño de un nuevo robot de forma que se sitúa sobre la base del robot adaptándose al resto de la mecánica.
 
 
-\subsection{Sistema de posicionamiento y control de posición}
+\section{Sistema de posicionamiento y control de posición}
 
 La medida de la posición del robot se realiza mediante dos ruedas libres unidas a sensores tipo encoders. A partir de dicha medida de posición se implementa indirectamente el control de posición de los motores del sistema de tracción y de forma directa el sistema de posicionamiento por odometría del robot. Esta configuración difiere del esquema clásico en el que el encoder se encuentra conectado directamente al eje del motor, permite reducir los errores sistemáticos de odometría \cite{bor96_cap5} y que un posible deslizamiento o derrape de las ruedas motrices no afecte al control de posición del robot.
 
@@ -140,9 +140,15 @@ Inicialmente, para el robot Trompetero (Eurobot 2010) se implemento un sistema d
 Un sistema mecánico más sencillo tanto en implementación y como en ajuste es el sistema de ruedas libres pivotante (ver figura \ref{fig_ruedas_libres_pivotante}). Este sistema fue implementado por primera vez en el robot secundario Seskapa (Eurobot 2014) dado el poco espacio disponible y posteriormente en los robots P.Tinto y Tirantes (Eurobot 2015). En este sistema, el conjunto rueda y encoder pivotan sobre un eje paralelo al eje motriz. Dicho eje se encuentra fijado a la base del robot mediante dos piezas con rodamientos de bolas separadas por un casquillo que evita que el eje se desplace. Este sistema tiene menos puntos de ajuste que el sistema lineal. Además la amortiguación del sistema es casi innecesaria debido al bajo rozamiento del eje con los rodamientos de bolas. El propio peso del conjunto rueda y encoder garantiza el contacto con el suelo. No obstante como se ve en la figura \ref{fig_ruedas_libres_pivotante} se utilizó unas gomas elásticas para asegurar el contacto con el suelo. El inconveniente de este sistema se debe al propio pivote, si el suelo tiene muchas imperfecciones, al pivotar la rueda esta se desalinea respecto al eje motriz, lo cual puede generar errores de medida de posición. Este echo es despreciable frente a la simplicidad de implementación mecánica y a que el suelo del campo de juego es plano.
 
 
-\section{Estudio y diseño de robots de tracción diferencial}
+\section{Estudio de la dinámica de robots de tracción diferencial}
 
-\subsection{Dinámica básica}
+El estudio de la dinámica de un robot de tracción diferencia permite conocer los límites de aceleración y velocidad a partir de los cuales dimensionar la reductora y los motores que mueven el robot.
+
+En las siguientes secciones se analizar la dinámica de un robot de tracción diferencia en desplazamientos lineales sobre el plano horizontales. El modelo dinámico para este caso es sencillo y permite deducir restricciones mecánica muy útiles a la hora de diseñar un robot de estas características.
+
+No es objeto de este proyecto analizar el modelo dinámico del robot para desplazamientos angulares. El cálculo de dicho modelo resulta muy complejo comparado con la influencia de estos movimientos en un robot de Eurobot. Es en los desplazamientos lineales donde el robot ha de adaptar su velocidad y aceleración para evitar chocar con el oponente o alcanzar una posición del campo.
+
+\subsection{Dinámica básica en desplazamientos lineales sobre un plano horizontal}
 
 Es importante entender la dinámica de un robot de Eurobot y tenerla en cuenta durante el diseño mecánico del mismo. El movimiento más común de un robot de Eurobot son los desplazamientos entre dos puntos. Durante dichos desplazamientos el robot parte de parado, recorre una distancia y vuelve a detenerse. Así, a cada desplazamiento le corresponde una fase de aceleración, una fase de velocidad constante y otra fase de frenado.
 
@@ -506,7 +512,7 @@ Respecto a la velocidad máxima, dependerá en última medida del motor y la reduct
 
 Resulta interesante el análisis que hacen en \cite{rcva_10x} sobre el valor de la velocidad máxima. En este análisis se comparan dos perfiles trapezoidales de distinta velocidad ($1m/s$ y $1,4m/s$), de igual aceleración ($a=2\,m/s$) y para una misma distancia recorrida ($1m/s$). El resultado es que el perfil con velocidad de $1,4m/s$ tarda sólo $0,1s$ menos en recorrer la distancia de $1m$. Un tiempo que es despreciable. Esto es debido a que el tiempo de la fase de velocidad constante del perfil de $1.4m/s$ es muy pequeño respecto al tiempo que se invierte en acelerar y frenar. De esto se deduce que para distancias cortas no es tan importante la velocidad como la aceleración del robot.
 
-Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec_sitema_posicionamiento_relativo}, esta curva representa una consigna de distancia para el sistema de control de posición.
+Por último,respecto a la gráfica de distancia del perfil trapezoidal, se observa una evolución parabólica durante las fases de aceleración y frenado que permite un movimiento suave del robot. Como se verá en la sección \ref{sec_control_posicion}, esta curva representa una consigna de distancia para el sistema de control de posición.
 
 \subsection{Dimensionamiento de la reductora}
 
@@ -762,18 +768,194 @@ Se ha representado una segunda recta en la figura \ref{fig_recta_velocidad_maxim
 %\vfill
 %\newpage
 
-
-
 \section{Control en posición de tipo polar}
+\label{sec_control_posicion}
 
-El control de posición implementado es de tipo polar, es decir la posición del robot viene dada por su distancia $d$ y ángulo $a$ absoluto respecto a un origen de coordenadas. 
+La plataforma robótica base implementa un control de posición de tipo polar. Este tipo de control es muy  utilizado por los robots de Eurobot y es el que mejor se adapta a este tipo de aplicación, ya que, en ultima medida el robot ha de ser capaz de llegar a posiciones específicas del campo donde manipular elementos de juego. Así mismo, este tipo de control de posición ha sido muy comentado en los foros de Eurobot \cite{foros_eurobot}, documentado \cite{rcva_10x} \cite{rcva_asserv} e implementado por muchos equipos \cite{microb}.
+
+La posición del robot viene dada por una consigna de distancia $d$ y de una consigna de orientación o ángulo $a$, correspondientes a un controlador de distancia y un controlador de ángulo. El control de posición polar permite obtener un mejor rendimiento que un controlador de posición por rueda del robot (ver figura \ref{fig_control_polar_vs_por_rueda}).
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.75\textwidth]{control_polar_vs_por_rueda}
+\caption[]{Control de posición polar vs. control independiente de posición por rueda}
+\label{fig_control_polar_vs_por_rueda}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{control_polar}
+\caption[]{Diagrama de bloques del control de posición polar}
+\label{fig_control_polar}
+\end{figure}
+
+El diagrama de bloques del controlador polar se muestra en la figura \ref{fig_control_polar}. En cada controlador error de posición $e[n]$ se obtiene a partir de la resta de la consigna $x[n]$ y de la medida instantánea de los encoders $y[n]$ en cada periodo de muestreo $T_s$. Para el caso del control en distancia, $y[n]$ se corresponde con la distancia recorrida por el robot y se obtiene a partir del valor medio de la distancia recorrida por cada encoder. Mientras que en el caso del controlador en ángulo, $y[n]$ se corresponde con el ángulo instantáneo del robot y se obtiene a partir de la diferencia de la distancia recorrida por los encoders.
+
+El error de consigna es procesado por un controlador PID (Proporcional Integral Derivativo) generando a su salida la señal de control $u[n$] para los motores. Notar que en el caso del controlador de distancia la señal de control es la misma para ambos motores, mientras que en el caso del controlador de ángulo, el signo de la señal de control del motor izquierdo se encuentra invertida.
+
+En la practica, se ha utilizado un controlador PD frente al clásico PID, esta elección viene dada por el balance entre las ventajas e inconvenientes del termino integral.
+
+Ventajas:
+\begin{itemize}
+\item Mejor precisión en régimen permanente
+\item Mejor respuesta a perturbaciones
+\end{itemize}
+
+Desventajas:
+\begin{itemize}
+\item Tendencia a desestabilizar el bucle de control
+\item Introduce el fenómeno de \emph{windup}\footnote{Efecto por el cual el controlador puede saturarse dando como resultado respuestas bruscas no lineales en el momento que la perturbación cesa}.
+\end{itemize}
+
+El termino integral suele ser utilizado en procesos industriales donde la respuesta a perturbaciones es muy importante. Sin embargo, para un robot de Eurobot su uso puede ser cuestionable tal y como se argumenta en \cite{rcva_10x}. Esto es debido a las posibles reacciones bruscas del efecto \emph{windup} y a que en Eurobot una perturbación significa que el robot se ha bloqueado debido a que ha chocado con un oponente o una pared. En dicho caso, si la reductora del robot se ha dimensionado correctamente, las ruedas derraparan, por lo que el termino integral no tendrá ningún efecto.
+
+Al utilizar una arquitectura PD el sistema de control es tipo 1 \cite{ogata2010}. Por un lado, esto implica que un ajuste más sencillo de los controladores. Hay que tener en cuenta que un controlador tipo 1 siempre tendrá un mejor rendimiento y fiabilidad que un controlador tipo 2 mal ajustado. Por otro lado, un sistema de control de tipo 1 implica un error de posición nulo ante una entrada tipo escalón y un error de velocidad constante ante una entrada tipo rampa. Teniendo en cuenta que las consignas de los controladores de posición vendrán dadas a partir de perfiles de velocidad trapezoidal, durante las fases de aceleración y frenado el controlador seguirá a la consigna a la misma velocidad pero con un retardo constante, mientras que durante la fase de velocidad constante o en estado de reposo (robot parado) el error de posición será nulo. Dado que es en distancia donde se requiere un control preciso, el retardo en velocidad es un factor asumible.
+
+Respecto a la acción derivativa de un controlador PID o PD, esta suele introducir cierto ruido en la señal de control de los motores $u[n]$ y da como resultado un controlador más nervioso. Este ruido puede reducirse mediante un controlador del tipo PI-D \cite{ogata2010} donde la corrección derivativa se realiza directamente a partir de la medida de los encoders. Este caso ha sido estudiado en \cite{rcva_10x}, donde se comprueban las ventajas de un controlador P-D frente a una arquitectura clásica PD. Efectivamente, la señal de control $u[n]$ es menos ruidosa y de un valor de pico menor, lo que repercute en un control más suave de la velocidad del robot. Además se observa que el error $e[n]$ del controlador P-D es menor que en el PD. Por contra, se observa un retardo mayor en las fases de aceleración y frenado para en controlador P-D, consiguiendo la misma aceleración para ambas arquitecturas.
+
+Otra opción para disminuir el efecto del termino integral consiste en asignar un periodo de muestreo para el termino derivativo $T_d$ menor que el periodo de muestreo del bucle $T_s$, de forma que, el el error derivativo quede promediado y se consigua una respuesta más suave a la salida del controlador.
+
+\subsection{Implementación del perfil de velocidad trapezoidal}
+
+La implementación del perfil de velocidad trapezoidal se consigue mediante un filtro de consigna previo a la consigna de distancia y ángulo de los controladores (ver figura \ref{fig_filtro_consigna}). Dado que lo que se quiere limitar es la aceleración y la velocidad con la que varia la consigna de posición se necesita de un filtro de segundo orden. Dicho filtro evalúa la primera y segunda derivada de la consigna de posición $x[n]$, correspondientes a la aceleración y velocidad máximas. En caso de superase alguna de ellas la consigna de posición a la salida del filtro $x'[n]$ es limitada al valor de la aceleración o la velocidad máxima, según aplique.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{filtro_consigna}
+\caption[]{Implementación del perfil de velocidad trapezoidal mediante un filtro de consigna}
+\label{fig_filtro_consigna}
+\end{figure}
+
+
+\subsection{Sistema de unidades del robot}
+
+Los controladores de posición a implementar trabajan en unidades diferentes a las del sistema internacional (SI). A la hora de establecer la consigna de los mismos o fijar la velocidad y aceleración máxima del filtro de consigna es necesario conocer los coeficientes de conversión entre ambos sistemas de unidades. La tabla \ref{tab_unidades_robot} muestra las unidades de la distancia, velocidad y aceleración para el sistema internacional y el sistema de unidades del robot.
+
+\begin{table}[h]
+\centering
+\caption{Unidades SI y del sistema robot}
+\label{tab_unidades_robot}
+
+\begin{tabular}{ lccc }
+\hline
+Magnitud	& Simbolo   & Unidades SI 	& Unidades sistema Robot \\
+\hline
+Distancia 	& $d$ 		& $m$  			& $\text{pulsos}$ \\
+Velocidad 	& $v$		& $m/s$			& $\text{pulsos}/T_s$\\
+Aceleración & $a$		& $m/s^2$		& $\text{pulsos}/T_s^2$ \\
+\hline
+\end{tabular}
+\end{table}
+
+Los coeficientes de conversión de distancia $C_d$, velocidad $C_v$ y aceleración $C_a$ entre sistemas se calculan como:
+\begin{align}
+C_d &= \frac{N\times M}{\pi\,D_e} \,\Big[\frac{pulsos}{m}\Big] \\
+C_v &= C_d\, T_s 				  \,\Big[\frac{pulsos/T_s}{m/s}\Big] \\
+C_a &= C_d\, T_s^2  			  \,\Big[\frac{pulsos/T_s^2}{m/s^2}\Big]
+\end{align}
+
+Siendo:
+\begin{align*}
+N &: \text{Numero de pulsos por vuelta de encoder} \\
+M &: \text{Factor de multiplicación de decodificación de señales en cuadratura del encoder} \\
+D_e &: \text{Diámetro del encoder} \\
+T_s &: \text{Periodo de muestreo}
+\end{align*}
+
+De esta forma dada una distancia $d$, velocidad $v$ y aceleración $a$ en unidades del SI su valor en unidades del robot serian:
+\begin{align}
+d_r &= C_d\,d \\
+v_r &= C_v\,v \\
+a_r &= C_a\,a \\
+\end{align}
+
+Por ejemplo para los datos, correspondientes al robot P.Tinto (Eurobot 2015):
+\begin{align*}
+N &= 3600\,pulsos \\
+M &= 4 \\
+D_e &= 55\,mm \\
+T_s &= 5\,ms 
+\end{align*}
+
+Se obtienen las constantes
+\begin{align*}
+C_d &= 83339,121 \\
+C_v &= 416,696 \\
+C_a &= 2,083
+\end{align*}
+
+Así por ejemplo, para una distancia de $1m$, una velocidad de $1m/s$ y una aceleración de $3,6m/s^2$ se obtiene:
+\begin{align}
+d_r &= C_d\, 1 = 83339,121 \\
+v_r &= C_v\, 1 = 416,696 \\
+a_r &= C_a\,a 3 = 7,501
+\end{align}
+
+Se observa que los valores resultantes son decimales, lo cual implicaría trabajar con decimales en la implementación de los controladores. Esto no es nada óptimo desde el punto de vista de procesamiento digital. Una posible solución pasa por redondear dichos valores para poder trabajar con números enteros, pero para valores pequeños como el de la aceleración el error por redondeo podría ser considerable. Para solucionar dicha perdida de precisión se añade un factor $K_{imp}$:
+\begin{align}
+C_d &= K_{imp}\,\frac{N\times M}{\pi\,D_e} \,\Big[\frac{pulsos}{m}\Big] \\
+C_v &= K_{imp}\,C_d\, T_s 				  \,\Big[\frac{pulsos/T_s}{m/s}\Big] \\
+C_a &= K_{imp}\,C_d\, T_s^2  			  \,\Big[\frac{pulsos/T_s^2}{m/s^2}\Big]
+\end{align}
+
+Por ejemplo, para un $K_{imp}=10$ el valor de la consigna de aceleración seria $a_r=75$ lo que equivale a un error menor del 1\%.
+
+Para que la conversión sea válida, el factor $K_{imp}$ ha de integrarse en el controlador. Como muestra la figura \ref{fig_control_polar_kimp}, la integración se realiza en el lazo de realimentación de forma que el factor $K_{imp}$ multiplica a la medida de posición de los encoders. Notar que la constante $K_{imp}$ no tiene efecto sobre la medida de angulo.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{control_polar_kimp}
+\caption[]{Integración del factor $K_{imp}$ en el diagrama de bloques del control de posición polar}
+\label{fig_control_polar_kimp}
+\end{figure}
 
 \subsection{Ajuste del controlador de posición}
+
+El método de ajuste utilizado es experimental, al igual que otros métodos experimentales como los basados en las reglas de Ziegler-Nichols \cite{ogata2010}, permiten obtener una estimación razonable de los parámetros del controlador y proporcionan un punto de partida para una sintonía fina. 
+
+Independientemente del método utilizado, para conseguir un ajuste preciso de los controladores es indispensable contar con una herramienta de depuración que permita adquirir las diferentes señales del diagrama de control y poder representarlas. Por ejemplo, la plataforma desarrollada cuenta con una interfaz serie RS-232 por la cual se vuelcan los datos durante el proceso de ajuste de los controladores.
+
+El proceso de ajuste utilizado es el propuesto en \cite{rcva_10x}. A la hora de llevarlo a cabo es aconsejable primero en ajustar el controlador de ángulo y posteriormente el de distancia. Esto es debido a que durante el proceso de ajuste del controlador de ángulo se llevan a cabo ciertas secuencias de rotación, que luego son secuencias de desplazamiento en el caso del controlador de distancia. Si en este último caso el controlador de ángulo no está previamente ajustado, durante el proceso de ajuste del controlador de distancia habrá desviaciones laterales que dificultarían el proceso.
+
+Primero para ajustar el controlador de ángulo se bloquea el controlador de distancia fijando una consigna de valor 0. Y luego, para ajustar el controlador de distancia se hace lo contrario, y se fija una consigna de ángulo igual a 0. El ajuste de ambos controladores se hace sin ningún tipo de perfil o rampa de velocidad, se busca observar la respuesta a una perturbación tipo escalón. 
+
+Para cada controlador se ajusta primero el termino proporcional, luego el termino derivativo y por último, si corresponde, el termino integral. En este caso se presenta el proceso de ajuste de un controlador PD.
+
+\begin{enumerate}
+\item Ajuste del termino proporcional $K_p$:
+	\begin{enumerate}
+	\item Anular la corrección derivativa $K_d=0$.
+	\item Fijar una ganancia $K_p$ inicial.
+	\item Saca al controlador de su posición de equilibrio. Desplazamientos entre 5 y 10 grados en ángulo, o $5cm$ en distancia.
+	\item Observar las gráficas de la respuesta del controlador.
+	\item Incrementar el valor de $K_p$ hasta observar en las gráficas una respuesta amortiguada de duración entre 1 y 2 segundos.
+	\end{enumerate}
+
+\item Ajuste del termino derivativo $K_d$:
+	\begin{enumerate}
+	\item Fijar una ganancia $K_d$ inicial.
+	\item Saca al controlador de su posición de equilibrio. Desplazamientos entre 5 y 10 grados en ángulo, o $5cm$ en distancia.
+	\item Observar las gráficas de la respuesta del controlador.
+	\item Incrementar el valor de $K_d$ hasta observar en las gráficas que se obtiene una respuesta sin oscilaciones amortiguadas correspondiente hasta llegar una respuesta subamortiguada con un sobreimpulso $M_p$ cercano al $4.6\%$ ($\xi=0,7$).
+	\end{enumerate}
+\end{enumerate}
+
+Una vez ajustados ambos controladores es posible realizar un ajuste fino de los mismos. Siguiendo el mismo procedimiento descrito para el ajuste, se incrementa el termino $K_p$ en un 20\% y se vuelve a ajustar el termino derivativo. Se repite esta operación sucesivamente hasta el momento en el que el termino $K_d$ no sea capaz de compensar el incremento de $K_p$.
+
+Por último, se realiza un último ajuste de los controladores a partir de las consignas dadas por el perfil de velocidad trapezoidal con el fin de obtener una fase de aceleración y frenado óptimo.
+
+
+
+
+
+\subsection{Compensación de la gravedad}
+
 \subsection{Estimación de bloqueos mecánicos en el lazo de controlador}
 
 \section{Posicionamiento mediante odometría}
 \subsection{Medida y corrección de errores sistemáticos}
 \subsection{Compensación de la fuerza centrípeta}
+
 
 \section{Arquitectura hardware}
 
@@ -786,11 +968,6 @@ El control de posición implementado es de tipo polar, es decir la posición del r
 \subsection{Módulo de gestión de controladores en lazo cerrado\\ \texttt{control\_system\_manager}}
 \subsection{Módulo de detección de bloqueos mecánicos\\ \texttt{blocking\_detection\_manager\_manager}}
 \subsection{Modulo de evitación de obstáculos\\ \texttt{obstacle\_avoidance}}
-
-
-
-
-
 
 
 
