@@ -764,6 +764,24 @@ v_{max} = 1,2 m/s
 
 Se ha representado una segunda recta en la figura \ref{fig_recta_velocidad_maxima_ptinto} correspondiente a un motor de la mitad de potencia. Observar que para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
 
+La gráfica de la figura \ref{fig_perfil_vmax_amax} muestra el resultado de aplicar un perfil trapezoidal cuya velocidad es la máxima. Observar que al final de la fase de aceleración la tensión de control de los motores se encuentra muy cerca de su valor de saturación (63500). Si se disminuye la velocidad hasta $0,8m/s$, el valor de la tensión baja hasta el $80\%$ de su máximo (ver figura \ref{fig_perfil_v08_amax}).
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{perfil_vmax_amax}
+\caption[]{Señal de control de los motores para un perfil de velocidad trapezoidal de $0,8m/s$ y una aceleración de $3,45m/s$}
+\label{fig_perfil_vmax_amax}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{perfil_v08_amax}
+\caption[]{Señal de control de los motores para un perfil de velocidad trapezoidal de $0,8m/s$ y una aceleración de $3,45m/s$}
+\label{fig_perfil_v08_amax}
+\end{figure}
+
+
+
 %\subsection{Resultados experimentales}
 %\vfill
 %\newpage
@@ -775,14 +793,14 @@ La plataforma robótica base implementa un control de posición de tipo polar. Est
 
 La posición del robot viene dada por una consigna de distancia $d$ y de una consigna de orientación o ángulo $a$, correspondientes a un controlador de distancia y un controlador de ángulo. El control de posición polar permite obtener un mejor rendimiento que un controlador de posición por rueda del robot (ver figura \ref{fig_control_polar_vs_por_rueda}).
 
-\begin{figure}[p]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.75\textwidth]{control_polar_vs_por_rueda}
 \caption[]{Control de posición polar vs. control independiente de posición por rueda}
 \label{fig_control_polar_vs_por_rueda}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{control_polar}
 \caption[]{Diagrama de bloques del control de posición polar}
@@ -940,18 +958,49 @@ Para cada controlador se ajusta primero el termino proporcional, luego el termin
 	\end{enumerate}
 \end{enumerate}
 
-Una vez ajustados ambos controladores es posible realizar un ajuste fino de los mismos. Siguiendo el mismo procedimiento descrito para el ajuste, se incrementa el termino $K_p$ en un 20\% y se vuelve a ajustar el termino derivativo. Se repite esta operación sucesivamente hasta el momento en el que el termino $K_d$ no sea capaz de compensar el incremento de $K_p$.
+La figuras \ref{fig_ajuste_kp_figure_2} y \ref{fig_ajuste_kd_figure_2} muestra las gráficas obtenidas una vez realizado el ajuste de los términos del controlador de distancia.
 
-Por último, se realiza un último ajuste de los controladores a partir de las consignas dadas por el perfil de velocidad trapezoidal con el fin de obtener una fase de aceleración y frenado óptimo.
+Una vez ajustados ambos controladores es posible realizar un ajuste fino de los mismos con el fin de obtener un tiempo de establecimiento. Siguiendo el mismo procedimiento descrito para el ajuste, se incrementa el termino $K_p$ en un 20\% y se vuelve a ajustar el termino derivativo. Se repite esta operación sucesivamente hasta el momento en el que el termino $K_d$ no sea capaz de compensar el incremento de $K_p$ poniendo atención en que la señal de control del motor $u[n]$ no sature.
+
+Por último, se realiza un último ajuste de los controladores a aplicando la consigna dada por el perfil de velocidad trapezoidal. En este último ajuste se busca obtener una fase de aceleración y frenado óptimo. Para ello se ha de prestar atención en que durante y al final de cada una de estas fase no existan variaciones bruscas de la posición del robot que puedan causar sobre impulsos de aceleración superiores a la aceleración máxima. Esto es, que la posición se ciña a la forma del perfil lo máximo posible.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{ajuste_kp_figure_2}
+\caption[]{Resultado del ajuste del termino proporcional $K_p$ del controlador de distancia ante una consigna tipo escalón de $5cm$}
+\label{fig_ajuste_kp_figure_2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{ajuste_kd_figure_2}
+\caption[]{Resultado del ajuste del termino proporcional $K_d$ del controlador de distancia ante una consigna tipo escalón de $5cm$}
+\label{fig_ajuste_kd_figure_2}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{ajuste_kp_kd_perfil_figure_2}
+\caption[]{Resultado del ajuste del controlador de distancia aplicando un perfil de velocidad trapezoidal ($a=3,45m/s^2$, $v=0,8m/s$).}
+\label{fig_ajuste_perfil}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{ajuste_kp_kd_perfil_figure_1}
+\caption[]{Resultado del ajuste del controlador de distancia aplicando un perfil de velocidad trapezoidal ($a=3,45m/s^2$, $v=0,8m/s$)}
+\label{fig_ajuste_perfil}
+\end{figure}
 
 
 
+% TODO
+%\subsection{Compensación de la gravedad}
+%\subsection{Estimación de bloqueos mecánicos en el lazo de controlador}
 
 
-\subsection{Compensación de la gravedad}
-
-\subsection{Estimación de bloqueos mecánicos en el lazo de controlador}
-
+\pagebreak
 \section{Posicionamiento mediante odometría}
 \subsection{Medida y corrección de errores sistemáticos}
 \subsection{Compensación de la fuerza centrípeta}
