@@ -1066,7 +1066,7 @@ dx &= L\,\cos(\theta_{avg})\\
 dy &= L\,\sin(\theta_{avg})
 \end{empheq}
 
-El calculo de odometría utilizando la aproximación circular se resuelve en \cite{rcva_asserv}. Para dicha aproximación el valor de $dx$ y $dy$ se obtiene como:
+El calculo de odometría utilizando la aproximación circular se resuelve en \cite{rcva_odometri}. Para dicha aproximación el valor de $dx$ y $dy$ se obtiene como:
 
 \begin{empheq}[box=\fbox]{align}
 dx &= K\,L\,\cos(\theta_{avg})\\
@@ -1079,7 +1079,7 @@ K &= \frac{\sin(\nabla\theta_n/2)}{\nabla\theta_n/2} \\
 \nabla \theta_n &= \theta_n - \theta_{n-1}
 \end{align}
 
-Observar que las expresiones de ambas aproximaciones difieren únicamente en el factor $K$ que constituye un factor de escala para $L$. El estudio comparativo entre ambas aproximaciones realizada en \cite{rcva_asserv} demuestra que para las condiciones de un robot de Eurobot la aproximación circular no añade ninguna ventaja frente a la aproximación lineal. En la aproximación circular, además de necesitar mayor tiempo de calculo, la corrección aportada por $K$ para trayectorias muy exigentes se encuentra en $1\times10^{-5}$ y $2\times10^{-5}$, algo despreciable.
+Observar que las expresiones de ambas aproximaciones difieren únicamente en el factor $K$ que constituye un factor de escala para $L$. El estudio comparativo entre ambas aproximaciones realizada en \cite{rcva_odometri} demuestra que para las condiciones de un robot de Eurobot la aproximación circular no añade ninguna ventaja frente a la aproximación lineal. En la aproximación circular, además de necesitar mayor tiempo de calculo, la corrección aportada por $K$ para trayectorias muy exigentes se encuentra en $1\times10^{-5}$ y $2\times10^{-5}$, algo despreciable.
 
 
 
