@@ -1,4 +1,4 @@
-t%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
@@ -109,6 +109,7 @@ Mecánicamente el conjunto de los motores, reductora y ruedas se denomina \emph{b
 
 
 \section{Sistema de posicionamiento y control de posición}
+\label{sec_sma_posicionamiento_y_control}
 
 La medida de la posición del robot se realiza mediante dos ruedas libres unidas a sensores tipo encoders. A partir de dicha medida de posición se implementa indirectamente el control de posición de los motores del sistema de tracción y de forma directa el sistema de posicionamiento por odometría del robot. Esta configuración difiere del esquema clásico en el que el encoder se encuentra conectado directamente al eje del motor, permite reducir los errores sistemáticos de odometría \cite{bor96_cap5} y que un posible deslizamiento o derrape de las ruedas motrices no afecte al control de posición del robot.
 
@@ -852,9 +853,9 @@ Los controladores de posición a implementar trabajan en unidades diferentes a la
 \hline
 Magnitud	& Simbolo   & Unidades SI 	& Unidades sistema Robot \\
 \hline
-Distancia 	& $d$ 		& $m$  			& $\text{pulsos}$ \\
-Velocidad 	& $v$		& $m/s$			& $\text{pulsos}/T_s$\\
-Aceleración & $a$		& $m/s^2$		& $\text{pulsos}/T_s^2$ \\
+Distancia 	& $d$ 		& $m$  			& $pulsos$ \\
+Velocidad 	& $v$		& $m/s$			& $pulsos/T_s$\\
+Aceleración & $a$		& $m/s^2$		& $pulsos/T_s^2$ \\
 \hline
 \end{tabular}
 \end{table}
@@ -988,14 +989,97 @@ Por último, se realiza un último ajuste de los controladores a aplicando la cons
 \label{fig_ajuste_perfil_2}
 \end{figure}
 
-
-
-% TODO
+% TODO someday
 %\subsection{Compensación de la gravedad}
 %\subsection{Estimación de bloqueos mecánicos en el lazo de controlador}
 
 \pagebreak
 \section{Posicionamiento mediante odometría}
+
+La odometría es el método más usado para determinar la posición momentánea de un robot. Dicha posición viene dada en un plano cartesiano por sus coordenadas absolutas $(x,y,\theta)$ correspondientes a la distancia al origen de coordenadas y al ángulo respecto al eje de abscisas. 
+
+\subsection{Calculo de la posición del robot}
+
+El sistema desarrollado para implementar este tipo de posicionamiento es el sistema de ruedas libres descrito en la sección \ref{sec_sma_posicionamiento_y_control}. Los principales elementos de este sistema y las dimensiones relacionada con la implementación de este método se muestra en la figura \ref{fig_odometria_dimensiones} donde $D_e$ se corresponden con el diámetro nominal de las ruedas de los encoders y $d_r$ con la distancia entre el centro de ambas ruedas.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.4\textwidth]{odometria_dimensiones}
+\caption[]{Representación en planta del robot. Componentes y dimensiones implicas en la odometría}
+\label{fig_odometria_dimensiones}
+\end{figure}
+
+La determinación de la posición $(x,y,\theta)$ del robot se obtiene a partir la medida del incremento de pulsos de cada encoder por periodo de muestreo $Ts$. A partir de la medida en un periodos de muestreo de los pulsos del encoder derecho $N_D$ e izquierdo $N_I$ se obtiene la medida de instantánea de distancia $d$ y ángulo $\theta$ en cada periodo de muestreo como:
+
+\begin{align}
+d = \frac{N_D + N_I}{2}\, [pulsos] \label{eq_d_pulsos}\\
+\theta = (N_D - N_I)\, [pulsos] \label{eq_angle_pulsos}
+\end{align}
+
+La conversión de unidades del robot a unidade del SI se realiza multiplicando dichas medidas por los factores de conversión de distancia $C_d$ y angulo $C_\theta$, calculados como:
+
+\begin{align}
+C_d &= \frac{N\times M}{\pi\,D_e} \,\Big[\frac{pulsos}{m}\Big] \label{eq_coef_d}\\
+C_\theta &= C_d\,\frac{d_r}{2} \Big[\frac{pulsos}{rad}\Big] \label{eq_coef_angle}
+\end{align}
+
+Por un lado, la coordenada $\theta$ del robot puede obtenerse directamente de la equación \eqref{eq_angle_pulsos} como:
+
+\begin{align}
+\boxed{\theta_n = \frac{N_{D\,n} - N_{I\,n}}{C_\theta} [rad]} \label{eq_angle_rad}
+\end{align}
+
+
+Por otro lado, las coordenadas $(x,y)$ se calculan a partir del analisis de la trayectoria del robot muestreada para dos instantes consecutivos (ver figura \ref{fig_odometria_geometria}). Las posiciones A y B se corresponden con los instantes $n$ y $n-1$ a los que les corresponde una medida de angulo $\theta_n$ y $\theta_{n-1}$ y una medida de distancia $d_n$ y $d_{n-1}$. La distancia curvilínea entre los puntos A y B es $L$ y su proyección sobre los ejes $dx$ y $dy$. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{odometria_geometria}
+\caption[]{Representación geométrica de dos puntos de una trayectoria}
+\label{fig_odometria_geometria}
+\end{figure}
+
+Las coordenadas $(x,y)$ en un instante dado se corresponden con:
+
+\begin{align}
+x_n &= x_{n-1} + dx \\
+y_n &= y_{n-1} + dy \\
+\end{align}
+
+En teoría la obtención de las proyecciones $dx$ y $dy$ resulta imposible dado que se desconoce la forma de la trayectoria $L$ descrita entre los dos instantes de muestreo. En la práctica se aplica una aproximación lineal o circular, de forma que $L$ se aproxima a una recta o a un arco de circunferencia de radio $R$ y centro de giro en $C$.
+
+Para el caso de la aproximación lineal el ángulo del segmento AB $\theta_{avg}$ se calcula como el valor medio del ángulo en cada punto:
+
+\begin{equation}
+\theta_{avg} = \frac{\theta_n + \theta_{n-1}}{2}
+\end{equation}
+
+Por la aproximación lineal, $L$ se corresponde con la longitud del segmento AB:
+\begin{equation}
+L = d_n - d_{n-1}
+\end{equation}
+
+El valor de $dx$ y $dy$ para la aproximación lineal se obtiene como:
+
+\begin{empheq}[box=\fbox]{align}
+dx &= L\,\cos(\theta_{avg})\\
+dy &= L\,\sin(\theta_{avg})
+\end{empheq}
+
+El calculo de odometría utilizando la aproximación circular se resuelve en \cite{rcva_asserv}. Para dicha aproximación el valor de $dx$ y $dy$ se obtiene como:
+
+\begin{empheq}[box=\fbox]{align}
+dx &= K\,L\,\cos(\theta_{avg})\\
+dy &= K\,L\,\sin(\theta_{avg})
+\end{empheq}
+
+Siendo  
+\begin{align}
+K &= \frac{\sin(\nabla\theta_n/2)}{\nabla\theta_n/2} \\
+\nabla \theta_n &= \theta_n - \theta_{n-1}
+\end{align}
+
+Observar que las expresiones de ambas aproximaciones difieren únicamente en el factor $K$ que constituye un factor de escala para $L$. El estudio comparativo entre ambas aproximaciones realizada en \cite{rcva_asserv} demuestra que para las condiciones de un robot de Eurobot la aproximación circular no añade ninguna ventaja frente a la aproximación lineal. En la aproximación circular, además de necesitar mayor tiempo de calculo, la corrección aportada por $K$ para trayectorias muy exigentes se encuentra en $1\times10^{-5}$ y $2\times10^{-5}$, algo despreciable.
 
 
 
