@@ -163,94 +163,37 @@
 %\label{part:memoria}
 
 \input{chapters/introduccion.tex}
-
 \input{chapters/el_robot_de_eurobot.tex}
-
-%\chapter{El equipo de Eurobot}
-%\section{Introducción}
-%\section{Numero de integrantes}
-%\section{Expectativas, motivación y objetivos}
-%\section{Tareas principales}
-%\section{Organización y metodología del trabajo}
-
 \input{chapters/plataforma_robotica_base.tex}
 
-\chapter{Sistema de medida de la posición de oponentes mediante un sensor tipo faro}
-\section{foo}
-\section{bar}
+\chapter{Desarrollo hardware}
+	\section{Arquitectura hardware}
+	\section{Tarjeta principal}
+	\section{Tarjeta de sensores digitales}
+	\section{Tarjeta de actuadores}
+	\section{Tarjeta de control de alimentación}
+	\section{Tarjeta de alimentación}
 
-\chapter{Sistemas mecánicos para la manipulación de elementos de juego}
-\section{Introducción}
-\section{Soluciones mecánicas conocidas}
-	\subsection{Análisis de mecanismos utilizados según los elementos de juego}
-	\subsection{Conclusiones en la elección de un sistema mecánico}
+\chapter{Sistema de balizas para la medida de la posición del oponente}
+	\section{Principio de funcionamiento}
+	\section{Desarrollo hardware y software}
+	\section{Caracterización y resultados}
 
-\section{Partes de un sistema mecánico}
-
-\section{Lectura y procesamiento de sensores}
-	\subsection{Tipos de sensores}
-	\subsection{Electrónica de acondicionamiento}
-	\subsection{Filtrado de sensores digitales}
-	\subsection{Filtrado de sensores analógicos}
-
-\section{Control de actuadores}
-	\subsection{Tipos de actuadores}
-	\subsection{Electrónica de control}
-
-\section{Control de mecanismos}
-\section{Sincronización de sistemas mecanismos y movimiento del robot}
-
-
-
-
-\chapter{Implementación de la estrategia de juego}
-
-\section{Introducción}
-\begin{itemize}
-\item Union de la plataforma robótica y los sistemas mecánicos.
-\end{itemize}
-
-\section{Abstracción de la plataforma robótica base}
-\subsection{Integración de la detección de obstáculos en trayectorias}
-
-
-\section{Elementos y fases de un partido de Eurobot}
-
-	\begin{itemize}
-	\item Patron implicito: recolectar, transportar y almacenar/construir.
-	\item Dependencias entre capacidad de recolectar y numero de veces que se almacena
-	\item Tipos de tareas: de accion, de recolectar, transportar y almacenar
-	\item Tipos de trayectorias en función del campo de juego (caminos libres vs preestablecidos)
-	\item{Independencia de los sistemas mecánicos y las trayectorias}
-	\item{Modularidad y flexibilidad de la estrategia}
-	\end{itemize}
-
-	\subsection{Zonas de trabajo}
-	\subsection{Tareas de una zona de trabajo}
-	\subsection{Trayectorias entre zonas de trabajo}
-	\subsection{Condiciones en la elección de una zona de trabajo}
-
-\section{Arquitectura software}
-
-\section{Gestion de trayectorias en un partido}
-\begin{itemize}
-\item Sobrecarga de las trajectorias del sistema base.
-\end{itemize}
-
-\section{Comunicación entre dos robots}
-
-\section{Simulación de estrategias}
-
-\section{Patrones de implementación de estrategia}
-	\subsection{Estrategia secuencial bloqueante}
-	\subsection{Estrategia reactiva}
-	\subsection{Estratégia basada en prioridades}
-	\subsection{Estratégia adaptativa}
-	\subsection{Estrategia con dos robots}
-
-\section{Pruebas, depuración y validación de la estrategia}
-
-
+\chapter{Implementación software}
+	\section{Arquitectura software}
+	% [HW | simulador] > [Plataforma robótica base] > [Abstracción robot] > [Estrategia] > [Interfaz de comandos]
+	\section{Plataforma robótica base}
+	% diagrama microb
+	\section{Abstracción robot}
+	% [actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary_robot]  
+	\section{Estrategia de juego}
+	% [tareas secondary_robot] | [tareas main_robot] > [trayectorias a zonas | trabajo en zonas] > [estrategias partido]
+%		\subsection{Estrategias de partido}
+%			\subsubsection{Estrategia secuencial bloqueante}
+%			\subsubsection{Estrategia reactiva}
+%			\subsubsection{Estratégia basada en prioridades}
+%			\subsubsection{Estratégia adaptativa}
+%			\subsubsection{Estrategia con dos robots}
 
 % Optional in PFCs
 %\input{pliego/pliego.tex}
@@ -305,5 +248,74 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{cover/backpage.tex}                    % EDIT this file if
                                               % required, or comment it out
+
+
+% TODO someday %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\chapter{El equipo de Eurobot}
+%\section{Introducción}
+%\section{Numero de integrantes}
+%\section{Expectativas, motivación y objetivos}
+%\section{Tareas principales}
+%\section{Organización y metodología del trabajo}
+
+
+%\chapter{Sistemas mecánicos para la manipulación de elementos de juego}
+%\section{Introducción}
+%\section{Soluciones mecánicas conocidas}
+%	\subsection{Análisis de mecanismos utilizados según los elementos de juego}
+%	\subsection{Conclusiones en la elección de un sistema mecánico}
+
+%\section{Partes de un sistema mecánico}
+
+%\section{Lectura y procesamiento de sensores}
+%	\subsection{Tipos de sensores}
+%	\subsection{Electrónica de acondicionamiento}
+%	\subsection{Filtrado de sensores digitales}
+%	\subsection{Filtrado de sensores analógicos}
+
+%\section{Control de actuadores}
+%	\subsection{Tipos de actuadores}
+%	\subsection{Electrónica de control}
+%
+%\section{Control de mecanismos}
+%\section{Sincronización de sistemas mecanismos y movimiento del robot}
+
+% XXX DEPRECATED XXX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\chapter{Implementación de la estrategia de juego}
+%\section{Introducción}
+%	\begin{itemize}
+%	\item Union de la plataforma robótica y los sistemas mecánicos.
+%\end{itemize}
+%\section{Abstracción de la plataforma robótica base}
+%	\subsection{Integración de la detección de obstáculos en trayectorias}
+%\section{Elementos y fases de un partido de Eurobot}
+%	\begin{itemize}
+%	\item Patron implicito: recolectar, transportar y almacenar/construir.
+%	\item Dependencias entre capacidad de recolectar y numero de veces que se almacena
+%	\item Tipos de tareas: de accion, de recolectar, transportar y almacenar
+%	\item Tipos de trayectorias en función del campo de juego (caminos libres vs preestablecidos)
+%	\item{Independencia de los sistemas mecánicos y las trayectorias}
+%	\item{Modularidad y flexibilidad de la estrategia}
+%	\end{itemize}
+
+%	\subsection{Zonas de trabajo}
+%	\subsection{Tareas de una zona de trabajo}
+%	\subsection{Trayectorias entre zonas de trabajo}
+%	\subsection{Condiciones en la elección de una zona de trabajo}
+%\section{Arquitectura software}
+%\section{Gestion de trayectorias en un partido}
+%\begin{itemize}
+%\item Sobrecarga de las trajectorias del sistema base.
+%\end{itemize}
+%\section{Comunicación entre dos robots}
+%\section{Simulación de estrategias}
+%\section{Patrones de implementación de estrategia}
+%	\subsection{Estrategia secuencial bloqueante}
+%	\subsection{Estrategia reactiva}
+%	\subsection{Estratégia basada en prioridades}
+%	\subsection{Estratégia adaptativa}
+%	\subsection{Estrategia con dos robots}
+%\section{Pruebas, depuración y validación de la estrategia}
 
 \end{document}

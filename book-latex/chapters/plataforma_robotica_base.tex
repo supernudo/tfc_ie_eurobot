@@ -42,7 +42,7 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 
 %\section{Introducción}
 
-En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado y mejorado en el desarrollo de robots posteriores. Dicha plataforma implementa las funcionalidades básicas de un robot de Eurobot vistas en el capitulo \ref{cha_el_robot_de_eurobot}:
+En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reutilizado y mejorado en el desarrollo de robots posteriores. Dicha plataforma incluye las funcionalidades básicas de un robot de Eurobot vistas en el capitulo \ref{cha_el_robot_de_eurobot}:
 
 \begin{itemize}
 \item Desplazamiento y localización
@@ -52,39 +52,34 @@ En el año 2010 se desarrolló una plataforma robótica base, cuyo diseño fue reuti
 
 El desarrollo de cada una de estas funcionalidades constituye en sí una la labor de ingeniería muy interesante que implica la aplicación de fundamentos de diferentes campos de la ciencia y la ingeniería. 
 
-En las secciones de este capítulo se aborda la implementación mecánica, hardware y software relacionada con las funcionalidades básicas mencionadas, así como los fundamentos implícitos en ellas que se han considerado oportunos.  
-
-
 \section{Descripción general de la plataforma robótica}
 
-La funcionalidad de \textbf{desplazamiento y localización} de la plataforma robótica, se implementa a partir de un \emph{sistema de tracción diferencial} y un \emph{sistema de posicionamiento por odometría}. Mediante la unión de estos dos sistemas se implementa a su vez un \emph{control de posición polar} del robot, a partir del cual, se gestiona la \emph{generación de trayectorias}.
+La función de \textbf{desplazamiento y localización} de la plataforma robótica se implementa a partir de un \emph{sistema de tracción diferencial} y un \emph{sistema de posicionamiento por odometría}. Mediante la unión de estos dos sistemas implementa a su vez un \emph{control de posición polar}, a partir del cual, se gestiona la \emph{generación de trayectorias}.
 
 Mecánicamente el sistema de tracción diferencial consiste en un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_1}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y, junto con el bloque motor, el control de posición del robot.
 
-\begin{figure}[p]
-\centering
-\includegraphics[height=.3\textheight]{plataforma_partes_2}
-\caption[Plataforma robótica base: partes del sistema de evitación de obstáculos]{Plataforma robótica base: partes del sistema de evitación de obstáculos. Robot Zamorano (Eurobot 2011).}
-\label{fig_plataforma_partes_2}
-\end{figure}
-
-El hardware de la plataforma robótica lo compone principalmente una tarjeta de alimentación, la tarjeta \emph{Eurobotics 2010} y una tarjeta de expansión de entradas y salidas. La tarjeta \emph{Eurobotics 2010} tiene la capacidad de gestionar e implementar los sistemas mencionados anteriormente, así como los sistemas mecánicos específicos de la prueba de Eurobot, destinados a la manipulación de elementos de juego.
-
-Respecto a la \textbf{evitación de obstáculos}, esta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y un sistema específicamente desarrollado para la detección de la posición del oponente. Este sistema hace uso de los soportes y espacios destinados a sistemas de balizas. Concretamente, el sistema desarrollado está basado en un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_2}). El sensor tipo faro es un sistema totalmente autónomo que se comunica mediante un enlace \emph{Bluetooth} con la tarjeta \emph{Eurobotics 2010}.
-
-\begin{figure}[p]
+\begin{figure}[ht]
 \centering
 \includegraphics[height=.3\textheight]{plataforma_partes_1}
 \caption[Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición]{Plataforma robótica base: partes del sistema de tracción diferencial y del sistema de control de posición. Robot Zamorano (Eurobot 2011).}
 \label{fig_plataforma_partes_1}
 \end{figure}
 
-La implementación de todos los sistemas y funcionalidades mencionadas de la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src} (microcontroladores AVR) a microcontroladores dsPIC y PIC24, utilizados por la tarjeta \emph{Eurobotics 2010}. Estas librerías constituyen una plataforma software para la implementación de sistemas de control y de robots.
+El \textbf{hardware desarrollado} de la plataforma robótica está compuesto por una tarjeta principal y varias tarjetas auxiliares que en conjunto tienen la capacidad de gestionar e implementar los sistemas mencionados anteriormente, así como los sistemas mecánicos específicos de la prueba de Eurobot, destinados a la manipulación de elementos de juego.
 
-Por último, utilizando la interfaz \emph{Bluetooth} de la tarjeta \emph{Eurobotics 2010} se implementa la funcionalidad de \textbf{comunicación entre dos robots}: uno principal y uno secundario. En este caso, la arquitectura mecánica, hardware y software del robot principal es duplicada en el robot secundario, y la comunicación entre ambos se realiza mediante un enlace serie \emph{Bluetooth} entre las tarjetas \emph{Eurobotic 2010}.
+Respecto a la \textbf{evitación de obstáculos}, esta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y a partir un sistema de balizas específicamente desarrollado para la medida de la posición del oponente. Este sistema hace uso de los soportes y espacios destinados a sistemas de balizas. Concretamente, el sistema desarrollado está basado en un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_2}). El sistema de balizas es totalmente autónomo y se comunica mediante \emph{Bluetooth} con la tarjeta principal la plataforma robótica.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[height=.3\textheight]{plataforma_partes_2}
+\caption[Plataforma robótica base: partes del sistema de evitación de obstáculos]{Plataforma robótica base: partes del sistema de evitación de obstáculos. Robot Zamorano (Eurobot 2011).}
+\label{fig_plataforma_partes_2}
+\end{figure}
 
-%\section{Sistemas mecánicos}
+La \textbf{implementación software} de todos los sistemas y funcionalidades de la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src}, desarrolladas para microcontroladores AVR, a microcontroladores dsPIC (utilizados por la tarjeta principal de la plataforma robot). Entre las características de las librerías Aversive y Aversive4dspic se encuentran modulos específicos para la implementación de sistemas de control y de robots como los de Eurobot.
+
+Por último, la plataforma robótica desarrollada permite que en caso de contar con \textbf{dos robots por equipo}, la misma  arquitectura mecánica, hardware y software pueda ser utilizada en el robot principal y secundario. Y la comunicación entre ambos robots puede ser implementada mediante la inferfaz \emph{Bluetooth} de las tarjetas principales de cada robot.
+
 
 \section{Sistema de tracción diferencial}
 \label{sec_sistema_traccion_diferencial}
@@ -127,6 +122,7 @@ Es posible que además los motores tengan un encoder conectado directamente su ej
 \label{fig_ruedas_libres_lineal}
 \end{figure}
 
+Inicialmente, para el robot Trompetero (Eurobot 2010) se implemento un sistema de ruedas libres lineal como el de la figura \ref{fig_ruedas_libres_lineal}. Este sistema esta compuesto por una rueda que como neumático tiene una junta tórica de goma. Dicha rueda se encuentra conectada con un encoder incremental de dos canales en cuadratura. El conjunto rueda y encoder se encuentran fijados a la base del robot mediante un sistema de dos guías lineales con amortiguación. La amortiguación permite asegurar que ante cualquier desperfecto del campo la rueda siempre esté en contacto con el suelo. Cada guia tiene dos rodamientos lineales para disminuir el rozamiento. La implementación de este sistema mecánico es complejo y necesita de un ajuste de cierta precisión de forma que las dos guías lineales se encuentre perfectamente paralelas para que no existan rozamientos que impliquen errores no sistemáticos.
 
 \begin{figure}[ht]
 \centering
@@ -134,8 +130,6 @@ Es posible que además los motores tengan un encoder conectado directamente su ej
 \caption[]{Sistema de ruedas libres pivotante}
 \label{fig_ruedas_libres_pivotante}
 \end{figure}
-
-Inicialmente, para el robot Trompetero (Eurobot 2010) se implemento un sistema de ruedas libres lineal como el de la figura \ref{fig_ruedas_libres_lineal}. Este sistema esta compuesto por una rueda que como neumático tiene una junta tórica de goma. Dicha rueda se encuentra conectada con un encoder incremental de dos canales en cuadratura. El conjunto rueda y encoder se encuentran fijados a la base del robot mediante un sistema de dos guías lineales con amortiguación. La amortiguación permite asegurar que ante cualquier desperfecto del campo la rueda siempre esté en contacto con el suelo. Cada guia tiene dos rodamientos lineales para disminuir el rozamiento. La implementación de este sistema mecánico es complejo y necesita de un ajuste de cierta precisión de forma que las dos guías lineales se encuentre perfectamente paralelas para que no existan rozamientos que impliquen errores no sistemáticos.
 
 Un sistema mecánico más sencillo tanto en implementación y como en ajuste es el sistema de ruedas libres pivotante (ver figura \ref{fig_ruedas_libres_pivotante}). Este sistema fue implementado por primera vez en el robot secundario Seskapa (Eurobot 2014) dado el poco espacio disponible y posteriormente en los robots P.Tinto y Tirantes (Eurobot 2015). En este sistema, el conjunto rueda y encoder pivotan sobre un eje paralelo al eje motriz. Dicho eje se encuentra fijado a la base del robot mediante dos piezas con rodamientos de bolas separadas por un casquillo que evita que el eje se desplace. Este sistema tiene menos puntos de ajuste que el sistema lineal. Además la amortiguación del sistema es casi innecesaria debido al bajo rozamiento del eje con los rodamientos de bolas. El propio peso del conjunto rueda y encoder garantiza el contacto con el suelo. No obstante como se ve en la figura \ref{fig_ruedas_libres_pivotante} se utilizó unas gomas elásticas para asegurar el contacto con el suelo. El inconveniente de este sistema se debe al propio pivote, si el suelo tiene muchas imperfecciones, al pivotar la rueda esta se desalinea respecto al eje motriz, lo cual puede generar errores de medida de posición. Este echo es despreciable frente a la simplicidad de implementación mecánica y a que el suelo del campo de juego es plano.
 
@@ -208,7 +202,7 @@ El valor de $K_a$ depende del tipo de neumático utilizado y de la calidad y limp
 %El coeficiente de adherencia permite calcular, junto con la posición del centro de gravedad del robot, la aceleración máxima del mismo. 
 El valor del coeficiente de adherencia se puede medir experimentalmente mediante el método propuesto por Jacques Coulon en \cite{rcva_10x}, conocido como el \emph{método del cubo}. 
 
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{metodo_cubo}
 \caption[]{Medodo de medida del coeficiente de adherencia de las ruedas.}
@@ -764,7 +758,7 @@ v_{max} = 1,2 m/s
 
 Se ha representado una segunda recta en la figura \ref{fig_recta_velocidad_maxima_ptinto} correspondiente a un motor de la mitad de potencia. Observar que para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
 
-La gráfica de la figura \ref{fig_perfil_vmax_amax} muestra el resultado de aplicar un perfil trapezoidal cuya velocidad es la máxima. Observar que al final de la fase de aceleración la tensión de control de los motores se encuentra muy cerca de su valor de saturación (63500). Si se disminuye la velocidad hasta $0,8m/s$, el valor de la tensión baja hasta el $80\%$ de su máximo (ver figura \ref{fig_perfil_v08_amax}).
+La gráfica de la figura \ref{fig_perfil_vmax_amax} muestra el resultado de aplicar un perfil trapezoidal cuya velocidad es la máxima calculada. Observar que al final de la fase de aceleración la tensión de control de los motores se encuentra muy cerca de su valor de saturación (63500). Si se disminuye la velocidad hasta $0,8m/s$, el valor de la tensión baja hasta el $80\%$ de su máximo, como muestra la figura \ref{fig_perfil_v08_amax}.
 
 \begin{figure}[p]
 \centering
@@ -962,35 +956,36 @@ La figuras \ref{fig_ajuste_kp_figure_2} y \ref{fig_ajuste_kd_figure_2} muestra l
 
 Una vez ajustados ambos controladores es posible realizar un ajuste fino de los mismos con el fin de obtener un tiempo de establecimiento. Siguiendo el mismo procedimiento descrito para el ajuste, se incrementa el termino $K_p$ en un 20\% y se vuelve a ajustar el termino derivativo. Se repite esta operación sucesivamente hasta el momento en el que el termino $K_d$ no sea capaz de compensar el incremento de $K_p$ poniendo atención en que la señal de control del motor $u[n]$ no sature.
 
-Por último, se realiza un último ajuste de los controladores a aplicando la consigna dada por el perfil de velocidad trapezoidal. En este último ajuste se busca obtener una fase de aceleración y frenado óptimo. Para ello se ha de prestar atención en que durante y al final de cada una de estas fase no existan variaciones bruscas de la posición del robot que puedan causar sobre impulsos de aceleración superiores a la aceleración máxima. Esto es, que la posición se ciña a la forma del perfil lo máximo posible.
-
-
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.9\textwidth]{ajuste_kp_figure_2}
 \caption[]{Resultado del ajuste del termino proporcional $K_p$ del controlador de distancia ante una consigna tipo escalón de $5cm$}
 \label{fig_ajuste_kp_figure_2}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.9\textwidth]{ajuste_kd_figure_2}
 \caption[]{Resultado del ajuste del termino proporcional $K_d$ del controlador de distancia ante una consigna tipo escalón de $5cm$}
 \label{fig_ajuste_kd_figure_2}
 \end{figure}
 
+
+Por último, se realiza un último ajuste de los controladores a aplicando la consigna dada por el perfil de velocidad trapezoidal. En este último ajuste se busca obtener una fase de aceleración y frenado óptimo. Para ello se ha de prestar atención en que durante y al final de cada una de estas fase no existan variaciones bruscas de la posición del robot que puedan causar sobre impulsos de aceleración superiores a la aceleración máxima. Esto es, que la posición se ciña a la forma del perfil lo máximo posible. En las figuras \ref{fig_ajuste_perfil_1} y \ref{fig_ajuste_perfil_2} se muestra el resultado de ajustar el controlador de distancia con un perfil trapezoidal.
+
+
 \begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{ajuste_kp_kd_perfil_figure_2}
 \caption[]{Resultado del ajuste del controlador de distancia aplicando un perfil de velocidad trapezoidal ($a=3,45m/s^2$, $v=0,8m/s$).}
-\label{fig_ajuste_perfil}
+\label{fig_ajuste_perfil_1}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{ajuste_kp_kd_perfil_figure_1}
 \caption[]{Resultado del ajuste del controlador de distancia aplicando un perfil de velocidad trapezoidal ($a=3,45m/s^2$, $v=0,8m/s$)}
-\label{fig_ajuste_perfil}
+\label{fig_ajuste_perfil_2}
 \end{figure}
 
 
@@ -999,24 +994,17 @@ Por último, se realiza un último ajuste de los controladores a aplicando la cons
 %\subsection{Compensación de la gravedad}
 %\subsection{Estimación de bloqueos mecánicos en el lazo de controlador}
 
-
 \pagebreak
 \section{Posicionamiento mediante odometría}
+
+
+
 \subsection{Medida y corrección de errores sistemáticos}
-\subsection{Compensación de la fuerza centrípeta}
+
+% TODO
+%\subsection{Compensación de la fuerza centrípeta}
 
 
-\section{Arquitectura hardware}
-
-
-\section{Implementación software}
-
-\subsection{Sistema de generación de trayectorias}
-\subsection{Módulo de gestión de trayectorias\\ \texttt{trayectory\_manager}}
-\subsection{Módulo de gestión de la posición\\ \texttt{position\_manager}}
-\subsection{Módulo de gestión de controladores en lazo cerrado\\ \texttt{control\_system\_manager}}
-\subsection{Módulo de detección de bloqueos mecánicos\\ \texttt{blocking\_detection\_manager\_manager}}
-\subsection{Modulo de evitación de obstáculos\\ \texttt{obstacle\_avoidance}}
 
 
 
