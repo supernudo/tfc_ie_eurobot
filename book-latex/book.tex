@@ -181,13 +181,17 @@
 
 \chapter{Implementación software}
 	\section{Arquitectura software}
-	% [HW | simulador] > [Plataforma robótica base] > [Abstracción robot] > [Estrategia] > [Interfaz de comandos]
+	[HW | simulador] > [Plataforma robótica base] > [Abstracción robot] > [Estrategia] > [Interfaz de comandos]
 	\section{Plataforma robótica base}
-	% diagrama microb
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Asserv_graph}
+	\end{figure}
+
 	\section{Abstracción robot}
-	% [actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary_robot]  
+	[actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
 	\section{Estrategia de juego}
-	% [tareas secondary_robot] | [tareas main_robot] > [trayectorias a zonas | trabajo en zonas] > [estrategias partido]
+	[tareas secondary robot] | [tareas main robot] > [trayectorias a zonas | trabajo en zonas] > [estrategias partido]
 %		\subsection{Estrategias de partido}
 %			\subsubsection{Estrategia secuencial bloqueante}
 %			\subsubsection{Estrategia reactiva}
