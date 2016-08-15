@@ -170,13 +170,13 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
      inkscape:cx="51.061299"
-     inkscape:cy="38.368091"
+     inkscape:cy="81.225234"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1021"
+     inkscape:window-width="1366"
+     inkscape:window-height="709"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -204,7 +204,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -337,8 +337,8 @@
          id="tspan3054"
          x="110"
          y="327.36218">D<tspan
-   style="font-size:65.00091553%;baseline-shift:sub"
-   id="tspan3058">e</tspan></tspan></text>
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3041">n</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
@@ -351,9 +351,7 @@
          sodipodi:role="line"
          id="tspan3052"
          x="207.03906"
-         y="382.23474">d<tspan
-   style="font-size:65.00091553%;baseline-shift:sub"
-   id="tspan3056">r</tspan></tspan></text>
+         y="382.23474">b</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:9px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"

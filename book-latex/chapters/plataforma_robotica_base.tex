@@ -1000,7 +1000,7 @@ La odometría es el método más usado para determinar la posición momentánea de un
 
 \subsection{Calculo de la posición del robot}
 
-El sistema desarrollado para implementar este tipo de posicionamiento es el sistema de ruedas libres descrito en la sección \ref{sec_sma_posicionamiento_y_control}. Los principales elementos de este sistema y las dimensiones relacionada con la implementación de este método se muestra en la figura \ref{fig_odometria_dimensiones} donde $D_n$ se corresponden con el diámetro nominal de las ruedas de los encoders y $d_r$ con la distancia entre el centro de ambas ruedas.
+El sistema desarrollado para implementar este tipo de posicionamiento es el sistema de ruedas libres descrito en la sección \ref{sec_sma_posicionamiento_y_control}. Los principales elementos de este sistema y las dimensiones relacionada con la implementación de este método se muestra en la figura \ref{fig_odometria_dimensiones} donde $D_n$ se corresponden con el diámetro nominal de las ruedas de los encoders y $b$ con la distancia entre ejes de rueda de encoder.
 
 \begin{figure}[ht]
 \centering
@@ -1020,7 +1020,7 @@ La conversión de unidades del robot a unidade del SI se realiza multiplicando di
 
 \begin{align}
 C_d &= \frac{N\times M}{\pi\,D_n} \,\Big[\frac{pulsos}{m}\Big] \label{eq_coef_d}\\
-C_\theta &= C_d\,\frac{d_r}{2} \Big[\frac{pulsos}{rad}\Big] \label{eq_coef_angle}
+C_\theta &= C_d\,\frac{b}{2} \Big[\frac{pulsos}{rad}\Big] \label{eq_coef_angle}
 \end{align}
 
 Por un lado, la coordenada $\theta$ del robot puede obtenerse directamente de la equación \eqref{eq_angle_pulsos} como:
@@ -1108,28 +1108,46 @@ El principal inconveniente de la odometría es la acumulación continua de error a
 
 Los errores sistemáticos son particularmente graves debido a que se acumulan constantemente, incluso llegan a contribuir al error más que los errores no sistemáticos. En el caso de superficies irregulares los errores no sistemáticos podrían contribuir más, pero no es el caso de los robots Eurobot donde las superficies son lisas. Además, el sistema de ruedas libres de la plataforma robótica permite evitar los errores no sistemáticos debido al deslizamiento de las ruedas.
 
-Respecto a los errores sistemáticos, las ecuaciones de calculo de la odometría pueden introducir errores debido a la aproximación  del método utilizado en su calculo. La precisión en dicho calculo depende del tiempo de muestreo frente a la velocidad del robot. Este error puede considerarse despreciable si se trabaja con periodos de muestreo de $T_s<10\,ms$ para velocidades de $v < 1\,m/s$ \cite{}.
+Respecto a los errores sistemáticos, las ecuaciones de calculo de la odometría pueden introducir errores debido a la aproximación  del método utilizado en su calculo. La precisión en dicho calculo depende del tiempo de muestreo frente a la velocidad del robot. Este error puede considerarse despreciable si se trabaja con periodos de muestreo de $T_s<10\,ms$ para velocidades de $v < 1\,m/s$ \cite{bor96_ieeet}.
 
 Los errores sistemáticos no suelen cambiar durante el recorrido del robot, aunque la distribución de pesos sobre las ruedas de encoders puede afectar si estas se encuentra solidarias a la estructura del robot. No es el caso del sistema de ruedas libre desarrollado en el que estas se encuentra desacopladas mediante un mecanismo lineal o pivotante con amortiguación.
 
 Los errores sistemáticos son normalmente causados por imperfecciones en la implementación del diseño y la mecánica del robot. Las dos fuentes de errores sistemáticos más significativas son la diferencia de diámetros de rueda de encoder y la incertidumbre en la distancia efectiva entre ejes de las ruedas de encoder o de tracción.
 
-El error por diferente diámetro de rueda de encoder $E_d$ se define como
+El error por diferente diámetro de rueda de encoder se representa por $E_d$  y se define como
 
 \begin{equation}
 E_d = \frac{D_R}{D_L}
 \end{equation}
 
-donde $D_D$ y $D_I$ son los diámetros reales de las ruedas de los encoders, siendo la relación nominal entre diámetro de ruedas $1.0$.
+donde $D_R$ y $D_L$ son los diámetros reales de las ruedas de los encoders, siendo la relación nominal entre diámetro de ruedas $1.0$.
 
-Como se ha visto en la ecuación \eqref{} la medida de ángulo del robot depende de la distancia entre ejes de ruedas de encoder $b$. Por lo tanto una incertidumbre en dicha distancia implica un error en el calculo $E_b$
+Como se ha visto en la ecuación \eqref{eq_coef_angle} la medida de ángulo del robot depende de la distancia entre ejes de ruedas de encoder $b$. Por lo tanto una incertidumbre en dicha distancia implica un error en el calculo. Este error se denota como $E_b$ y se define como
 
-% XXX D_e -> D_n, d_r -> b, D_DI D_LR en figuras
+\begin{equation}
+E_b = \frac{b_{real}}{b_{nominal}}
+\end{equation}
 
+donde $b$ es la distancia entre ejes de ruedas de encoder.
+
+
+
+ 
+El diámetro real de la ruedas es al angulo real de giro como el diamtro nominal de la rueda al ángulo de giro.
+
+Conclusiones.
+
+- Diametros distintos de rueda no causan un error de orientación durante los giros.
+- El error de orientación depende del diámetro medio de las ruedas
+
+$D_{avg} = \frac{D_L+D_R}{2}$
+
+Si $D_{avg} > D_n$ el robot girará más de lo deseado. Si $D_{avg} < D_n$ entonces el robot girará menos.
+
+- $E_d$ tiene un efecto menor en la posición $x$ e $y$ del centro de giro $C$ porque el centro de rotación real $C'$ no coincide con $C'$, como muestra la figura \ref{}.
 
 Según \cite{} si se quiere reducir los errores de odometría, los errores de ángulo son la principal preocupación ya que una vez se incurre en ellos crecen sin límite. 
 
- 
 
 
 \begin{figure}[ht]

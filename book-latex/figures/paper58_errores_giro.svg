@@ -21,7 +21,7 @@
    inkscape:export-ydpi="369"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath58"><path
@@ -149,17 +149,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1021"
+     inkscape:window-width="1366"
+     inkscape:window-height="709"
      id="namedview4"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.95353535"
-     inkscape:cx="33.730825"
-     inkscape:cy="58.971775"
+     inkscape:zoom="1.9070707"
+     inkscape:cx="143.76275"
+     inkscape:cy="97.72798"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -426,9 +426,7 @@
          sodipodi:role="line"
          id="tspan5455"
          x="392.48776"
-         y="-183.37354">d<tspan
-   style="font-size:4.68006611px;baseline-shift:sub"
-   id="tspan5457">r</tspan>/2</tspan></text>
+         y="-183.37354">b/2</tspan></text>
 <text
        xml:space="preserve"
        style="font-size:7.19999981px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -440,9 +438,7 @@
          sodipodi:role="line"
          id="tspan5455-9"
          x="459.32343"
-         y="-183.37354">d<tspan
-   style="font-size:4.68006611px;baseline-shift:sub"
-   id="tspan5457-2">r</tspan>/2</tspan></text>
+         y="-183.37354">b/2</tspan></text>
 <text
        xml:space="preserve"
        style="font-size:7.19999981px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -455,8 +451,8 @@
          id="tspan5485"
          x="340.36581"
          y="-201.41646">D<tspan
-   style="font-size:4.68006611px;baseline-shift:sub"
-   id="tspan5493">I</tspan></tspan></text>
+   style="font-size:52%;baseline-shift:sub"
+   id="tspan3094">L</tspan></tspan></text>
 <text
        xml:space="preserve"
        style="font-size:7.19999981px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -469,8 +465,8 @@
          id="tspan5489"
          x="509.58228"
          y="-208.5322">D<tspan
-   style="font-size:4.68006611px;baseline-shift:sub"
-   id="tspan5491">D</tspan></tspan></text>
+   style="font-size:52%;baseline-shift:sub"
+   id="tspan3096">R</tspan></tspan></text>
 <text
        xml:space="preserve"
        style="font-size:7.19999981px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -483,8 +479,8 @@
          id="tspan3774"
          x="390.96609"
          y="-207.43858">r<tspan
-   style="font-size:4.68006611px;baseline-shift:sub"
-   id="tspan3776">I</tspan></tspan></text>
+   style="font-size:52%;baseline-shift:sub"
+   id="tspan3098">L</tspan></tspan></text>
 <text
        xml:space="preserve"
        style="font-size:7.19999981px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -497,6 +493,6 @@
          id="tspan3780"
          x="463.74789"
          y="-207.01907">r<tspan
-   style="font-size:4.68006611px;baseline-shift:sub"
-   id="tspan3782">D</tspan></tspan></text>
+   style="font-size:52%;baseline-shift:sub"
+   id="tspan3100">R</tspan></tspan></text>
 </g></svg>
