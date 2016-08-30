@@ -1,0 +1,66 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id$
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Implementación software}
+\label{cha_implementacion_sofware}
+
+\begin{FraseCelebre}
+  \begin{Frase}
+TODO
+La imaginación es más importante que el conocimiento. El conocimiento es limitado y la imaginación circunda el mundo.    
+  \end{Frase}
+  \begin{Fuente}
+Albert Einstein, en \emph{The Saturday Evening Post}
+  \end{Fuente}
+\end{FraseCelebre}
+
+
+\section{Arquitectura software}
+[HW | simulador] > [Plataforma robótica base] > [Abstracción robot] > [Estrategia] > [Interfaz de comandos]
+\section{Plataforma robótica base}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{Asserv_graph}
+\end{figure}
+
+\section{Abstracción robot}
+[actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
+
+\section{Estrategia de juego}
+[tareas secondary robot] | [tareas main robot] > [trayectorias a zonas | trabajo en zonas] > [estrategias partido]
+%		\subsection{Estrategias de partido}
+%			\subsubsection{Estrategia secuencial bloqueante}
+%			\subsubsection{Estrategia reactiva}
+%			\subsubsection{Estratégia basada en prioridades}
+%			\subsubsection{Estratégia adaptativa}
+%			\subsubsection{Estrategia con dos robots}
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
