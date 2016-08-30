@@ -40,16 +40,100 @@ Albert Einstein, en \emph{The Saturday Evening Post}
   \end{Fuente}
 \end{FraseCelebre}
 
-Respecto a la evitación de obstáculos, esta se realiza a partir de sensores de distancia situados
-en las caras del robot (ver figura 3.2) y a partir un sistema de balizas específicamente desarrollado para
-la medida de la posición del oponente. Este sistema hace uso de los soportes y espacios destinados a
-sistemas de balizas. Concretamente, el sistema desarrollado está basado en un sensor tipo faro situado en
-el robot y balizas reflectantes situadas en el oponente (ver figura 3.2). El sistema de balizas es totalmente
-autónomo y se comunica mediante Bluetooth con la tarjeta principal la plataforma robótica.
+Los soportes destinados a sistemas de balizamiento dados por las reglas de Eurobot permiten implementar sistemas de posicionamiento absoluto o relativo con el fin de medir la posición de un robot o sus oponentes. Cada baliza puede ser activa o pasiva y las señales utilizadas para su detección pueden ser de luz (visible o infrarroja), de ultrasonidos, de radio o basada en marcas visuales \cite{balizas_y_cerveza}.
 
-\section{Principio de funcionamiento}
+Dado que la posición del robot se suele obtener mediante odometría, los soportes para balizas suelen ser utilizados principalmente para medir la posición de los oponentes. Aunque hay equipos que tienen desarrollado un sistema de posicionamiento absoluto a partir del cual, además de obtener la posición del oponente, realizan fusión sensorial con la odometría.
+
+Este capítulo se centra en la medida de la posición relativa del oponente respecto al robot. Para ello lo más sencillo es utilizar el soporte para balizas de cada robot y el espacio destinado al sensores de balizas del robot.
+
+\section{Principio de funcionamiento de una baliza tipo faro}
+
+El sistema de baliza tipo faro se compone de un sensor giratorio y una o varias balizas cilíndricas reflectantes. El sensor gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes cuando el sensor se encuentra enfrentado a una baliza. Como muestra la figura \ref{fig_baliza_fundamento}, el sensor puede estar montado en un cuerpo que gira y situado en la zona reservada a sensores de baliza del robot. Debido a la altura del soporte de las balizas de los robots oponentes el sensor ha de ser fijado con un ángulo $\beta$ para así detectar las balizas. Esto constituye un inconveniente que limita el rango de detección de la baliza entre una distancia mínima $d_{min}$ y una máxima $d_{max}$.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{baliza_fundamento}
+\caption[]{Principio de funcionamiento de una baliza tipo faro}
+\label{fig_baliza_fundamento}
+\end{figure}
+
+La medida de distancia se basa en el principio por el cual un objeto cercano se ve más grande que uno lejano. En este caso (ver figura \ref{fig_baliza_fundamento}) a la baliza a la distancia $d_{min}$ le corresponde un ángulo relativo de detección $\alpha_d$ mayor que el de la baliza a la distancia $d_{max}$. Por otro lado, la medida de ángulo de la baliza se corresponde con la posición angular absoluta mitad de detección de la baliza $\alpha$.
+ 
+La medida de dichos ángulos de detección puede ser realizada mediante un sensor de posición absoluto (un encoder) o a partir de la medida de los tiempos de detección de una baliza y el periodo de giro del sensor. Si se dispone de un encoder con la suficiente resolución la implementación por medida de posición resulta más sencilla y no necesita de un giro a velocidad constante. En caso contrario, puede realizarse una implementación basada en medida de tiempos que tiene el inconveniente de necesitar de un periodo de giro constante, pero añade la ventaja de que la resolución de medida es mucho mayor.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{baliza_signal}
+\caption[]{Señal dada por el sensor de luz difusa al detectar balizas a diferentes distancias y ángulos}
+\label{fig_baliza_signal}
+\end{figure}
+
+La figura \ref{fig_baliza_signal} muestra la señal obtenida del sensor al detectar las balizas. En una implementación basada en medida de tiempos, la medida de distancia a la baliza catadióptrica es proporcional al tiempo durante el cual el sensor detecta la baliza catadióptrica: 
+\begin{equation}
+d \propto \frac{1}{(t_n - t_{n-1})} \,\vee\, t_n > t_{n-1}
+\end{equation}
+
+El ángulo de detección relativo $\alpha_d$ se puede obtener a partir del tiempo de detección relativo al periodo de vuelta $T$ como
+\begin{equation}
+\alpha_d = \frac{(t_n - t_{n-1})}{T} \times 2\pi \, [rad]
+\end{equation}
+  
+Teóricamente la distancia a la baliza catadióptrica se puede obtener a partir del ángulo de detección relativo $\alpha_d$ y del diámetro de la baliza $D$ como:
+\begin{equation}
+d = \frac{D/2}{\tan(\alpha_d /2)} \,[m]
+\end{equation}
+
+Por otro lado la medida de ángulo de la baliza detectada se obtiene como:
+\begin{equation}
+\alpha = \frac{t_n - \frac{(t_n - t_{n-1})}{2}}{T} \times 360 \,[^o] \,\vee\, t_n > t_{n-1}
+\end{equation}
+
+
+La posición relativa $xy$ de la baliza se obtiene a partir de la proyecciones de con los ejes como:
+\begin{align}
+x =& d\,\cos(\alpha) \\
+y =& d\,\sin(\alpha)
+\end{align}
+
+
+Y su posición absoluta se obtiene a partir de la posición absoluta del robot $(x_r, y_r)$ como:
+
+\begin{align}
+x_{abs} =& x + x_r \\
+y_{abs} =& y + y_r
+\end{align}
+
+
+
+
+
+
 \section{Implementación mecánica}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\textwidth]{baliza_mecanica}
+\caption[]{Implementaciones mecánicas de una baliza tipo faro. Baliza de cuerpo giratorio (izquierda). Baliza de espejo giratorio (derecha).}
+\label{fig_baliza_mecanica}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{baliza_catadioptrica}
+\caption[]{Baliza pasiva catadióptrica.}
+\label{fig_baliza_catadioptrica}
+\end{figure}
+
+
 \section{Desarrollo hardware y software}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{baliza_bloques_hw_sw}
+\caption[]{Diagrama de bloques HW y SW de una baliza tipo faro.}
+\label{fig_baliza_bloque_hw_sw}
+\end{figure}
+
 \section{Caracterización y resultados}
 
 

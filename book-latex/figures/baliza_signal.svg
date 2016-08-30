@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="2041"
+   height="502.96323"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="baliza_signal.svg"
+   inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_signal.png"
+   inkscape:export-xdpi="45.117863"
+   inkscape:export-ydpi="45.117863">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DotL"
+       style="overflow:visible">
+      <path
+         id="path7026"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path5728"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path5725"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-2"
+       style="overflow:visible">
+      <path
+         id="path5725-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8"
+       style="overflow:visible">
+      <path
+         id="path5728-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-3"
+       style="overflow:visible">
+      <path
+         id="path5728-9-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-2-0"
+       style="overflow:visible">
+      <path
+         id="path5725-2-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-2-0-6"
+       style="overflow:visible">
+      <path
+         id="path5725-2-6-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-3-8"
+       style="overflow:visible">
+      <path
+         id="path5728-9-6-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-7"
+       style="overflow:visible">
+      <path
+         id="path5728-9-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker8463"
+       style="overflow:visible">
+      <path
+         id="path8465"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-36"
+       style="overflow:visible">
+      <path
+         id="path5728-9-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-2-0-6-5"
+       style="overflow:visible">
+      <path
+         id="path5725-2-6-1-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-36-5"
+       style="overflow:visible">
+      <path
+         id="path5728-9-1-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-36-5-9"
+       style="overflow:visible">
+      <path
+         id="path5728-9-1-6-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-2-0-6-5-2"
+       style="overflow:visible">
+      <path
+         id="path5725-2-6-1-3-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="873.89111"
+     inkscape:cy="575.00779"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-object-midpoints="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:object-paths="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-intersection-paths="false"
+     inkscape:object-nodes="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-2375px"
+       originy="-390.51328px" />
+    <sodipodi:guide
+       orientation="1,3.1011355e-05"
+       position="-2355,-1970.5133"
+       id="guide3099" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-1930,144.48669"
+       id="guide3101" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-590.00003,190.48669"
+       id="guide3103" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2455.5,312.48669"
+       id="guide3105" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2255,-2210.5133"
+       id="guide3107" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2415.5,459.48669"
+       id="guide3109" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2285.5,454.48669"
+       id="guide3111" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-1995,459.48669"
+       id="guide3113" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-1865,454.48669"
+       id="guide3115" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2035,329.48669"
+       id="guide3117" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-1835,329.48669"
+       id="guide3119" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-695.00003,329.48669"
+       id="guide3121" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-655.00003,459.48669"
+       id="guide3123" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-525.25003,459.73669"
+       id="guide3125" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-495.00003,329.48669"
+       id="guide3127" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-2255,-935.51328"
+       id="guide3930" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2315,-2270.5133"
+       id="guide3959" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="-2290.7868,413.21579"
+       id="guide3961" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2375,-158.88574)">
+    <text
+       sodipodi:linespacing="125%"
+       id="text6793"
+       y="900.86218"
+       x="199.5"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       xml:space="preserve"><tspan
+         y="900.86218"
+         x="199.5"
+         id="tspan6795"
+         sodipodi:role="line" /></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6797"
+       y="940.86218"
+       x="221.5"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       xml:space="preserve"><tspan
+         y="940.86218"
+         x="221.5"
+         id="tspan6799"
+         sodipodi:role="line" /></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6801"
+       y="954.86218"
+       x="213.5"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       xml:space="preserve"><tspan
+         y="954.86218"
+         x="213.5"
+         id="tspan6803"
+         sodipodi:role="line" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="98"
+       y="1165.8613"
+       id="text4072"
+       sodipodi:linespacing="125%"
+       transform="translate(-324.54883,-0.4991703)"><tspan
+         sodipodi:role="line"
+         id="tspan4074"
+         x="98"
+         y="1165.8613" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="172"
+       y="1297.8613"
+       id="text4076"
+       sodipodi:linespacing="125%"
+       transform="translate(-324.54883,-0.4991703)"><tspan
+         sodipodi:role="line"
+         id="tspan4078"
+         x="172"
+         y="1297.8613" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="542"
+       y="1237.8613"
+       id="text4284"
+       sodipodi:linespacing="125%"
+       transform="translate(-324.54883,-0.4991703)"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_fundamento.png"
+       inkscape:export-xdpi="39.394932"
+       inkscape:export-ydpi="39.394932"><tspan
+         sodipodi:role="line"
+         id="tspan4286"
+         x="542"
+         y="1237.8613" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="1681.4999"
+       y="1246.1742"
+       id="text5863"
+       sodipodi:linespacing="125%"
+       transform="translate(-324.54883,-0.4991703)"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_fundamento.png"
+       inkscape:export-xdpi="39.394932"
+       inkscape:export-ydpi="39.394932"><tspan
+         sodipodi:role="line"
+         id="tspan5865"
+         x="1681.4999"
+         y="1246.1742" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend-8)"
+       d="m 2716,660.3621 0,-460"
+       id="path4068-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend-8)"
+       d="m 2376,540.3621 2030,0"
+       id="path4070-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2416,540.3621 200,0 0,-240 200,0 0,240 280,0 0,-240 80,0 0,240 280,0"
+       id="path8486"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccc"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="4349.8125"
+       y="580.87366"
+       id="text5422-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan5424-8"
+         x="4349.8125"
+         y="580.87366">t</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="4343.6079"
+       y="656.86218"
+       id="text4476-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan4478-7"
+         x="4343.6079"
+         y="656.86218">α</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend-8)"
+       d="m 2376,611.3621 2039,0"
+       id="path4070-2-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="2621.0996"
+       y="580.87366"
+       id="text6477-9-4"
+       sodipodi:linespacing="125%"
+       inkscape:transform-center-x="-38.503397"
+       inkscape:transform-center-y="27.361433"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan6479-3-7"
+         x="2621.0996"
+         y="580.87366">t4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="2816"
+       y="580.87366"
+       id="text6477-9-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan6479-3-4"
+         x="2816"
+         y="580.87366">t1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="3096"
+       y="580.87366"
+       id="text6477-9-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan6479-3-0"
+         x="3096"
+         y="580.87366">t2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="3176"
+       y="580.63965"
+       id="text6477-9-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan6479-3-6"
+         x="3176"
+         y="580.63965">t3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="2558.6445"
+       y="186.85254"
+       id="text9448"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan9450"
+         x="2558.6445"
+         y="186.85254">Señal</tspan><tspan
+         sodipodi:role="line"
+         x="2558.6445"
+         y="231.85254"
+         id="tspan9452">sensor</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 3456,540.3621 720,0 0,-240 160,0"
+       id="path9454"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="4176"
+       y="580.87366"
+       id="text6477-9-4-1"
+       sodipodi:linespacing="125%"
+       inkscape:transform-center-x="-38.503397"
+       inkscape:transform-center-y="27.361433"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan6479-3-7-0"
+         x="4176"
+         y="580.87366">t4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="2735.1721"
+       y="661.38098"
+       id="text9477"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan9479"
+         x="2735.1721"
+         y="661.38098">0<tspan
+   style="font-size:65.00091553%;baseline-shift:super"
+   id="tspan9481">o</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="4164.5957"
+       y="661.38098"
+       id="text9483"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan9485"
+         x="4164.5957"
+         y="661.38098">360<tspan
+   style="font-size:65.00091553%;baseline-shift:super"
+   id="tspan9489">o</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="2735.0332"
+       y="580.63965"
+       id="text9491"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan9493"
+         x="2735.0332"
+         y="580.63965">t0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="4275.0332"
+       y="580.63965"
+       id="text9495"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan9497"
+         x="4275.0332"
+         y="580.63965">t0</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8, 8;stroke-dashoffset:0"
+       d="m 4266.5,611.3621 -0.5,-371"
+       id="path9499"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Lstart-2-0-6);marker-end:url(#Arrow1Lend-8-36)"
+       d="m 2736,260.3621 1500,0"
+       id="path9501"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="3456"
+       y="240.3623"
+       id="text10319"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan10321"
+         x="3456"
+         y="240.3623">T</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8, 8;stroke-dashoffset:0"
+       d="m 3136,300.3621 0,320"
+       id="path10323"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="3114.302"
+       y="653.49622"
+       id="text4476-0-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan4478-9-3"
+         x="3114.302"
+         y="653.49622">α<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan5861-2">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="4253.4839"
+       y="653.49622"
+       id="text4476-0-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"><tspan
+         sodipodi:role="line"
+         id="tspan4478-9-6"
+         x="4253.4839"
+         y="653.49622">α<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan10360">1</tspan></tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6805"
+       y="394.24658"
+       x="2875.0095"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       xml:space="preserve"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_fundamento.png"
+       inkscape:export-xdpi="39.394932"
+       inkscape:export-ydpi="39.394932"><tspan
+         y="394.24658"
+         x="2875.0095"
+         id="tspan6807"
+         sodipodi:role="line">d<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan6903">min</tspan></tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6805-3"
+       y="394.0809"
+       x="3233.0137"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       xml:space="preserve"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_fundamento.png"
+       inkscape:export-xdpi="39.394932"
+       inkscape:export-ydpi="39.394932"><tspan
+         y="394.0809"
+         x="3233.0137"
+         id="tspan6807-6"
+         sodipodi:role="line">d<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3117">max</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Lend-8-36-5);marker-end:url(#Arrow1Lstart-2-0-6-5)"
+       d="m 2610,384.17079 205,0"
+       id="path9501-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Lend-8-36-5);marker-end:url(#Arrow1Lstart-2-0-6-5)"
+       d="m 3095,384.17079 80,0"
+       id="path9501-2-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_señal.png"
+       inkscape:export-xdpi="45.092758"
+       inkscape:export-ydpi="45.092758"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="2880"
+       y="427.36224"
+       id="text4476-0-3-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_fundamento.png"
+       inkscape:export-xdpi="39.394932"
+       inkscape:export-ydpi="39.394932"><tspan
+         sodipodi:role="line"
+         id="tspan4478-9-6-3"
+         x="2880"
+         y="427.36224">α<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3133">d1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="3238.5239"
+       y="434.8309"
+       id="text4476-0-3-5-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/figures/baliza_fundamento.png"
+       inkscape:export-xdpi="39.394932"
+       inkscape:export-ydpi="39.394932"><tspan
+         sodipodi:role="line"
+         id="tspan4478-9-6-3-6"
+         x="3238.5239"
+         y="434.8309">α<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3267-7">d2</tspan></tspan></text>
+  </g>
+</svg>
