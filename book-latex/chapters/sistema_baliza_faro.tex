@@ -30,15 +30,24 @@
 \chapter{Sistema de medida de la posición del oponente}
 \label{cha_sistema_baliza_faro}
 
+%\begin{FraseCelebre}
+%  \begin{Frase}
+%No entiendes realmente algo a menos que seas capaz de explicárselo a tu abuela.    
+%  \end{Frase}
+%  \begin{Fuente}
+%Albert Einstein}
+%  \end{Fuente}
+%\end{FraseCelebre}
+
 \begin{FraseCelebre}
   \begin{Frase}
-TODO
-La imaginación es más importante que el conocimiento. El conocimiento es limitado y la imaginación circunda el mundo.    
+I think work should be about making things work. Better. Faster. Smaller. Smarter. So I build bridges between what's known and what's not. I tinker. I toil. I write poetically in an abundance of languages (including code). I hack. I dissect. I have an insatiable desire to un-complicate the complicated. I am easily inspired. I believe that just because it hasn't been thought of doesn't mean it won't be. Potential is my thrill ride. Imagination is my most-used tool. I am a maker, and I am what moves the world forward.  
   \end{Frase}
   \begin{Fuente}
-Albert Einstein, en \emph{The Saturday Evening Post}
+Manifiesto 'I am a maker', Universidad Purdue}
   \end{Fuente}
 \end{FraseCelebre}
+
 
 Los soportes destinados a sistemas de balizamiento dados por las reglas de Eurobot permiten implementar sistemas de posicionamiento absoluto o relativo con el fin de medir la posición de un robot o sus oponentes. Cada baliza puede ser activa o pasiva y las señales utilizadas para su detección pueden ser de luz (visible o infrarroja), de ultrasonidos, de radio o basada en marcas visuales \cite{balizas_y_cerveza}.
 
@@ -64,9 +73,11 @@ La medida de dichos ángulos de detección puede ser realizada mediante un sensor 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{baliza_signal}
-\caption[]{Señal dada por el sensor de luz difusa al detectar balizas a diferentes distancias y ángulos}
+\caption[]{Señal dada por el sensor de luz al detectar balizas a diferentes distancias y ángulos}
 \label{fig_baliza_signal}
 \end{figure}
+
+\subsection{Medida de distancias y ángulos}
 
 La figura \ref{fig_baliza_signal} muestra la señal obtenida del sensor al detectar las balizas. En una implementación basada en medida de tiempos, la medida de distancia a la baliza catadióptrica es proporcional al tiempo durante el cual el sensor detecta la baliza catadióptrica: 
 \begin{equation}
@@ -130,9 +141,15 @@ La implementación mecánica de la baliza tipo faro puede implementarse de varias 
 
 En ambos diseños el efecto conseguido es el mismo: orientar la emisión y recepción del sensor en un rango de 360 grados. Los diseños implementados se muestran en la figura \ref{fig_baliza_mecanica}.
 
-En el caso de la \textbf{baliza de cuerpo giratorio} (ver figura \ref{fig_baliza_mecanica}, imagen izquierda) el sensor junto con el resto de componentes de la baliza giran sobre una estructura fija anclada a la estructura del robot. Esta baliza constituye un sistema completamente autónomo. La obtención de las medidas es realizada a través de una comunicación inalámbrica Bluetooth con el robot. 
+En ambos diseños el sensor utilizado es un sensor fotoeléctrico de reflexión difusa y de $60cm$ de rango. Este tipo de sensores permiten ajustar la detección de un objeto a una distancia fija variando la intensidad de la luz emitida. Esto permite ajustar dicha intensidad para que ningún objeto pueda ser detectado dentro del área el robot y que solo objetos con reflectante catadióptrico sean detectados más allá de las dimensiones del robot. No obstante, también se puede utilizar sensores retro-reflexivos preparados para detectar únicamente catadióptricos de un rango mayor.
 
-La estructura de esta baliza ha sido construida en Trespa (material similar a madera). Dispone de dos sensores de detección de balizas que permite duplicar la frecuencia de detección de una baliza. El giro se implementa a partir de un motor con reductora y encoder integrados que transmiten el movimiento a un engranaje solidario con el eje de giro fijo. Para disminuir la fricción el eje cuenta con rodamientos de bolas en sus extremos. En la parte superior del eje fijo de giro se coloca el soporte para la baliza del oponente. La baliza tiene además un sensor de herradura que permite medir el periodo de vuelta. Todos estos elementos se encuentran conectados una tarjeta electrónica alimentada a partir de una batería de 12V. 
+Los dos tipos de balizas implementadas utilizan la mismas balizas catadióptrica. La figura \ref{fig_baliza_catadioptrica} muestra la baliza construida. Esta está realizada a partir de un cilindro de metacrilato de $8cm$ de diámetro exterior al que se le han añadido unas tapas en sus extremos y se ha forrado de catadióptrico adhesivo.
+
+\subsection{Baliza de cuerpo giratorio}
+
+En el caso de la baliza de cuerpo giratorio (ver figura \ref{fig_baliza_mecanica}, imagen izquierda) el sensor junto con el resto de componentes de la baliza giran sobre una estructura fija anclada a la estructura del robot. Esta baliza constituye un sistema completamente autónomo. La obtención de las medidas es realizada a través de una comunicación inalámbrica Bluetooth con el robot. 
+
+La estructura de esta baliza ha sido construida en Trespa (material similar a madera). Dispone de dos sensores de luz roja para la detección de balizas que permite duplicar la frecuencia de detección de una baliza. El giro se implementa a partir de un motor con reductora y encoder integrados que transmiten el movimiento a un engranaje solidario con el eje de giro fijo. Para disminuir la fricción el eje cuenta con rodamientos de bolas en sus extremos. En la parte superior del eje fijo de giro se coloca el soporte para la baliza del oponente. La baliza tiene además un sensor de herradura que permite medir el periodo de vuelta. Todos estos elementos se encuentran conectados una tarjeta electrónica alimentada a partir de una batería de 12V. 
 
 \begin{figure}[t]
 \centering
@@ -141,14 +158,6 @@ La estructura de esta baliza ha sido construida en Trespa (material similar a ma
 \label{fig_baliza_mecanica}
 \end{figure}
 
-Tiene la ventaja de que los sensores tiene una visión directa con las balizas a detectar y aprovechan la propia óptica del sensor. Al estar situados en la parte superior de forma que están más cerca de la altura de los soportes de la baliza del oponente, lo cual permite disminuir el ángulo $\beta$ y obtener un rango de detección muy amplio entre $30cm$ y $2,5m$. El inconveniente de este diseño es que necesita tener un centro de masas simétrico de forma que al girar no se produzcan vibraciones, lo cual complica el diseño mecánico.  
-
-En el caso de \textbf{la baliza de espejo giratorio} (ver figura \ref{fig_baliza_mecanica}, imagen derecha) la luz emitida y reflejada del sensor detector de balizas es guiada mediante un espejo a 45 grados. De esta forma únicamente el espejo es el que gira, estando el resto de la estructura y componentes de la baliza fijos a la estructura del robot.
-
-La estructura de la baliza está realizada en plástico mediante impresión 3D por aporte de material. Aunque el diseño es diferente la baliza dispone de los mismos elementos que la baliza de cuerpo giratorio, pero ente caso sólo se cuenta con un sensor de detección de balizas y la electrónica de control y batería son las utilizadas en el robot.
-
-La ventaja de esta diseño es principalmente su sencillez de mecánica, no obstante la alineación entre el espejo y el emisor del sensor constituye un punto muy importante. Si ambos no estuviesen correctamente alineados la medida de distancia y el rango de detección podrían variar en función del ángulo del espejo. El inconveniente de este diseño es debido a que la luz del sensor es guiada a través del espejo y debido a ello el rango de distancia obtenido es menor, entre $30cm$ y $80cm$. Para reflejar la luz del sensor el espejo necesita estar más abajo que este, con lo cual la distancia con la altura a la que se encuentran las balizas a detectar es mayor, el ángulo $\beta$ se incrementa y se obtiene un rango de detección menor. Además, al no tener el sensor visión directa con la baliza catadióptrica no se aprovechan las características de la óptica del sensor, existiendo perdidas por reflexión de la luz emitida y reflejada.
-
 \begin{figure}[t]
 \centering
 \includegraphics[width=.5\textwidth]{baliza_catadioptrica}
@@ -156,22 +165,125 @@ La ventaja de esta diseño es principalmente su sencillez de mecánica, no obstant
 \label{fig_baliza_catadioptrica}
 \end{figure}
 
-Respecto a las baliza catadióptrica, su construcción es simple. La figura \ref{fig_baliza_catadioptrica} muestra la baliza construida. Esta se ha realizado a partir de un cilindro de metacrilato de $8cm$ de diámetro exterior al que se le han añadido unas tapas en sus extremos y se ha forrado de catadióptrico adhesivo.
+Tiene la ventaja de que los sensores tiene una visión directa con las balizas a detectar y aprovechan la propia óptica del sensor. Al estar situados en la parte superior de forma que están más cerca de la altura de los soportes de la baliza del oponente, lo cual permite disminuir el ángulo $\beta$ y obtener un rango de detección muy amplio entre $30cm$ y $2,5m$. El inconveniente de este diseño es que necesita tener un centro de masas simétrico de forma que al girar no se produzcan vibraciones, lo cual complica el diseño mecánico.  
 
-Como se puede observar, aunque se han realizado dos implementaciones mecánicas diferentes ambas tienen los mismos elementos. Esto ha permitido reutilizar la misma arquitectura hardware y el mismo software para ambas balizas. Únicamente se diferencian en su respuesta en la medición de distancias, por ello ha sido necesario realizar un modelado y calibración individual para cada una de ellas.
+\subsection{Baliza de espejo giratorio}
+
+En el caso de la baliza de espejo giratorio (ver figura \ref{fig_baliza_mecanica}, imagen derecha) la luz emitida y reflejada del sensor detector de balizas es guiada mediante un espejo a 45 grados. De esta forma únicamente el espejo es el que gira, estando el resto de la estructura y componentes de la baliza fijos a la estructura del robot.
+
+La estructura de la baliza está realizada en plástico mediante impresión 3D por aporte de material. Aunque el diseño es diferente la baliza dispone de los mismos elementos que la baliza de cuerpo giratorio, pero ente caso sólo se cuenta con un sensor de detección de balizas y la electrónica de control y batería son las utilizadas en el robot. El sensor utilizado en este caso es un sensor de luz infrarroja.
+
+La ventaja de este diseño es principalmente su sencillez de mecánica, no obstante la alineación entre el espejo y el emisor del sensor constituye un punto muy importante. Si ambos no estuviesen correctamente alineados la medida de distancia y el rango de detección podrían variar en función del ángulo del espejo. El inconveniente de este diseño es debido a que la luz del sensor es guiada a través del espejo y debido a ello el rango de distancia obtenido es menor, entre $30cm$ y $80cm$. Para reflejar la luz del sensor el espejo necesita estar más abajo que este, con lo cual la distancia con la altura a la que se encuentran las balizas a detectar es mayor, el ángulo $\beta$ se incrementa y se obtiene un rango de detección menor. Además, al no tener el sensor visión directa con la baliza catadióptrica no se aprovechan las características de la óptica del sensor, existiendo perdidas por reflexión de la luz emitida y reflejada.
 
 
-\section{Desarrollo hardware y software}
+
+\section{Implementación hardware y software}
+
+Como se ha visto en la sección anterior, aunque se han realizado dos implementaciones mecánicas diferentes ambas tienen los mismos elementos. Esto ha permitido reutilizar la misma arquitectura hardware y el mismo software para ambas balizas. Para la baliza de cuerpo giratorio se ha desarrollado la tarjeta \emph{beaconboard} y para la baliza de espejo giratorio la tarjeta \emph{mainboard v03}. Ambas implementan la misma arquitectura HW y SW representada por el diagrama de de la figura \ref{fig_baliza_bloque_hw_sw}, con la diferencia de que la tarjeta \emph{mainboard v03} tiene además otros recursos destinados al control de la plataforma base del robot.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{baliza_bloques_hw_sw}
+\includegraphics[width=.95\textwidth]{baliza_bloques_hw_sw}
 \caption[]{Diagrama de bloques HW y SW de una baliza tipo faro.}
 \label{fig_baliza_bloque_hw_sw}
 \end{figure}
 
+La arquitectura está basada en un microcontrolador de la familia dsPIC33 y se componen de 3 partes diferenciadas:
+
+\begin{enumerate}
+\item Control de velocidad de giro del la baliza o espejo.
+\item Procesamiento de la medidas dadas por los sensores y calculo de la posición de una baliza.
+\item Interfaz con la plataforma robótica base.
+\end{enumerate}
+
+Las dos primeras partes son comunes en ambas balizas implementadas, la tercera únicamente es necesaria en el caso de la baliza de cuerpo giratorio ya que se trata de una tarjeta independiente que necesita comunicarse con la tarjeta de la plataforma robótica base.
+
+\subsection{Control de velocidad de giro}
+
+El motor que permite el giro de la baliza o del espejo es controlado mediante una señal PWM generada por el microcontrolador y amplificada por un driver en puente en H. La posición de dicho motor es medida a través un encoder conectado a su eje. Este encoder tiene como salida dos canales en cuadratura que son decodificados en el microcontrolador. El microcontrolador implementa un controlador PID en velocidad mediante el cual se garantiza un periodo de rotación constante.
+
+El periodo de rotación de la baliza está fijado en $6\,rev/s$. Dado que por cada vuelta se obtiene una medida de las balizas detectada, en el caso de la baliza de espejo giratorio el periodo de obtención de una medida es de $167ms$. Para el caso de la baliza de cuerpo giratorio, con dos sensores, dicho tiempo se reduce a la mitad, $83ms$.
+
+\subsection{Procesamiento de medidas y calculo de la posición}
+
+Las señales de los sensores de detección de balizas y de vuelta se encuentran conectados a entradas de interrupción asociadas a dos \emph{timers} configurados en modo captura. En el caso del sensor de vuelta se detecta un único flanco de la señal y en el caso del sensor de balizas ambos flancos de la señal. A partir de la captura de un pulso válido (flanco de subida y uno de bajada) se obtiene la medida en cuentas del ancho de pulso \texttt{size} equivalente al ángulo relativo de $\alpha_d$ de la detección de una baliza y su punto medio en cuentas \texttt{middle}, correspondiente con el ángulo de la baliza $\alpha$. Posteriormente estas medidas son utilizadas en el calculo de la distancia y el ángulo correspondiente a la baliza detectada.
+
+La medida de ángulo de la baliza se obtiene mediante la función \texttt{get\_angle} a partir de numero de cuentas del punto medio \texttt{middle} del ancho de pulso y del periodo instantáneo \texttt{period}:
+
+{\small 
+\begin{verbatim}
+static int32_t get_angle(int32_t middle, int32_t period, int32_t offset)
+{
+    int32_t ret_angle;
+
+    ret_angle = (int32_t)(middle * 360.0 * MDEG / period);
+    ret_angle = (ret_angle + offset*MDEG);
+
+    /* XXX angle is -ret_angle because beacon turns clockwise */
+    return (int32_t)(360-(ret_angle/MDEG)); 
+}
+\end{verbatim}
+}
+
+La medida de distancia de la baliza se obtiene a partir de la función \texttt{get\_dist\_array}, para ello la medida de ancho de pulso en cuentas \texttt{size} es dividida por el número de cuentas del periodo \texttt{period}, obteniendo una medida de ancho de pulso \texttt{measure} independiente del periodo de giro de la baliza:
+
+{\small 
+\begin{verbatim}
+uint16_t get_dist_array(int32_t size, int32_t period)
+{
+    uint32_t measure;
+    uint16_t index;
+
+    /* calculate measure */
+    measure = (uint32_t)((size*100000)/period);
+
+    ...
+}
+\end{verbatim}
+}
+
+Notar que \texttt{size} es multiplicado por un factor $1\times10^5$ para no perder precisión en la división.
+
+Posteriormente, la distancia a la baliza $d$ se obtiene direccionando el array \texttt{measure2distance} cuyas posiciones contienen la medida de distancia en cm. El índice \texttt{index} de dicho array se obtiene a partir de \texttt{measure} y los parámetros con los que se se construyó el array durante la caracterización de la baliza.
+
+{\small 
+\begin{verbatim}
+uint16_t get_dist_array(uint8_t sensor, int32_t size, int32_t period)
+{
+    ...
+
+    /* saturate to working range */
+    if(measure > MEASURE_MAX)
+	    measure = MEASURE_MAX;
+    if(measure < MEASURE_MIN) {
+	    measure = MEASURE_MIN;
+	    return DIST_ERROR;
+    }
+
+    /* calculate array index */
+    index = (ARRAY_SIZE-1) - ((measure-X_EVAL_MIN)/X_EVAL_DELTA);	
+
+    /* return distance from array in mm */
+    return (measure2distance[index]*10);
+}
+\end{verbatim}
+}
+
+La obtención de la distancia mediante un array de datos permite obtener la medida sin penalizar en tiempo de cálculo.
+
+Una vez obtenida la distancia y el ángulo relativos de la baliza detectada se obtiene su posición relativa y junto con la posición absoluta del robot, dada por la odometría, se obtiene la posición absoluta $(x,y)$ de la baliza. Normalmente la baliza se encuentra alineada con el centro de giro del robot y las medidas relativas de la baliza coinciden con las medidas relativas al robot. En caso de no se así, tanto las medidas relativas como las medidas absolutas deben de ser corregidas teniendo en cuenta el desplazamiento de la baliza respecto al centro de giro del robot.
+
+Por último, dado que en un partido de Eurobot puede existir hasta dos robots oponentes, correspondientes a dos balizas reflectantes, se implementa un sistema de seguimiento de las balizas de dichos oponentes. Básicamente el seguimiento se realiza a partir de diferencia entre la posición de una baliza detectada frente a valores anteriores del balizas de los oponentes. Se selecciona la diferencia menor y si se encuentra dentro de un un radio máximo respecto a la posición anterior se actualiza la posición de la baliza correspondiente.
+
+\subsection{Interfaz con la plataforma base}
+
+En el caso de la baliza de cuerpo giratorio la baliza no tiene acceso directo a los datos de odometría del robot y ésta a su vez, tampoco tiene acceso a las medidas la baliza tipo faro. El intercambio de datos se produce mediante una interfaz serie inalámbrica implementada a partir de módulos de radio Bluetooth conectados a una UART de los microcontroladores de las tarjetas.
+
+Mediante una comunicación por mensaje y respuesta el robot realiza peticiones periódicamente cada $10ms$ a la baliza tipo faro de las balizas reflectantes detectadas. En dicho mensaje el robot al mismo tiempo envía su posición absoluta. La baliza tipo faro en el momento de recibir el mensaje utiliza la posición de odometría del robot para actualizar la posición absoluta de las últimas balizas detectadas y se la envía al robot en la respuesta. En el tiempo entre peticiones la baliza utiliza los últimos datos de odometría para sus cálculos.
+
 \section{Ajustes, caracterización y resultados}
 
+Únicamente se diferencian en su respuesta en la medición de distancias, por ello ha sido necesario realizar un modelado y calibración individual para cada una de ellas.
 
 
 %%% Local Variables:
