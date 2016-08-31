@@ -59,7 +59,7 @@ El sistema de baliza tipo faro se compone de un sensor giratorio y una o varias 
 
 La medida de distancia se basa en el principio por el cual un objeto cercano se ve más grande que uno lejano. En este caso (ver figura \ref{fig_baliza_fundamento}) a la baliza a la distancia $d_{min}$ le corresponde un ángulo relativo de detección $\alpha_d$ mayor que el de la baliza a la distancia $d_{max}$. Por otro lado, la medida de ángulo de la baliza se corresponde con la posición angular absoluta mitad de detección de la baliza $\alpha$.
  
-La medida de dichos ángulos de detección puede ser realizada mediante un sensor de posición absoluto (un encoder) o a partir de la medida de los tiempos de detección de una baliza y el periodo de giro del sensor. Si se dispone de un encoder con la suficiente resolución la implementación por medida de posición resulta más sencilla y no necesita de un giro a velocidad constante. En caso contrario, puede realizarse una implementación basada en medida de tiempos que tiene el inconveniente de necesitar de un periodo de giro constante, pero añade la ventaja de que la resolución de medida es mucho mayor.
+La medida de dichos ángulos de detección puede ser realizada mediante un sensor de posición absoluto (un encoder) o a partir de la medida de los tiempos de detección de una baliza y el periodo de giro del sensor. Si se dispone de un encoder con la suficiente resolución la implementación por medida de posición resulta más sencilla y no necesita de un giro a velocidad constante. En caso contrario, puede realizarse una implementación basada en medida de tiempos que tiene el inconveniente de necesitar de un periodo de giro constante, pero añade la ventaja de que la resolución de medida es mucho mayor y por lo tanto el rango de detección también lo será.
 
 \begin{figure}[ht]
 \centering
@@ -75,21 +75,38 @@ d \propto \frac{1}{(t_n - t_{n-1})} \,\vee\, t_n > t_{n-1}
 
 El ángulo de detección relativo $\alpha_d$ se puede obtener a partir del tiempo de detección relativo al periodo de vuelta $T$ como
 \begin{equation}
-\alpha_d = \frac{(t_n - t_{n-1})}{T} \times 2\pi \, [rad]
+\alpha_d = \frac{(t_n - t_{n-1})}{T} \times 2\pi \, [rad] \label{eq_aprox_d}
 \end{equation}
   
-Teóricamente la distancia a la baliza catadióptrica se puede obtener a partir del ángulo de detección relativo $\alpha_d$ y del diámetro de la baliza $D$ como:
+Aproximando la luz emitida por el sensor a una luz coherente (haz láser), teóricamente la distancia a la baliza catadióptrica se puede obtener a partir del ángulo de detección relativo $\alpha_d$ y del diámetro de la baliza $D$ como:
 \begin{equation}
 d = \frac{D/2}{\tan(\alpha_d /2)} \,[m]
 \end{equation}
 
-Por otro lado la medida de ángulo de la baliza detectada se obtiene como:
+Esta aproximación permite estudiar el rango del ángulo de detección $\alpha_d$ del sistema. Despejando $\alpha_d/2$ 
+\begin{equation}
+\alpha_d /2 = \arctan\Big(\frac{D/2}{d}\Big) \,[rad] \label{eq_alpha_d_medios}
+\end{equation}
+
+Así por ejemplo, para un rango de distancia $d$ entre $30cm$ y $2,5m$ le corresponden ángulos de detección $\alpha_d$ de $0,133rad$ y $0,016rad$ ($7,6^o$ y $0,92^o$). Para dichos ángulos la gráfica de la arcotangente se aproxima a una respuesta lineal. Por lo tanto en esta primera aproximación la medida del ángulo de detección es inversamente proporcional a la distancia de la baliza.
+
+El modelo real de la medida de distancia es más complejo dado que la luz del sensor es una luz incoherente. La detección de la baliza va a depender del patrón de emisión y recepción del propio sensor. La luz reflejada por el catadióptrico depende del área proyectada sobre el mismo y su energía, y de las características del propio material catadióptrico. Además, no hay que olvidar que el sensor no está en el mismo plano que la baliza a detectar lo cual implica un comportamiento no lineal de la reflexión de la luz en los limites del rango de detección de la baliza. 
+
+Para una emisión incoherente, el área proyectada a sobre la baliza viene dada por la definición de ángulo sólido $\Omega$, de forma que la superficie $S$ se incrementa con el cuadrado de la distancia $d$:
+\begin{equation}
+\Omega = \frac{S}{d^2}
+\end{equation}     
+
+Teniendo en cuenta que la energía emitida por el sensor se reparte por la superficie $S$, se deduce que la energía proyectada sobre la baliza catadióptrica disminuye de forma inversamente proporcional con el cuadrado de la distancia. Lo cual completa la ecuación \eqref{eq_alpha_d_medios} de forma que la medida del ángulo detectado $\alpha_d$, al menos, disminuirá con el cuadrado de la distancia.
+
+
+Por otro lado, la medida de ángulo de la baliza detectada es mucho más sencilla y se obtiene a partir de los tiempos de detección de la baliza y el periodo de vuelta $T$ como:
 \begin{equation}
 \alpha = \frac{t_n - \frac{(t_n - t_{n-1})}{2}}{T} \times 360 \,[^o] \,\vee\, t_n > t_{n-1}
 \end{equation}
 
 
-La posición relativa $xy$ de la baliza se obtiene a partir de la proyecciones de con los ejes como:
+Una vez obtenida la distancia $d$ y el ángulo $\alpha$ a una baliza se puede calcula la posición relativa $xy$ de la baliza a partir de la proyecciones de con los ejes de la siguiente forma:
 \begin{align}
 x =& d\,\cos(\alpha) \\
 y =& d\,\sin(\alpha)
@@ -97,32 +114,51 @@ y =& d\,\sin(\alpha)
 
 
 Y su posición absoluta se obtiene a partir de la posición absoluta del robot $(x_r, y_r)$ como:
-
 \begin{align}
 x_{abs} =& x + x_r \\
 y_{abs} =& y + y_r
 \end{align}
 
-
-
-
-
-
 \section{Implementación mecánica}
 
-\begin{figure}[ht]
+La implementación mecánica de la baliza tipo faro puede implementarse de varias formas. En este caso se han realizado dos implementaciones que siguen dos lineas de diseño completamente diferentes:
+
+\begin{enumerate}
+\item Baliza de cuerpo giratorio
+\item Baliza de espejo giratorio
+\end{enumerate}
+
+En ambos diseños el efecto conseguido es el mismo: orientar la emisión y recepción del sensor en un rango de 360 grados. Los diseños implementados se muestran en la figura \ref{fig_baliza_mecanica}.
+
+En el caso de la \textbf{baliza de cuerpo giratorio} (ver figura \ref{fig_baliza_mecanica}, imagen izquierda) el sensor junto con el resto de componentes de la baliza giran sobre una estructura fija anclada a la estructura del robot. Esta baliza constituye un sistema completamente autónomo. La obtención de las medidas es realizada a través de una comunicación inalámbrica Bluetooth con el robot. 
+
+La estructura de esta baliza ha sido construida en Trespa (material similar a madera). Dispone de dos sensores de detección de balizas que permite duplicar la frecuencia de detección de una baliza. El giro se implementa a partir de un motor con reductora y encoder integrados que transmiten el movimiento a un engranaje solidario con el eje de giro fijo. Para disminuir la fricción el eje cuenta con rodamientos de bolas en sus extremos. En la parte superior del eje fijo de giro se coloca el soporte para la baliza del oponente. La baliza tiene además un sensor de herradura que permite medir el periodo de vuelta. Todos estos elementos se encuentran conectados una tarjeta electrónica alimentada a partir de una batería de 12V. 
+
+\begin{figure}[t]
 \centering
 \includegraphics[width=.8\textwidth]{baliza_mecanica}
 \caption[]{Implementaciones mecánicas de una baliza tipo faro. Baliza de cuerpo giratorio (izquierda). Baliza de espejo giratorio (derecha).}
 \label{fig_baliza_mecanica}
 \end{figure}
 
-\begin{figure}[ht]
+Tiene la ventaja de que los sensores tiene una visión directa con las balizas a detectar y aprovechan la propia óptica del sensor. Al estar situados en la parte superior de forma que están más cerca de la altura de los soportes de la baliza del oponente, lo cual permite disminuir el ángulo $\beta$ y obtener un rango de detección muy amplio entre $30cm$ y $2,5m$. El inconveniente de este diseño es que necesita tener un centro de masas simétrico de forma que al girar no se produzcan vibraciones, lo cual complica el diseño mecánico.  
+
+En el caso de \textbf{la baliza de espejo giratorio} (ver figura \ref{fig_baliza_mecanica}, imagen derecha) la luz emitida y reflejada del sensor detector de balizas es guiada mediante un espejo a 45 grados. De esta forma únicamente el espejo es el que gira, estando el resto de la estructura y componentes de la baliza fijos a la estructura del robot.
+
+La estructura de la baliza está realizada en plástico mediante impresión 3D por aporte de material. Aunque el diseño es diferente la baliza dispone de los mismos elementos que la baliza de cuerpo giratorio, pero ente caso sólo se cuenta con un sensor de detección de balizas y la electrónica de control y batería son las utilizadas en el robot.
+
+La ventaja de esta diseño es principalmente su sencillez de mecánica, no obstante la alineación entre el espejo y el emisor del sensor constituye un punto muy importante. Si ambos no estuviesen correctamente alineados la medida de distancia y el rango de detección podrían variar en función del ángulo del espejo. El inconveniente de este diseño es debido a que la luz del sensor es guiada a través del espejo y debido a ello el rango de distancia obtenido es menor, entre $30cm$ y $80cm$. Para reflejar la luz del sensor el espejo necesita estar más abajo que este, con lo cual la distancia con la altura a la que se encuentran las balizas a detectar es mayor, el ángulo $\beta$ se incrementa y se obtiene un rango de detección menor. Además, al no tener el sensor visión directa con la baliza catadióptrica no se aprovechan las características de la óptica del sensor, existiendo perdidas por reflexión de la luz emitida y reflejada.
+
+\begin{figure}[t]
 \centering
 \includegraphics[width=.5\textwidth]{baliza_catadioptrica}
 \caption[]{Baliza pasiva catadióptrica.}
 \label{fig_baliza_catadioptrica}
 \end{figure}
+
+Respecto a las baliza catadióptrica, su construcción es simple. La figura \ref{fig_baliza_catadioptrica} muestra la baliza construida. Esta se ha realizado a partir de un cilindro de metacrilato de $8cm$ de diámetro exterior al que se le han añadido unas tapas en sus extremos y se ha forrado de catadióptrico adhesivo.
+
+Como se puede observar, aunque se han realizado dos implementaciones mecánicas diferentes ambas tienen los mismos elementos. Esto ha permitido reutilizar la misma arquitectura hardware y el mismo software para ambas balizas. Únicamente se diferencian en su respuesta en la medición de distancias, por ello ha sido necesario realizar un modelado y calibración individual para cada una de ellas.
 
 
 \section{Desarrollo hardware y software}
@@ -134,7 +170,7 @@ y_{abs} =& y + y_r
 \label{fig_baliza_bloque_hw_sw}
 \end{figure}
 
-\section{Caracterización y resultados}
+\section{Ajustes, caracterización y resultados}
 
 
 
