@@ -44,7 +44,7 @@
 I think work should be about making things work. Better. Faster. Smaller. Smarter. So I build bridges between what's known and what's not. I tinker. I toil. I write poetically in an abundance of languages (including code). I hack. I dissect. I have an insatiable desire to un-complicate the complicated. I am easily inspired. I believe that just because it hasn't been thought of doesn't mean it won't be. Potential is my thrill ride. Imagination is my most-used tool. I am a maker, and I am what moves the world forward.  
   \end{Frase}
   \begin{Fuente}
-Manifiesto 'I am a maker', Universidad Purdue}
+Manifiesto \emph{I am a maker}, Universidad Purdue
   \end{Fuente}
 \end{FraseCelebre}
 
@@ -142,6 +142,8 @@ La implementación mecánica de la baliza tipo faro puede implementarse de varias 
 En ambos diseños el efecto conseguido es el mismo: orientar la emisión y recepción del sensor en un rango de 360 grados. Los diseños implementados se muestran en la figura \ref{fig_baliza_mecanica}.
 
 En ambos diseños el sensor utilizado es un sensor fotoeléctrico de reflexión difusa y de $60cm$ de rango. Este tipo de sensores permiten ajustar la detección de un objeto a una distancia fija variando la intensidad de la luz emitida. Esto permite ajustar dicha intensidad para que ningún objeto pueda ser detectado dentro del área el robot y que solo objetos con reflectante catadióptrico sean detectados más allá de las dimensiones del robot. No obstante, también se puede utilizar sensores retro-reflexivos preparados para detectar únicamente catadióptricos de un rango mayor.
+
+Igualmente, ambos diseños utilizan un sensor fotoeléctrico de herradura para medir el periodo de giro instantáneo y tomar la referencia de $0^o$ de la medida de ángulo de la baliza. El sensor es activado por un final de carrera que coincide con el origen de $0^o$.
 
 Los dos tipos de balizas implementadas utilizan la mismas balizas catadióptrica. La figura \ref{fig_baliza_catadioptrica} muestra la baliza construida. Esta está realizada a partir de un cilindro de metacrilato de $8cm$ de diámetro exterior al que se le han añadido unas tapas en sus extremos y se ha forrado de catadióptrico adhesivo.
 
@@ -281,9 +283,34 @@ En el caso de la baliza de cuerpo giratorio la baliza no tiene acceso directo a 
 
 Mediante una comunicación por mensaje y respuesta el robot realiza peticiones periódicamente cada $10ms$ a la baliza tipo faro de las balizas reflectantes detectadas. En dicho mensaje el robot al mismo tiempo envía su posición absoluta. La baliza tipo faro en el momento de recibir el mensaje utiliza la posición de odometría del robot para actualizar la posición absoluta de las últimas balizas detectadas y se la envía al robot en la respuesta. En el tiempo entre peticiones la baliza utiliza los últimos datos de odometría para sus cálculos.
 
-\section{Ajustes, caracterización y resultados}
+\section{Ajustes, modelado experimental y resultados}
+
+La baliza faro necesita de ciertos ajustes con el fin de obtener el rango de detección máximo para cada tipo de implementación realizada. El procedimiento para realizar
+
+\subsection{Ajuste del rango de medida}
+
+\subsection{Modelado y calibración de la medida de distancia}
+
+\subsection{Resultados obtenidos}
+
+
 
 Únicamente se diferencian en su respuesta en la medición de distancias, por ello ha sido necesario realizar un modelado y calibración individual para cada una de ellas.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_1_small.pdf}
+\caption[]{}
+\label{fig_}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_2_small.pdf}
+\caption[]{}
+\label{fig_}
+\end{figure}
 
 
 %%% Local Variables:
