@@ -27,7 +27,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Sistema de medida de la posición del oponente}
+\chapter{Sistema de balizas tipo faro}
 \label{cha_sistema_baliza_faro}
 
 %\begin{FraseCelebre}
@@ -53,9 +53,9 @@ Los soportes destinados a sistemas de balizamiento dados por las reglas de Eurob
 
 Dado que la posición del robot se suele obtener mediante odometría, los soportes para balizas suelen ser utilizados principalmente para medir la posición de los oponentes. Aunque hay equipos que tienen desarrollado un sistema de posicionamiento absoluto a partir del cual, además de obtener la posición del oponente, realizan fusión sensorial con la odometría.
 
-Este capítulo se centra en la medida de la posición relativa del oponente respecto al robot. Para ello lo más sencillo es utilizar el soporte para balizas de cada robot y el espacio destinado al sensores de balizas del robot.
+Este capítulo se centra en la medida de la posición relativa del oponente respecto al robot. Para ello lo más sencillo es utilizar el soporte para balizas de cada robot y el espacio destinado al sensores de balizas del robot. Se presenta un sistema basado en una baliza tipo faro, un sistema muy utilizado en Eurobot.
 
-\section{Principio de funcionamiento de una baliza tipo faro}
+\section{Principio de funcionamiento}
 
 El sistema de baliza tipo faro se compone de un sensor giratorio y una o varias balizas cilíndricas reflectantes. El sensor gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes cuando el sensor se encuentra enfrentado a una baliza. Como muestra la figura \ref{fig_baliza_fundamento}, el sensor puede estar montado en un cuerpo que gira y situado en la zona reservada a sensores de baliza del robot. Debido a la altura del soporte de las balizas de los robots oponentes el sensor ha de ser fijado con un ángulo $\beta$ para así detectar las balizas. Esto constituye un inconveniente que limita el rango de detección de la baliza entre una distancia mínima $d_{min}$ y una máxima $d_{max}$.
 
@@ -113,7 +113,7 @@ Teniendo en cuenta que la energía emitida por el sensor se reparte por la superf
 
 Por otro lado, la medida de ángulo de la baliza detectada es mucho más sencilla y se obtiene a partir de los tiempos de detección de la baliza y el periodo de vuelta $T$ como:
 \begin{equation}
-\alpha = \frac{t_n - \frac{(t_n - t_{n-1})}{2}}{T} \times 360 \,[^o] \,\vee\, t_n > t_{n-1}
+\alpha = \frac{t_n - \frac{(t_n - t_{n-1})}{2}}{T} \times 360 \,[^o] \,\vee\, t_n > t_{n-1} \label{eq_alpha}
 \end{equation}
 
 
@@ -207,7 +207,7 @@ El motor que permite el giro de la baliza o del espejo es controlado mediante un
 El periodo de rotación de la baliza está fijado en $6\,rev/s$. Dado que por cada vuelta se obtiene una medida de las balizas detectada, en el caso de la baliza de espejo giratorio el periodo de obtención de una medida es de $167ms$. Para el caso de la baliza de cuerpo giratorio, con dos sensores, dicho tiempo se reduce a la mitad, $83ms$.
 
 \subsection{Procesamiento de medidas y calculo de la posición}
-
+\label{sec_proc_medidas}
 Las señales de los sensores de detección de balizas y de vuelta se encuentran conectados a entradas de interrupción asociadas a dos \emph{timers} configurados en modo captura. En el caso del sensor de vuelta se detecta un único flanco de la señal y en el caso del sensor de balizas ambos flancos de la señal. A partir de la captura de un pulso válido (flanco de subida y uno de bajada) se obtiene la medida en cuentas del ancho de pulso \texttt{size} equivalente al ángulo relativo de $\alpha_d$ de la detección de una baliza y su punto medio en cuentas \texttt{middle}, correspondiente con el ángulo de la baliza $\alpha$. Posteriormente estas medidas son utilizadas en el calculo de la distancia y el ángulo correspondiente a la baliza detectada.
 
 La medida de ángulo de la baliza se obtiene mediante la función \texttt{get\_angle} a partir de numero de cuentas del punto medio \texttt{middle} del ancho de pulso y del periodo instantáneo \texttt{period}:
@@ -263,7 +263,7 @@ uint16_t get_dist_array(uint8_t sensor, int32_t size, int32_t period)
     }
 
     /* calculate array index */
-    index = (ARRAY_SIZE-1) - ((measure-X_EVAL_MIN)/X_EVAL_DELTA);	
+    index = (ARRAY_SIZE-1) - ((measure-MEASURE_MIN)/MEASURE_DELTA);	
 
     /* return distance from array in mm */
     return (measure2distance[index]*10);
@@ -283,34 +283,117 @@ En el caso de la baliza de cuerpo giratorio la baliza no tiene acceso directo a 
 
 Mediante una comunicación por mensaje y respuesta el robot realiza peticiones periódicamente cada $10ms$ a la baliza tipo faro de las balizas reflectantes detectadas. En dicho mensaje el robot al mismo tiempo envía su posición absoluta. La baliza tipo faro en el momento de recibir el mensaje utiliza la posición de odometría del robot para actualizar la posición absoluta de las últimas balizas detectadas y se la envía al robot en la respuesta. En el tiempo entre peticiones la baliza utiliza los últimos datos de odometría para sus cálculos.
 
-\section{Ajustes, modelado experimental y resultados}
+\section{Ajustes, modelado y calibración}
 
-La baliza faro necesita de ciertos ajustes con el fin de obtener el rango de detección máximo para cada tipo de implementación realizada. El procedimiento para realizar
+A la hora de poner en marcha la baliza tipo faro es necesario realizar algunos ajustes con el fin de obtener el rango de medida de distancia máximo y ajustado a las necesidades. En el caso de la medida de ángulo, dependiendo de la implementación mecánica puede ser necesario ajustar el offset que define el ángulo $0^o$. Pero no es el caso de los dos tipos de balizas implementadas, ya que en ambas el sensor de medida de periodo de vuelta se encuentra sincronizado mecánicamente con la orientación $0^o$. Cabría un offset entre la interrupción de la señal del sensor y la captura del timer asociado, pero se puede considerar despreciable.
 
-\subsection{Ajuste del rango de medida}
+Una vez realizados los ajustes, la forma de obtener la medida de ángulo se corresponde con el modelo teórico \eqref{eq_alpha}. Respecto a la medida de distancias, se ha optado por obtener un modelado experimental.
+
+El proceso de ajuste y modelado se aplica a cualquiera de los dos tipos de baliza desarrollados. 
+
+\subsection{Ajustes del rango de medida}
+
+Los ajustes a realizar consisten en determinar la distancia mínima de detección de cualquier objeto y la distancia mínima y máxima de detección de una baliza. 
+
+La distancia mínima de detección de un objeto depende de la intensidad de emisión del sensor. Al ser un un sensor de reflexión difusa cualquier objeto puede ser detectado por el. Es por ello que limitando la intensidad de emisión se puede fijar la distancia máxima a la que cualquier objeto no será detectado. 
+
+En el caso de el rango de distancia de detección de una baliza reflectante, este depende del ángulo $\beta$ con el que el salga el haz de luz del sensor a las balizas reflectantes. En la distancia mínima el haz de luz se reflejará en la parte inferior de la baliza y en la distancia máxima en su parte superior. Fuera de dicho rango el haz de luz se escapará por la parte de abajo o de arriba del catadióptrico. Además, a la distancia máxima donde la duración del ancho de pulso detectado es el mínimo, entra en juego el tiempo de mínimo que necesita el sensor para detectar dicho pulso. Dicho requisito determina la velocidad de giro máxima y por tanto el periodo de medida de la posición de las balizas detectadas.
+
+\subsubsection{Ajuste de la distancia mínima de detección}
+
+El criterio seguido en este ajuste es no detectar ningún objeto a una distancia mayor que los límites del robot. Por ejemplo, si el robot estuviese pegado a una pared, esta pared no debería detectarse.
+
+El procedimiento seguido es el siguiente:
+\begin{enumerate}
+\item Con la baliza parada se sitúa perpendicular al sensor una hoja blanca (peor caso) de dimensiones suficientes para abarcar el haz de luz emitido.
+\item Se ajusta la intensidad del sensor hasta obtener una detección nula y estable.
+\end{enumerate}
+
+
+\subsubsection{Ajuste del rango de medida de distancia}
+
+El rango se determina a partir de la distancia mínima requerida. Dependiendo del caso dicha distancia puede variar. Para cubrir dicha distancia mínima de detección se utilizan sensores digitales de corto alcance situados en puntos estratégicos de las caras del robot. De esta forma la detección de oponentes y obstáculos queda cubierta. Si dichos sensores tienen un rango de $30cm$, la distancia mínima de detección de una baliza puede ser de $20cm$. De esta forma se solapan los rangos de detección, asegurando una detección segura.
+
+Para este ajuste la baliza reflectante se sitúa alineada con la baliza tipo faro y a la altura del soporte de baliza del robot oponente. Es recomendable fabricar un robot de madera o cartón que simule un robot oponente. Este robot de madera puede ser utilizado posteriormente para las pruebas de estrategia además de para estos ajustes.
+
+El procedimiento seguido es el siguiente:
+\begin{enumerate}
+\item Con la baliza parada se sitúa la baliza reflectante a la distancia mínima de detección.
+\item Partiendo de un ángulo $\beta=0^o$ (sensor paralelo a la baliza reflectante) se empieza a aumentar el ángulo hasta que el haz de luz incida un 80\% en la baliza. En caso de ser un sensor de luz visible es fácilmente apreciable en condiciones de penumbra. Si se trata de un sensor de luz infrarroja, la luz puede ser observada utilizando una cámara digital. Se comprueba que el sensor detecta la baliza.
+\item Se fija el ángulo del sensor mecánicamente.
+\item Con la baliza parada se desplaza la baliza reflectante en linea recta hasta la distancia limite de detección. Se anota la distancia máxima de detección.
+\item Con la baliza girando a la velocidad mínima y observando la medida de ancho de pulso de la baliza detectada.
+\item Comprobar que se obtiene una medida de ancho de pulso en el rango de detección del sensor determinado en los pasos anteriores.
+\item Situar la baliza reflectante a la medida máxima e ir incrementado la velocidad de giro de la baliza hasta el límite de detección de ancho de pulso. Fijar el periodo de giro de la baliza al valor máximo para el cual la medida de ancho de pulso sea estable.
+\end{enumerate}
+
+Una vez realizados estos ajustes conviene realizar varias medidas de ancho de pulso a diferentes distancias observando la estabilidad y repetitividad de la medida.
+
 
 \subsection{Modelado y calibración de la medida de distancia}
 
-\subsection{Resultados obtenidos}
+Para realizar el modelado y calibración es necesario poder observar la medida de ancho y punto medio del pulso de la baliza detectada y el periodo instantáneo de giro de la baliza. Al igual que para los ajustes, la baliza reflectante se sitúa alineada con la baliza tipo faro (ángulo de detección de $0^o$) y a la altura del soporte de baliza del robot oponente. 
 
+Se realizan varias medidas en todo el rango de distancia de detección con una separación entre medidas de $10cm$. Se va a presentar como ejemplo el modelado realizado para la baliza de cuerpo giratorio. Estas son de las medidas obtenidas en un rango de $20$ a $220\,cm$ para dicha baliza:
 
+{\small 
+\begin{verbatim}
+276.676: period = 02315 / size = 00126 / middle = 01192 (x0.1)
+294.887: period = 02313 / size = 00123 / middle = 01173 (x0.1)
+325.976: period = 02319 / size = 00118 / middle = 01171 (x0.1)
+349.396: period = 02317 / size = 00116 / middle = 01170 (x0.1)
+368.197: period = 02314 / size = 00113 / middle = 01167 (x0.1)
+388.792: period = 02314 / size = 00110 / middle = 01165 (x0.1)
+412.188: period = 02315 / size = 00105 / middle = 01166 (x0.1)
+431.161: period = 02313 / size = 00099 / middle = 01165 (x0.1)
+445.513: period = 02315 / size = 00092 / middle = 01165 (x0.1)
+467.730: period = 02316 / size = 00085 / middle = 01165 (x0.1)
+482.107: period = 02314 / size = 00079 / middle = 01163 (x0.1)
+498.253: period = 02313 / size = 00073 / middle = 01162 (x0.1)
+515.284: period = 02313 / size = 00067 / middle = 01160 (x0.1)
+532.144: period = 02313 / size = 00062 / middle = 01161 (x0.1)
+551.264: period = 02312 / size = 00058 / middle = 01161 (x0.1)
+566.525: period = 02314 / size = 00052 / middle = 01161 (x0.1)
+584.589: period = 02313 / size = 00048 / middle = 01161 (x0.1)
+602.529: period = 02315 / size = 00044 / middle = 01161 (x0.1)
+625.754: period = 02313 / size = 00038 / middle = 01160 (x0.1)
+643.252: period = 02317 / size = 00031 / middle = 01162 (x0.1)
+657.924: period = 02311 / size = 00022 / middle = 01159 (x0.1)
+\end{verbatim}
+}
 
-Únicamente se diferencian en su respuesta en la medición de distancias, por ello ha sido necesario realizar un modelado y calibración individual para cada una de ellas.
+A partir de la medida de periodo \texttt{period} y punto medio \texttt{middle} se obtiene la medida de ángulo. Dicha medida de ángulo se utiliza para corregir la distancia efectiva de medida ya que la baliza reflectante, colocada a mano, pudo no estar perfectamente alineada con el ángulo cero grados. Observar que en las medidas obtenidas \texttt{middle} es la mitad de \texttt{period}, cuando debería ser un valor cercano a cero o al valor de \texttt{period}, correspondiente a un ángulo de $0^o$. Esto indica que las medidas se realizaron con la baliza girada un ángulo de $180^o$.
 
+Por otro lado, la medida de ancho de pulso \texttt{size} se procesa de la forma que se ha descrito en la sección \ref{sec_proc_medidas} para obtener una medida de ancho de pulso no dependiente del periodo y escalada:
+{\small 
+\begin{verbatim}
+measure = (uint32_t)((size*100000)/period);
+\end{verbatim}
+}
+
+La distancia corregida y la medida de ancho de pulso procesada se utiliza para modelar y calibrar la medida de distancias. Para ello se obtiene el polinomio de menor orden que se ajusta a estas medidas y que se corresponde con el modelo de medida de la baliza. La figura \ref{fig_beacon_robot_calib_3m_fig_1_small} muestra gráficamente las muestras obtenidas en la medida, el polinómico calculado y el error entre ambos.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_1_small.pdf}
-\caption[]{}
-\label{fig_}
+\caption[]{Modelo continuo de medida de distancia aproximado a un polinomio}
+\label{fig_beacon_robot_calib_3m_fig_1_small}
 \end{figure}
+
+Se observa que la respuesta se aproxima a una función lineal pero se pueden diferenciar 3 zonas levemente curvas. Aunque se podía haber aproximado a la ecuación de una recta se ha preferido tratar de preservar fehacientemente el modelo obtenido.
+
+Dado el elevado orden del polinomio ($N=6$), se ha optado por implementar un método de obtención de la medida de distancia basado en una tabla o array de valores de distancias y cuyo índice es calculado a partir de la medida de ancho de pulso \texttt{measure}. Para ello utilizando el polinomio calculado se han obtenido un grupo de muestras suficientes para garantizar una resolución $1cm$ en la medida de distancias. Dicho grupo de muestras está definido por el valor mínimo y máximo de ancho de pulso (correspondientes a la distancia máxima y mínima, respectivamente) y un incremento de ancho de pulso (que define la resolución en la medida de distancia). El valor de incremento de ancho de pulso es el mínimo para garantizar la resolución de $1cm$ y genere con un numero datos almacenable en la memoria del microcontrolador.
+
+El resultado se muestra en la figura \ref{fig_beacon_robot_calib_3m_fig_2_small}, el conjunto de datos de la tabla de distancia obtenido es de 561 muestras de distancia y la diferencia entre muestras en ningún caso supera el cm.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_2_small.pdf}
-\caption[]{}
-\label{fig_}
+\caption[]{Discretización del modelo continuo de medida de distancia para su mapeado en un array de datos}
+\label{fig_beacon_robot_calib_3m_fig_2_small}
 \end{figure}
+
+
 
 
 %%% Local Variables:
