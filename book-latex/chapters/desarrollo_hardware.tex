@@ -39,8 +39,77 @@ Albert Einstein
   \end{Fuente}
 \end{FraseCelebre}
 
+El hardware a desarrollar para un robot de Eurobot no suele ser muy complicado, su arquitectura es la de un sistema embebido donde la mayoría de los elementos, actuadores y sensores, suelen ser digitales. Dado que el robot ha de ser capaz de realizar varias cosas al mismo tiempo, como moverse y manipular elementos, es normal que el hardware tenga una arquitectura distribuida de varios microcontroladores o procesadores comunicados entre si.
+
+\section{Cuestiones previas. Sobre sensores y actuadores}
+
+En el año 2010, a partir de la experiencia adquirida los años anteriores y estudiando los robots de otros equipos, se definió una arquitectura hardware base con el fin de ser reutilizada en diseños posteriores. Esta arquitectura vino dada a partir de los recursos necesarios para implementar las dos partes en las que se puede dividir un robot de Eurobot: la plataforma robótica base y los sistemas mecánicos. Los requisitos de la primera son conocidos, en cambio, los recursos de la segunda dependen de la temática y de los sistemas mecánicos asociados a ella.
+
+La experiencia de los componentes del equipo de Eurobot y el estudio de los robots de otros equipos ayudó a determinar los tipos de sensores y actuadores a utilizan en los robots de Eurobot. Respecto a los sensores, partiendo de que un robot de Eurobot es como una pequeña línea de montaje automatizada en miniatura en continuo movimiento y cuyas condiciones exteriores son variables, se obtuvieron varias conclusiones:
+
+\begin{itemize}
+\item La utilización de sensores utilizados en aplicaciones fuera de su rango de aplicación no son fiables. En años anteriores al 2010 se utilizaron sensores fotoeléctricos como el GP2D12 (un sensor de distancia analógico) como sensores de detección de obstáculos. Estos sensores o similares están pensados para ser utilizados en entornos cerrados protegidos de focos de luz intensa como una fotocopiadora. Durante un partido de Eurobot la propia iluminación del campo de juego puede influir en ellos.
+
+\item Los sensores a utilizar han de ser sensores diseñados específicamente para la aplicación y el uso que se les va a dar. Han de ser robustos, reemplazables y fiables.
+
+\item El mercado de sensores industriales, destinados a lineas de producción automatizadas, constituye un mercado de referencia para los sensores de un robot de Eurobot. 
+
+\item La principal razón por la que se utilizan sensores no específicos para la aplicación el coste. La experiencia ha demostrado que merece la pena tratar de conseguir sensores específicos aunque tengan un coste mayor.
+
+\item Los sensores industriales son para toda la vida, pueden reutilizarse en cada robot.
+
+\item El mercado de segunda mano o chino (eBay, Aliexpress, Alibaba, Taobao) permite conseguir sensores a menor coste. Es un compromiso entre la compra a demanda de las especificaciones de diseño, de coste elevado, y la fiabilidad de los sensores a utilizar. No obstante, sobre todo en el mercado chino, hay que tener cuidado con las falsificaciones.
+\end{itemize}
+
+Los actuadores eléctricos como motores y servomotores son los más utilizados, aunque también se utilizan actuadores neumáticos o de vacío. Respecto a los actuadores las conclusiones van en la misma linea de la de los sensores, además hay que tener en cuenta los actuadores tienen un desgaste mecánico:
+
+\begin{itemize}
+\item Evitar la reutilización o utilización de actuadores de aplicación no específica o cuyas características no sean las adecuada para la aplicación. Esto puede derivar en unos requisitos de potencia del hardware mayores, complicar el control de los los mecanismos u obtener un rendimiento mecánico insuficiente. En años anteriores se utilizaron motores de taladradoras o atornilladores eléctricos como motores de tracción del robot. Estos motores tienen un rendimiento muy pobre y un consumo muy elevado que implica una electrónica de control de alta potencia. El uso de este tipo de motores para aplicaciones de control de posición o de velocidad complican el ajuste de los controladores debido a respuestas no lineales, que en el caso de un atornillador no son importantes, pero para un robot de Eurobot si.
+
+\item Evitar utilizar actuadores cuyas especificaciones sean incompletas.
+
+\item Evitar utilizar actuadores de materiales de baja calidad. Especialmente el de las reductoras de los motores, muchas veces constituye la parte más débil en un sistema mecánico, sobretodo en los servomotores.
+
+\item Al igual que con los sensores, los motores pueden ser reutilizados de robot en robot.
+
+\item El mercado de segunda mano constituye un punto intermedio entre el coste y las especificaciones, rendimiento y calidad del motor a utilizar.
+
+\end{itemize}
+
 
 \section{Arquitectura hardware}
+
+Como se ha comentado en la sección anterior, la arquitectura HW se ha definido a partir del tipo actuadores a controlar, de los sensores de los que obtener información y de los sistemas a implementar con ellos: la plataforma robótica base y los sistemas mecánicos de manipulación de elementos del juego. Los elementos de la primera son independientes de la temática de la prueba, en cambio, los elementos de la segunda dependen de la temática y del diseño de los sistemas mecánicos correspondientes. Es por ello que el microcontrolador a utilizar tendrá parte de sus recursos destinados a la implementación de la plataforma robótica base y el resto a los sistema mecánicos. Dado que el número de recursos de estos es variable y la carga de procesamiento no es conocida, una de las especificaciones de la arquitectura es la de un bus de comunicación destinado a la comunicación con otros microcontrolador o a la expansión de recursos de entrada/salida (E/S). Es decir, la implementación de un sistema de procesamiento distribuido.
+
+La figura \ref{fig_hardware_arquitectura_principal} muestra el diagrama de bloques de la arquitectura HW. Dos microcontroladores se encuentran conectados mediante un bus I2C del que cuelga además un expansor E/S. La utilización de un bus I2C permite una implementación distribuida maestro-esclavo o multi-maestro. Ambas implementaciones permiten compartir los recursos de procesamiento y de E/S entre los dispositivos del bus.
+
+
+Una característica muy importante de la arquitectura HW es la de una interfaz de depuración independiente a través de la cual poder controlar, monitorizar y probar el hardware y el software. Para ello la arquitectura incluye una interfaz serie RS-232 conectada a una UART del microcontrolador principal. Este a su vez se encuentra conectado en cadena por otra UART con el microcontrolador secundario y así sucesivamente con otros microcontroladores. Esto permite acceder a cualquier microcontrolador mediante realizando un \emp{bypass} del los datos. 
+
+
+La distribución de recursos entre los microcontroladores cobran sentido con la implementación de cada parte.
+
+Sin tener el cuenta el número de 
+
+Las tipos de elementos a controlar
+\begin{itemize}
+\item Interfaz de depuracion
+\item Interfaz inalámbrica con la baliza tipo faro
+\item Interfaz de expansión Entrada/Salida
+\item Interfaz de comunicación con otros microcontroladores (procesamiento distribuido)
+
+\item Motores DC
+\item Motores Dunkermotoren
+\item Servomotores standar (PWM 20Hz)
+\item Servomotores inteligentes (bus de comunicación)
+\item Actuadores ON/OFF (salida digital)
+
+\item Encoders digitales de dos canales en cuadratura
+\item Sensores digitales ON/OFF (entrada digital)
+\item Sensores analógicos (entrada analógica)
+\item Sensores inteligentes (bus de comunicación)
+\end{itemize}
+
 
 \begin{figure}[H]
 \centering
