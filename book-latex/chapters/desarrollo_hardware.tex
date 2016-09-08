@@ -61,7 +61,7 @@ La experiencia de los componentes del equipo de Eurobot y el estudio de los robo
 \item El mercado de segunda mano o chino (eBay, Aliexpress, Alibaba, Taobao) permite conseguir sensores a menor coste. Es un compromiso entre la compra a demanda de las especificaciones de diseño, de coste elevado, y la fiabilidad de los sensores a utilizar. No obstante, sobre todo en el mercado chino, hay que tener cuidado con las falsificaciones.
 \end{itemize}
 
-Los actuadores eléctricos como motores y servomotores son los más utilizados, aunque también se utilizan actuadores neumáticos o de vacío. Respecto a los actuadores las conclusiones van en la misma linea de la de los sensores, además hay que tener en cuenta los actuadores tienen un desgaste mecánico:
+Los actuadores eléctricos como motores y servomotores son los más comunes, aunque también se utilizan actuadores neumáticos o de vacío. Respecto a los actuadores las conclusiones van en la misma linea de la de los sensores, además hay que tener en cuenta los actuadores tienen un desgaste mecánico:
 
 \begin{itemize}
 \item Evitar la reutilización o utilización de actuadores de aplicación no específica o cuyas características no sean las adecuada para la aplicación. Esto puede derivar en unos requisitos de potencia del hardware mayores, complicar el control de los los mecanismos u obtener un rendimiento mecánico insuficiente. En años anteriores se utilizaron motores de taladradoras o atornilladores eléctricos como motores de tracción del robot. Estos motores tienen un rendimiento muy pobre y un consumo muy elevado que implica una electrónica de control de alta potencia. El uso de este tipo de motores para aplicaciones de control de posición o de velocidad complican el ajuste de los controladores debido a respuestas no lineales, que en el caso de un atornillador no son importantes, pero para un robot de Eurobot si.
@@ -76,6 +76,11 @@ Los actuadores eléctricos como motores y servomotores son los más utilizados, au
 
 \end{itemize}
 
+Sin duda, el actuador más versátil y utilizado en la implementación de sistemas mecánicos es el servomotor o común mente llamado \emph{servo}. Un motor de par elevado y controlado en posición que simplifica la implementación de sistemas mecánicos. Los más conocidos son los servos estandar utilizados ampliamente en aeromodelismo y radio-control, pero también existen servos industriales de un rango de características muy amplio. Estos servos necesitan de una señal digital de 20Hz modulada en ancho de pulso (PWM).
+
+En los últimos 6 años, en el mercado de la robótica educativa han aparecido servos que podrían denominarse inteligentes. Estos servos tienen una interfaz digital y son controlados mediante comandos. Además, mediante dicha interfaz es posible obtener información de su estado (velocidad, consumo, temperatura, par, entre otros). Es el caso de los actuadores AX12 de la marca Dynamixel. Estos actuadores pueden ser conectados en cadena simplificando así el cableado de los mismos, además tienen una interfaz serie half-duplex de hasta 1 Mbps que permite un control prácticamente simultáneo de hasta 254 actuadores.
+
+
 
 \section{Arquitectura hardware}
 
@@ -83,49 +88,95 @@ Como se ha comentado en la sección anterior, la arquitectura HW se ha definido a
 
 La figura \ref{fig_hardware_arquitectura_principal} muestra el diagrama de bloques de la arquitectura HW. Dos microcontroladores se encuentran conectados mediante un bus I2C del que cuelga además un expansor E/S. La utilización de un bus I2C permite una implementación distribuida maestro-esclavo o multi-maestro. Ambas implementaciones permiten compartir los recursos de procesamiento y de E/S entre los dispositivos del bus.
 
-
-Una característica muy importante de la arquitectura HW es la de una interfaz de depuración independiente a través de la cual poder controlar, monitorizar y probar el hardware y el software. Para ello la arquitectura incluye una interfaz serie RS-232 conectada a una UART del microcontrolador principal. Este a su vez se encuentra conectado en cadena por otra UART con el microcontrolador secundario y así sucesivamente con otros microcontroladores. Esto permite acceder a cualquier microcontrolador mediante realizando un \emp{bypass} del los datos. 
-
-
-La distribución de recursos entre los microcontroladores cobran sentido con la implementación de cada parte.
-
-Sin tener el cuenta el número de 
-
-Las tipos de elementos a controlar
-\begin{itemize}
-\item Interfaz de depuracion
-\item Interfaz inalámbrica con la baliza tipo faro
-\item Interfaz de expansión Entrada/Salida
-\item Interfaz de comunicación con otros microcontroladores (procesamiento distribuido)
-
-\item Motores DC
-\item Motores Dunkermotoren
-\item Servomotores standar (PWM 20Hz)
-\item Servomotores inteligentes (bus de comunicación)
-\item Actuadores ON/OFF (salida digital)
-
-\item Encoders digitales de dos canales en cuadratura
-\item Sensores digitales ON/OFF (entrada digital)
-\item Sensores analógicos (entrada analógica)
-\item Sensores inteligentes (bus de comunicación)
-\end{itemize}
-
-
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.9\textwidth]{hardware_arquitectura_principal}
 \caption[]{Arquitectura hardware principal}
 \label{fig_hardware_arquitectura_principal}
 \end{figure}
 
+Una característica muy importante de la arquitectura HW es una interfaz de depuración independiente a través de la cual poder controlar, monitorizar y probar el hardware y el software. Para ello la arquitectura incluye una interfaz serie RS-232 conectada a una UART del microcontrolador principal. Este a su vez se encuentra conectado en cadena por otra UART con el microcontrolador secundario y así sucesivamente con otros microcontroladores. Esto permite acceder a cualquier microcontrolador mediante un \emph{bypass} del los datos. 
+
+Otro aspecto que se tuvo en cuenta fue la comunicación con la baliza tipo faro y con otro posible robot o sistema. Para ello la arquitectura cuenta con una interfaz inalámbrica Bluetooth conectada a la UART del microcontrolador principal. Mediante esta interfaz es posible implementar hasta 16 canales serie independientes en una configuración tipo estrella en la que el nodo central se correspondería con el robot principal.
+
+Por otro lado, a partir del estudio de los posibles sensores y actuadores, y de algunos de los ya se disponía, se pudo determinar el tipo de recursos de entrada y salida necesarios, así como las interfaces necesarias en el microcontrolador (ver \ref{tab_recursos_actuadores} y \ref{tab_recursos_sensores}).
+
+\begin{table}[ht]
+\centering
+\caption{Tipos de actuadores y recursos E/S del microcontrolador}
+\label{tab_recursos_actuadores}
+\begin{tabular}{ll}
+\hline
+Tipo de actuador & Recurso E/S del microcontrolador \\
+\hline
+Motores DC 				& Salida PWM > 20KHz 	\\
+Motores Dunkermotoren 	& Salida analógica, DAC \\
+Servomotores estándar 	& Salida PWM 20Hz \\
+Servomotores AX12 		& Intefaz UART half-duplex 1Mbps \\
+Actuadores ON/OFF 		& Salida digital (GPIO) \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Tipos de sensores y recursos E/S del microcontrolador}
+\label{tab_recursos_sensores}
+\begin{tabular}{ll}
+\hline
+Tipo de sensor & Recurso E/S del microcontrolador \\
+\hline
+Encoders digitales con salida en cuadratura & Decodificador de modulo y signo y contador) \\
+Sensores digitales ON/OFF				    & Entrada digital (GPIO) \\
+Sensores analógicos 					    & Entrada analógica (DAC) \\
+Sensores inteligentes 						& Bus de comunicación (I2C, UART)\\
+\hline
+\end{tabular}
+\end{table}
+
+En número de los recursos de cada tipo y su distribución entre los microcontroladores se define en a partir de los requisitos de la plataforma robótica base y los sistemas mecánicos de manipulación.
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=.35\textwidth]{dummy_robot_1} 
+\hspace{0.3cm}
+\includegraphics[width=.6\textwidth]{fotos_tarjetas/dspic33_protoboard}
+\caption[]{\emph{Dummy robot} y tarjeta \emph{dspic33\_protoboard}}
+\label{fig_tarjeta_dspic33_protoboard}
+\end{figure}
+
+
+Esta arquitectura HW fue implementada inicialmente en tarjeta prototipo \emph{dspic33\_protoboard}, mediante la cual se desarrollo un prototipo de plataforma robótica base, el \emph{Dummy robot} (ver figura \ref{fig_tarjeta_dspic33_protoboard}). Esta tarjeta implementaba la arquitectura basada en un único microcontrolador e incluía todas las interfaces y recursos especificados anteriormente.
+
+Una vez validada la arquitectura, esta ha sido implementada de diferentes formas dependiendo de las necesidades del robot a desarrollar. En el caso del robot principal ha sido necesario utilizar dos microcontroladores, mientras que en el caso del robot secundario con un microcontrolador ha sido suficiente. En el caso del robot principal la implementación se dividió en 3 tarjetas electrónicas, mientras que en el robot secundario se desarrollo una única tarjeta que además controlaba la baliza tipo faro. Independientemente de la implementación la arquitectura se ha mantenido, lo que ha posibilitado reutilizar el desarrollo HW y SW, reducir el tiempo de desarrollo y aumentar la fiabilidad de los robots.
+
+
 \subsection{Plataforma robótica base}
 
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.9\textwidth]{hardware_arquitectura_platafoma_robotica}
 \caption[]{Recursos de hardware destinados a la plataforma robótica base}
 \label{fig_hardware_arquitectura_plataforma_robotica}
 \end{figure}
+
+La figura \ref{fig_hardware_arquitectura_plataforma_robotica} muestra los recursos de la arqutectura HW destinados a la plataforma robótica base. La elección del microcontrolador vino dada por las necesidades de la plataforma robótica, concretamente por los motores de tracción y los encoders.
+
+Con anterioridad al diseño del HW se disponían de motores Dunkermotoren, destinados a la tracción del robot o a sistemas mecánicos de alto par. Los motores incluyen el driver de control y una reductora mecánica. La velocidad se controla mediante una señal analógica de rango ajustable entre 4 y 10V, y el sentido de giro mediante una entrada digital. Además tienen una señal de freno.
+
+Por otro lado, los encoders conseguidos, destinados a implementar la odometría y control en posición del robot o cualquier otro sistema mecánico realimentado, eran de 3000 pulsos/vuelta y de dos canales de salida en cuadratura (desfasados 90 grados). A partir de dichas salidas se puede determinar el sentido de giro del encoder y multiplicar su resolución en un factor de 4. Aunque existen dispositivos específicos para la decodificación de las señales en cuadratura, no son fáciles de conseguir. La decodificación de los encoders se realizó mediante el microcontrolador.
+
+El microcontrolador utilizado es el dsPIC33FJ128MC804 de la familia dsPIC33 de Microchip y pensado para aplicaciones de control de motores (familia MC). Este microcontrolador incluye 2 decodificadores de encoders en cuadratura y un conversor digital analógico (DAC) que cumplen con los requisitos de los motores Dunkermotoren y los encoders. 
+
+Los microcontroladores dsPIC33 tienen una arquitectura Harvard de 16 bits con una capacidad de procesamiento de 40 MIPS. Como se puede observar en la tabla \ref{tab_dspic_resources_table}, la familia MC dispone los recursos necesarios para implementar la arquitectura HW especificada. Dado que la salida analógica es un requisito indispensable se entre las posibles opciones se utilizó la de mayor memoria de programa y memoria RAM.
+
+\begin{table}[ht]
+\centering
+\caption{Recursos de la familia de microcontroladores dsPIC33FJXMC \cite{dspic33_datasheet}}
+\includegraphics[width=\textwidth]{dspic33_resources_table}
+\label{tab_dspic_resources_table}
+\end{table}
+
 
 \subsection{Sistemas mecánicos}
 
@@ -136,6 +187,16 @@ Las tipos de elementos a controlar
 \caption[]{Recursos hardware destinados a la plataforma robótica y a los sistemas mecánicos}
 \label{fig_hardware_arquitectura}
 \end{sidewaysfigure}
+
+
+Los recursos del microcontrolador principal no asignados a la plataforma robótica son utilizados en la implementación de los sistemas mecánicos. En el caso de no ser suficientes, los recursos de un segundo microcontrolador será necesario. En tipo y número de sensores y/o actuadores a utilizar a priori es desconocido. Dependerán en última medida del diseño específico de los sistemas mecánicos destinados a manipular los elementos de juego de la temática de Eurobot.
+
+La figura \ref{fig_hardware_arquitectura} da una idea del tipo de sensores y actuadores posibles. De cara a la implementación de los sistemas mecánicos es preferible sensores digitales a los analógicos. Es por ello que la E/S digital es reforzada mediante un dispositivo expansor I2C. No obstante, en el mismo bus I2C también tiene cabida la expansión de E/S analógica.
+
+Al igual que el microcontrolador principal, el secundario es también un dsPIC33FJ128MC804, lo que permite la implementación de sistemas mecánicos basados en el motor Dunkermotoren y encoders de salida en cuadratura. Además, el dsPIC33 dispone de salidas PWM específicas para el control de motores DC. 
+
+Por otro lado, los servomotores estandar de los sistemas mecánicos son controlados a partir de la señar PWM generada mediante \emph{timers} en modo salida por comparación. Respecto a los servos AX12, estos se manejan utilizando uno de los módulos UART del microcontrolador. Cabe destacar, que la implementación half-duplex se ha realizado internamente al microcontrolador utilizando la característica de mapeado dinámico de pines del mismo. Un mismo pin físico del microcontrolador se hace las veces de pin de transmisión y de pin de recepción. El ahorro de recursos E/S es notable, una implementación externa necesita de 3 pines y dos \emph{bufferes} externos, mientras que la implementación interna utiliza únicamente un pin.
+
 
 \subsection{Árbol de alimentación}
 
