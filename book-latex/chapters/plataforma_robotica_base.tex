@@ -67,7 +67,7 @@ Mecánicamente el sistema de tracción diferencial consiste en un bloque motor for
 
 El \textbf{hardware desarrollado} de la plataforma robótica está compuesto por una tarjeta principal y varias tarjetas auxiliares que en conjunto tienen la capacidad de gestionar e implementar los sistemas mencionados anteriormente, así como los sistemas mecánicos específicos de la prueba de Eurobot, destinados a la manipulación de elementos de juego.
 
-Respecto a la \textbf{evitación de obstáculos}, esta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y a partir un sistema de balizas específicamente desarrollado para la medida de la posición del oponente. Este sistema hace uso de los soportes y espacios destinados a sistemas de balizas. Concretamente, el sistema desarrollado está basado en un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_2}). El sistema de balizas es totalmente autónomo y se comunica mediante \emph{Bluetooth} con la tarjeta principal la plataforma robótica.
+Respecto a la \textbf{evitación de obstáculos}, ésta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_2}) y a partir un sistema de balizas específicamente desarrollado para la medida de la posición del oponente. Este sistema hace uso de los soportes y espacios destinados a sistemas de balizas. Concretamente, el sistema desarrollado está basado en un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_2}). El sistema de balizas es totalmente autónomo y se comunica mediante \emph{Bluetooth} con la tarjeta principal la plataforma robótica.
 
 \begin{figure}[ht]
 \centering
@@ -232,7 +232,7 @@ La validez de este método se ha comprobado en la practica. El método se aplicó a
 
 \begin{table}[ht]
 \centering
-\caption{Resultados de la medida del coeficiente de adherencia de las ruedas}
+\caption{Resultados de la medida del coeficiente de adherencia de las ruedas. La obtención de un valor mayor que $1,0$ para el caso del robot Zamorano se debe a la tolerancia de los objetos utilizados en el test del cubo. En ambos casos el valor se puede aproximar a la unidad.}
 \label{tab_resultados_medida_ka}
 \begin{tabular}{lccc}
 \hline
@@ -627,7 +627,7 @@ Por otro lado la constante mecánica $K_m$ se obtiene a partir de la pendiente de
 
 $$ K_m = \frac{M_o - M_n}{i_o - i_n} =  \frac{(37,4-8)[Ncm]}{(8,4-2,1)[A]} \times \frac{1[m]}{100[cm]} = 46,7 mN\,m/A $$
 
-Además según el fabricante las reductoras compatibles para esta motor tienen un rendimiento $Rd$ de un 90\% hasta valores de $K=8$
+Además según el fabricante las reductoras compatibles para éste motor tienen un rendimiento $Rd$ de un 90\% hasta valores de $K=8$
 
 
 Para el caso del robot P.Tinto (Eurobot 2015) sus datos son:
@@ -1186,7 +1186,7 @@ Uno de los test que se suelen realizar con el fin de medir y corregir los errore
 \label{fig_paper58_error_a_b}
 \end{figure}
 
-Sin embargo este test puede llevar a medidas erróneas debido a que los errores sistemáticos se pueden cancelar entre sí como muestra la figura \ref{}. En \cite{bor96_ieeet} proponen un método que soluciona este inconveniente: el test del cuadrado bidireccional. En este test el robot realiza la trayectoria del cuadrado en dos direcciones: en sentido horario y antihorario de forma que aunque los errores se enmascaren en la trayectoria en un sentido, darán la cara en el sentido contrario. El método es iterativo de forma que a cada iteración la corrección de los errores sistemáticos es mayor.
+Sin embargo este test puede llevar a medidas erróneas debido a que los errores sistemáticos se pueden cancelar entre sí como muestra la figura \ref{fig_paper58_compensacion_errores}. En \cite{bor96_ieeet} proponen un método que soluciona este inconveniente: el test del cuadrado bidireccional. En este test el robot realiza la trayectoria del cuadrado en dos direcciones: en sentido horario y antihorario de forma que aunque los errores se enmascaren en la trayectoria en un sentido, darán la cara en el sentido contrario. El método es iterativo de forma que a cada iteración la corrección de los errores sistemáticos es mayor.
 
 Así se definen dos tipos de errores: el error tipo A asociado a $E_b$ debido a la distancia entre ejes de ruedas de encoder, el error tipo B asociado a $E_d$ debido a diferente diámetro de rueda de encoder. La figura \ref{fig_paper58_error_a_b} representa el efecto de estos errores al realizar el test del cuadrado bidireccional.
 
@@ -1289,7 +1289,7 @@ C_d' = C_d \times G_d.
 %\item \textbf{Medida y corrección del error $E_b$}
 \subsubsection*{Medida y corrección del error $E_b$}
 
-El procedimiento para la medida del error $E_b$ consiste en hacer girar al robot sobre su centro de giro. Dado que el cálculo del ángulo del robot \eqref{theta_n} $\theta$ es inversamente proporcional a la distancia entre ejes $b$ el método utilizado busca amplificar el error producido por $b$ girando un numero $n$ de vueltas enteras.
+El procedimiento para la medida del error $E_b$ consiste en hacer girar al robot sobre su centro de giro. Dado que el cálculo del ángulo del robot \eqref{eq_angle_rad} $\theta$ es inversamente proporcional a la distancia entre ejes $b$ el método utilizado busca amplificar el error producido por $b$ girando un numero $n$ de vueltas enteras.
 
 Para la medida del error $E_b$ se necesita una superficie lisa una regla larga, una escuadra y un cartabón. Al igual que en el método de medida de $E_d$ puede utilizarse el campo de juego. Se recomienda utilizar una velocidad y aceleración baja con el fin de evitar deslizamientos.
 

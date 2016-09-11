@@ -41,9 +41,10 @@ Albert Einstein
 
 El hardware a desarrollar para un robot de Eurobot no suele ser muy complicado, su arquitectura es la de un sistema embebido donde la mayoría de los elementos con los que interactuar, actuadores y sensores, suelen ser digitales. Dado que el robot ha de ser capaz de realizar varias cosas al mismo tiempo, como moverse y manipular elementos, es normal que el hardware tenga una arquitectura distribuida de varios microcontroladores o procesadores comunicados entre si.
 
-\section{Cuestiones previas. Sobre sensores y actuadores}
-
 En el año 2010 se definió una arquitectura hardware con el fin de ser reutilizada en el desarrollo de robots de Eurobot. Esta arquitectura vino dada a partir de los recursos necesarios para implementar las dos partes en las que se puede dividir un robot de Eurobot: la plataforma robótica base y los sistemas mecánicos de manipulación de elementos de juego. Los requisitos de la primera son conocidos, en cambio, los recursos de la segunda dependen de la temática de cada año de Eurobot.
+
+
+\section{Sobre sensores y actuadores}
 
 La experiencia de los integrantes del equipo de Eurobot y el estudio de los robots de otros equipos ayudó a determinar los tipos de sensores y actuadores que podrían llegar a ser utilizados en el desarrollo de robots de Eurobot. Hay que tener en cuenta que un robot de Eurobot es como una pequeña línea de montaje automatizada en miniatura, en continuo movimiento y cuyas condiciones exteriores son variables. 
 
@@ -204,12 +205,25 @@ Por otro lado, los servomotores estandar de los sistemas mecánicos son controlad
 
 \subsection{Árbol de alimentación}
 
-\begin{figure}[H]
+La alimentación de hardware, motores y sensores del robots se obtiene a partir de una batería de 24V formada por dos baterías de 12V en serie. A partir de dicha tensión se obtienen las tensiones necesarias para cada elemento. La tabla \ref{tab_tensiones_alimentación} muestra las tensiones asociada a cada elemento del robot.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.9\textwidth]{hardware_arquitectura_alimentacion}
 \caption[]{Arquitectura hardware del árbol de alimentación del robot de Eurobot}
 \label{fig_hardware_arquitectura_alimentacion}
 \end{figure}
+
+En definitiva se necesitan tensiones de 24V, 12V, 5V y 3,3V. La figura \ref{fig_hardware_arquitectura_alimentacion} muestra el esquema a partir del cual se obtienen todas las tensiones de alimentación. Se trata de una distribución de alimentación en arbol. Por normativa, el robot ha de llevar un interruptor de emergencia visible y rojo (la seta de emergencia). Por ello todo el arbol de alimentación cuelga de dicho interruptor. En caso de accionarse toda la alimentación del robot quedaría desabilitada. Como se puede ver en la figura, la tensión de 24V se obtiene directamente de la tensión de batería. La cual es regulada mediante una fuente de alimentación para obtener 12V y 5V. Y a su vez los 5V son regulados a 3,3V. 
+
+Cada una de las tensiones de alimentación tiene asociado un sistema de habilitación independiente. Esto permite utilizar sólo las tensiones de alimentación necesarias durante las diferentes fases de implementación del robot o ayudar depurar algun problema relacionado con la alimentación, desabilitando los dispositivos asociados a una o varias tensiones.
+
+Respecto a los requisitos de potencia, estos vienen dados principalmente por el numero de actuadores (motores y servomotores). Por un lado, los motores de tracción son los que más potencia pueden demandar y se alimentan a 24V. Es por ello que la tensión de 24V no se encuentra regulada, pudiendo los motores demandar la corriente directamente de la batería. Por otro lado están los motores o servomotores alimentados a 12V. Y por último los servomotores estandar, que se alimentan a 5V. 
+
+Dado que las tensiones de 12V y 5V son reguladas, la potencia de la fuente de alimentación 12/5V ha de ser dimensionada correctamente.
+
+
+
 
 \section{Implementación HW del robot principal}
 

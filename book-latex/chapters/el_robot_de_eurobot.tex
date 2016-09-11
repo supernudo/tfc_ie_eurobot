@@ -63,7 +63,7 @@ Además, si las reglas permiten dos robots por equipo: un robot principal y uno s
 
 Con el fin de facilitar la detección entre los robots y que estos sean capaces de evitar colisiones entre ellos, los robots han de reservar un espacio para sensores y balizas a una altura determinada como muestra la figura \ref{fig_balizas_robots}. Así, cada robot puede colocar una baliza o marca en el robot oponente y disponer de un espacio donde situar los sensores apropiados para detectar dicha baliza. 
 
-Estas balizas pueden ser activas o pasivas. Por ejemplo, un sistema compuesto por una baliza maciza y un sensor de ultrasonidos puede ser utilizado para detectar a que distancia y dirección se encuentra un robot oponente antes de tomar tomar la decisión de hacia donde redirigirse.
+Estas balizas pueden ser activas o pasivas. Por ejemplo, un sistema compuesto por una baliza maciza y un sensor de ultrasonidos puede ser utilizado para detectar a qué distancia y dirección se encuentra un robot oponente antes de tomar tomar la decisión de hacia donde redirigirse.
 
 Además el campo de juego cuenta con 3 soportes para balizas adicionales que están a disposición de cada equipo (ver figura \ref{fig_balizas_campo}). Estos soportes están pensados para facilitar la localización de los robots en el campo de juego. Por ejemplo, un sistema compuesto por una baliza reflectante colocada en el soporte de una esquina del campo y un sensor de luz reflexivo en el robot puede ser utilizado para localizar una canasta que se encuentre en dicha esquina del campo.
 
@@ -89,7 +89,7 @@ Las balizas pueden ser activas o pasivas y tiene como únicas restricciones sus d
 \label{fig_balizas_campo}
 \end{figure}
 
-Por otro lado, el robot ha de ser capaz de resolver la temática del juego lo cual implica el manejo de los elementos o piezas propias del juego. Por ejemplo, en Eurobot 2015, juego titulado como \emph{Robomovies} (temática sobre el cine), una de las cosas por las que los robots obtenían puntos era por hacer una torre con piezas cilíndricas coronada con una pelota de tenis que simbolizaba un foco de cine. 
+Por otro lado, el robot ha de ser capaz de resolver la temática del juego lo cual implica el manejo de los elementos o piezas propias del juego. Por ejemplo, en Eurobot 2015, juego titulado como \emph{Robomovies} (temática sobre el cine), una de las acciones por las que los robots obtenían puntos era por hacer una torre con piezas cilíndricas coronada con una pelota de tenis que simbolizaba un foco de cine. 
 
 Además, mecánicamente un robot ha de cumplir las siguientes restricciones dimensionales:
 
@@ -187,7 +187,7 @@ Así, tal y como representa la figura \ref{fig_partes_robot_eurobot}, un único ro
 
 Por otro lado, las partes 2, 3 y 4 forman lo que se ha denominado \emph{plataforma robótica base}. Esta plataforma base está compuesta por las partes que permiten un desarrollo independientemente de la temática de la prueba de Eurobot. Así, esta plataforma robótica constituye un desarrollo reutilizable en la concepción de nuevos robots de Eurobot. 
 
-Cada una de estas partes principales de un robot de Eurobot tienen pueden implicar un desarrollo mecánico, electrónico y de software, dependiendo del caso.
+Cada una de estas partes principales de un robot de Eurobot pueden implicar un desarrollo mecánico, electrónico y de software, dependiendo del caso.
 
 
 \subsection{Estrategia de juego}
@@ -256,7 +256,7 @@ La evitación los obstáculo fijos del campo de juego se puede realizar utilizando
 
 Respecto a la evitación y detección de los robots oponentes es necesario desarrollar un sistema específico para ello. Este sistema normalmente utiliza los soportes de balizas especificado por las reglas de Eurobot (ver figura \ref{sec_especificaciones_del_robot_de_eurobot}). Dependiendo del sistema de balizas utilizado \cite{balizas_y_cerveza} el desarrollo del mismo implicará en mayor o mejor medida un desarrollo mecánico, electrónico o software. 
 
-Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición del robot (ver ejemplo de la figura \ref{fig_medida_posicion_oponente} o absoluta respecto al origen de coordenadas del campo de juego. Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
+Sea cual sea el sistema utilizado para localizar al robot oponente, debe de aportar la información de la posición del éste de forma relativa a la posición del robot o absoluta respecto al origen de coordenadas del campo de juego (ver ejemplo de la figura \ref{fig_medida_posicion_oponente}). Además otras características deseables son un rango de detección que cubra todo el campo de juego y un tiempo de medición de la posición del oponente pequeño. El conocer en todo momento la posición del oponente constituye una información muy valiosa a tener en cuenta en la estrategia de juego. Así mismo, un tiempo de medición pequeño permitirá un menor tiempo de reacción en caso de peligro de colisión.
 
 \begin{figure}[h]
 \centering
@@ -290,7 +290,7 @@ Caso en el que el robot se encuentra en una zona desde donde necesita acceder a 
 
 Otro caso, que se suele dar muy pocas veces, es que el robot oponente esté protegiendo un elemento de juego común de forma premeditada utilizando otro elemento de juego, con el fin de dificultar su acceso al otro robot.
 
-En el caso de que un objeto se encuentre entre un elemento fijo del campo, como una pared, y el robot. Si el robot necesita utilizar dicha pared como referencia y un objeto se encuentra en medio, la referencia que medirá el robot será errónea, así como los movimientos que realice respecto a esa referencia. Esta situación se puede prevenir si el robot es capaz de limpiar previamente la zona a la que quiere acceder realizando realizando secuencias de movimientos específicas para ello, o si el objeto bloqueante es detectado mediante sensores.
+En el caso de que un objeto se encuentre entre un elemento fijo del campo, como una pared, y el robot. Si el robot necesita utilizar dicha pared como referencia y un objeto se encuentra en medio, la referencia que medirá el robot será errónea, así como los movimientos que realice respecto a esa referencia. Esta situación se puede prevenir si el robot es capaz de limpiar previamente la zona a la que quiere acceder realizando secuencias de movimientos específicas para ello, o si el objeto bloqueante es detectado mediante sensores.
 
 Una tercera forma de detectar un objeto bloqueante es utilizando la localización del robot, su posición y el error estimado de la misma. Si en el momento de tomar la referencia de la pared la posición medida por la localización del robot es mayor que el error estimado (en distancia o ángulo) algo está impidiendo llegar hasta la posición de referencia.
 
@@ -309,7 +309,7 @@ En caso de disponer de dos robots por equipo hay diferentes formas de implementa
 
 Las dos primeras formas no implican un desarrollo añadido, los mismos sistemas de localización, desplazamiento y evitación de obstáculos desarrollados para un robot pueden replicarse en un segundo robot sin apenas coste añadido, excepto por aquel derivado de sus características mecánicas (diferente dimensiones, motores, sistemas mecánicos...).
 
-La tercera forma necesita del desarrollo de un sistema de comunicación entre ambos robots. Esto implica un desarrollo electrónico y de software principalmente. Es recomendable utilizar una tecnología que robusta y flexible que incluya capas de comunicación que aseguren una fiabilidad en la comunicación. Sobre todo porque el entorno en el que se desarrollan las competiciones suele tener muchas perturbaciones de radio frecuencia como equipos de audio y vídeo inalámbricos, redes Wifi o Bluetooth que pueden afectar a la comunicaciones entre los robots. 
+La tercera forma necesita del desarrollo de un sistema de comunicación entre ambos robots. Esto implica un desarrollo electrónico y de software principalmente. Es recomendable utilizar una tecnología robusta y flexible que incluya capas de comunicación que aseguren una fiabilidad en la comunicación. Sobre todo porque el entorno en el que se desarrollan las competiciones suele tener muchas perturbaciones de radio frecuencia como equipos de audio y vídeo inalámbricos, redes Wifi o Bluetooth que pueden afectar a la comunicaciones entre los robots. 
 
 Como representa la figura \ref{fig_comunicacion_entre_robots}, cada robot necesita de un modulo de comunicación conectado a un microcontrolador. Bluetooth y Zigbee son dos de las tecnologías más utilizadas en comunicación inalámbrica, existen en el mercado módulos de comunicación de estas tecnologías que permiten crear enlaces de comunicación de forma sencilla. Dichos módulos electrónicos suelen tener una interfaz serie de comunicación (UART, SPI, I2C, ...) de forma que una vez establecido el canal de comunicación inalámbrico la comunicación entre dos microcontroladores es trasparente (similar a tener un canal cableado). 
 
@@ -400,7 +400,7 @@ El desarrollo de un robot de Eurobot se puede dividir en las siguientes fases:
 \item Puesta en marcha y verificación
 \end{enumerate}
 
-En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. Por ejemplo si centra el desarrollo en partes que que pueden considerarse básicas, como un sensor, no se estará desarrollando un robot, si no un sensor. Se ha de valorar que partes han de ser desarrolladas a medida y que partes han de ser compradas. En este aspecto el tamaño de las partes juega un papel importante ya que el espacio donde han de convivir mecánica y electrónica no suele abundar. Lo más normal es que el diseño mecánico se adapte a los motores y sensores disponibles, y la electrónica se diseñe a medida de la mecánica.  
+En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo mecánico, electrónico y software. En cualquiera de estos es importante tener el cuenta el nivel de complejidad a desarrollar en cada caso sin perder de vista el objetivo final: un robot participante en Eurobot. Por ejemplo si centra el desarrollo en partes que que pueden considerarse básicas, como un sensor, no se estará desarrollando un robot, si no un sensor. Se ha de valorar qué partes han de ser desarrolladas a medida y que partes han de ser compradas. En este aspecto el tamaño de las partes juega un papel importante ya que el espacio donde han de convivir mecánica y electrónica no suele abundar. Lo más normal es que el diseño mecánico se adapte a los motores y sensores disponibles, y la electrónica se diseñe a medida de la mecánica.  
 
 % desde la inexperiencia... ?
 
@@ -409,7 +409,7 @@ En esencia, como ya se ha comentado un robot de Eurobot implica un desarrollo me
 
 Disponer de un campo de juego con todos sus elementos supone una gran ayuda en todo el proceso de desarrollo del robot, desde el diseño de la estrategia, pasando por la validación de prototipos mecánicos y hasta la fase de depuración y mejoras. El campo de juego es el entorno del robot de Eurobot y por tanto cualquier prueba ha de realizarse en él para garantizan que las condiciones van a ha ser las mismas que en otros campos de juego.
 
-Es recomendable fabricar un campo de juego lo más parecido a como está especificado en las reglas del juego y contar con los elementos de juego reales lo antes posible.
+Es recomendable fabricar un campo de juego lo más parecido a cómo está especificado en las reglas del juego y contar con los elementos de juego reales lo antes posible.
 
 \subsection{Diseño de la estrategia de juego}
 \label{sec_diseño_estrategi_de_juego}
@@ -433,7 +433,7 @@ Es la puntuación media a obtener por partido y con la que se estima ganar al opo
 
 \item \textbf{Compromiso puntuación vs. complejidad}
 
-Es recomendable analizar la puntuación que supone cada elemento de juego o la tarea implicada frente a la complejidad o inconvenientes de llevarlo a cabo. Así una tarea que implique una complejidad grande y poca puntuación puede ser descartada. En cambio, aquellas tareas baja complejidad y mucha puntuación han de tener una prioridad alta. Este tipo de estudio permite determinar que tareas realizar para alcanzar una puntuación objetivo.
+Es recomendable analizar la puntuación que supone cada elemento de juego o la tarea implicada frente a la complejidad o inconvenientes de llevarlo a cabo. Así una tarea que implique una complejidad grande y poca puntuación puede ser descartada. En cambio, aquellas tareas de baja complejidad y mucha puntuación han de tener una prioridad alta. Este tipo de estudio permite determinar que tareas realizar para alcanzar una puntuación objetivo.
 
 \item \textbf{Tiempo de partido:}
 
@@ -445,7 +445,7 @@ No es lo mismo tener que empujar un elemento para obtener puntos que tener que c
 
 \item \textbf{Acceso a los elementos de juego:}
 
-Además hay que tener en cuenta cuanto de accesible es un elemento de juego. Por ejemplo si está muy cerca de las esquinas del campo, dependiendo de la forma de cada robot puede que el elemento no sea accesible o que sean necesarias muchas maniobras para llegar a él. Aunque en esta fase no se disponga del robot definitivo, es una buena idea construir uno de cartón de las dimensiones máximas especificadas por las reglas del juego. La simulación de los movimientos de este \emph{robot de cartón} sobre un campo de juego de dimensiones reales permitirá comprobar si existe algún impedimento en realizar las trayectorias o movimientos pensados en la estrategia.
+Además hay que tener en cuenta cuánto de accesible es un elemento de juego. Por ejemplo si está muy cerca de las esquinas del campo, dependiendo de la forma de cada robot puede que el elemento no sea accesible o que sean necesarias muchas maniobras para llegar a él. Aunque en esta fase no se disponga del robot definitivo, es una buena idea construir uno de cartón de las dimensiones máximas especificadas por las reglas del juego. La simulación de los movimientos de este \emph{robot de cartón} sobre un campo de juego de dimensiones reales permitirá comprobar si existe algún impedimento en realizar las trayectorias o movimientos pensados en la estrategia.
 
 \item \textbf{Trayectorias y distancias hasta los elementos de juego:}
 
@@ -471,7 +471,7 @@ La figura \ref{fig_estrategia_2015} se representa la estrategia diseñada para Eu
 
 \begin{figure}[p]
 \centerline{
-	\subfloat[Estrategia del robot P.Tinto)]{\includegraphics[width=.9\textwidth]{estrategia_ptinto}
+	\subfloat[Estrategia del robot P.Tinto]{\includegraphics[width=.9\textwidth]{estrategia_ptinto}
 	\label{fig_estrategia_ptinto}}	
 }
 \vfil
@@ -527,7 +527,7 @@ Antes de nada es imprescindible contar con los elementos de juego reales, para e
 
 Esta fase de desarrollo se basa en el concepto de \emph{prueba y error} es por ello que debería ser una fase de desarrollo muy dinámica que permite sacar conclusiones en un tiempo corto sobre el fundamento en el que luego se sustentarán los sistemas mecánicos definitivos. En un principio los prototipos suelen servir más para descartar posibles sistemas, será después de varios intentos cuando se llegará a un sistema que cumpla con los requisitos.
 
-A la hora de desarrollar estos prototipos se recomienda plasmar las ideas sobre papel y utilizar materiales fáciles de manipular para fabricar los prototipos ideados. En función de las de las herramientas con las que se cuente, algunos de los materiales que se pueden utilizar son: madera, plástico, cartón y aluminio. La mayoría de esos materiales se puede trabajar utilizando herramientas de carpintería de madera o aluminio y de papelería. Una herramienta muy útil que recientemente se ha hecho muy popular son las impresoras 3D por aporte de plástico. Este tipo de herramienta es muy versátil ya que permite crear piezas de casi cualquier forma. Pero cuidado, si la piezas o piezas a imprimir para el prototipo son complejas el tiempo de diseño y fabricación de la mismas puede demorar esta fase del desarrollo del robot más de lo necesario.
+A la hora de desarrollar estos prototipos se recomienda plasmar las ideas sobre papel y utilizar materiales fáciles de manipular para fabricar los prototipos ideados. En función de las herramientas con las que se cuente, algunos de los materiales que se pueden utilizar son: madera, plástico, cartón y aluminio. La mayoría de esos materiales se puede trabajar utilizando herramientas de carpintería de madera o aluminio y de papelería. Una herramienta muy útil que recientemente se ha hecho muy popular son las impresoras 3D por aporte de plástico. Este tipo de herramienta es muy versátil ya que permite crear piezas de casi cualquier forma. Pero cuidado, si la piezas o piezas a imprimir para el prototipo son complejas el tiempo de diseño y fabricación de la mismas puede demorar esta fase del desarrollo del robot más de lo necesario.
 
 \begin{figure}[h]
 \centerline{
@@ -627,13 +627,13 @@ Una buena previsión de dichas situaciones evitará también bloqueos de la estrate
 
 
 \item \textbf{Facilidad de modificación y flexibilidad:}\\
-La estrategia dota de cierta inteligencia al robot que le permite ejecutarla de forma autónoma. Pero igual que un entrenador de baloncesto da dirige a sus jugadores para seguir una estrategia concreta o adaptarla al contrincante, el equipo de desarrolladores han de poder hacer lo mismo con su robot de Eurobot. Así la implementación de la estrategia tiene que tener la flexibilidad suficiente para poder ejecutar variantes de esta o realizar modificaciones en tiempo real. 
+La estrategia dota de cierta inteligencia al robot que le permite ejecutarla de forma autónoma. Pero igual que un entrenador de baloncesto dirige a sus jugadores para seguir una estrategia concreta o adaptarla al contrincante, el equipo de desarrolladores han de poder hacer lo mismo con su robot de Eurobot. Así la implementación de la estrategia tiene que tener la flexibilidad suficiente para poder ejecutar variantes de esta o realizar modificaciones en tiempo real. 
 
 
 \item \textbf{Ejecución simulada:}\\
 La estrategia puede tener múltiples ramificaciones y variantes, y su ejecución en cada momento depende de múltiples variables, entre ellas variables dependientes del oponente. Las pruebas en el campo de juego implica reproducir cada momento y sus variables, necesita de uno o varios robots operativos y o varias personas que simulen el movimiento de robots oponentes. 
 
-Por todo ello, poder ejecutar y probar la estrategia en un entorno simulado constituye una característica de mucha utilidad. Un entorno de simulación software permite reproducir todas las variables de las que depende la estrategia en todo momento a un coste mucho menor que las pruebas realizadas en el campo de juego real con robots reales. De esta forma la verificación de la estrategia o modificaciones de esta supone muchos menos recursos y tiempo.
+Por todo ello, poder ejecutar y probar la estrategia en un entorno simulado constituye una característica de mucha utilidad. Un entorno de simulación software permite reproducir todas las variables de las que depende la estrategia en todo momento a un coste mucho menor que las pruebas realizadas en el campo de juego real con robots reales. De esta forma la verificación de la estrategia o modificaciones de ésta supone muchos menos recursos y tiempo.
 
 
 \end{description}
@@ -645,7 +645,7 @@ La puesta en marcha y verificación constituye la fase más importante si cabe de 
 
 Es recomendable realizar un desarrollo modular y estratificado desde los niveles más bajos y específicos hacia los más altos y abstractos. De esta forma cada parte desarrollada ha de contar con funciones o herramientas que permitan probar de forma independiente su funcionamiento y verifícalo. Si además dichas funciones de test están accesibles durante todo el proceso de desarrollo pueden ser útiles para la depuración de funciones más abstractas o de averías relacionadas con el cableado o componentes electrónicos. Por ejemplo, en caso de fallo en un actuador tipo servomotor una función que permita mover dicho actuador a nivel de driver de señal PWM puede ayudar a verificar si el fallo es del actuador o de capas superiores al driver. O por ejemplo una función que permita comprobar el estado de los sensores digitales permitirá comprobar si hay un fallo en algún sensor o el cableado. 
 
-Por otro lado, aunque el funcionamiento del robot este verificado es inevitable que durante los partidos surjan incompatibilidades en ciertas partes del desarrollo o funcionalidades que pueden ser mejoradas. Durante las competiciones, los partidos constituyen el mejor entorno de pruebas y son la mejor forma de pulir el funcionamiento y perfeccionar la estrategia del robot. Si es posible, se recomienda no limitarse a participar en la competición nacional del país de origen y participar en otras copas de Eurobot abiertas a participantes de otros países.
+Por otro lado, aunque el funcionamiento del robot esté verificado es inevitable que durante los partidos surjan incompatibilidades en ciertas partes del desarrollo o funcionalidades que pueden ser mejoradas. Durante las competiciones, los partidos constituyen el mejor entorno de pruebas y son la mejor forma de pulir el funcionamiento y perfeccionar la estrategia del robot. Si es posible, se recomienda no limitarse a participar en la competición nacional del país de origen y participar en otras copas de Eurobot abiertas a participantes de otros países.
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
