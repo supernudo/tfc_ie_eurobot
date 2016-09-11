@@ -759,12 +759,12 @@ v_{max} = 1,2 m/s
 
 Se ha representado una segunda recta en la figura \ref{fig_recta_velocidad_maxima_ptinto} correspondiente a un motor de la mitad de potencia. Observar que para una misma aceleración la velocidad es menor. En el primer caso la velocidad es superior a la velocidad deseada ($1 m/s$) y el motor BG40x50 es válido, mientras que en el segundo caso el motor no sería valido.
 
-La gráfica de la figura \ref{fig_perfil_vmax_amax} muestra el resultado de aplicar un perfil trapezoidal cuya velocidad es la máxima calculada. Observar que al final de la fase de aceleración la tensión de control de los motores se encuentra muy cerca de su valor de saturación (63500). Si se disminuye la velocidad hasta $0,8m/s$, el valor de la tensión baja hasta el $80\%$ de su máximo, como muestra la figura \ref{fig_perfil_v08_amax}.
+La gráfica de la figura \ref{fig_perfil_vmax_amax} muestra el resultado de aplicar un perfil trapezoidal cuya velocidad es la máxima calculada. Observar que para la velocidad máxima calculada al final de la fase de aceleración (instante $t1$ de la figura \ref{fig_dimensionamiento_motores}) la tensión de control de los motores se encuentra muy cerca de su valor de saturación (63500 cuentas, que equivale al 100\% de ciclo de trabajo de una señal PWM). Si se disminuye la velocidad hasta $0,8m/s$, el valor de la tensión baja hasta el $80\%$ de su máximo, como muestra la figura \ref{fig_perfil_v08_amax}.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{perfil_vmax_amax}
-\caption[]{Señal de control de los motores para un perfil de velocidad trapezoidal de $0,8m/s$ y una aceleración de $3,45m/s$}
+\caption[]{Señal de control de los motores para un perfil de velocidad trapezoidal de $1,2m/s$ y una aceleración de $3,45m/s$}
 \label{fig_perfil_vmax_amax}
 \end{figure}
 

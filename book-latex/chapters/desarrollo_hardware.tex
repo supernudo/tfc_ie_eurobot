@@ -177,7 +177,7 @@ Los microcontroladores dsPIC33 tienen una arquitectura Harvard de 16 bits con un
 
 \begin{table}[ht]
 \centering
-\caption{Recursos de la familia de microcontroladores dsPIC33FJXMC \cite{dspic33_datasheet}}
+\caption{Recursos de la familia de microcontroladores dsPIC33FJXMC. Tabla obtenida del datasheet del fabricante \cite{dspic33_datasheet}}
 \includegraphics[width=\textwidth]{dspic33_resources_table}
 \label{tab_dspic_resources_table}
 \end{table}
@@ -205,7 +205,28 @@ Por otro lado, los servomotores estandar de los sistemas mecánicos son controlad
 
 \subsection{Árbol de alimentación}
 
-La alimentación de hardware, motores y sensores del robots se obtiene a partir de una batería de 24V formada por dos baterías de 12V en serie. A partir de dicha tensión se obtienen las tensiones necesarias para cada elemento. La tabla \ref{tab_tensiones_alimentación} muestra las tensiones asociada a cada elemento del robot.
+La alimentación de hardware, motores y sensores del robots se obtiene a partir de una batería de 24V. A partir de dicha tensión se obtienen las tensiones necesarias para cada elemento. La tabla \ref{tab_alimentacion_tensiones_potencia} muestra las tensiones y potencia características asociada a los elementos más representativos el robot que constituyen una carga a alimentar.
+
+\begin{table}[ht]
+\centering
+\caption{Elementos de carga representativos relacionados con el esquema de alimentación un robot de Eurobot}
+\label{tab_alimentacion_tensiones_potencia}
+\begin{tabular}{lcc}
+\hline
+Elemento & Tensión (V) & Potencia máx./u (w) \\
+\hline
+Microcontrolador		& 3,3 	& 0,8	\\
+Lógica E/S				& 5		& 0,2	\\
+Servomotores estandar	& 5		& 3		\\
+Sensores				& 12	& 0,3	\\
+Motores DC				& 12	& 10	\\
+Servomotores AX12		& 12	& 8.6	\\
+Motores tracción		& 24	& 30 	\\
+\hline
+\end{tabular}
+\end{table}
+
+En definitiva se necesitan tensiones de 24V, 12V, 5V y 3,3V. Todas ellas son obtedidas a partir de un esquema de alimentación con una distribución en arbol. Como se puede ver en la figura \ref{fig_hardware_arquitectura_alimentacion}, la tensión de 24V se obtiene directamente de la tensión de batería, la cual es regulada mediante sendas fuentes de alimentación para obtener 12V y 5V. Y esta tensión de 5V a su vez es reguladas por una terdera fuente de alimentación para obener 3,3V. 
 
 \begin{figure}[ht]
 \centering
@@ -214,35 +235,115 @@ La alimentación de hardware, motores y sensores del robots se obtiene a partir d
 \label{fig_hardware_arquitectura_alimentacion}
 \end{figure}
 
-En definitiva se necesitan tensiones de 24V, 12V, 5V y 3,3V. La figura \ref{fig_hardware_arquitectura_alimentacion} muestra el esquema a partir del cual se obtienen todas las tensiones de alimentación. Se trata de una distribución de alimentación en arbol. Por normativa, el robot ha de llevar un interruptor de emergencia visible y rojo (la seta de emergencia). Por ello todo el arbol de alimentación cuelga de dicho interruptor. En caso de accionarse toda la alimentación del robot quedaría desabilitada. Como se puede ver en la figura, la tensión de 24V se obtiene directamente de la tensión de batería. La cual es regulada mediante una fuente de alimentación para obtener 12V y 5V. Y a su vez los 5V son regulados a 3,3V. 
+Notar que todo el arbol de alimentación cuelga del bloque interruptor de emergencia y del bloque fusible. Por normativa, el robot ha de llevar un interruptor de emergencia visible y rojo (la seta de emergencia). En caso de accionarse toda la alimentación del robot quedaría desabilitada. El fusible tiene tambien una función de seguridad y se dimensiona para proteger la batería en caso de cortocircuito de la tensión de 24V.
 
-Cada una de las tensiones de alimentación tiene asociado un sistema de habilitación independiente. Esto permite utilizar sólo las tensiones de alimentación necesarias durante las diferentes fases de implementación del robot o ayudar depurar algun problema relacionado con la alimentación, desabilitando los dispositivos asociados a una o varias tensiones.
+Por otro lado, cada una de las tensiones de alimentación tiene asociado un bloque de habilitación independiente. Esto permite utilizar sólo las tensiones de alimentación necesarias durante las diferentes fases de implementación del robot o ayudar depurar algun problema relacionado con la alimentación, desabilitando los dispositivos asociados a una o varias tensiones.
 
-Respecto a los requisitos de potencia, estos vienen dados principalmente por el numero de actuadores (motores y servomotores). Por un lado, los motores de tracción son los que más potencia pueden demandar y se alimentan a 24V. Es por ello que la tensión de 24V no se encuentra regulada, pudiendo los motores demandar la corriente directamente de la batería. Por otro lado están los motores o servomotores alimentados a 12V. Y por último los servomotores estandar, que se alimentan a 5V. 
+Respecto a los requisitos de potencia, como se puede observar en la tabla \ref{tab_alimentacion_tensiones_potencia} estos vienen dados principalmente por los actuadores (motores y servomotores) y sensores. La potencia de la electrónica apenas tiene peso. 
 
-Dado que las tensiones de 12V y 5V son reguladas, la potencia de la fuente de alimentación 12/5V ha de ser dimensionada correctamente.
+Por ejemplo, una estimación de la potencia máxima del robot P.Tinto (Eurobot 2015) se muestra en la tabla \ref{tab_potencia_ptinto}.
 
+\begin{table}[ht]
+\centering
+\caption{Estimación de la potencia máxima del robot P.Tinto (Eurobot 2015)}
+\label{tab_potencia_ptinto}
+\begin{tabular}{lcccc}
+\hline
+Elemento & Tensión (V) & P. máx./u (w) & Cantidad & P. max. total (w) \\
+\hline
+Microcontrolador		& 3,3 	& 0,8	&	2	&	1,6\\
+Lógica E/S 				& 5		& 0,2	&	1	&	0,2\\
+Servomotores estandar	& 5		& 3		&	5	&	15\\
+Sensores				& 12	& 0,3	&	13	&	3,9\\
+Motores DC				& 12	& 10	&	1	&	10\\
+Servomotores AX12		& 12	& 8.6	&	11	&	94.6\\
+Motores tracción		& 24	& 30 	&	2	&	60\\
+\hline
+\end{tabular}
+\end{table}
 
+Sumando las potencias de cada tensión de alimentación y de cada rama, se obtiene la potencia necesaria de cada bloqueo o etapa de alimentación presentado en la tabla \ref{tab_potencia_necesaria}.
+
+\begin{table}[ht]
+\centering
+\caption{Estimación de la potencia máxima del robot P.Tinto (Eurobot 2015)}
+\label{tab_potencia_necesaria}
+\begin{tabular}{lcc}
+\hline
+Bloque de alimentación & P. máx (w) & I máx. (A) \\
+\hline
+F. alimentación 3,3V	& 1,6	& 0,48	\\
+F. alimentación 5V		& 16,8	& 3,36	\\
+F. alimentación 12V		& 108,5	& 9		\\
+Batería 24V				& 185,3	& 7,72	\\
+\hline
+\end{tabular}
+\end{table}
+
+Hay que tener en cuenta que estos valores son para el caso de que todos los elementos estén consumiendo su potencia máxima al mismo tiempo. En la práctica, no todos los servomotores AX12 estarán demandando su máxima potencia. Aun así, cada bloque de alimentación ha de elegirse teniendo en cuenta dicha potencia máxima.
+
+Por último, a la hora de implemntar el esquema de alimentación tipo arbol, para cada tensión de alimentación (3,3V, 5V, 12V y 24V) se ha de implentar una distribución en estrella de forma que se minimice la impedancia comun entre dispositivos de diferente potencia y misma tensión de alimentación. Por ejemplo, en el caso de la tensión de 5V, deben de implentarse dos caminos de alimentación diferenciados para la lógica E/S y los servomotores estandar, y cuyo punto de unión se sitúe lo más cerca de la fuente. En este caso de la fuente de alimentación de 5V. De esta forma se minimiza el ruido producido por la corriente de los servomotores en las líneas de alimentación de la lógica E/S.   
 
 
 \section{Implementación HW del robot principal}
 
-\begin{figure}[H]
+\begin{figure}[p]
 \centering
 \includegraphics[width=.9\textwidth]{hardware_robot_principal}
 \caption[]{Diagrama de bloques del HW del robot principal}
 \label{fig_hardware_robot_principal}
 \end{figure}
 
+El robot principal de Eurobot suele tener asociada un mayor número de motores y sensores que el robot secundario debido principalmente a que el tamaño máximo fijado por las reglas es mayor. Esto hace que el robot principal implemente mayor numero de sistemas mecánicos y más complejos que los que pueda tener el robot secundario. 
+
+La implentación de la arquitectura HW descrita para un robot principal se ha dividido en 5 tarjetas electrónicas:
+
+\begin{description}
+\item Tarjeta principal\\
+Implemementa la mayor parte de los bloques de la arquitectura HW. Contiene dos microcontroladores, uno principal destinado a los recursoss de la plataforma robótica y un secundario destinado al control de los sistemas mecanismos.
+\item Tarjeta sensores\\
+Implementa la expansión de entradas digitales para sensores.
+\item Tarjeta sistemas de vacio\\
+Implementa la expansión de salidas de potencia. Especificamente de saliodas de control de actuadores de sistemas de vacio (bombas de vacio y electrovalvulas).
+\item Tarjeta de alimentación\\
+Implenenta las fuentes de alimentación de 12V y 5V del esquema de alimentación.
+\item Tarjeta de control de alimentación\\
+Implementa la habilitación de las diferentes tensiones de alimentación.
+\end{description}
+
+Estas tarjetas junto con el interruptor de emergencia y la batería de 24V forma el diagrama de bloques HW del robot principal. La conexión entre estos elementos se muestra en la figura \ref{fig_hardware_robot_principal}. Los 24V de la batería pasan por el interruptor de emergencia antes conectarse con la tarjeta de alimentación de 12V y 5V. Las tensiones de alimentación de 24V, 12V y 5V son conectadas a la tarjeta principal pasando por la tarjeta de habilitación de alimentación. Internamiente a la tarjeta principal la tensión de 3,3V es generada a partir de la tensión de 5V.
+
+La tarjeta de sensores se alimenta mediante las tensiónes de 12V y 5V desde la tarjeta principal. Además ambas se encuentran conectadas mediante una interfaz I2C. Por último, la tarjeta de sistemas de vacío se alimenta directamente de las tensiones de 24V y 12V, pasando igualmente por la tarjeta de habilitación de alimentación. El control de esta tarjeta se realiza mediante el cableado de algunas de las salidas digitales o PWM de la tarjeta principal.
+
 
 \subsection{Tarjeta principal}
 
-\begin{figure}[H]
+La tarjeta principal \emph{mainboard\_v02} se muestra en la figura \ref{fig_tarjeta_mainboard_v01_v02} y su diagrama de bloques es el representado en la figura \ref{fig_hardware_robot_principal}. Está compuesta por dos microcontroladores dsPIC33 comunicados por I2C, un maestro y un esclavo. El maestro está pensado para implementar la plataforma robótica base y la estrategia del robot, y el esclavo para controlar los sistemas mecánicos del robot. Esta tarjeta fué desarrollada para el robot de Eurobot 2010. La versión v02 soluciona varios errores de la versión v01.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.8\textwidth]{fotos_tarjetas/mainboard_v01_v02}
 \caption[]{Tarjeta \emph{mainboard\_v02}}
 \label{fig_tarjeta_mainboard_v01_v02}
 \end{figure}
+
+Las características de esta tarjeta son las siguientes: 
+\begin{itemize}
+\item 3 motores Dunkermotoren
+\item 2 motores DC de 12V 
+\item 1 solenoide de 12V
+\item 1 rele 
+\item 2 telémetros lásers
+\item 5 servos standar
+\item 1 interfaz servos AX12
+\item 3 encoders con salida en cuadratura
+\item 7 sensores 12V
+\item 1 interfaz RS-232
+\item 2 interfaces Bluetooth (SPP) 
+\item 1 conector para tarjeta de sensores \emph{sensorboard}.
+\end{itemize}
+
+
 
 \subsection{Tarjeta de sensores digitales}
 

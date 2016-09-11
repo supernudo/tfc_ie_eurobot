@@ -94,7 +94,7 @@ Así por ejemplo, para un rango de distancia $d$ entre $30cm$ y $2,5m$ le corresp
 
 El modelo real de la medida de distancia es más complejo dado que la luz del sensor es una luz incoherente. La detección de la baliza va a depender del patrón de emisión y recepción del propio sensor. La luz reflejada por el catadióptrico depende del área proyectada sobre el mismo y su energía, y de las características del propio material catadióptrico. Además, no hay que olvidar que el sensor no está en el mismo plano que la baliza a detectar lo cual implica un comportamiento no lineal de la reflexión de la luz en los limites del rango de detección de la baliza. 
 
-Para una emisión incoherente, el área proyectada a sobre la baliza viene dada por la definición de ángulo sólido $\Omega$, de forma que la superficie $S$ se incrementa con el cuadrado de la distancia $d$:
+Para una emisión incoherente, el área proyectada sobre la baliza viene dada por la definición de ángulo sólido $\Omega$, de forma que la superficie $S$ se incrementa con el cuadrado de la distancia $d$:
 \begin{equation}
 \Omega = \frac{S}{d^2}
 \end{equation}     
@@ -264,7 +264,7 @@ uint16_t get_dist_array(uint8_t sensor, int32_t size, int32_t period)
 
 La obtención de la distancia mediante un array de datos permite obtener la medida sin penalizar en tiempo de cálculo.
 
-Una vez obtenida la distancia y el ángulo relativos de la baliza detectada se obtiene su posición relativa y junto con la posición absoluta del robot, dada por la odometría, se obtiene la posición absoluta $(x,y)$ de la baliza. Normalmente la baliza se encuentra alineada con el centro de giro del robot y las medidas relativas de la baliza coinciden con las medidas relativas al robot. En caso de no se así, tanto las medidas relativas como las medidas absolutas deben de ser corregidas teniendo en cuenta el desplazamiento de la baliza respecto al centro de giro del robot.
+Una vez obtenida la distancia y el ángulo relativos de la baliza detectada se obtiene su posición relativa y junto con la posición absoluta del robot, dada por la odometría, se obtiene la posición absoluta $(x,y)$ de la baliza. Normalmente la baliza se encuentra alineada con el centro de giro del robot y las medidas relativas de la baliza coinciden con las medidas relativas al robot. En caso de no se así, tanto las medidas relativas como las medidas absolutas deben ser corregidas teniendo en cuenta el desplazamiento de la baliza respecto al centro de giro del robot.
 
 Por último, dado que en un partido de Eurobot puede existir hasta dos robots oponentes, correspondientes a dos balizas reflectantes, se implementa un sistema de seguimiento de las balizas de dichos oponentes. Básicamente el seguimiento se realiza a partir de diferencia entre la posición de una baliza detectada frente a valores anteriores del balizas de los oponentes. Se selecciona la diferencia menor y si se encuentra dentro de un un radio máximo respecto a la posición anterior se actualiza la posición de la baliza correspondiente.
 
@@ -286,7 +286,7 @@ El proceso de ajuste y modelado se aplica a cualquiera de los dos tipos de baliz
 
 Los ajustes a realizar consisten en determinar la distancia mínima de detección de cualquier objeto y la distancia mínima y máxima de detección de una baliza. 
 
-La distancia mínima de detección de un objeto depende de la intensidad de emisión del sensor. Al ser un un sensor de reflexión difusa cualquier objeto puede ser detectado por el. Es por ello que limitando la intensidad de emisión se puede fijar la distancia máxima a la que cualquier objeto no será detectado. 
+La distancia mínima de detección de un objeto depende de la intensidad de emisión del sensor. Al ser un sensor de reflexión difusa cualquier objeto puede ser detectado por el. Es por ello que limitando la intensidad de emisión se puede fijar la distancia máxima a la que cualquier objeto no será detectado. 
 
 En el caso de el rango de distancia de detección de una baliza reflectante, este depende del ángulo $\beta$ con el que el salga el haz de luz del sensor a las balizas reflectantes. En la distancia mínima el haz de luz se reflejará en la parte inferior de la baliza y en la distancia máxima en su parte superior. Fuera de dicho rango el haz de luz se escapará por la parte de abajo o de arriba del catadióptrico. Además, a la distancia máxima donde la duración del ancho de pulso detectado es el mínimo, entra en juego el tiempo de mínimo que necesita el sensor para detectar dicho pulso. Dicho requisito determina la velocidad de giro máxima y por tanto el periodo de medida de la posición de las balizas detectadas.
 
@@ -379,8 +379,8 @@ El resultado se muestra en la figura \ref{fig_beacon_robot_calib_3m_fig_2_small}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_2_small.pdf}
-\caption[]{Discretización del modelo continuo de medida de distancia para su mapeado en un array de datos}
+\includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_2_1_small.pdf}
+\caption[]{Discretización del modelo continuo de medida de distancia para su mapeado en un array de datos }
 \label{fig_beacon_robot_calib_3m_fig_2_small}
 \end{figure}
 
