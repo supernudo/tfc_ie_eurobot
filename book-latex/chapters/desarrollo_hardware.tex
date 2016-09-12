@@ -280,7 +280,7 @@ Batería 24V				& 185,3	& 7,72	\\
 \end{tabular}
 \end{table}
 
-Hay que tener en cuenta que estos valores son para el caso de que todos los elementos estén consumiendo su potencia máxima al mismo tiempo. En la práctica, no todos los servomotores AX12 estarán demandando su máxima potencia. Aun así, cada bloque de alimentación ha de elegirse teniendo en cuenta dicha potencia máxima.
+Comentar que este robot es de los robots con más sensores y servomotore de los desarrollados para la competición Eurobot. Hay que tener en cuenta que estos valores son para el caso de que todos los elementos estén consumiendo su potencia máxima al mismo tiempo. En la práctica, no todos los servomotores AX12 estarán demandando su máxima potencia. Aun así, cada bloque de alimentación ha de elegirse teniendo en cuenta dicha potencia máxima.
 
 Por último, a la hora de implemntar el esquema de alimentación tipo arbol, para cada tensión de alimentación (3,3V, 5V, 12V y 24V) se ha de implentar una distribución en estrella de forma que se minimice la impedancia comun entre dispositivos de diferente potencia y misma tensión de alimentación. Por ejemplo, en el caso de la tensión de 5V, deben de implentarse dos caminos de alimentación diferenciados para la lógica E/S y los servomotores estandar, y cuyo punto de unión se sitúe lo más cerca de la fuente. En este caso de la fuente de alimentación de 5V. De esta forma se minimiza el ruido producido por la corriente de los servomotores en las líneas de alimentación de la lógica E/S.   
 
@@ -294,31 +294,36 @@ Por último, a la hora de implemntar el esquema de alimentación tipo arbol, para 
 \label{fig_hardware_robot_principal}
 \end{figure}
 
-El robot principal de Eurobot suele tener asociada un mayor número de motores y sensores que el robot secundario debido principalmente a que el tamaño máximo fijado por las reglas es mayor. Esto hace que el robot principal implemente mayor numero de sistemas mecánicos y más complejos que los que pueda tener el robot secundario. 
+El robot principal de Eurobot suele tener asociado un mayor número de motores y sensores que el robot secundario debido principalmente a que el perímetro máximo permitido es mayor. Esto hace que el robot principal implemente un mayor numero de sistemas mecánicos y más complejos que los que pueda tener el robot secundario. 
 
-La implentación de la arquitectura HW descrita para un robot principal se ha dividido en 5 tarjetas electrónicas:
+La implentación de la arquitectura HW descrita anteriormente, para el caso de un robot principal, se ha dividido en 5 tarjetas electrónicas:
 
 \begin{description}
 \item Tarjeta principal\\
-Implemementa la mayor parte de los bloques de la arquitectura HW. Contiene dos microcontroladores, uno principal destinado a los recursoss de la plataforma robótica y un secundario destinado al control de los sistemas mecanismos.
+Implemementa la mayor parte de los bloques de la arquitectura HW. Contiene dos microcontroladores, uno principal destinado al control de la plataforma robótica y estratégia de juego, y uno secundario destinado al control de los sistemas mecánicos.
+
 \item Tarjeta sensores\\
 Implementa la expansión de entradas digitales para sensores.
+
 \item Tarjeta sistemas de vacio\\
-Implementa la expansión de salidas de potencia. Especificamente de saliodas de control de actuadores de sistemas de vacio (bombas de vacio y electrovalvulas).
+Implementa la expansión de salidas de potencia. Especificamente de saliodas de control para actuadores de sistemas de vacio (bombas de vacio y electrovalvulas).
+
 \item Tarjeta de alimentación\\
-Implenenta las fuentes de alimentación de 12V y 5V del esquema de alimentación.
+Implementa las fuentes de alimentación de 12V y 5V del esquema de alimentación.
+
 \item Tarjeta de control de alimentación\\
 Implementa la habilitación de las diferentes tensiones de alimentación.
+
 \end{description}
 
 Estas tarjetas junto con el interruptor de emergencia y la batería de 24V forma el diagrama de bloques HW del robot principal. La conexión entre estos elementos se muestra en la figura \ref{fig_hardware_robot_principal}. Los 24V de la batería pasan por el interruptor de emergencia antes conectarse con la tarjeta de alimentación de 12V y 5V. Las tensiones de alimentación de 24V, 12V y 5V son conectadas a la tarjeta principal pasando por la tarjeta de habilitación de alimentación. Internamiente a la tarjeta principal la tensión de 3,3V es generada a partir de la tensión de 5V.
 
-La tarjeta de sensores se alimenta mediante las tensiónes de 12V y 5V desde la tarjeta principal. Además ambas se encuentran conectadas mediante una interfaz I2C. Por último, la tarjeta de sistemas de vacío se alimenta directamente de las tensiones de 24V y 12V, pasando igualmente por la tarjeta de habilitación de alimentación. El control de esta tarjeta se realiza mediante el cableado de algunas de las salidas digitales o PWM de la tarjeta principal.
+La tarjeta de sensores se encuentra conectada a la tarjeta principal y se alimenta mediante las tensiónes de 12V y 5V desde la misma. Además ambas se encuentran conectadas mediante una interfaz I2C. Por último, la tarjeta de sistemas de vacío se alimenta directamente de las tensiones de 24V y 12V, pasando igualmente por la tarjeta de habilitación de alimentación. El control de esta tarjeta se realiza mediante el cableado de algunas de las salidas digitales o PWM de la tarjeta principal.
 
 
 \subsection{Tarjeta principal}
 
-La tarjeta principal \emph{mainboard\_v02} se muestra en la figura \ref{fig_tarjeta_mainboard_v01_v02} y su diagrama de bloques es el representado en la figura \ref{fig_hardware_robot_principal}. Está compuesta por dos microcontroladores dsPIC33 comunicados por I2C, un maestro y un esclavo. El maestro está pensado para implementar la plataforma robótica base y la estrategia del robot, y el esclavo para controlar los sistemas mecánicos del robot. Esta tarjeta fué desarrollada para el robot de Eurobot 2010. La versión v02 soluciona varios errores de la versión v01.
+La tarjeta principal \emph{mainboard\_v02} se muestra en la figura \ref{fig_tarjeta_mainboard_v01_v02} y su diagrama de bloques es el representado en la figura \ref{fig_hardware_robot_principal}. Está compuesta por dos microcontroladores dsPIC33 comunicados por I2C, un maestro y un esclavo. El maestro está pensado para controlar la plataforma robótica base y la estrategia del robot, y el esclavo para controlar los sistemas mecánicos. La versión v01 de esta tarjeta tarjeta fué desarrollada para el robot Trompetero (Eurobot 2010). La versión v02 utilizada a partir del robot Zamorano (Eurobot 2011) soluciona varios errores de la primera versión.
 
 \begin{figure}[ht]
 \centering
@@ -344,8 +349,11 @@ Las características de esta tarjeta son las siguientes:
 \end{itemize}
 
 
-
 \subsection{Tarjeta de sensores digitales}
+
+La tarjeta de sensores digitales \emph{sensorboard} se conecta directamente sobre la tarjeta principal \emph{mainboard} como una tarjeta hija (ver figura \ref{fig_tarjeta_sensorboard}). Esta tarjeta incluye dos dispositivos expansores de E/S con interfaz I2C y la electrónica de acondicionamiento necesaria para la conexión de sensores digitales alimentados a 12V y de salida en colector o drenador habierto (salida PNP o NPN). Cada dispositivo expansor de puertos cuenta con 2 puertos de 8 lineas, en total la tarjeta soporta hasta 32 E/S.
+
+Esta tajeta fué desarrollada junto con la tarjeta \emph{mainboard} en el año 2010 y ha sido reutilizada desde entonces.
 
 \begin{figure}[H]
 \centering
@@ -356,6 +364,8 @@ Las características de esta tarjeta son las siguientes:
 
 \subsection{Tarjeta de sistemas de vacio}
 
+La tarjeta \emph{vacuumboard} (ver figura \ref{fig_tarjeta_vacuumboard} fué desarrollada para el robot Automático (Eurobot 2014), el cual utilizava un sistema de vacio para manipular los elementos del juego. Esta tarjeta permite el control de 4 electrovalvulas y 4 bombas de vacio. Para ello utiliza drivers de potencia alimentados a 12V y 24V. Esta tarjeta es controlada por la tarjeta principal mediante las salidas digitales y las salidas PWM para servomotores.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=.5\textwidth]{fotos_tarjetas/vacuumboard}
@@ -364,6 +374,10 @@ Las características de esta tarjeta son las siguientes:
 \end{figure}
 
 \subsection{Tarjeta de control de alimentación}
+
+La tarjeta de control de alimentación \emph{switchboard} permite habilitar de forma controlada las diferentes alimentaciones del robot (24V, 12V y 5V). Para ello cuenta con 3 interruptores, uno por cada alimentación, como muestra la figura \ref{fig_tarjeta_switchboard}. La tarjeta está diseñada para asegurar un correcto encendido del robot. Las tensiones de 12V y 24V dependen de la tensión de 5V, si esta no es habilitada ninguna otra puede ser encendida. De la misma forma, la tensión de 24V depende de la tensión de 12V.
+
+Esta tarjeta fué diseñada en el año 2010 y se ha reutilizado desde entonces.
 
 \begin{figure}[H]
 \centering
@@ -374,7 +388,13 @@ Las características de esta tarjeta son las siguientes:
 
 \subsection{Tarjeta de alimentación}
 
-\begin{figure}[H]
+La tarjeta de alimentación M4-ATX es una fuente de alimentación comercial mini ATX. Perminte un rango de alimentación variable entre 6V y 30V y da salidas de +/-12V, 5V y 3.3V. A partir de ella se obtienen las tensiones de 5V y 12V necesarias para el robot. Su amplio margen de entrada permite además utilizar una batería de 24V o de 12V, segun las necesidades del robot.
+
+Por otro lado tiene una potencia total de 250w, de los cuales 75w son de la salida de 5V (15A) y 120w (10A) de la salida de 12V, llegando a picos de corriente de 20A y 16A, respectivamente. La potencia suministrada por esta tarjeta deja un amplio margen al diseño de los sistemás mecánicos. Comparando estas pontencias con estimación de consumo del robot P.Tinto (ver tabla \ref{tab_potencia_ptinto}) se puede dar por valido el uso de esta tarjeta, y así se ha comprobado. 
+
+Este modelo de tarjeta se ha utilizado desde Eurobot 2010 para alimentar la electrónica tanto del robot principal como del robot secundario.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.6\textwidth]{fotos_tarjetas/m4_atx}
 \caption[]{Tarjeta \emph{M4-ATX}}
@@ -384,19 +404,48 @@ Las características de esta tarjeta son las siguientes:
 
 \section{Implementación HW del robot secundario}
 
-\begin{figure}[H]
+La implemntación de la arquitectura HW en el robot secundario está compuesta únicamente por dos tarjetas: una tarjeta principal y una tarjeta de alimentación M4-ATX, como la utilizada en el robot principal. Además incluye el interruptor de emergencia y dos interruptores que habilitan la alimentación de 24V y, de 12 y 5V simultáneamente.
+
+El diagrama de conexionado ente estos elementos se muestra en la figura \ref{fig_hardware_robot_secundario}. Al igual que en el robot principal, la batería conecta por medio del interruptor de emergencia con un sistema de habilitación de alimentación y con la fuente de alimentación de 12V y 5V. En este caso la tensión de 24V es habilitada mediante un interruptor y las tensiones de 12V y 5V mediante un segundo interruptor que habilita la fuente de alimentación. Por último, todas estas tensiones alimentan a la tarjeta principal.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.9\textwidth]{hardware_robot_secundario}
 \caption[]{Diagrama de bloques del HW del robot secundario}
 \label{fig_hardware_robot_secundario}
 \end{figure}
 
-\begin{figure}[H]
+Respecto a la tarjeta principal, a partir de año 2012 las reglas de Eurobot permitieron la participación de dos robots por equipo: un robot principal y uno secundario. El robot secundario con un perímetro máximo mucho menor. Dicho año se desarrollaron dos robots: Automático (principal) y Crispín (secundario). Crisín fué implementado a a partir de la tarjeta \emph{dspic33\_protoboard}, tarjeta prototipo con la que se validó la arquitectura HW (ver figura \ref{fig_tarjeta_dspic33_protoboard}. Al año siguiente se desarrolló la tarjeta \emph{mainboard\_v03} (ver figura \ref{fig_tarjeta_mainboard_v03}). 
+
+La tarjeta \emph{mainboard\_v03} está está diseñada para controlar la plataforma robótica, la baliza tipo faro y los sistemas mecánicos del robot secundario. E integra todo lo necesaro para ello. El diagrama de bloques de la tarjeta se encuentra represenstado en la figura \ref{fig_hardware_robot_secundario}. Un único microcontrolador dsPIC33 es elemento principal de la tarjeta. Sus recursos se distribuyen entre los elementos de la plataforma robótica y la baliza tipo faro de espejo giratorio. El resto de recursos E/S están destinados al control de los sistémas mecánicos. Aunque éstos suelen ser mucho menos complejos y simples que los del robot principal, la tarjeta además incluye un expansor de E/S digital por I2C de 16 lineas.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=.7\textwidth]{fotos_tarjetas/mainboard_v03}
 \caption[]{Tarjeta \emph{mainboard\_v03}}
 \label{fig_tarjeta_mainboard_v03}
 \end{figure}
+
+El resto de características de E/S de la tarjeta \emph{mainboard\_v03} son las siguientes: 
+\begin{itemize}
+\item 3 motores DC de 12V
+\item 4 servomotores estandar
+\item 1 interfaz servos AX12 
+\item 2 encoders con salida en cuadratura
+\item 1 encoder con salida en cuadratura (módulo x4, sin decodificación de signo).
+\item 16 E/S de 12V/5V
+\item 2 entradas de captura de tiempos
+\item 1 interfaz RS-232/Bluetooth 
+\item 1 interfaz I2C
+\item 1 interfaz SPI
+\end{itemize}
+
+Respecto a la plataforma robótica, ésta utiliza 2 de las 3 salidas PWM para motores y las entradas en cuadratura decodificadas por el microcontrolador. Además, los sensores de detección de obstaculos se conectan algunas de las entradas digitales. La comunicación con el robot principal así como la depuración del robot se realiza mediante una de las UART del microcontrolador, que se encuentra cableada a la interfaz Bluetooth y a la interfaz RS-232 mediante el mapeado dinámico de pines del microcontrolador. 
+
+Respecto a la implmementación de la baliza tipo faro, ésta utiliza la 2 entradas de captura de tiempo, la tercera entrada de encoder y la tercera de las salidas para motor DC. El resto de recursos (salidas PWM de servomotores estandar, la interfaz de servomotores AX12 y la E/S digital) quedan a disposición de los sistemas mecánicos. Por último, la tarjeta cuenta con una interfaz I2C y SPI accesible para posibles amplicaciones de recursos E/S.
+
+
+
 
 %\includepdf[scale=.95, page=1, angle=-90, landscape]{./planos/camara2fpga_rev5.pdf}
 
