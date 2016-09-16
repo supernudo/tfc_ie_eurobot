@@ -42,14 +42,27 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 
 
 \section{Arquitectura software}
-[HW | simulador] > [Plataforma robótica base] > [Abstracción robot] > [Estrategia] > [Interfaz de comandos]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_bloques}
+\caption[]{Diagrama de bloques software del robot principal y secundario}
+\end{figure}
+
+\section{Drivers de dispositivos HW}
 
 \section{Plataforma robótica base}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Asserv_graph}
+\includegraphics[width=.9\textwidth]{Asserv_graph}
+\caption[]{Diagrama de organización y funcionamiento SW de la plataforma robótica base}
 \end{figure}
+
+\subsection{Control de posición}
+\subsection{Odometría}
+\subsection{Detección de bloqueos}
+\subsection{Gestión de trayectorias}
 
 \section{Abstracción robot}
 [actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
@@ -62,6 +75,17 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 %			\subsubsection{Estratégia basada en prioridades}
 %			\subsubsection{Estratégia adaptativa}
 %			\subsubsection{Estrategia con dos robots}
+
+\section{Interfaz de comandos}
+
+\section{Simulador de robots}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_bloques_simulador}
+\caption[]{Diagrama de bloques software del simulador de robots y campo de juego}
+\end{figure}
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"

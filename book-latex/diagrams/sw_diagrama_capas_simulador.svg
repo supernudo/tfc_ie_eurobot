@@ -53,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="280.55885"
-     inkscape:cy="113.54227"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="242.47862"
+     inkscape:cy="123.73483"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -77,7 +77,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:snap-nodes="true"
-     inkscape:snap-to-guides="false">
+     inkscape:snap-to-guides="false"
+     units="mm">
     <inkscape:grid
        type="xygrid"
        id="grid2987"
@@ -124,7 +125,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -132,7 +133,7 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-84.5,-96.862167)">
+     transform="translate(-84.5,-96.862225)">
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -215,24 +216,6 @@
        y="172.36217" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2985-3-7-7"
-       width="195"
-       height="24.999985"
-       x="100"
-       y="297.36218" />
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="197.17041"
-       y="312.62097"
-       id="text5603-7-6-0"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan5605-5-0-9"
-         x="197.17041"
-         y="312.62097">Drivers dispositivos HW</tspan></text>
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-5-1-1"
        width="195"
        height="25.000015"
@@ -283,14 +266,7 @@
          sodipodi:role="line"
          x="330"
          y="262.36215"
-         id="tspan3977-2-5">robot</tspan></text>
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2985-3-3-5-1-2-9"
-       width="195"
-       height="24.999985"
-       x="100"
-       y="267.36218" />
+         id="tspan6242">robot</tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-2-0-8-2"
@@ -382,17 +358,6 @@
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="134.53125"
-       y="283.79041"
-       id="text5636-1-3"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5638-0-6"
-         x="134.53125"
-         y="283.79041">Plataforma robótica base</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        x="144.14551"
        y="253.79037"
        id="text5640-2-0"
@@ -449,24 +414,6 @@
          id="tspan3977-2">robot</tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2985-3-7"
-       width="195"
-       height="24.999985"
-       x="445"
-       y="297.36218" />
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="542.17041"
-       y="312.62097"
-       id="text5603-7-6"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan5605-5-0"
-         x="542.17041"
-         y="312.62097">Drivers dispositivos HW</tspan></text>
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-5-1"
        width="195"
        height="25.000015"
@@ -490,24 +437,6 @@
          id="tspan5784-9"
          x="511.10107"
          y="337.36218">ROBOT SECUNDARIO </tspan></text>
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2985-3-3-5-1-2"
-       width="195"
-       height="24.999985"
-       x="445"
-       y="267.36218" />
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="479.53125"
-       y="283.79041"
-       id="text5636-1"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5638-0"
-         x="479.53125"
-         y="283.79041">Plataforma robótica base</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -530,5 +459,137 @@
          id="tspan5650-1"
          x="487.86133"
          y="223.59019">Interfaz de comandos</tspan></text>
+    <g
+       transform="translate(0.01563263,-14.741249)"
+       id="g4839">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect2985-3-7-7"
+         width="195.01564"
+         height="19.741219"
+         x="99.984367"
+         y="317.36218" />
+      <text
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         x="197.1626"
+         y="329.99158"
+         id="text5603-7-6-0"
+         sodipodi:linespacing="100%"><tspan
+           sodipodi:role="line"
+           id="tspan5605-5-0-9"
+           x="197.1626"
+           y="329.99158">Drivers dispositivos HW</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect2985-3-3-5-1-2-9"
+         width="94.984367"
+         height="30.258781"
+         x="100"
+         y="282.10339" />
+      <text
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         x="147.3042"
+         y="294.71082"
+         id="text5636-1-3"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan5638-0-6"
+           x="147.3042"
+           y="294.71082">Plataforma</tspan><tspan
+           id="tspan4813"
+           sodipodi:role="line"
+           x="147.3042"
+           y="307.21082">robótica base</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect2985-3-3-5-1-2-9-3"
+         width="95.000008"
+         height="29.999992"
+         x="199.98436"
+         y="282.36218" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4815"
+         y="294.84021"
+         x="247.27684"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         xml:space="preserve"><tspan
+           y="294.84021"
+           x="247.27684"
+           id="tspan4817"
+           sodipodi:role="line">Sistemas</tspan><tspan
+           id="tspan4819"
+           y="307.34021"
+           x="247.27684"
+           sodipodi:role="line">mecánicos</tspan></text>
+    </g>
+    <g
+       transform="translate(344.99999,-14.741234)"
+       id="g4839-9">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect2985-3-7-7-3"
+         width="195.01564"
+         height="19.741219"
+         x="99.984367"
+         y="317.36218" />
+      <text
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         x="197.1626"
+         y="329.99158"
+         id="text5603-7-6-0-6"
+         sodipodi:linespacing="100%"><tspan
+           sodipodi:role="line"
+           id="tspan5605-5-0-9-0"
+           x="197.1626"
+           y="329.99158">Drivers dispositivos HW</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect2985-3-3-5-1-2-9-6"
+         width="94.984367"
+         height="30.258781"
+         x="100"
+         y="282.10339" />
+      <text
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         x="147.3042"
+         y="294.71082"
+         id="text5636-1-3-2"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan5638-0-6-6"
+           x="147.3042"
+           y="294.71082">Plataforma</tspan><tspan
+           id="tspan4813-1"
+           sodipodi:role="line"
+           x="147.3042"
+           y="307.21082">robótica base</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect2985-3-3-5-1-2-9-3-8"
+         width="95.000008"
+         height="29.999992"
+         x="199.98436"
+         y="282.36218" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4815-7"
+         y="294.84021"
+         x="247.27684"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+         xml:space="preserve"><tspan
+           y="294.84021"
+           x="247.27684"
+           id="tspan4817-9"
+           sodipodi:role="line">Sistemas</tspan><tspan
+           id="tspan4819-2"
+           y="307.34021"
+           x="247.27684"
+           sodipodi:role="line">mecánicos</tspan></text>
+    </g>
   </g>
 </svg>
