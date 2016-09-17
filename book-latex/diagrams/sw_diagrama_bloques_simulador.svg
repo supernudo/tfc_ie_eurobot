@@ -11,7 +11,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="741"
+   width="626"
    height="386"
    id="svg2"
    version="1.1"
@@ -798,6 +798,48 @@
        x2="-825"
        y2="161.28801"
        gradientUnits="userSpaceOnUse" />
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7772-97"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="scale(0.4,0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleInM-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7763-33"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="scale(-0.4,-0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-83"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7772-79"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="scale(0.4,0.4)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -806,15 +848,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="312.63295"
-     inkscape:cy="188.11384"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="320.87867"
+     inkscape:cy="117.99135"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="true"
      inkscape:snap-object-midpoints="false"
-     inkscape:snap-grids="true"
+     inkscape:snap-grids="false"
      inkscape:snap-center="true"
      showguides="false"
      inkscape:guide-bbox="true"
@@ -840,35 +882,35 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="1150.5px"
-       originy="-589.5px" />
+       originx="1130.5px"
+       originy="-584.5px" />
     <sodipodi:guide
        orientation="1,0"
-       position="1265.5782,295.32715"
+       position="1245.5782,300.32715"
        id="guide5660" />
     <sodipodi:guide
        orientation="1,0"
-       position="1708.9486,241.58334"
+       position="1688.9486,246.58334"
        id="guide5754" />
     <sodipodi:guide
        orientation="0,1"
-       position="1337.7484,105.45927"
+       position="1317.7484,110.45927"
        id="guide5865" />
     <sodipodi:guide
        orientation="0,1"
-       position="1307.6878,413.89857"
+       position="1287.6878,418.89857"
        id="guide5889" />
     <sodipodi:guide
        orientation="1,0"
-       position="1882.2973,259.61286"
+       position="1862.2973,264.61286"
        id="guide5946" />
     <sodipodi:guide
        orientation="1,0"
-       position="1570.8318,366.38844"
+       position="1550.8318,371.38844"
        id="guide6711" />
     <sodipodi:guide
        orientation="0,1"
-       position="1189.8306,304.61286"
+       position="1169.8306,309.61286"
        id="guide4017" />
   </sodipodi:namedview>
   <metadata
@@ -887,13 +929,13 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(1150.5,-76.862228)">
+     transform="translate(1130.5,-81.862228)">
     <rect
        style="fill:#00ceff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-9-0-8-9"
        width="625"
-       height="380"
-       x="-1110"
+       height="385"
+       x="-1130"
        y="82.362228" />
     <text
        xml:space="preserve"
@@ -964,15 +1006,15 @@
          y="111.56127" /></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol Bold"
-       x="-1061.5723"
-       y="99.784103"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol Bold"
+       x="-1060.858"
+       y="104.06982"
        id="text5782-9-2"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5784-6-2"
-         x="-1061.5723"
-         y="99.784103">LINUX HOST</tspan></text>
+         x="-1060.858"
+         y="104.06982">LINUX HOST</tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-2-2-4"
@@ -982,18 +1024,18 @@
        y="111.86222" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-979.69238"
-       y="131.00237"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-981.88086"
+       y="131.48039"
        id="text5656-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-979.69238"
-         y="131.00237"
+         x="-981.88086"
+         y="131.48039"
          id="tspan4238-7">TERMINAL SERIE / FRONTEND</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        x="-930.55176"
        y="159.7841"
        id="text5260"
@@ -1032,7 +1074,7 @@
        y="252.10338" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        x="-1040.2148"
        y="216.00235"
        id="text5782-4-9-2"
@@ -1050,40 +1092,40 @@
        y="222.10341" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-1032.123"
-       y="238.33144"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-1043.0508"
+       y="239.07704"
        id="text5648-7-2-2-3"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5650-1-6-8-6"
-         x="-1032.123"
-         y="238.33144">Interfaz de comandos</tspan></text>
+         x="-1043.0508"
+         y="239.07704">Interfaz de comandos</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-1030.8389"
-       y="298.53168"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-1041.5098"
+       y="299.31729"
        id="text5640-2-0-80"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5642-5-6-2"
-         x="-1030.8389"
-         y="298.53168">Abstracción del robot</tspan></text>
+         x="-1041.5098"
+         y="299.31729">Abstracción del robot</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-1026.5322"
-       y="267.36221"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-1036.3418"
+       y="267.91394"
        id="text5648-7-2-1"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5650-1-6-0"
-         x="-1026.5322"
-         y="267.36221">Estrategia de juego</tspan></text>
+         x="-1036.3418"
+         y="267.91394">Estrategia de juego</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -703.24456,351.9378 0,0"
+       d="m -742.68656,351.6878 0,0"
        id="path5971-5"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0" />
@@ -1096,29 +1138,29 @@
        y="392.36224" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-977.36334"
-       y="412.62103"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-977.336"
+       y="413.17279"
        id="text5648-7-2-7-4-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-977.36334"
-         y="412.62103"
+         x="-977.336"
+         y="413.17279"
          id="tspan20502">Simulador robot principal</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-907.72461"
-       y="356.00726"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-903.82227"
+       y="357.36221"
        id="text5365-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5367-5"
-         x="-907.72461"
-         y="356.00726">PWM</tspan></text>
+         x="-903.82227"
+         y="357.36221">PWM</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        x="-1080.918"
        y="192.22064"
        id="text5523"
@@ -1127,83 +1169,83 @@
          id="tspan5525"
          x="-1080.918"
          y="192.22064"
-         style="font-weight:bold;-inkscape-font-specification:Symbol Bold">ROBOT PRINCIPAL</tspan></text>
+         style="font-weight:bold;-inkscape-font-specification:Symbol Bold;font-size:12px">ROBOT PRINCIPAL</tspan></text>
     <rect
        style="fill:#00f873;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-9-0-7-7-5-8"
        width="230.48438"
        height="228.01756"
-       x="-745.48438"
-       y="209.34467" />
+       x="-784.92639"
+       y="209.09467" />
     <rect
        style="fill:#c5c5c5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-9-0-7-7-56"
        width="206.01562"
        height="137.48244"
-       x="-735"
-       y="232.36223" />
+       x="-774.44202"
+       y="232.11223" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-5-1-1-1"
        width="195"
        height="25.000015"
-       x="-729.98438"
-       y="281.10342" />
+       x="-769.42639"
+       y="280.85342" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-696.41504"
-       y="244.70305"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-735.85706"
+       y="244.45305"
        id="text5782-4-9-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5784-9-2-9"
-         x="-696.41504"
-         y="244.70305">MAIN DSPIC</tspan></text>
+         x="-735.85706"
+         y="244.45305">MAIN DSPIC</tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-2-0-8-2-8"
        width="195"
        height="25"
-       x="-729.98438"
-       y="251.10339" />
+       x="-769.42639"
+       y="250.85339" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-686.62305"
-       y="265.57269"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-737.4928"
+       y="267.82703"
        id="text5648-7-2-2-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5650-1-6-8-8"
-         x="-686.62305"
-         y="265.57269">Interfaz de comandos</tspan></text>
+         x="-737.4928"
+         y="267.82703">Interfaz de comandos</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-685.32324"
-       y="296.5141"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-735.95178"
+       y="298.06729"
        id="text5640-2-0-1"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5642-5-6-0"
-         x="-685.32324"
-         y="296.5141">Abstracción del robot</tspan></text>
+         x="-735.95178"
+         y="298.06729">Abstracción del robot</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-736.40234"
-       y="224.20306"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-775.84436"
+       y="223.95306"
        id="text5523-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5525-6"
-         x="-736.40234"
-         y="224.20306"
-         style="font-weight:bold;-inkscape-font-specification:Symbol Bold">ROBOT SECUNDARIO</tspan></text>
+         x="-775.84436"
+         y="223.95306"
+         style="font-weight:bold;-inkscape-font-specification:Symbol Bold;font-size:12px">ROBOT SECUNDARIO</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        x="-955.46631"
        y="386.00238"
        id="text5365-4-4"
@@ -1212,24 +1254,24 @@
          id="tspan5367-5-0"
          x="-955.46631"
          y="386.00238"
-         style="text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero">PULSOS</tspan></text>
+         style="text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;font-size:12px">PULSOS</tspan></text>
     <rect
        style="fill:#ff7df3;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-2-2-9-6"
-       width="370"
+       width="350"
        height="30"
        x="-860"
        y="112.36223" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-639.79865"
-       y="129.82219"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-685.05859"
+       y="130.61418"
        id="text3971-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-639.79865"
-         y="129.82219"
+         x="-685.05859"
+         y="130.61418"
          id="tspan4236-7">SIMULADOR DE CAMPO DE JUEGO</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:url(#TriangleOutM)"
@@ -1241,42 +1283,35 @@
        sodipodi:nodetypes="ccc"
        inkscape:connector-curvature="0"
        id="path19655"
-       d="m -775,147.36223 0,260 -100,0"
+       d="m -820,147.36223 0,260 -55,0"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:none" />
     <path
        sodipodi:nodetypes="ccc"
        inkscape:connector-curvature="0"
        id="path19655-2"
-       d="m -850,142.36223 0,255 -20,0"
+       d="m -840,142.36223 0,255 -30,0"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutM)" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-777.60498"
-       y="377.32806"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-244.39153"
+       y="-824.49609"
        id="text19689-8"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
-         id="tspan19691-3"
-         x="-777.60498"
-         y="377.32806">Pos. (x, y, θ)</tspan><tspan
-         sodipodi:role="line"
-         x="-777.60498"
-         y="390.10638"
-         id="tspan19693-0">robot</tspan><tspan
-         sodipodi:role="line"
-         x="-777.60498"
-         y="402.60638"
-         id="tspan21474">principal</tspan></text>
+         x="-244.39153"
+         y="-824.49609"
+         id="tspan21474">Pos. (x, y, θ) robot principal</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:url(#TriangleOutM)"
-       d="m -740,422.36223 -130,0"
+       d="m -780,422.36223 -90,0"
        id="path5258-0-8-5"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        x="-978.33276"
        y="337.87314"
        id="text20504"
@@ -1303,16 +1338,16 @@
     <text
        sodipodi:linespacing="125%"
        id="text4815-8-3"
-       y="324.84027"
-       x="-1025.2075"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       y="323.70648"
+       x="-1028.2412"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        xml:space="preserve"><tspan
-         y="324.84027"
-         x="-1025.2075"
+         y="323.70648"
+         x="-1028.2412"
          sodipodi:role="line"
          id="tspan5211-0-5">Sistemas</tspan><tspan
-         y="337.34027"
-         x="-1025.2075"
+         y="338.70648"
+         x="-1028.2412"
          sodipodi:role="line"
          id="tspan5253-47-7">mecánicos</tspan></text>
     <path
@@ -1323,19 +1358,19 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-930.18799"
-       y="324.84027"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-928.22559"
+       y="323.83588"
        id="text5636-1-3-3-9"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5638-0-6-8-4"
-         x="-930.18799"
-         y="324.84027">Plataforma</tspan><tspan
+         x="-928.22559"
+         y="323.83588">Plataforma</tspan><tspan
          id="tspan4813-3-5"
          sodipodi:role="line"
-         x="-930.18799"
-         y="337.34027">robótica base</tspan></text>
+         x="-928.22559"
+         y="338.83588">robótica base</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:none"
        d="m -935,387.36223 0,-45"
@@ -1350,19 +1385,15 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-805.00073"
-       y="434.70111"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-825.60449"
+       y="458.28214"
        id="text19689-8-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-805.00073"
-         y="434.70111"
-         id="tspan20954">Comandos estrategia,</tspan><tspan
-         sodipodi:role="line"
-         x="-805.00073"
-         y="447.47943"
-         id="tspan20958">información estado</tspan></text>
+         x="-825.60449"
+         y="458.28214"
+         id="tspan20958">Comandos estrategia / información estado</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM)"
        d="m -1080,422.36223 -25,0 0,-125 25,0"
@@ -1371,60 +1402,61 @@
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-983.54492"
-       y="450.121"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-275.46182"
+       y="-1109.4961"
        id="text19689-0"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
-         x="-983.54492"
-         y="450.121"
+         x="-275.46182"
+         y="-1109.4961"
          id="tspan19693-6">Pos. (x, y, d, α) oponentes</tspan><tspan
          sodipodi:role="line"
-         x="-983.54492"
-         y="462.89932"
+         x="-275.46182"
+         y="-1094.1621"
          id="tspan21318" /></text>
     <rect
        style="fill:#ff7df3;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-9-0-7-7-0-5-6-4"
        width="204.99988"
        height="35.000015"
-       x="-734.5"
-       y="391.86221" />
+       x="-773.94202"
+       y="391.61221" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-631.86334"
-       y="412.121"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-671.51239"
+       y="413.58585"
        id="text5648-7-2-7-4-5-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-631.86334"
-         y="412.121"
+         x="-671.51239"
+         y="413.58585"
          id="tspan20502-5">Simulador robot secundario</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-562.22461"
-       y="355.50723"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-595.26953"
+       y="356.73624"
        id="text5365-4-82"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5367-5-6"
-         x="-562.22461"
-         y="355.50723">PWM</tspan></text>
+         x="-595.26953"
+         y="356.73624">PWM</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-609.96631"
-       y="385.50235"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-649.40833"
+       y="385.25235"
        id="text5365-4-4-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5367-5-0-6"
-         x="-609.96631"
-         y="385.50235"
-         style="text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero">PULSOS</tspan></text>
+         x="-649.40833"
+         y="385.25235"
+         style="text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;font-size:12px">PULSOS</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -1441,132 +1473,175 @@
        id="rect2985-3-3-5-1-2-9-68-9-6"
        width="94.984367"
        height="30.258781"
-       x="-729.98438"
-       y="311.10342" />
+       x="-769.42639"
+       y="310.85342" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-5-1-2-9-3-33-9-2"
        width="95.000008"
        height="29.999992"
-       x="-630"
-       y="311.36221" />
+       x="-669.44202"
+       y="311.11221" />
     <text
        sodipodi:linespacing="125%"
        id="text4815-8-3-8"
-       y="324.34024"
-       x="-679.70752"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       y="322.95645"
+       x="-722.18323"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
        xml:space="preserve"><tspan
-         y="324.34024"
-         x="-679.70752"
+         y="322.95645"
+         x="-722.18323"
          sodipodi:role="line"
          id="tspan5211-0-5-9">Sistemas</tspan><tspan
-         y="336.84024"
-         x="-679.70752"
+         y="337.95645"
+         x="-722.18323"
          sodipodi:role="line"
          id="tspan5253-47-7-6">mecánicos</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:none"
-       d="m -604.5,346.86217 0,45"
+       d="m -643.942,346.61217 0,45"
        id="path5258-0-8-7-0"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-584.68799"
-       y="324.34024"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-622.1676"
+       y="323.08585"
        id="text5636-1-3-3-9-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5638-0-6-8-4-0"
-         x="-584.68799"
-         y="324.34024">Plataforma</tspan><tspan
+         x="-622.1676"
+         y="323.08585">Plataforma</tspan><tspan
          id="tspan4813-3-5-1"
          sodipodi:role="line"
-         x="-584.68799"
-         y="336.84024">robótica base</tspan></text>
+         x="-622.1676"
+         y="338.08585">robótica base</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:none"
-       d="m -589.5,386.86217 0,-45"
+       d="m -628.942,386.61217 0,-45"
        id="path5258-0-8-7-5-0"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:url(#TriangleOutM)"
-       d="m -684.5,386.86217 0,-40"
+       d="m -723.942,386.61217 0,-40"
        id="path5258-0-8-2-1"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
-    <path
-       sodipodi:nodetypes="ccc"
-       inkscape:connector-curvature="0"
-       id="path19655-4"
-       d="m -495,147.36223 0,260 -35,0"
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:none" />
-    <path
-       sodipodi:nodetypes="ccc"
-       inkscape:connector-curvature="0"
-       id="path19655-2-5"
-       d="m -504.884,142.86223 0,255 -20,0"
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutM)" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-3-3-2-2-4-9"
        width="194.5"
        height="30.50001"
-       x="-727.25"
-       y="152.11223" />
+       x="-766.69202"
+       y="151.86223" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-629.69238"
-       y="171.00237"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-669.07288"
+       y="171.48039"
        id="text5656-7-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-629.69238"
-         y="171.00237"
+         x="-669.07288"
+         y="171.48039"
          id="tspan4238-7-5">TERMINAL SERIE / FRONTEND</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:url(#TriangleOutM)"
-       d="m -590,227.36223 0,-40"
+       d="m -629.442,227.11223 0,-40"
        id="path5258-0-8-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-587.1875"
-       y="201.09026"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-626.62952"
+       y="200.84026"
        id="text5260-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-587.1875"
-         y="201.09026"
+         x="-626.62952"
+         y="200.84026"
          id="tspan19619-0">stdio</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM)"
-       d="m -734.558,411.61223 -25,0 0,-115 25,0"
+       d="m -774,412.36223 -21,0 0,-116 21,0"
        id="path17091-3-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
-       x="-842.22168"
-       y="159.65227"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-275.36221"
+       y="-845"
        id="text19689"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
-         id="tspan19691"
-         x="-842.22168"
-         y="159.65227"
-         style="fill:#000000;fill-opacity:1;stroke:none">Pos. (x, y)</tspan><tspan
-         sodipodi:role="line"
-         x="-842.22168"
-         y="172.43059"
+         x="-275.36221"
+         y="-845"
          id="tspan19693"
-         style="fill:#000000;fill-opacity:1;stroke:none">oponentes</tspan></text>
+         style="font-size:12px;fill:#000000;fill-opacity:1;stroke:none">Pos. (x, y) oponentes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-265.46182"
+       y="-799.49609"
+       id="text19689-0-0"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-265.46182"
+         y="-799.49609"
+         id="tspan19693-6-9">Pos. (x, y, d, α) oponentes</tspan><tspan
+         sodipodi:role="line"
+         x="-265.46182"
+         y="-784.16211"
+         id="tspan21318-7" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM-10);marker-end:url(#TriangleOutM)"
+       d="m -660,432.36223 0,30 -320,0 0,-30"
+       id="path17091-3-6-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path19655-3"
+       d="m -514.884,147.86223 0,260 -55,0"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:none" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path19655-2-7"
+       d="m -534.884,142.86223 0,255 -30,0"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutM)" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-241.39153"
+       y="-519.49609"
+       id="text19689-8-8"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-241.39153"
+         y="-519.49609"
+         id="tspan21474-7">Pos. (x, y, θ) robot principal</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
+       x="-272.36221"
+       y="-540"
+       id="text19689-4"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-272.36221"
+         y="-540"
+         id="tspan19693-1"
+         style="font-size:12px;fill:#000000;fill-opacity:1;stroke:none">Pos. (x, y) oponentes</tspan></text>
   </g>
 </svg>

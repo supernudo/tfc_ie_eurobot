@@ -41,6 +41,11 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 \end{FraseCelebre}
 
 
+La implementación software de un robot de Eurobot es la parte del desarrollo que conlleva más tiempo. Sin embargo
+
+La mayor parte de la implementación software de los robots se ha realizado a partir de código desarrollado por terceros. Concretamente a partir de las librerías y del código de los robots desarrollados por equipo Microb Technology. Dichas librerías han sido migradas y modificadas para ser compatibles y poder soportar la arquitectura HW desarrollada. Dicho proceso de migración ha permitido ampliar el conocimiento sobre ingeniería del software a partir del estudio y comprensión del código fuente y su organización.
+
+
 \section{Arquitectura software}
 
 \begin{figure}[H]
@@ -49,13 +54,83 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 \caption[]{Diagrama de bloques software del robot principal y secundario}
 \end{figure}
 
+\section{Librerias Aversive4dspic y Aversive}
+
+La implementación del SW de los robots se ha realizado a partir de las librerías Aversive, desarrolladas por el equipo de Eurobot Microb Technology. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. Las librerías Aversive4dspic son una migración de las librerías Aversive a microcontroladores dsPIC de Microchip.
+
+Para realizar la migración de las librerías Aversive ha sido necesario desarrollar la capa de \emph{drivers de dispositivos HW} dependiente directamente del microcontrolador dsPIC, manteniendo las interfaces de los drivers equivalentes de microcontroladores AVR. Además ha sido necesario migrar dependencias específicas del compilador utilizado por las plataformas AVR al equivalente en el compilador para dsPICs. 
+
+Las librerías Aversive4dspic mantienen la compatibilidad hacia atrás y permiten trabajar también con plataformas AVR. El código nuevo desarrollado o las modificaciones de código existente ha sido realizadas siguiendo la misma convención de código de las librerías originales.
+
+Las librerías AVR utilizan un \emph{toolchain} basado en la herramienta \texttt{make} y su flujo de trabajo. Así a partir de un fichero \texttt{makefile} es posible configurar el proyecto para utilizar los módulos necesarios de la librería, especificar los ficheros de código fuente, compilar el código fuente y programar el microcontrolador. Para plataformas dsPIC, las librerías Aversive4dspic de momento únicamente soportan la configuración del los módulos a utilizar en el proyecto utilizando la herramienta \texttt{make}. La compilación y programación se realiza mediante el entorno de desarrollo de Microchip MPlab y MPlabX.
+
+Las estructura de las librerías se divide en 5 carpetas principales:
+
+\begin{itemize}
+\item \textbf{\texttt{config}}: ficheros relacionados con la configuración de las librerías.
+
+\item \textbf{\texttt{include}}: ficheros de cabecera generales, no relacionados con los módulos de la librería.
+
+\item \textbf{\texttt{mk}}: ficheros \texttt{makefiles} de las librerias (proyecto, módulos y plantillas)
+
+\item \textbf{\texttt{modules}}: módulos de la librería. Un módulo es una pequeña librería con una funcionalidad específica.
+
+\item \textbf{\texttt{projects}}: ejemplos de proyecto.
+\end{itemize}
+
+Los módulos se encuentran organizados en las siguientes carpetas:
+
+\begin{itemize}
+\item \textbf{\texttt{modules/base}}: módulos comunes y frecuentemente utilizados.
+\item \textbf{\texttt{modules/comm}}: módulos de comunicación (uart, spi, i2c, ...).
+\item \textbf{\texttt{modules/cryto}}: módulos para operaciones de cifrado de datos.
+\item \textbf{\texttt{modules/debug}}: módulos de ayuda a la depuración.
+\item \textbf{\texttt{modules/devices}}: módulos de dispositivos específicos no dependientes del HW del microcontrolador (LCDs, motores, ...).
+\item \textbf{\texttt{modules/encoding}}: módulos de codificación (base 64, \emph{hamming}, ...).
+\item \textbf{\texttt{modules/hardware}}: módulos de interfaces del microcontrolador (\emph{timers}, ADC, ...).
+\item \textbf{\texttt{modules/ihm}}: módulos de interfaz hombre-maquina (menues, interfaz de comandos, ...)
+\end{itemize}
+
+La implementación SW de un robot de Eurobot utiliza algunos de los módulos de la librería.
+
+\subsection{Módulos base utilizados}
+
+Los modulos base ()La librería Aversive4dspic tiene 
+
+Modulos: cirbuf, fixed\_point, geometry, vect2
+
+\subsection{Planificador de eventos}
+
+Módulo scheduler
+
+\subsection{Medida de tiempo}
+
+Modulo time
+
+\subsection{Interfaz de comandos}
+
+Modulos: vt100, rdline, parse
+
+\subsection{Mensajes de depuración}
+
+Módulo error
+
 \section{Drivers de dispositivos HW}
+
+\subsection{UART}
+\subsection{I2C}
+\subsection{SPI}
+\subsection{PWM servo}
+\subsection{PWM motor control}
+\subsection{DAC motor control}
+\subsection{Encoders dsPIC}
+
 
 \section{Plataforma robótica base}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.9\textwidth]{Asserv_graph}
+\includegraphics[width=.9\textwidth]{sw_diagrama_plataforma_robotica}
 \caption[]{Diagrama de organización y funcionamiento SW de la plataforma robótica base}
 \end{figure}
 
@@ -64,7 +139,7 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 \subsection{Detección de bloqueos}
 \subsection{Gestión de trayectorias}
 
-\section{Abstracción robot}
+\section{Abstracción del robot}
 [actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
 
 \section{Estrategia de juego}
