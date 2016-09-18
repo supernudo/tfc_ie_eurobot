@@ -27,7 +27,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Implementación software}
+\chapter{Desarrollo software}
 \label{cha_implementacion_sofware}
 
 \begin{FraseCelebre}
@@ -41,28 +41,33 @@ Albert Einstein, en \emph{The Saturday Evening Post}
 \end{FraseCelebre}
 
 
-La implementación software de un robot de Eurobot es la parte del desarrollo que conlleva más tiempo. Sin embargo
+El desarrollo software del robot de Eurobot se organiza en capas funcionales, de forma que las capas superiores implementan funciones más abstractas que las inferiores. La 4 capas principales, de mayor a menor nivel de abstracción, son las siguientes:
 
-La mayor parte de la implementación software de los robots se ha realizado a partir de código desarrollado por terceros. Concretamente a partir de las librerías y del código de los robots desarrollados por equipo Microb Technology. Dichas librerías han sido migradas y modificadas para ser compatibles y poder soportar la arquitectura HW desarrollada. Dicho proceso de migración ha permitido ampliar el conocimiento sobre ingeniería del software a partir del estudio y comprensión del código fuente y su organización.
+\begin{enumerate}
+\item Estrategia de juego
+\item Temática del juego
+\item Sistemas mecánicos
+\item Plataforma robótica base
+\end{enumerate}
+
+La capa \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. La capa  \emph{sistemas mecánicos} controlan los mecanismos utilizados por el robot para manipular los elementos de juego. Ambas partes aúnan el total de las funcionalidades del robot diseñado para una temática de juego concreta. La capa \emph{temática del juego} integra y sincroniza las funcionalidades de la plataforma robótica y los sistemas mecánicos para implementar funcionalidades propias de una temática concreta de Eurobot.
+
+Así por ejemplo, si la capa de estrategia decide recolectar el tomate 1 llama a funciones del tipo \texttt{harvest\_tomato(TOMATO\_1)} de la capa de temática de juego, esta utilizará funciones del tipo \texttt{goto\_avoid\_xy(TOMATO\_1\_X, TOMATO\_1\_Y)} de la plataforma robótica para moverse evitando los obstáculos hacia la posición del tomate y, funciones del tipo \texttt{system\_tomatoes\_set\_mode(MODE\_HARVEST)} de la capa de sistemas mecánicos para recolectar el tomate.
 
 
-\section{Arquitectura software}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{sw_diagrama_bloques}
-\caption[]{Diagrama de bloques software del robot principal y secundario}
-\end{figure}
 
-\section{Librerias Aversive4dspic y Aversive}
+\section{Librerias Aversive y Aversive4dspic}
 
-La implementación del SW de los robots se ha realizado a partir de las librerías Aversive, desarrolladas por el equipo de Eurobot Microb Technology. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. Las librerías Aversive4dspic son una migración de las librerías Aversive a microcontroladores dsPIC de Microchip.
+La implementación SW de los robots se ha realizado a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. 
 
-Para realizar la migración de las librerías Aversive ha sido necesario desarrollar la capa de \emph{drivers de dispositivos HW} dependiente directamente del microcontrolador dsPIC, manteniendo las interfaces de los drivers equivalentes de microcontroladores AVR. Además ha sido necesario migrar dependencias específicas del compilador utilizado por las plataformas AVR al equivalente en el compilador para dsPICs. 
+Las librerías Aversive4dspic son una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por en el HW desarrollado para los robots. Para realizar la migración de las librerías Aversive ha sido necesario desarrollar la capa de \emph{drivers de dispositivos HW} dependiente directamente del microcontrolador dsPIC, manteniendo las interfaces de los drivers equivalentes de microcontroladores AVR. Además ha sido necesario migrar dependencias específicas del compilador utilizado por las plataformas AVR al equivalente en el compilador para dsPICs. 
 
 Las librerías Aversive4dspic mantienen la compatibilidad hacia atrás y permiten trabajar también con plataformas AVR. El código nuevo desarrollado o las modificaciones de código existente ha sido realizadas siguiendo la misma convención de código de las librerías originales.
 
-Las librerías AVR utilizan un \emph{toolchain} basado en la herramienta \texttt{make} y su flujo de trabajo. Así a partir de un fichero \texttt{makefile} es posible configurar el proyecto para utilizar los módulos necesarios de la librería, especificar los ficheros de código fuente, compilar el código fuente y programar el microcontrolador. Para plataformas dsPIC, las librerías Aversive4dspic de momento únicamente soportan la configuración del los módulos a utilizar en el proyecto utilizando la herramienta \texttt{make}. La compilación y programación se realiza mediante el entorno de desarrollo de Microchip MPlab y MPlabX.
+Las librerías Aversive utilizan un \emph{toolchain} basado en la herramienta \texttt{make}. Así, a partir de un fichero \texttt{makefile} es posible configurar el proyecto para utilizar los módulos necesarios de la librería, especificar los ficheros de código fuente, compilar el código fuente y programar el microcontrolador. Además de soportar la compilación cruzada para microcontroladores AVR, estas librerías soportan la compilación y ejecución en \emph{HOST} para plataformas GNU/Linux.
+
+Respecto las librerías Aversive4dspic, soportan la creación de un proyecto y configuración de los módulos a utilizar mediante la herramienta \texttt{make} y la compilación en \emph{HOST}. La compilación cruzada para microcontroladores dsPIC y su programación se realiza mediante el entorno de desarrollo de Microchip MPlab y MPlabX.
 
 Las estructura de las librerías se divide en 5 carpetas principales:
 
@@ -91,31 +96,92 @@ Los módulos se encuentran organizados en las siguientes carpetas:
 \item \textbf{\texttt{modules/ihm}}: módulos de interfaz hombre-maquina (menues, interfaz de comandos, ...)
 \end{itemize}
 
-La implementación SW de un robot de Eurobot utiliza algunos de los módulos de la librería.
+Algunos módulos incluyen una configuración previa a la compilación. En estos casos, los módulos tienen asociado un fichero de cabecera de configuración con el formato \textttt{\emph{nombre\_modulo}\_config.h}. Estos ficheros se encuentran en la carpeta \texttt{config} de cada módulo. Durante la configuración de un proyecto Aversive, estos ficheros son copiados a la carpeta raíz del proyecto, donde pueden ser modificados para ajustar la configuración a las necesidades del proyecto.
 
-\subsection{Módulos base utilizados}
+Por otro lado, cada uno de los módulos de la librerías incluye un proyecto de prueba. Este proyecto sirve para probar el correcto funcionamiento del módulo durante su desarrollo y como ejemplo de uso para aprender a utilizarlo. Los proyectos de prueba se encuentran en la carpeta \texttt{test} de cada proyecto.
 
-Los modulos base ()La librería Aversive4dspic tiene 
+De cara a la implementación SW del robot de Eurobot, cada capa utiliza ciertos módulos específicos de la librería. Sin embargo, hay algunos módulos que se utilizan transversalmente a todas las capas y que implementan funcionalidades comunes y útiles a todas ellas. Las siguientes secciones describen estas funcionalidades y los módulos utilizados en su implementación.
 
-Modulos: cirbuf, fixed\_point, geometry, vect2
+\subsection{Herramientas matemáticas}
+
+La librería incluye varios módulos matemáticos que permiten realizar operaciones matemáticas en punto fijo o con objetos como polígonos y vectores:
+
+\begin{itemize}
+\item \textbf{\texttt{modules/base/math/fixed\_point}}: operaciones matemáticas en punto fijo.
+\item \textbf{\texttt{modules/base/math/geometry}}: operaciones con puntos, lineas, polígonos y círculos.
+\item \textbf{\texttt{modules/base/math/vect2}}: operaciones con vectores.
+\end{itemize}
+
+Estos módulos son utilizados por ejemplo en la implementación de los sistemas de control o en la evitación de obstáculos del robot.
+
+\subsection{Gestión de \emph{buffers} de datos}
+
+La implementación de interfaces de comunicación (UART, I2C, SPI, ...) necesitan de \emph{buffers} donde almacenar los datos que van a ser transmitidos o que se han recibido. Para ello puede utilizarse el módulo \texttt{modules/comm/cirbuf} que permite crear y gestionar buffers de datos circulares. 
 
 \subsection{Planificador de eventos}
 
-Módulo scheduler
+El módulo \textbf{\texttt{modules/base/scheduler}} implementa un planificador de eventos con prioridad. Permite crear eventos de forma dinámica. Los eventos pueden ser periódicos o eventuales, lo primeros llevan asociado un periodo y los segundos un instante de ejecución a partir del momento de creación.
+
+El módulo \emph{scheduler} está pensado para ejecutarse en la interrupción de un \emph{timer}, el periodo de dicho \emph{timer} constituye el periodo base del \emph{scheduler} (por ejemplo 1ms). Cada periodo se evalúa que evento ejecutar. Dado que los eventos se ejecutan en un contexto de interrupción las funciones asociadas a estos han de ser de corta duración y no bloqueantes.
+
+Mediante eventos del \emph{scheduler} el robot implementa por ejemplo la lectura de sensores cada 10ms, los sistemas de control cada 5ms o los protocolos de comunicación con la baliza o el robot secundario cada 10ms.  
 
 \subsection{Medida de tiempo}
 
-Modulo time
+El módulo \textbf{\texttt{modules/base/time}} permite medir de tiempo del sistema. Este módulo se ejecuta como un evento del \emph{scheduler} y tiene asociado un periodo de tiempo base a partir del cual se realiza la medida de tiempo. Permite obtener el tiempo transcurrido desde su inicialización en horas, minutos, segundos y milisegundos. 
 
-\subsection{Interfaz de comandos}
-
-Modulos: vt100, rdline, parse
+Este módulo permite implementar esperas bloqueantes o no bloqueantes. Por ejemplo, a los 90 segundos los robots han de dejar de jugar y desactivar todos los sistemas. Esta espera se puede implementar de forma precisa a partir de este módulo evaluando periódicamente el número de segundos transcurridos desde el inicio de partido.  
 
 \subsection{Mensajes de depuración}
 
-Módulo error
+El módulo \textbf{\texttt{modules/debug/error}} implementa mensajes de depuración o \emph{logs} que permiten trazar el funcionamiento del software implementado con el fin de verificar su correcta ejecución. Cada mensaje tiene asociado un número de error y un nivel de gravedad (EMERG, ERROR, WARNING, NOTICE y DEBUG). 
 
-\section{Drivers de dispositivos HW}
+El módulo permite definir la función a partir de cual los mensajes son generados para cada nivel de gravedad. En dicha función se define el formato de los mensajes, la información de estos y la interfaz por la cual son transmitidos (UART, SPI, I2C, etc.). 
+
+El software desarrollado para los robots y los módulos de las librerías utilizan el módulo \emph{error}. En este caso, la función que genera los mensajes utiliza la salida estándar (UART) para transmitir los mensajes. Esta función, además, filtra los mensajes por número de error y nivel de gravedad, de forma que sólo aquellos mensajes con números de error habilitados y de nivel de gravedad superior al establecido serán transmitidos, con la excepción de los mensajes de nivel ERROR que serán siempre transmitidos.
+
+
+\subsection{Interfaz de linea comandos}
+
+Las librerías permiten implementar una interfaz de linea comandos similar a la de sistemas GNU/Linux con las siguientes características:
+
+\begin{itemize}
+\item Interfaz de comunicación serie configurable (UART, I2C, SPI, ...).
+\item Caracteres imprimibles y no imprimibles VT100.
+\item Ayuda/información de cada comando.
+\item Completado automático de argumentos y sugerencia del tipo de argumento a introducir.
+\item Tipo de argumentos: texto (\emph{strings}), números enteros (8 y 16 bits) y números decimales (\emph{float}). 
+\item Comprobación de número argumentos y tipo de los argumentos.
+\item Histórico de comandos ejecutados
+\end{itemize}
+
+La interfaz de linea de comandos se implementa a partir de los siguientes módulos:
+
+\begin{itemize}
+\item \textbf{\texttt{modules/ihm/vt100}}: módulo que permite interpretar los caracteres no imprimibles VT100.
+\item \textbf{\texttt{modules/ihm/rdline}}: módulo de lectura de una linea terminada en retorno de carro a través de una interfaz serie de entrada, por ejemplo una UART.
+\item \textbf{\texttt{modules/ihm/parse}}: módulo que realiza la correlación de una linea con los posibles comandos a ejecutar y sus argumentes, y en caso de coincidencia, ejecuta el comando correspondiente.
+\end{itemize}
+
+Los módulos \texttt{rdline} y \texttt{parse} utilizan el módulo \texttt{vt100} para poder interpretar los caracteres no imprimibles como el tabulador o los cursores. Por ejemplo, el tabulador es utilizado para completar un argumento tipo texto o para indicar el tipo del argumento siguiente. Por otro lado, los cursores permiten moverse por el listado de comandos ejecutados.
+
+El módulo \emph{parse} tiene asociado una lista de comandos y cada comando tiene asociado unos parámetros de entrada y una función a ejecutar. A medida que \emph{rdline} recibe una linea utiliza información del la lista de comandos para implementar el completado de argumentos de texto o indicar el tipo del siguiente argumento. Si el comando y sus argumentos coinciden con alguno de los comandos de la lista de comandos, el módulo \emph{parse} ejecuta la función asociada al comando, propagando los argumentos introducidos por la línea de comandos.
+
+En el caso del desarrollo software del robot de Eurobot, la interfaz de linea de comandos constituye la capa de mayor nivel, más abstracta y la interfaz entre el robot y sus desarrolladores. La linea de comandos está presente durante todo el desarrollo del robot e implementa comandos mediante los cuales controlar o probar el funcionamiento de las diferentes capas o niveles del software. Así, hay comandos que permiten controlar directamente el HW del robot, como la generación de señales PWM o la lectura del valor de sensores, o comandos muchos más abstractos que permiten mover el robot hasta una posición (x,y) del campo o iniciar un partido de Eurobot.
+
+ 
+\section{Arquitectura software}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_bloques}
+\caption[]{Diagrama de bloques software del robot principal y secundario}
+\end{figure}
+
+
+\section{Capa de drivers de dispositivos HW}
+
+Incluye los siguietes modulos desarrollados
 
 \subsection{UART}
 \subsection{I2C}
