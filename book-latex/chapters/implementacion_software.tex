@@ -55,8 +55,6 @@ La capa \emph{plataforma robótica} incluye las funcionalidades de desplazamiento
 Así por ejemplo, si la capa de estrategia decide recolectar el tomate 1 llama a funciones del tipo \texttt{harvest\_tomato(TOMATO\_1)} de la capa de temática de juego, esta utilizará funciones del tipo \texttt{goto\_avoid\_xy(TOMATO\_1\_X, TOMATO\_1\_Y)} de la plataforma robótica para moverse evitando los obstáculos hacia la posición del tomate y, funciones del tipo \texttt{system\_tomatoes\_set\_mode(MODE\_HARVEST)} de la capa de sistemas mecánicos para recolectar el tomate.
 
 
-
-
 \section{Librerias Aversive y Aversive4dspic}
 
 La implementación SW de los robots se ha realizado a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. 
@@ -96,7 +94,7 @@ Los módulos se encuentran organizados en las siguientes carpetas:
 \item \textbf{\texttt{modules/ihm}}: módulos de interfaz hombre-maquina (menues, interfaz de comandos, ...)
 \end{itemize}
 
-Algunos módulos incluyen una configuración previa a la compilación. En estos casos, los módulos tienen asociado un fichero de cabecera de configuración con el formato \textttt{\emph{nombre\_modulo}\_config.h}. Estos ficheros se encuentran en la carpeta \texttt{config} de cada módulo. Durante la configuración de un proyecto Aversive, estos ficheros son copiados a la carpeta raíz del proyecto, donde pueden ser modificados para ajustar la configuración a las necesidades del proyecto.
+Algunos módulos incluyen una configuración previa a la compilación. En estos casos, los módulos tienen asociado un fichero de cabecera de configuración con el formato \texttt{nombre\_modulo\_config.h}. Estos ficheros se encuentran en la carpeta \texttt{config} de cada módulo. Durante la configuración de un proyecto Aversive, estos ficheros son copiados a la carpeta raíz del proyecto, donde pueden ser modificados para ajustar la configuración a las necesidades del proyecto.
 
 Por otro lado, cada uno de los módulos de la librerías incluye un proyecto de prueba. Este proyecto sirve para probar el correcto funcionamiento del módulo durante su desarrollo y como ejemplo de uso para aprender a utilizarlo. Los proyectos de prueba se encuentran en la carpeta \texttt{test} de cada proyecto.
 
@@ -172,43 +170,115 @@ En el caso del desarrollo software del robot de Eurobot, la interfaz de linea de
  
 \section{Arquitectura software}
 
-\begin{figure}[H]
+La arquitectura SW desarrollada se definió en el año 2010 durante el desarrollo del robot Tropetero. Por aquel entonces sólo se competía con un robot por equipo, más tarde, en el año 2014 la arquitectura evolucionó hacia la competición con dos robots por equipo. 
+
+La figura \ref{fig_sw_diagrama_bloques} muestra el diagrama de bloques SW de un equipo de dos robots: un robot principal y uno secundario. Ambos robots implementan la misma arquitectura SW diferenciándose únicamente en la forma de implementación. Debido a la complejidad de los sistemas mecánicos del robot principal, éste implementa la arquitectura mediante dos microcontroladores, mientras que el robot secundario utiliza un único microcontrolador. Además, la baliza tipo faro del robot principal constituye un sistema independiente, mientras que la baliza del robot secundario se encuentra integrada en la arquitectura HW y SW del robot. 
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{sw_diagrama_bloques}
 \caption[]{Diagrama de bloques software del robot principal y secundario}
+\label{fig_sw_diagrama_bloques}
 \end{figure}
 
+Cada robot tiene una interfaz serie que permite acceder a la linea de comandos de cada uno utilizando un terminal serie de un ordenador. En el caso del robot principal, utiliza una interfaz serie RS-232, mientras que el robot secundario una interfaz serie  Bluetooth.
 
-\section{Capa de drivers de dispositivos HW}
+Ambos robots y la baliza del robot principal se encuentran conectados mediante sendos canales serie Bluetooth. Estos canales son utilizados para implementar el protocolo de comunicación entre el robot principal y la baliza, y entre el robot principal y el robot secundario. También es posible utilizar estos canales Bluetooth para acceder a la linea de comandos de la baliza y del robot secundario desde el terminal serie del ordenador, a partir de un \emph{bypass} de los datos en el robot principal.
+
+Igualmente, ambos robot utilizan una interfaz I2C para acceder a dispositivos de expansión de recursos como puertos de entrada digitales a los que se conectan sensores. Además, en el caso del robot principal, esta interfaz es utilizada para comunicarse con el microcontrolador esclavo que implementa el control de sistemas mecánicos. Mediante la interfaz I2C se implementa un protocolo de comunicación maestro-esclavo, donde el maestro del bus es el microcontrolador principal.
+
+Por otro lado, como se puede observar en la figura \ref{fig_sw_diagrama_bloques}, la arquitectura SW de cada robot se organiza en las siguientes capas y módulos funcionales:
+
+\begin{description}
+\item \textbf{Drivers de dispositivos HW}
+
+Esta capa permite abstraer los módulos o dispositivos HW del robot, como módulos de comunicación microcontrolador (UART, I2C, SPI, ...) o dispositivos externos a este como servomotores o drivers en puente en H de control de motores. A este nivel se espera trabajar con funciones del tipo \texttt{uart\_send(UART0, dato)} (transmitir un dato por la UART numero 0), o \texttt{pwm\_mc\_set(OUT1,-1000} (fijar el valor y sentido del motor conectado al la salida OUT1 a -1000). 
+
+\item \textbf{Plataforma robótica base}
+
+Módulo que implementa las funcionalidades de la plataforma robótica base: control de posición, odometría, gestión de trayectorias y evitación de obstáculos. Implementa funciones del tipo \texttt{robot\_goto\_xy(1000, 500)} (ir al punto (x=1000, y=500)), o \texttt{robot\_get\_xy()} (obtener la coordenada (x,y) del robot).
+
+\item \textbf{Sistemas mecánicos}
+
+Módulo que abstrae el control de los diferentes sistemas mecánicos del robot diseñados para manipular los elementos de juego. Trabaja con funciones del estilo \texttt{system\_tomatoes\_set\_mode(HARVEST)} (configura el sistema de tomates en modo recolección) o \texttt{system\_tomatoes\_get\_num()} (obtiene el numero de tomates recolectados).
+
+\item \textbf{Temática del juego}
+
+Esta capa permite abstraer completamente las funcionalidades de la plataforma robótica y de los sistemas mecánicos, integra la información de la baliza. De esta forma, a este nivel se trabaja con funciones del tipo \texttt{harvest\_tomato(TOMATO\_1)} (recolectar el tomate 1) en las que se ha de sincronizar los movimientos del robot con los sistemas mecánicos. O también, funciones del tipo \texttt{wait\_traj\_end(END\_TRAJ|END\_TIMER|END\_OBSTACLE)} (esperar al fin de una trayectoria por: punto final, tiempo de partido o por obstáculo en el camino), donde se integran la información de odometría, del tiempo de partido, de la baliza y de los sensores de obstáculos.
+
+
+\item \textbf{Estrategia de juego}
+
+Esta capa implementa la estrategia de juego de un partido así como las diferentes fases de las que se compone un partido. Las funciones esperadas a este nivel son del tipo \texttt{is\_the\_opponent\_in\_zone(ZONE\_TOMATOES\_1)} (¿está el oponente en la zona de los tomates?), o \texttt{goto\_zone(ZONE\_TOMATOES\_1)} (ir a la zona de los tomates), o \texttt{work\_on\_zone(ZONE\_TOMATOES\_1)} (trabajar en la zona de los tomates).
+
+\item \textbf{Linea de comandos}
+
+La linea de comandos permite ejecutar comandos de cualquier módulo o nivel. De esta forma durante el desarrollo de las diferentes capas o módulos, las funcionalidades de estas pueden ser probadas por partes y verificar su correcto funcionamiento. Entre todos los comandos se incluyen aquellos utilizados para configurar la estrategia de partido y ejecutar su inicio. Por ejemplo el comando \texttt{init yellow}, inicializa los robots para jugar en el lado amarillo del campo de juego. Y mediante el comando \texttt{start qualification match}, se ejecuta un partido con la estrategia diseñada para la fase de clasificación de una competición de Eurobot.
+
+\end{description}
+
+Notar que la capa \emph{estrategia de juego} no se encuentra implementada en el robot secundario. Esto es debido a que la estrategia se encuentra centralizada en el robot principal y, es éste, el que decide en todo momento lo que le corresponde hacer al robot secundario. 
+
+Por último, la implementación SW de los sistemas mecánicos a su vez se encuentra organizada en varias capas o módulos. Esto se ve representado en el caso del robot principal de la figura \ref{fig_sw_diagrama_bloques} donde el microcontrolador esclavo implementa únicamente el control de sistema mecánicos. Sin embargo, en el caso del robot secundario estas capas se encuentra integradas en el mismo microcontrolador. 
+
+Las capas y módulos de los que se compone la implementación SW de los sistemas mecánicos son las siguientes: 
+
+\begin{description}
+\item \textbf{Sensores}
+
+Módulo encargado de la adquisición y procesamiento de los sensores de los sistemas mecánicos (finales de carrera, medidores de distancia, detectores de color, etc.). Este módulo implementa funciones del tipo \texttt{sensor\_get(SENSOR1)} para leer el estado del sensor numero 1.
+
+\item \textbf{Actuadores}
+
+Modulo de control de los actuadores de los mecanismos (servomotores, motores, electroválvulas, etc). Este módulo implementa funciones del tipo \texttt{ax12\_set\_pos(AX12\_ID\_1, 512)} para mover el servomotor AX12 a la posición 512.
+
+\item \textbf{Control de mecanismos}
+
+Esta capa abstrae los actuadores y sensores que forman mecanismos funcionales. Por ejemplo, un mecanismo puede ser un brazo robótico formado por varios servomotores y una pinza, o un clasificador de tomates compuesto por un palo movido por un servomotor. De esta forma se utilizan funciones del tipo \texttt{arm\_goto\_xy()} para llevar al brazo a una coordenada, o funciones como \texttt{tomatoes\_clasiffier\_set\_pos(SIDE\_LEFT)} para clasificar un tomate hacia el lado izquierdo.
+
+\item \textbf{Control de sistemas mecánicos}
+
+Esta capa gestiona los diferentes mecanismos de los que se compone un sistema mecánico, e implementa los diferentes modos de funcionamiento de éste. Por ejemplo, un sistema mecánico puede ser el sistema de recolección de tomates. Éste sistema puede estar compuesto por un mecanismo de clasificación de tomates, un sensor detector de presencia de tomates, un mecanismo de almacenamiento y un mecanismo de liberación de los tomates recolectados. El sistema, por ejemplo, puede trabajar en modo \emph{recolectar} o \emph{liberar tomates} y permite \emph{clasificar} los tomates rojos y verdes. Dependiendo del modo de funcionamiento se utilizaran unos mecanismos u otros. 
+
+maquinas de estado ... Las funciones correspondientes a este nivel son del tipo \texttt{do\_sytem\_tomatoes()}
+
+
+
+\end{description}
+
+
+\section{Implementación software}
+
+\subsection{Drivers de dispositivos HW}
 
 Incluye los siguietes modulos desarrollados
 
-\subsection{UART}
-\subsection{I2C}
-\subsection{SPI}
-\subsection{PWM servo}
-\subsection{PWM motor control}
-\subsection{DAC motor control}
-\subsection{Encoders dsPIC}
+%\subsection{UART}
+%\subsection{I2C}
+%\subsection{SPI}
+%\subsection{PWM servo}
+%\subsection{PWM motor control}
+%\subsection{DAC motor control}
+%\subsection{Encoders dsPIC}
 
 
-\section{Plataforma robótica base}
+\subsection{Plataforma robótica base}
 
-\begin{figure}[H]
+\begin{figure}[p]
 \centering
 \includegraphics[width=.9\textwidth]{sw_diagrama_plataforma_robotica}
 \caption[]{Diagrama de organización y funcionamiento SW de la plataforma robótica base}
 \end{figure}
 
-\subsection{Control de posición}
-\subsection{Odometría}
-\subsection{Detección de bloqueos}
-\subsection{Gestión de trayectorias}
+\subsubsection{Control de posición}
+\subsubsection{Odometría}
+\subsubsection{Detección de bloqueos}
+\subsubsection{Gestión de trayectorias}
 
-\section{Abstracción del robot}
+\subsection{Tematica del robot}
 [actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
 
-\section{Estrategia de juego}
+\subsection{Estrategia de juego}
 [tareas secondary robot] | [tareas main robot] > [trayectorias a zonas | trabajo en zonas] > [estrategias partido]
 %		\subsection{Estrategias de partido}
 %			\subsubsection{Estrategia secuencial bloqueante}
@@ -217,7 +287,6 @@ Incluye los siguietes modulos desarrollados
 %			\subsubsection{Estratégia adaptativa}
 %			\subsubsection{Estrategia con dos robots}
 
-\section{Interfaz de comandos}
 
 \section{Simulador de robots}
 
