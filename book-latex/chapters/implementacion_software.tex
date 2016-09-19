@@ -247,12 +247,12 @@ La forma más común de implementar esta capa es mediante máquinas de estado. Por 
 \end{description}
 
 
-\section{Implementación software}
+\section{Implementación funcional}
+A continuación se describe la implementación funcional de los módulos y capas principales de la arquitectura SW del robot de Eurobot. El orden seguido es el mismo en el que se suelen desarrollar, de menor a mayor nivel de abstracción.
 
-\subsection{Drivers de dispositivos HW}
 
-Incluye los siguietes modulos desarrollados
-
+%\subsection{Drivers de dispositivos HW}
+%Incluye los siguietes modulos desarrollados
 %\subsection{UART}
 %\subsection{I2C}
 %\subsection{SPI}
@@ -264,16 +264,54 @@ Incluye los siguietes modulos desarrollados
 
 \subsection{Plataforma robótica base}
 
+Como se puede observar en la figura \ref{fig_sw_diagrama_plataforma_robotica}, la plataforma robótica base se sitúa entre la capa \emph{Drivers de dispositivos HW} y la capa \emph{Temática del juego}, e implementa los siguientes bloques funcionalidades del robot:
+
+\begin{itemize}
+\item Gestión de trayectorias
+\item Control de posición
+\item Detección de bloqueos
+\item Posicionamiento por odometría
+\end{itemize}
+
+Cada uno de ellos utiliza uno o varios módulos de las librerías Aversive4dspic y tienen asociado un periodo de ejecución. 
+
+
+La gestión de trayectorias utiliza los módulos \texttt{obstable_avoidance} y \texttt{trajectory_manager}:
+
+\begin{description}
+\item \textbf{\textttt{trajectory_manager}}:
+
+A partir de un punto de destino del robot y de la posición actual del mismo, este módulo calcula la trayectoria para alcanzar dicho punto. El fin de la trayectoria se obtiene mediante la lectura del estado de la misma. Para alcanzar el punto de destino, pueden ser necesarios varios movimientos, las correspondientes a consignas de posición de estos son procesadas por el bloque de control de posición.
+
+\item \textbf{\textttt{obstacle_avoidance}}:
+
+Este módulo permite a partir de un punto de destino del robot y una lista de obstáculos (representados por polígonos) obtener el camino más corto para llegar a dicho punto. Como resultado el módulo devuelve la lista de puntos que forman el camino a seguir.
+\end{description}
+
+Estos dos módulo permiten por ejemplo, implementar a nivel de temática del juego una función que permita llevar al robot a un punto determinado del campo. La temática de juego conoce el campo de juego, la posición de sus elementos y puede acceder a la información de la posición de los opoenentes dada por la baliza. la función \texttt{goto_avoid(x,y)} a partir de la cual
+
+
+ El primero permite a a partir de un punto de destino, calcular el camino más corto evitando los obstáculos del campo y a los oponentes. Dicho camino se representa por una lista de puntos por los que el robot ha de pasar. El modulo \texttt{trajectory_manager} permite llevar al robot hacia un punto determinado. 
+
+
+En esta caso la figura \ref{fig_sw_diagrama_plataforma_robotica} representa el funcionamiento de 
+
+
+La lectura de los encoders de las ruedas libres del robot y el control de los motores de tracción es realizado por el control de posición a través de la capa de drivers HW. 
+
 \begin{figure}[p]
 \centering
 \includegraphics[width=.9\textwidth]{sw_diagrama_plataforma_robotica}
 \caption[]{Diagrama de organización y funcionamiento SW de la plataforma robótica base}
+\label{fig_sw_diagrama_plataforma_robotica}
 \end{figure}
 
 \subsubsection{Control de posición}
 \subsubsection{Odometría}
 \subsubsection{Detección de bloqueos}
 \subsubsection{Gestión de trayectorias}
+
+\subsection{Sistemas mecánicos}
 
 \subsection{Tematica del robot}
 [actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
