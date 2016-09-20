@@ -269,35 +269,47 @@ Como se puede observar en la figura \ref{fig_sw_diagrama_plataforma_robotica}, l
 \begin{itemize}
 \item Gestión de trayectorias
 \item Control de posición
-\item Detección de bloqueos
 \item Posicionamiento por odometría
+\item Detección de bloqueos
 \end{itemize}
 
 Cada uno de ellos utiliza uno o varios módulos de las librerías Aversive4dspic y tienen asociado un periodo de ejecución. 
 
 
-La gestión de trayectorias utiliza los módulos \texttt{obstable_avoidance} y \texttt{trajectory_manager}:
+\subsubsection{Gestión de trayectorias}
+
+La gestión de trayectorias está compuesta por los módulos siguientes:
 
 \begin{description}
-\item \textbf{\textttt{trajectory_manager}}:
+\item \textbf{\texttt{trajectory\_manager}}
 
-A partir de un punto de destino del robot y de la posición actual del mismo, este módulo calcula la trayectoria para alcanzar dicho punto. El fin de la trayectoria se obtiene mediante la lectura del estado de la misma. Para alcanzar el punto de destino, pueden ser necesarios varios movimientos, las correspondientes a consignas de posición de estos son procesadas por el bloque de control de posición.
+Módulo de gestión de trayectorias que calcula la trayectoria para alcanzar un punto destino a partir de las coordenadas de dicho punto y de la posición actual del robot. Una vez comienza a ejecutarse la trayectoria, la lectura del estado de la misma permite conocer si el punto de destino ha sido alcanzado. Para alcanzar las coordenadas de destino, pueden ser necesarios varios movimientos (lineales o de orientación) correspondientes a consignas de posición de distancia y ángulo. Las consignas generadas por el módulo de gestión de trayctorias son procesadas por el control de posición.
 
-\item \textbf{\textttt{obstacle_avoidance}}:
+\item \textbf{\texttt{obstacle\_avoidance}}
 
-Este módulo permite a partir de un punto de destino del robot y una lista de obstáculos (representados por polígonos) obtener el camino más corto para llegar a dicho punto. Como resultado el módulo devuelve la lista de puntos que forman el camino a seguir.
+Módulo de evitación de obstáculos permite a partir de un punto de destino y una lista de obstáculos, representados por polígonos, obtener el camino más corto para llegar a dicho punto. Como resultado, el módulo devuelve la lista de puntos que forman el camino a seguir.
 \end{description}
 
-Estos dos módulo permiten por ejemplo, implementar a nivel de temática del juego una función que permita llevar al robot a un punto determinado del campo. La temática de juego conoce el campo de juego, la posición de sus elementos y puede acceder a la información de la posición de los opoenentes dada por la baliza. la función \texttt{goto_avoid(x,y)} a partir de la cual
+Estos dos módulo permiten por ejemplo, implementar a nivel de temática del juego una función que lleve al robot a un punto determinado del campo, independientemente de si hay obstáculos en medio. La temática de juego conoce el campo de juego, la posición de sus elementos, y tiene información de la posición de los oponentes (obtenida de la baliza). Así por ejemplo, la función \texttt{goto\_avoid(x,y)} de la figura \ref{fig_sw_diagrama_plataforma_robotica} utiliza el módulo de evitación de obstáculos para obtener los puntos del camino a recorrer para alcanzar una coordenada (x,y) y mediante el módulo de gestión de trayectorias hace que el robot vaya pasando por cada uno hasta llegar al destino.
 
 
- El primero permite a a partir de un punto de destino, calcular el camino más corto evitando los obstáculos del campo y a los oponentes. Dicho camino se representa por una lista de puntos por los que el robot ha de pasar. El modulo \texttt{trajectory_manager} permite llevar al robot hacia un punto determinado. 
+\subsubsection{Control de posición}
 
+El control de posición se implementa a partir de dos módulos principalmente:
 
-En esta caso la figura \ref{fig_sw_diagrama_plataforma_robotica} representa el funcionamiento de 
+\begin{description}
+\item \textbf{\texttt{robot\_system}}
 
+Módulo que hace de interfaz entre el controlador de posición polar y la odometría y el driver de control de los motores y la odometría. Por un lado, convierte los pulsos de los encoders a medidas de posición y ángulo del robot. Y por otro, convierte las señales de control de distancia y ángulo a valores de PWM para cada motor.
 
-La lectura de los encoders de las ruedas libres del robot y el control de los motores de tracción es realizado por el control de posición a través de la capa de drivers HW. 
+\item \textbf{\texttt{control\_system\_manager}}
+
+Modulo a partir del cual se implementan los controladores de distancia y ángulo del control de posición polar del robot. El módulo gestiona y hace de interfaz entre los diferentes bloques que forma un sistemas de control.
+
+\end{description}
+
+El control de posición polar del robot se implementa de la siguiente forma. Por un lado el módulo de gestión de sistemas de control recoge las consignas de posición dadas por el gestor de trayectorias. Éstas consignas de posición son filtradas por un módulo \texttt{quadramp} para limitar la velocidad y la aceleración, implementando así un perfil de velocidad trapezoidal. A partir de la posición en distancia y ángulo, dada por el módulo \texttt{robot\_system}, y las consignas filtradas, se calculan los errores de posición en ángulo y distancia. Dichos errores, son procesado por un módulo \texttt{pid} que calcula la señal de control de distancia y ángulo. Por último, estas señales de control, son traducidas a valores de señal PWM y aplicadas a los motores mediante el módulo \texttt{robot\_system} y el driver de motores correspondiente. 
+
 
 \begin{figure}[p]
 \centering
@@ -306,10 +318,21 @@ La lectura de los encoders de las ruedas libres del robot y el control de los mo
 \label{fig_sw_diagrama_plataforma_robotica}
 \end{figure}
 
-\subsubsection{Control de posición}
 \subsubsection{Odometría}
+
+La odometría se implementa a partir del módulo \textbf{\texttt{position\_manager}}. Este módulo recibe la medida de posición en distancia y ángulo del módulo \texttt{robot\_system} y calcula la posición del robot implementando los algoritmos de odometría. La posición del robot es utilizada por el módulo de gestión de trayectorias, pero además, podría ser utilizada por capas SW de mayor nivel.
+
+
 \subsubsection{Detección de bloqueos}
-\subsubsection{Gestión de trayectorias}
+
+La detección de bloqueos se implementa a partir del módulo \textbf{\texttt{blocking\_detection\_manager}}. Este módulo estima la corriente de los motores de tracción a partir de la medida de velocidad de los encoders y de la señal PWM aplicada a los motores. En caso de que la corriente estimada supere un umbral máximo durante un tiempo determinado, la detección es notificada, de forma que la trayectoria en curso se pueda abortar.
+
+En el caso de la función \texttt{goto\_avoid(x,y)}, ésta además de comprobar el estado de la trayectoria en ejecución, puede comprobar si durante la misma se detecta un bloqueo mecánico e interrumpirla.
+
+
+
+
+
 
 \subsection{Sistemas mecánicos}
 
