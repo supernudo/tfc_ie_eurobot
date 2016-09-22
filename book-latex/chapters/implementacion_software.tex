@@ -221,45 +221,12 @@ La linea de comandos permite ejecutar comandos de cualquier módulo o nivel. De e
 
 \end{description}
 
-Respecto al módulo \emph{sistemas mecánicos} a su vez se encuentra dividido en varias capas o módulos, como se representa en el diagrama de capas del microcontrolador esclavo del robot principal (ver figura \ref{fig_sw_diagrama_bloques}), el cual, implementa únicamente el control de los sistemas mecánicos. Aclarar, que en el caso del robot secundario estas capas se encuentra integradas en un único microcontrolador. 
+Respecto al módulo \emph{sistemas mecánicos} a su vez se encuentra dividido en varias capas o módulos, los cuales se encuentran representados en el microcontrolador esclavo del robot principal, el cual, implementa únicamente el control de los sistemas mecánicos (ver figura \ref{fig_sw_diagrama_bloques}). Aclarar, que en el caso del robot secundario estas capas se encuentra integradas en un único microcontrolador. 
 
-Las capas y módulos de los que se compone la implementación SW de los sistemas mecánicos son las siguientes: 
-
-\begin{description}
-\item \textbf{Sensores}
-
-Módulo encargado de la adquisición y procesamiento de los sensores de los sistemas mecánicos (finales de carrera, medidores de distancia, detectores de color, etc.). Este módulo implementa funciones del tipo \texttt{sensor\_get(SENSOR1)} para, por ejemplo, leer el estado del sensor numero 1.
-
-\item \textbf{Actuadores}
-
-Módulo de control de los actuadores de los mecanismos (servomotores, motores, electroválvulas, etc). Este módulo implementa funciones del tipo \texttt{ax12\_set\_pos(AX12\_ID\_1, 512)} (mover el servomotor AX12 a la posición 512).
-
-\item \textbf{Control de mecanismos}
-
-Esta capa abstrae e integra los actuadores y sensores que forman mecanismos funcionales. Por ejemplo, un mecanismo puede ser un brazo robótico formado por varios servomotores y una pinza, o un clasificador de tomates compuesto por un palo movido por un servomotor. De esta forma se utilizan funciones del tipo \texttt{arm\_goto\_xy()} para llevar al brazo a una coordenada, o funciones como \texttt{tomatoes\_clasiffier\_set\_pos(SIDE\_LEFT)} para clasificar un tomate hacia el lado izquierdo.
-
-\item \textbf{Control de sistemas mecánicos}
-
-Esta capa gestiona los diferentes mecanismos de los que se compone un sistema mecánico, e implementa los diferentes modos de funcionamiento de éste. Por ejemplo, un sistema mecánico puede ser el sistema de recolección de tomates. Éste sistema puede estar compuesto por un mecanismo de clasificación de tomates, un sensor detector de presencia de tomates, un mecanismo de almacenamiento y un mecanismo de liberación de los tomates recolectados. El sistema, por ejemplo, puede trabajar en modo \emph{recolectar} o \emph{liberar tomates} y, permite \emph{clasificar} los tomates rojos y verdes. Dependiendo del modo de funcionamiento se han de utilizar unos mecanismos u otros.
-
-La forma más común de implementar esta capa es mediante máquinas de estado. Por ejemplo, la maquina de estados del ejemplo anterior puede corresponderse con la función \texttt{do\_sytem\_tomatoes(uint8\_t mode, uint8\_t tomato\_type)}, la cual permite hacer funcionar el sistema de recolección de tomates en sus diferente modos de funcionamiento (parámetro \texttt(mode)), y elegir el tipo de tomate (parámetro \texttt{tomato\_type}).  
-
-\end{description}
 
 
 \section{Implementación funcional}
 A continuación se describe la implementación funcional de los módulos y capas principales de la arquitectura SW del robot de Eurobot. El orden seguido es el mismo en el que se suelen desarrollar, de menor a mayor nivel de abstracción.
-
-
-%\subsection{Drivers de dispositivos HW}
-%Incluye los siguietes modulos desarrollados
-%\subsection{UART}
-%\subsection{I2C}
-%\subsection{SPI}
-%\subsection{PWM servo}
-%\subsection{PWM motor control}
-%\subsection{DAC motor control}
-%\subsection{Encoders dsPIC}
 
 
 \subsection{Plataforma robótica base}
@@ -294,6 +261,12 @@ Módulo de evitación de obstáculos que permite a partir de un punto de destino y 
 
 Estos dos módulo permiten por ejemplo, implementar a nivel de temática del juego una función que permita al robot ir hasta un punto determinado del campo de juego, independientemente de si hay obstáculos en medio. El nivel de temática de juego conoce las dimensiones del campo de juego, la posición de sus elementos, y tiene información de la posición de los oponentes (obtenida de la baliza). Así por ejemplo, la función \texttt{goto\_avoid(x,y)} de la figura \ref{fig_sw_diagrama_plataforma_robotica} utiliza el módulo de evitación de obstáculos para obtener los puntos del camino a recorrer para alcanzar una coordenada (x,y), y mediante el módulo de gestión de trayectorias hace que el robot vaya pasando por cada uno de ellos hasta llegar al destino.
 
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{sw_diagrama_plataforma_robotica}
+\caption[]{Diagrama de organización y funcionamiento SW de la plataforma robótica base}
+\label{fig_sw_diagrama_plataforma_robotica}
+\end{figure}
 
 \subsubsection{Control de posición}
 
@@ -313,6 +286,7 @@ Modulo a partir del cual se implementan los controladores de posición de distanc
 El control de posición polar del robot se implementa de la siguiente forma. Por un lado, el módulo de gestión de sistemas de control recoge las consignas de posición dadas por el gestor de trayectorias. Éstas consignas de posición son filtradas por un módulo \texttt{quadramp} (\texttt{modules/devices/control\_system/filters}) para implementar un perfil de velocidad trapezoidal. A partir de la posición en distancia y ángulo del robot, dada por el módulo \texttt{robot\_system}, y las consignas filtradas, se calculan los errores de posición en ángulo y distancia. Dichos errores, son procesados por un filtro \texttt{pid} que calcula la señal de control de cada controlador. Por último, estas señales de control, son traducidas por el módulo \texttt{robot\_system} a valores de señal PWM y aplicadas a los motores por medio del driver de motores. 
 
 
+
 \subsubsection{Odometría}
 
 La odometría se implementa a partir del módulo \textbf{\texttt{position\_manager}}, pertenece al grupo de módulos de implementación de robots (\texttt{modules/devices/robot/}). Este módulo recibe la medida de posición en distancia y ángulo del módulo \texttt{robot\_system} y calcula la posición del robot a partir de algoritmos de odometría. La posición del robot es utilizada por el módulo de gestión de trayectorias, pero además, podría ser utilizada por capas SW de mayor nivel.
@@ -324,16 +298,82 @@ La detección de bloqueos se implementa a partir del módulo \textbf{\texttt{block
 
 Observar que la función \texttt{goto\_avoid(x,y)}, descrita anteriormente, además de comprobar el estado de la trayectoria en ejecución, puede comprobar si durante la misma se detecta un bloqueo mecánico, e interrumpir la ejecución si lo considera oportuno.
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=.9\textwidth]{sw_diagrama_plataforma_robotica}
-\caption[]{Diagrama de organización y funcionamiento SW de la plataforma robótica base}
-\label{fig_sw_diagrama_plataforma_robotica}
-\end{figure}
-
 
 
 \subsection{Sistemas mecánicos}
+
+Los sistemas mecánicos se encuentra al mismo nivel que la plataforma robótica base, por lo tanto se sitúa igualmente entre la capa \emph{Drivers de dispositivos HW} y la capa \emph{Temática del juego}.
+
+El módulo de sistemas mecánicos tiene como objetivo abstraer su control y gestión a capas superiores, como la temática de juego o la estrategia. La implementación SW se divide en varias capas y módulos: 
+
+\begin{description}
+\item \textbf{Sensores}
+
+Módulo encargado de la adquisición y procesamiento de los sensores de los sistemas mecánicos (finales de carrera, medidores de distancia, detectores de color, etc.). Este módulo implementa funciones del tipo \texttt{sensor\_get(SENSOR1)} para, por ejemplo, leer el estado del sensor numero 1.
+
+\item \textbf{Actuadores}
+
+Módulo de control de los actuadores de los mecanismos (servomotores, motores, electroválvulas, etc). Este módulo implementa funciones del tipo \texttt{ax12\_set\_pos(AX12\_ID\_1, 512)} (mover el servomotor AX12 a la posición 512).
+
+\item \textbf{Control de mecanismos}
+
+Esta capa abstrae e integra los actuadores y sensores que forman mecanismos funcionales. Por ejemplo, un mecanismo puede ser un brazo robótico formado por varios servomotores y una pinza, o un clasificador de tomates compuesto por un palo movido por un servomotor. De esta forma se utilizan funciones del tipo \texttt{arm\_goto\_xy()} para llevar al brazo a una coordenada, o funciones como \texttt{tomatoes\_clasiffier\_set\_pos(SIDE\_LEFT)} para clasificar un tomate hacia el lado izquierdo.
+
+\item \textbf{Control de sistemas mecánicos}
+
+Esta capa gestiona los diferentes mecanismos de los que se compone un sistema mecánico, e implementa los diferentes modos de funcionamiento de éste. Por ejemplo, un sistema mecánico puede ser el sistema de recolección de tomates. Éste sistema puede estar compuesto por un mecanismo de clasificación de tomates, un sensor detector de presencia de tomates, un mecanismo de almacenamiento y un mecanismo de liberación de los tomates recolectados. El sistema, por ejemplo, puede trabajar en modo \emph{recolectar} o \emph{liberar tomates} y, permite \emph{clasificar} los tomates rojos y verdes. Dependiendo del modo de funcionamiento se han de utilizar unos mecanismos u otros.
+
+La forma más común de implementar esta capa es mediante máquinas de estado. Por ejemplo, la maquina de estados del ejemplo anterior puede corresponderse con la función \texttt{do\_sytem\_tomatoes(uint8\_t mode, uint8\_t tomato\_type)}, la cual permite hacer funcionar el sistema de recolección de tomates en sus diferente modos de funcionamiento (parámetro \texttt(mode)), y elegir el tipo de tomate (parámetro \texttt{tomato\_type}).  
+
+\end{description}
+
+Por ejemplo, en el juego \emph{Robomovies} de Eurobot 2015, los robots tenían que realizar las siguiente acciones:
+
+\begin{itemize}
+\item Construir focos de cine (\emph{spotlights}) a partir de las piezas (\emph{stands} y \emph{bulblight}) repartidas por todo el campo de juego. 
+\item Cerrar unas claquetas de cine (\emph{claperboards}).
+\item Llenar vasos con palomitas de maíz (\emph{popcorns}).
+\item Poner unas alfombras rojas es una escalinata.
+\item Subir la escalinata.
+\end{itemize} 
+
+Entre todas estas acciones el robot P.Tinto se encargaba de las tres primeras. Para cada una de ellas, P.Tinto tenía un sistema mecánico dedicado. De forma que a cada sistema mecánico le corresponde una implementación HW y SW.
+
+La figura \ref{fig_sw_diagrama_sys_mecanicos} representa la organización y funcionamiento de la implementación SW de los sistemas mecánicos de P.Tinto:
+
+\begin{itemize}
+\item Sistema de focos de cine (\texttt{stands\_system})
+\item Sistema de palomitas (\texttt{popcorns\_system})
+\item Sistema de claquetas (\texttt{claperboards\_system}) 
+\end{itemize}
+
+Los módulos correspondientes a estos sistemas forman el nivel de \emph{control de sistemas mecánicos}. Por encima, el nivel de \emph{temática de juego} gestiona los modos de funcionamiento de éstos y obtiene información de su estado.
+
+En la figura \ref{fig_sw_diagrama_sys_mecanicos} se representa concretamente el funcionamiento del sistema de focos de cine (\texttt{stands\_system}). Este sistema maneja las piezas (\emph{stands}) con las que se construyen los focos de cine. Permite apilar los \emph{stands} en dos torres de hasta 4 elementos, y posteriormente construir un foco de cine de hasta 8 elementos mediante un mecanismo que transporta los \emph{stands} de una torre a otra.
+
+El sistema de \emph{stands} se compone de varios mecanismos. Cada uno de ellos tiene asociado un módulo SW controlador: 
+
+\begin{itemize}
+\item 2 elevadores de \emph{stands} (\texttt{stand\_elevator})
+\item 2 pinzas de sujeción de torres de \emph{stands}  (\texttt{})
+\item 2 clasificadores de \emph{stands}  (\texttt{stand\_blades})
+\item 1 intercambiador de \emph{stands}  (\texttt{stand\_exchanger})
+\item 2 pinzas de \emph{stands}  (\texttt{stands\_claps})
+\end{itemize} 
+
+Los controladores de mecanismos hacen de interfaz entre la funcionalidad del mecanismo y los actuadores con los que está construidos. Un ejemplo sencillo es la pinza que coge los \emph{stands}, esta tiene dos consignas posibles: abierta o cerrada; y a cada una le corresponde una consigna de posición de un servomotor. Un ejemplo más complejo sería el de un brazo robótico, formado por varios servomotores, cuya consigna sea una posición del espacio (x,y,z). En este caso, para alcanzar dicha consigna es necesario realizar el control sincronizado de todos los servomotores.
+
+Por debajo del nivel de \emph{control de mecanismos} se encuentra la \emph{lectura y procesamiento de sensores} y el \emph{control de actuadores}. Los sistemas mecánicos utilizan sensores para sincronizar los movimientos de los mecanismos. En el caso de P.Tinto, un sensor a la entrada del sistema de focos de cine permite detectar cuando un \emph{stand} se encuentra en la entrada y puede ser recolectado.
+
+En el caso de la figura \ref{fig_sw_diagrama_sys_mecanicos} los mecanismos están formados por los siguientes tipos de actuadores, y sus módulos controladores SW correspondientes:
+
+\begin{itemize}
+\item Motores (\texttt{cs})
+\item Servomotores AX12 (\texttt{ax12\_manager})
+\item Servomotores estándar
+\end{itemize} 
+
+El módulo \texttt{cs} implementa un sistema de control utilizando las librerías Aversive4dspic, de igual forma que la plataforma robótica implementa el control de posición del robot. Tanto el controlador de motores como el de servomotores AX12 permiten conocer la posición real del actuador. Esta información es utilizado para sincronizar las operaciones sin necesitar de sensores adicionales. Sin embargo, en el caso de los servomotores estándar no es posible obtener directamente esta información, y la sincronización ha de realizarse por tiempo o mediante sensores adicionales. Notar que en el caso del mecanismo \texttt{stands\_clamps} no existe controlador de actuadores, y utiliza directamente el driver generador de PWM \texttt{pwm\_servo}.
 
 
 \begin{figure}[p]
