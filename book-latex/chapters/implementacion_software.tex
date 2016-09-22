@@ -383,16 +383,64 @@ El módulo \texttt{cs} implementa un sistema de control utilizando las librerías 
 \label{fig_sw_diagrama_sys_mecanicos}
 \end{figure}
 
-\subsection{Tematica del juego y estrategia}
-[actuators | sensors | cs] > [strat (base, utils, avoid)] | [Interfaz baliza] | [Interfaz secondary robot]  
+\subsection{Temática de juego}
 
-[tareas secondary robot] | [tareas main robot] > [trayectorias a zonas | trabajo en zonas] > [estrategias partido]
-%		\subsection{Estrategias de partido}
-%			\subsubsection{Estrategia secuencial bloqueante}
-%			\subsubsection{Estrategia reactiva}
-%			\subsubsection{Estratégia basada en prioridades}
-%			\subsubsection{Estratégia adaptativa}
-%			\subsubsection{Estrategia con dos robots}
+El nivel de \emph{temática de juego} integra toda la funcionalidad de los niveles inferiores y sistemas externos, como la baliza y el robot secundario, para implementar las funcionalidades del robot relativas a la prueba de Eurobot y a la navegación del robot por el campo de juego. En el supuesto de que el robot de Eurobot fuese un producto comercial (un juguete) el desarrollo del mismo llegaría hasta este nivel. A partir de aquí, el usuario del robot podría programar el nivel de estrategia para competir con otros robots en un partido de Eurobot.
+
+Por otro lado, el nivel de \emph{estrategia} básicamente utiliza los recursos que le brinda la \emph{temática de juego} para así realizar las acciones del juego en un orden determinado. 
+
+La figura \ref{fig_sw_estrategia_y_tematica} representa la funcionalidad y organización de estos dos niveles de implementación SW, así como la relación entre los módulos que los componen.
+
+La implementación de la \textbf{temática de juego} se divide principalmente en dos tipos de módulos:
+
+\begin{itemize}
+\item Módulos de navegación del robot
+\item Módulos de acciones del juego
+\item Módulos de ayuda a la estrategia
+\end{itemize} 
+
+Los módulos de navegación son los siguientes:
+
+\begin{description}
+\item \textbf{\texttt{strat\_base}}
+
+Módulo principal de navegación. Permite iniciar una trayectoria hacia un punto dado y conocer el fin de la misma. Para ejecutar la trayectoria utiliza el módulo de gestión de trayectorias del la plataforma robótica. El final de una trayectoria se determina a partir de la información de varios módulos:
+
+\begin{itemize}
+\item Punto destino alcanzado: obtenido por el módulo de gestión de trayectorias.
+\item Punto destino cercano: el robot se encuentra cerca del punto destino (a una distancia máxima). Esta información es dada también por el módulo de gestión de trayectorias.
+\item Obstáculo en la trayectoria: por detección de los sensores de obstáculos de corto alcance.
+\item Oponente en la trayectoria: por la información de la baliza.
+\item Tiempo de partido: por la cuenta de tiempo de partido (módulo Aversive4dspic \texttt{time}.
+\end{itemize}
+
+Además, este módulo implementa la gestión de la velocidad durante las trayectoria dependiendo de la posición y distancia a los oponentes. Por ejemplo, al acercarse o pasar por el lado de un oponente la velocidad se decrementa para prevenir una posible colisión o maniobra de evitación. 
+
+\item \textbf{\texttt{strat\_avoid}}
+
+Módulo que implementa la navegación con obstáculos. Para ello utiliza el módulo de evitación de obstáculos de la plataforma robótica. A partir de la posición de los elementos del campo de juego y de los oponentes, obtiene la lista de puntos que define el camino a seguir para alcanzar el destino. Cada tramo del camino es ejecutado como una trayectoria por la plataforma robótica. 
+
+El fin de cada tramo se obtiene del modulo \texttt{strat\_base}. La utilización de la condición de \emph{punto cercano} para los tramos intermedios permite realizar caminos más suaves, ya que el robot no llega a pararse, enlazando los puntos como una única trayectoria.
+
+\end{description} 
+
+
+Respecto a los módulos relativos a acciones del juego, estos tienen una fuerte dependencia con el mismo. Continuando con el ejemplo de los sistemas mecánicos, la figura \ref{fig_sw_estrategia_y_tematica} muestra los correspondientes al robot P.Tinto:
+
+\begin{itemize}
+\item \textbf{\texttt{strat\_clapperboard}}: acciones de claquetas de cine.
+\item \textbf{\texttt{strat\_popcorn}}: acciones de vas de palomitas.
+\item \textbf{\texttt{strat\_spotlight}}: acciones de focos de cine.
+\item \textbf{\texttt{strat\_secondary\_robot}}: acciones delegadas en el robot secundario. Incluyen acciones de claquetas, vasos de palomitas y de las alfombras rojas.
+\end{itemize}
+
+Los módulos funcionan siguiendo un mismo patrón que implementa la sincronización de movimientos del robot con la manipulación de elementos de juego. La figura \ref{fig_sw_estrategia_y_tematica} muestra el caso del modulo \texttt{strat\_spotlight}. Por un lado, las acciones a realizar están pensadas para ser ejecutadas en las cercanías de los elementos de juego donde los desplazamientos son pequeños. Por ello, se realizan trayectorias sin evitación de obstáculos utilizando el módulos. Por otro lado, la manipulación de los elementos se realiza a partir de los modos de funcionamiento del sistema mecánico correspondiente. La sincronización se consigue a partir del estado de la trayectoria y de los mecanismos.
+
+La forma de llegar hasta el control de los sistemas mecánicos depende de donde estén implementados. En el caso del módulo \texttt{strat\_spotlight} se realiza por medio del protocolo I2C, ya que los sistemas mecánicos se encuentra implementados en el microcontrolador esclavo. Igualmente, las acciones delegadas en el robot secundario, gestionadas por medio del enlace Bluetooth y del protocolo de comunicaciones asociado.
+
+
+Por último, el módulo \textbf{\texttt{strat\_utils}} implementa funciones de ayuda a la estrategia a partir de información posición del robot, obtenida de la odometría de la plataforma base, e información de la posición de los oponentes.
+
 
 \begin{figure}[p]
 \centering
@@ -403,6 +451,60 @@ El módulo \texttt{cs} implementa un sistema de control utilizando las librerías 
 
 
 \subsection{Estrategia de juego}
+
+Los robots desarrollados han implementado alguna de estas estrategias o combinación de ellas:
+
+\begin{description}
+\item \textbf{Estrategia secuencial bloqueante}
+
+Estrategia en la que el robot sigue una secuencia de movimientos y acciones. En caso de encontrar un obstáculo espera hasta que éste desaparezca para continuar.
+
+\item \textbf{Estrategia reactiva}
+
+Estrategia en la que el robot reacciona ante los obstáculos, evitándolos o realizando acciones alternativas. Además, decide que acciones realizar en función de la posición actual del oponente y zonas que el oponente ha visitado. 
+
+\item \textbf{Estrategia basada en prioridades}
+
+Estrategia que decide las acciones a realizar basándose en la prioridad de las mismas. En caso de no poder realizar la acción más prioritaria, salta a la siguiente en prioridad.
+
+\item \textbf{Estrategia adaptativa}
+
+Estrategia que en función de la evolución del partido, a partir de las acciones realizadas por el oponente y el tiempo, cambia dinámicamente las prioridades de las acciones.
+
+\item \textbf{Estrategia sincronizada}
+
+Estrategia en la que las acciones se realizan de forma sincronizada entre dos robots.
+
+\end{description}
+
+
+La implementación de las estrategias se ha realizado utilizando un patrón basado en zonas de trabajo y prioridades. En este patrón el campo se divide en zonas de trabajo. Cada de ellas tiene asociado varios elementos:
+
+\begin{itemize}
+\item Tipo de elemento de juego: en el caso del robot P.Tinto, claquetas, \emph{stands} o palomitas.
+\item Área de trabajo: área necesaria para trabajar en la zona.
+\item Posición de inicio: posición inicial desde la que se trabaja en la zona.
+\item Posición del elemento: posición del elemento de juego a manipular.
+\item Prioridad: prioridad de la zona de trabajo.
+\item \emph{Flags} de control: señales de control para la gestión de estrategia. Por ejemplo, para marcar si la zona ya ha sido trabajada o si ha sido visitada por el oponente.
+\item Robot: robot que puede trabajar en la zona, que tiene la funcionalidad.
+\end{itemize}
+
+Una vez definidas todas las zonas, la estrategia interpreta la información de cada zona para decidir a que zona ir a trabajar. El algoritmo a seguir consta de 3 fases que se repiten continuamente:
+
+\begin{enumerate}
+\item Obtener la zona de mayor prioridad y válida
+\item Ir a la zona
+\item Trabajar en la zona
+\end{enumerate}
+
+Este patrón se encuentra representado en el bloque de estrategia de juego del la figura \ref{fig_sw_estrategia_y_tematica}. La estrategia al comienzo de partido, o de forma dinámica durante el partido, configura las prioridades de cada zona mediante el módulo \texttt{strat\_strategies}. 
+
+La obtención de la siguiente zona a la que ir a trabajar, se realiza a partir de la información de este módulo y en base a los criterios de zona válida establecidos. Por ejemplo, un criterio fundamental es que el oponente no se encuentre trabajando en la zona. Esta comprobación se realiza mediante el módulo \texttt{strat\_utils} de la temática de juego.
+
+El desplazamiento a la zona elegida se realiza utilizando el modulo \texttt{strat\_avoid}, que permite evitar los posibles obstáculos en el camino hacia el punto de inicio de la zona. Si la zona no pudiese ser alcanzada se volvería a obtener una nueva zona.
+
+Una vez alcanzada la zona, en función del tipo de elemento de juego se utilizaría el módulo de la temática correspondiente. Por ejemplo, si la zona es tipo \emph{stand} se llamaría a la función de recolección de \emph{stands} del módulo \texttt{strat\_spotlight}.
 
 
 
