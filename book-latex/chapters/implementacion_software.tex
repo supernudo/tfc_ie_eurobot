@@ -425,6 +425,14 @@ El fin de cada tramo se obtiene del modulo \texttt{strat\_base}. La utilización 
 \end{description} 
 
 
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_estrategia_y_tematica}
+\caption[]{Diagrama de organización y funcionamiento SW de los niveles de estrategia y temática del juego}
+\label{fig_sw_estrategia_y_tematica}
+\end{figure}
+
+
 Respecto a los módulos relativos a acciones del juego, estos tienen una fuerte dependencia con el mismo. Continuando con el ejemplo de los sistemas mecánicos, la figura \ref{fig_sw_estrategia_y_tematica} muestra los correspondientes al robot P.Tinto:
 
 \begin{itemize}
@@ -442,12 +450,6 @@ La forma de llegar hasta el control de los sistemas mecánicos depende de donde e
 Por último, el módulo \textbf{\texttt{strat\_utils}} implementa funciones de ayuda a la estrategia a partir de información posición del robot, obtenida de la odometría de la plataforma base, e información de la posición de los oponentes.
 
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=\textwidth]{sw_diagrama_estrategia_y_tematica}
-\caption[]{Diagrama de organización y funcionamiento SW de los niveles de estrategia y temática del juego}
-\label{fig_sw_estrategia_y_tematica}
-\end{figure}
 
 
 \subsection{Estrategia de juego}
@@ -507,13 +509,65 @@ El desplazamiento a la zona elegida se realiza utilizando el modulo \texttt{stra
 Una vez alcanzada la zona, en función del tipo de elemento de juego se utilizaría el módulo de la temática correspondiente. Por ejemplo, si la zona es tipo \emph{stand} se llamaría a la función de recolección de \emph{stands} del módulo \texttt{strat\_spotlight}.
 
 
-
 \section{Simulador de robots}
 
-\begin{figure}[H]
+La utilización de un simulador vino motivada porque en el año 2014 dos de los integrantes del equipo, los encargados de desarrollar la estrategia, estaban viviendo en Alemania. El desarrollo del simulador permitió trabajar conjuntamente con el desarrollo del resto del robot en España. 
+
+El poder simular el comportamiento del robot y los elementos del campo de juego como, los robots oponentes, en una plataforma PC tiene grandes ventajas:
+
+\begin{itemize}
+
+\item Desarrollo de la estrategia independiente y en paralelo con el desarrollo de la mecánica y de la electrónica. 
+
+\item Necesita pocos recursos: un ordenador. Con uno portátil se puede desarrollar software en cualquier lugar.
+
+\item Reduce el tiempo de puesta en marcha de la estratégica y simular todo tipo de situaciones.
+
+\item Permite probar cambios de estrategia de ultimo momento.
+
+\end{itemize}
+
+
+Las desventajas son pocas, pero a tener en cuenta:
+
+\begin{itemize}
+\item El funcionamiento simulado de elementos externos como la baliza o la comunicación con el robot secundario ha de ser de igual comportamiento. En caso contrario las pruebas realizadas en simulación no se correspondan con pruebas reales.
+
+\item Tendencia a confiar demasiado en la simulación. Aunque la simulación de los resultados esperados es necesario validarlos en pruebas reales.
+\end{itemize}
+
+El simulador desarrollado permite simular el funcionamiento del robot y el campo de juego. Está basado en el simulador desarrollado por el equipo Microb Technology \cite{microb} y utiliza la capacidad de las librerías Aversive4dspic para ser compiladas para un \emhp{host GNU/Linux}.
+
+La simulación de algunas funcionalidades de las librerías Aversive4dspicse se realiza mediante el módulo \texttt{hostsim} (de \texttt{modules/base}). Este módulo simula la salida estándar del modulo de comunicaciones \texttt{uart}, la medida de tiempo y la ejecución periódica del gestor de eventos, mediante una implementación mediante recursos propios del sistema GNU/Linux. Por otro lado
+
+Respecto a la simulación del robot esta se realiza mediante el módulo \texttt{robotsim} que implementa la simulación de los elementos mecánicos y dependientes del HW. Este módulo es compilado con el proyecto del robot. El ejecutable obtenido da como resultado un robot virtual que corre sobre GNU/Linux. 
+
+La figura \ref{fig_sw_diagrama_bloques_simulador} muestra el diagrama de bloques del simulador de dos robots. Si lo comparamos con el diagrama de bloques de la figura \ref{fig_sw_diagrama_bloques} se observa que los bloques dependientes del HW y la mecánica de cada robot han desaparecido. En su lugar se encuentra el simulador de cada robot (módulo \texttt{robotsim}), el cual emula los siguientes elementos:
+
+\begin{description}
+\item Plataforma róbotica 
+
+El simulador a partir del valor de control de los motores emula el comportamiento de los motores de tracción y devuelve el valor de pulsos de encoders equivalentes a la velocidad del robot.
+
+\item Sistemás mecánicos 
+
+La emulación de sistemas mecánicos consiste se realiza mediante un retardo que equivalente al tiempo que los mecanismos tardan en realizar una función.
+
+\item Comunicación entre robots
+
+En la arquitectura real del sistema de dos robots, ambos están comunicados por medio de un canal serie Bluetooth conectado a un módulo UART. En el simulador la UART es emulada mediante la escritura y lectura de ficheros. Cada simulador de robot tiene un fichero de escritura y otro de lectura que emulan el canal Bluetooth.
+
+\item Baliza
+
+
+\end{itemize}
+
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{sw_diagrama_bloques_simulador}
 \caption[]{Diagrama de bloques software del simulador de robots y campo de juego}
+\label{fig_sw_diagrama_bloques_simulador}
 \end{figure}
 
 
