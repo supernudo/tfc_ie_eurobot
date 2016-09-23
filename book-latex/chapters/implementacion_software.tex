@@ -32,11 +32,10 @@
 
 \begin{FraseCelebre}
   \begin{Frase}
-TODO
-La imaginación es más importante que el conocimiento. El conocimiento es limitado y la imaginación circunda el mundo.    
+Desde hace muchas generaciones un P.Tinto se ha distinguido por tres cualidades que lo hacen inconfundible en cualquier lugar del mundo: un P.Tinto siempre mira hacia arriba con optimismo, a un P.Tinto la elegancia se le reconoce donde quiera que valla,...informal sí, pero elegante. Y por sobre todo, un P.Tinto siempre lleva su propia energía, sin olvidar que a un P.Tinto le gusta echarse azúcar en el café hasta que haga isla.
   \end{Frase}
   \begin{Fuente}
-Albert Einstein, en \emph{The Saturday Evening Post}
+Padre de P.Tinto, película \emph{El milagro de P.Tinto}
   \end{Fuente}
 \end{FraseCelebre}
 
@@ -45,12 +44,12 @@ El desarrollo software del robot de Eurobot se organiza en capas o módulos funci
 
 \begin{enumerate}
 \item Estrategia de juego
-\item Temática del juego
+\item Temática de juego
 \item Sistemas mecánicos
 \item Plataforma robótica base
 \end{enumerate}
 
-El módulo \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. Al mismo nivel, se encuentra el módulo \emph{sistemas mecánicos} encargado de controlar los mecanismos utilizados por el robot para manipular los elementos de juego. Ambos módulos se integran y se sincronizan en la capa de \emph{temática del juego} para implementar funcionalidades propias de la temática de Eurobot. Por último, la capa \emph{estratégia de juego} decide cuando y que acciones del juego realizar en cada momento para jugar un partido de Eurobot.
+El módulo \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. Al mismo nivel, se encuentra el módulo \emph{sistemas mecánicos} encargado de controlar los mecanismos utilizados por el robot para manipular los elementos de juego. Ambos módulos se integran y se sincronizan en la capa de \emph{temática de juego} para implementar funcionalidades propias de la temática de Eurobot. Por último, la capa \emph{estratégia de juego} decide cuando y que acciones del juego realizar en cada momento para jugar un partido de Eurobot.
 
 Así por ejemplo, si la capa de estrategia decide recolectar el tomate 1 llama a funciones del tipo \texttt{harvest\_tomato(TOMATO\_1)} de la capa de temática de juego, la cual a su vez utilizará funciones de la plataforma robótica del tipo \texttt{goto\_avoid\_xy(TOMATO\_1\_X, TOMATO\_1\_Y)} para moverse evitando los obstáculos hacia la posición del tomate 1 y, funciones de los sistemas mecánicos del tipo \texttt{system\_tomatoes\_set\_mode(MODE\_HARVEST)} para recolectar el tomate mediante el sistema mecánico de recolección de tomates.
 
@@ -202,7 +201,7 @@ Módulo que implementa las funcionalidades de la plataforma robótica base: contro
 
 Módulo que abstrae el control de los diferentes sistemas mecánicos del robot mediante los cuales se manipulan los elementos del  juego. Éste módulo trabaja con funciones del estilo \texttt{system\_tomatoes\_set\_mode(HARVEST)} (configura el sistema de tomates en modo recolección), o  como \texttt{system\_tomatoes\_get\_num()} (obtener el número de tomates recolectados).
 
-\item \textbf{Temática del juego}
+\item \textbf{Temática de juego}
 
 Esta capa permite abstraer completamente las funcionalidades de la plataforma robótica y de los sistemas mecánicos e integra la información de la baliza. De esta forma, a este nivel se trabaja con funciones que sincronizan los movimientos del robot con los sistemas mecánicos, como \texttt{harvest\_tomato(TOMATO\_1)} (ir hasta la posición del tomate 1 y recolectarlo).
 
@@ -231,7 +230,7 @@ A continuación se describe la implementación funcional de los módulos y capas pr
 
 \subsection{Plataforma robótica base}
 
-Como se ha visto en la sección de arquitectura SW, la plataforma robótica base se sitúa entre la capa \emph{Drivers de dispositivos HW} y la capa \emph{Temática del juego}. Este módulo implementa los siguientes bloques funcionalidades del robot:
+Como se ha visto en la sección de arquitectura SW, la plataforma robótica base se sitúa entre la capa \emph{drivers de dispositivos HW} y la capa \emph{temática de juego}. Este módulo implementa los siguientes bloques funcionalidades del robot:
 
 \begin{itemize}
 \item Gestión de trayectorias
@@ -259,7 +258,7 @@ Para alcanzar las coordenadas de destino, pueden ser necesarios varios movimient
 Módulo de evitación de obstáculos que permite a partir de un punto de destino y una lista de obstáculos, representados por polígonos, obtener el camino más corto para llegar a dicho punto. Como resultado, el módulo devuelve la lista de puntos que representa el camino a seguir.
 \end{description}
 
-Estos dos módulo permiten por ejemplo, implementar a nivel de temática del juego una función que permita al robot ir hasta un punto determinado del campo de juego, independientemente de si hay obstáculos en medio. El nivel de temática de juego conoce las dimensiones del campo de juego, la posición de sus elementos, y tiene información de la posición de los oponentes (obtenida de la baliza). Así por ejemplo, la función \texttt{goto\_avoid(x,y)} de la figura \ref{fig_sw_diagrama_plataforma_robotica} utiliza el módulo de evitación de obstáculos para obtener los puntos del camino a recorrer para alcanzar una coordenada (x,y), y mediante el módulo de gestión de trayectorias hace que el robot vaya pasando por cada uno de ellos hasta llegar al destino.
+Estos dos módulo permiten por ejemplo, implementar a nivel de temática de juego una función que permita al robot ir hasta un punto determinado del campo de juego, independientemente de si hay obstáculos en medio. El nivel de temática de juego conoce las dimensiones del campo de juego, la posición de sus elementos, y tiene información de la posición de los oponentes (obtenida de la baliza). Así por ejemplo, la función \texttt{goto\_avoid(x,y)} de la figura \ref{fig_sw_diagrama_plataforma_robotica} utiliza el módulo de evitación de obstáculos para obtener los puntos del camino a recorrer para alcanzar una coordenada (x,y), y mediante el módulo de gestión de trayectorias hace que el robot vaya pasando por cada uno de ellos hasta llegar al destino.
 
 \begin{figure}[p]
 \centering
@@ -302,7 +301,7 @@ Observar que la función \texttt{goto\_avoid(x,y)}, descrita anteriormente, ademá
 
 \subsection{Sistemas mecánicos}
 
-Los sistemas mecánicos se encuentra al mismo nivel que la plataforma robótica base, por lo tanto se sitúa igualmente entre la capa \emph{Drivers de dispositivos HW} y la capa \emph{Temática del juego}.
+Los sistemas mecánicos se encuentra al mismo nivel que la plataforma robótica base, por lo tanto se sitúa igualmente entre la capa \emph{drivers de dispositivos HW} y la capa \emph{temática de juego}.
 
 El módulo de sistemas mecánicos tiene como objetivo abstraer su control y gestión a capas superiores, como la temática de juego o la estrategia. La implementación SW se divide en varias capas y módulos: 
 
@@ -365,6 +364,13 @@ Los controladores de mecanismos hacen de interfaz entre la funcionalidad del mec
 
 Por debajo del nivel de \emph{control de mecanismos} se encuentra la \emph{lectura y procesamiento de sensores} y el \emph{control de actuadores}. Los sistemas mecánicos utilizan sensores para sincronizar los movimientos de los mecanismos. En el caso de P.Tinto, un sensor a la entrada del sistema de focos de cine permite detectar cuando un \emph{stand} se encuentra en la entrada y puede ser recolectado.
 
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_sys_mecanicos}
+\caption[]{Diagrama de organización y funcionamiento SW de los sistemas mecánicos}
+\label{fig_sw_diagrama_sys_mecanicos}
+\end{figure}
+
 En el caso de la figura \ref{fig_sw_diagrama_sys_mecanicos} los mecanismos están formados por los siguientes tipos de actuadores, y sus módulos controladores SW correspondientes:
 
 \begin{itemize}
@@ -376,12 +382,7 @@ En el caso de la figura \ref{fig_sw_diagrama_sys_mecanicos} los mecanismos están
 El módulo \texttt{cs} implementa un sistema de control utilizando las librerías Aversive4dspic, de igual forma que la plataforma robótica implementa el control de posición del robot. Tanto el controlador de motores como el de servomotores AX12 permiten conocer la posición real del actuador. Esta información es utilizado para sincronizar las operaciones sin necesitar de sensores adicionales. Sin embargo, en el caso de los servomotores estándar no es posible obtener directamente esta información, y la sincronización ha de realizarse por tiempo o mediante sensores adicionales. Notar que en el caso del mecanismo \texttt{stands\_clamps} no existe controlador de actuadores, y utiliza directamente el driver generador de PWM \texttt{pwm\_servo}.
 
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=\textwidth]{sw_diagrama_sys_mecanicos}
-\caption[]{Diagrama de organización y funcionamiento SW de los sistemas mecánicos}
-\label{fig_sw_diagrama_sys_mecanicos}
-\end{figure}
+
 
 \subsection{Temática de juego}
 
@@ -390,6 +391,14 @@ El nivel de \emph{temática de juego} integra toda la funcionalidad de los nivele
 Por otro lado, el nivel de \emph{estrategia} básicamente utiliza los recursos que le brinda la \emph{temática de juego} para así realizar las acciones del juego en un orden determinado. 
 
 La figura \ref{fig_sw_estrategia_y_tematica} representa la funcionalidad y organización de estos dos niveles de implementación SW, así como la relación entre los módulos que los componen.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_estrategia_y_tematica}
+\caption[]{Diagrama de organización y funcionamiento SW de los niveles de estrategia y temática de juego}
+\label{fig_sw_estrategia_y_tematica}
+\end{figure}
+
 
 La implementación de la \textbf{temática de juego} se divide principalmente en dos tipos de módulos:
 
@@ -425,12 +434,6 @@ El fin de cada tramo se obtiene del modulo \texttt{strat\_base}. La utilización 
 \end{description} 
 
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=\textwidth]{sw_diagrama_estrategia_y_tematica}
-\caption[]{Diagrama de organización y funcionamiento SW de los niveles de estrategia y temática del juego}
-\label{fig_sw_estrategia_y_tematica}
-\end{figure}
 
 
 Respecto a los módulos relativos a acciones del juego, estos tienen una fuerte dependencia con el mismo. Continuando con el ejemplo de los sistemas mecánicos, la figura \ref{fig_sw_estrategia_y_tematica} muestra los correspondientes al robot P.Tinto:
@@ -509,11 +512,11 @@ El desplazamiento a la zona elegida se realiza utilizando el modulo \texttt{stra
 Una vez alcanzada la zona, en función del tipo de elemento de juego se utilizaría el módulo de la temática correspondiente. Por ejemplo, si la zona es tipo \emph{stand} se llamaría a la función de recolección de \emph{stands} del módulo \texttt{strat\_spotlight}.
 
 
-\section{Simulador de robots}
+\section{Simulador de robots y campo de juego}
 
 La utilización de un simulador vino motivada porque en el año 2014 dos de los integrantes del equipo, los encargados de desarrollar la estrategia, estaban viviendo en Alemania. El desarrollo del simulador permitió trabajar conjuntamente con el desarrollo del resto del robot en España. 
 
-El poder simular el comportamiento del robot y los elementos del campo de juego como, los robots oponentes, en una plataforma PC tiene grandes ventajas:
+El poder simular el comportamiento del robot y los elementos del campo de juego, como los robots oponentes, en una plataforma PC tiene grandes ventajas:
 
 \begin{itemize}
 
@@ -521,9 +524,9 @@ El poder simular el comportamiento del robot y los elementos del campo de juego 
 
 \item Necesita pocos recursos: un ordenador. Con uno portátil se puede desarrollar software en cualquier lugar.
 
-\item Reduce el tiempo de puesta en marcha de la estratégica y simular todo tipo de situaciones.
+\item Reduce el tiempo de puesta en marcha de la estratégica y permite simular todo tipo de situaciones.
 
-\item Permite probar cambios de estrategia de ultimo momento.
+\item Permite probar cambios de estrategia de ultimo momento sin necesidad de realizar pruebas en el campo de juego.
 
 \end{itemize}
 
@@ -531,44 +534,76 @@ El poder simular el comportamiento del robot y los elementos del campo de juego 
 Las desventajas son pocas, pero a tener en cuenta:
 
 \begin{itemize}
-\item El funcionamiento simulado de elementos externos como la baliza o la comunicación con el robot secundario ha de ser de igual comportamiento. En caso contrario las pruebas realizadas en simulación no se correspondan con pruebas reales.
+\item La implementación de los elementos simulados simulados: dispositivos HW, sistemas mecánicos, elementos externos, como la baliza, o interfaces de comunicación; ha de tener un comportamiento idéntico al real. En caso contrario las pruebas realizadas en simulación no se corresponderán con pruebas reales en el campo de juego.
 
-\item Tendencia a confiar demasiado en la simulación. Aunque la simulación de los resultados esperados es necesario validarlos en pruebas reales.
+\item Tendencia a confiar demasiado en la simulación. Aunque la simulación dé como resultado el comportamiento esperado es necesario validarlos en pruebas reales, siempre que sea posible.
 \end{itemize}
 
-El simulador desarrollado permite simular el funcionamiento del robot y el campo de juego. Está basado en el simulador desarrollado por el equipo Microb Technology \cite{microb} y utiliza la capacidad de las librerías Aversive4dspic para ser compiladas para un \emhp{host GNU/Linux}.
+El simulador desarrollado permite simular el funcionamiento del robot y el campo de juego. Está basado en el simulador desarrollado por el equipo Microb Technology \cite{microb} y utiliza la capacidad de las librerías Aversive4dspic para ser compiladas para un \emph{host GNU/Linux}.
 
-La simulación de algunas funcionalidades de las librerías Aversive4dspicse se realiza mediante el módulo \texttt{hostsim} (de \texttt{modules/base}). Este módulo simula la salida estándar del modulo de comunicaciones \texttt{uart}, la medida de tiempo y la ejecución periódica del gestor de eventos, mediante una implementación mediante recursos propios del sistema GNU/Linux. Por otro lado
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.95\textwidth]{sw_diagrama_bloques_simulador}
+\caption[]{Diagrama de bloques software del simulador de robots y campo de juego}
+\label{fig_sw_diagrama_bloques_simulador}
+\end{figure}
 
-Respecto a la simulación del robot esta se realiza mediante el módulo \texttt{robotsim} que implementa la simulación de los elementos mecánicos y dependientes del HW. Este módulo es compilado con el proyecto del robot. El ejecutable obtenido da como resultado un robot virtual que corre sobre GNU/Linux. 
+La figura \ref{fig_sw_diagrama_bloques_simulador} muestra el diagrama de bloques del simulador de dos robots. Si lo comparamos con el diagrama de bloques de la figura \ref{fig_sw_diagrama_bloques} se observa que los bloques dependientes del HW y la mecánica de cada robot han desaparecido. En su lugar se encuentra el simulador de cada robot, los cuales se encuentran conectados con el simulador de campo de juego.
 
-La figura \ref{fig_sw_diagrama_bloques_simulador} muestra el diagrama de bloques del simulador de dos robots. Si lo comparamos con el diagrama de bloques de la figura \ref{fig_sw_diagrama_bloques} se observa que los bloques dependientes del HW y la mecánica de cada robot han desaparecido. En su lugar se encuentra el simulador de cada robot (módulo \texttt{robotsim}), el cual emula los siguientes elementos:
+La implementación del simulador consta de tres partes:
+
+\begin{itemize}
+\item Simulación de los módulos de las librerías Aversive4dspic.
+\item Simulación del HW y mecánica del robot.
+\item Visualizador de campo de juego y robots.
+\end{itemize}
+
+La simulación de algunas funcionalidades o módulos de las librerías Aversive4dspicse se realiza mediante el módulo \texttt{hostsim} (de \texttt{modules/base}). Este módulo simula la salida estándar del modulo de comunicaciones \texttt{uart}, la medida de tiempo y la ejecución periódica del gestor de eventos, mediante una implementación mediante recursos propios del sistema GNU/Linux.
+
+Respecto a la simulación del robot esta se realiza mediante el módulo \texttt{robotsim} que implementa la simulación de los elementos mecánicos y dependientes del HW. Este módulo es compilado con el proyecto del robot. El ejecutable obtenido da como resultado un robot virtual que corre sobre GNU/Linux.
+
+El módulo \texttt{robotsim} implementa la simulación de los siguientes elementos: 
 
 \begin{description}
-\item Plataforma róbotica 
+
+\item \textbf{Plataforma robótica}
 
 El simulador a partir del valor de control de los motores emula el comportamiento de los motores de tracción y devuelve el valor de pulsos de encoders equivalentes a la velocidad del robot.
 
-\item Sistemás mecánicos 
+\item \textbf{Sistemas mecánicos} 
 
-La emulación de sistemas mecánicos consiste se realiza mediante un retardo que equivalente al tiempo que los mecanismos tardan en realizar una función.
+La emulación de sistemas mecánicos se realiza mediante un retardo que equivalente al tiempo que los mecanismos tardan en realizar una función.
 
-\item Comunicación entre robots
+\item \textbf{Comunicación entre robots}
 
 En la arquitectura real del sistema de dos robots, ambos están comunicados por medio de un canal serie Bluetooth conectado a un módulo UART. En el simulador la UART es emulada mediante la escritura y lectura de ficheros. Cada simulador de robot tiene un fichero de escritura y otro de lectura que emulan el canal Bluetooth.
 
-\item Baliza
+\item \textbf{Baliza}
 
+Simulación del comportamiento y medidas reales de la baliza del robot en función a su rango de medida y precisión.
 
-\end{itemize}
+\item \textbf{Colisión con obstáculos}
+
+Simulación de bloqueos mecánico y de sensores de obstáculos. Por ejemplo, simulación de la colisión con las paredes del campo de juego, de forma que el robot detecte un obstáculo por bloqueo en los límites del campo de juego.
+
+\end{description}
+
+De esta forma, al compilar el proyecto de ambos robots se generan sendos programas, que al ser ejecutados en un terminal dan como resultado dos robots virtuales comunicados entre sí y controlador mediante la línea de comandos de cada uno (ver figura \ref{fig_sw_ventanas_simulador}).
+
+Respecto al tercer elemento en juego, el simulador de campo de juego está realizado en Python (\texttt{display.py}) y permite la visualización de los robots en un campo de juego virtual y la simulación de robots oponentes. La visualización se implementa mediante la librería \texttt{visual} de Python que utiliza el API de renderización OpenGL. La simulación de los robots oponentes se consigue mediante eventos de un dispositivo tipo ratón. El desarrollador puede simular la posición y movimiento de los robots oponentes interactuando con el ratón sobre el campo de juego virtual.
+
+Como representa la figura \ref{fig_sw_ventanas_simulador}, el simulador de campo de juego se encuentra conectado con cada simulador de robot por un fichero de lectura y uno de escritura. De esta forma cada simulador de robot envían la posición del robot al visualizador de campo de juego y, este a su vez, envía la posición de los oponentes a lo simuladores de robot para que lo procesen como medidas de la baliza.
+
+La ejecución de los programas de cada robot y del visualizador del campo de juego conforman el entorno de simulación completo que se muestra en la figura \ref{fig_sw_ventanas_simulador}.
 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{sw_diagrama_bloques_simulador}
-\caption[]{Diagrama de bloques software del simulador de robots y campo de juego}
-\label{fig_sw_diagrama_bloques_simulador}
+\includegraphics[width=.8\textwidth]{sw_ventanas_simulador}
+\caption[]{Entorno de simulación de los robots P.Tinto y Tirantes, y del campo de juego de la prueba \emph{Robomovies} (Eurobot 2015)}
+\label{fig_sw_ventanas_simulador}
 \end{figure}
+
 
 
 %%% Local Variables:
