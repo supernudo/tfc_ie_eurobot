@@ -849,7 +849,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="243.70469"
+     inkscape:cx="244.71484"
      inkscape:cy="167.60406"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -1111,7 +1111,7 @@
          sodipodi:role="line"
          id="tspan5642-5-6-2"
          x="-1033.6377"
-         y="298.15421">Temática del juego</tspan></text>
+         y="298.15421">Temática de juego</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -1230,7 +1230,7 @@
          sodipodi:role="line"
          id="tspan5642-5-6-0"
          x="-728.07971"
-         y="296.90421">Temática del juego</tspan></text>
+         y="296.90421">Temática de juego</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
@@ -1303,12 +1303,6 @@
          x="-244.39153"
          y="-824.49609"
          id="tspan21474">Pos. (x, y, θ) robot principal</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#TriangleInM);marker-end:url(#TriangleOutM)"
-       d="m -780,422.36223 -90,0"
-       id="path5258-0-8-5"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Symbol;-inkscape-font-specification:Symbol"
