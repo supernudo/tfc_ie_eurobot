@@ -43,8 +43,119 @@
 \addcontentsline{toc}{chapter}{Resumen extendido}
 }
 
-Con un máximo de cuatro o cinco páginas. Se supone que sólo está
-definido como obligatorio para los TFGs y PFCs de UAH.
+% INTRODUCCION
+
+Este trabajo de fin de carrera trata sobre el desarrollo de robots para la competición de robots Eurobot \cite{eurobot}. Pretende ser un manual de referencia para todo aquel que quiera construir un robot para participar en Eurobot. Todo lo que se expone en este libro se sustenta en la experiencia adquirida en el desarrollo de robots participantes en Eurobot entre los años 2003 y 2015. Especialmente en el periodo entre 2010 y 2015.
+
+Eurobot es un concurso internacional de robótica creado en 1998 a partir de la Copa de Francia de la robótica \cite{cdr} (Coupe de France de robotique). Las reglas y la temática de Eurobot cambian cada año, sin embargo, la base es siempre la misma: tamaño de los robots, dimensiones del campo de juego y duración de los partidos.
+
+Los robots que se presentan en este proyecto han sido desarrollados por el equipo \emph{Eurobotics Engineering} \cite{arc_robots},  un equipo participante en Eurobot, perteneciente a la Asociación de Robótica de Coslada (ARC), y que tuvo su origen en antiguos equipos de la Universidad de Alcala (UAH) creados por el departamento de electrónica de la UAH.
+
+% EL ROBOT DE EUROBOT
+
+Un robot de Eurobot ha de ser completamente autónomo y ser capaz de:
+
+\begin{enumerate}
+\item Desplazarse hasta las diferentes zonas del campo donde se sitúan los elementos del juego o donde se almacenan.
+\item Evitar chocar con elementos del campo de juego y con otros robots oponentes durante los desplazamientos entre zonas del campo.
+\item Resolver la temática del juego, lo cual implica el manejo de los elementos o piezas propias del juego.
+\end{enumerate}
+
+En base a esto, el desarrollo de un robot de Eurobot se ha dividido en las siguientes partes principales:
+
+\begin{enumerate}
+\item Desplazamiento y localización.
+\item Evitación de obstáculos.
+\item Comunicación entre robots (en caso de jugar con 2 robots).
+\item Manipulación de elementos de juego. 
+\item Estrategia de juego.
+\end{enumerate}
+
+Las tres primeras partes forman lo que se ha denominado la \emph{plataforma robótica base}. Esta plataforma base está compuesta por las partes que permiten un desarrollo independientemente de la temática de la prueba de Eurobot. De esta forma, la plataforma robótica constituye un desarrollo reutilizable en la concepción de nuevos robots de Eurobot. Cada una de estas partes principales de un robot de Eurobot pueden implicar un desarrollo mecánico, electrónico y de software, dependiendo del caso.
+
+% PLATAFORMA ROBÓTICA BASE
+El \textbf{desplazamiento y localización} de la plataforma robótica se implementa a partir de un \emph{sistema de tracción diferencial} y un \emph{sistema de posicionamiento por odometría}. Mediante la unión de estos dos sistemas implementa a su vez un \emph{control de posición polar}, a partir del cual, se gestiona la \emph{generación de trayectorias}.
+
+Mecánicamente el sistema de tracción diferencial consiste en un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_resumen}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y, junto con el bloque motor, el control de posición del robot.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{plataforma_partes_1}
+\includegraphics[width=.35\textwidth]{plataforma_partes_2}
+\caption[]{Elementos de la plataforma robótica base}
+\label{fig_plataforma_partes_resumen}
+\end{figure}
+
+
+El \textbf{hardware (HW) desarrollado} de la plataforma robótica está compuesto por una tarjeta principal y varias tarjetas auxiliares que en conjunto tienen la capacidad de gestionar e implementar los sistemas mencionados anteriormente, así como los sistemas mecánicos específicos de la prueba de Eurobot, destinados a la manipulación de elementos de juego.
+
+Respecto a la \textbf{evitación de obstáculos}, ésta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_resumen}) y a partir de un sistema de balizamiento que hace uso de los soportes y espacios destinados a a balizas de la competición Eurobot, y esta compuesto por un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_2}). Este sistema está específicamente desarrollado para medir la distancia y angulo de los oponentes relativo a la posición del robot de Eurobot.
+
+% (BALIZA)
+%El sistema de baliza tipo faro se compone de un sensor giratorio y una o varias balizas cilíndricas reflectantes. El sensor gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes cuando el sensor se encuentra enfrentado con ellas.  La medida de distancia se basa en el principio por el cual un objeto cercano se ve más grande que uno lejano. De forma que a una distancia cercana le corresponde un ángulo relativo de detección $\alpha_d$ mayor que el de una distancia más lejana. Por otro lado, la medida de ángulo se obtiene a partir del ángulo durante el cual se detecta la baliza reflectante.
+
+La \textbf{implementación software} (SW) de todos los sistemas y funcionalidades de la plataforma robótica a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. A partir de estas librerías se crearon las librerías Aversive4dspic, una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por en el HW desarrollado para los robots. 
+
+En el caso de equipos formados por dos robots, la plataforma robótica desarrollada permite que la misma arquitectura mecánica, hardware y software pueda ser utilizada en ambos robots. Implementándose la \textbf{comunicación entre robots} mediante la inferfaz \emph{Bluetooth} de las tarjetas principales de cada robot.
+
+% HW
+Se ha se definido una \textbf{arquitectura hardware} que permite ser reutilizada en el desarrollo de robots de Eurobot. Se trata de un sistema embebido basado en microcontroladores dsPIC que tiene parte de sus recursos dedicados a la implementación de la plataforma robótica base y el resto a los sistema mecánicos. Debido a que los recursos destinados a los sistemas mecánicos dependen de la temática de la prueba, la arquitectura HW tiene una interfaz I2C destinada expansión de recursos de entrada/salida (E/S) y de procesamiento, que permite la implementación de un procesamiento distribuido (ver figura \ref{fig_hardware_arquitectura_principal_resumen}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{hardware_arquitectura_principal}
+\caption[]{Arquitectura hardware desarrollada}
+\label{fig_hardware_arquitectura_principal_resumen}
+\end{figure}
+
+Por otro lado, la arquitectura HW tiene una interfaz de depuración RS-232 independiente a través de la cual poder controlar, monitorizar y probar el hardware y el software. Esta interfaz forma una cadena serie con el resto de microcontroladores que permite acceder a cualquiera de ellos mediante un \emph{bypass} del los datos. Además la arquitectura cuenta con una interfaz inalámbrica Bluetooth mediante la cual se implementa la comunicación con la baliza tipo faro y el robot secundario. El resto de recursos E/S de la arquitectura HW están pensados para la conexión de los actuadores y sensores más utilizados en el desarrollo de robots de Eurobot. Dependiendo de las características del robot, esta arquitectura HW ha sido implementada en diferentes tarjetas electrónicas.
+
+% SW
+
+Al igual que la arquitectura HW, el software desarrollado está basado en una \textbf{arquitectura software} pensada para se fácilmente reutilizada y adaptada en cada desarrollo de un robot de Eurobot. El diagrama de bloques SW correspondiente a un robot principal y uno secundario se muestra en la figura \ref{fig_sw_diagrama_bloques_resumen}. Ambos robots implementan la misma arquitectura. El robot principal imlementa la arquitectura mediante dos microcontroladores y el secundario mediante un único microcontrolador.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{sw_diagrama_bloques}
+\caption[]{Diagrama de bloques software del robot principal y secundario}
+\label{fig_sw_diagrama_bloques_resumen}
+\end{figure}
+
+La arquitectura SW se organiza en capas o módulos funcionales, de forma que aquellos de nivel superior implementan funciones más abstractas que los inferiores:
+
+\begin{description}
+\item \textbf{Drivers de dispositivos HW}
+
+Capa de menor nivel que permite abstraer los módulos o dispositivos HW del robot, como módulos de comunicación del microcontrolador (UART, I2C, SPI, ...) o dispositivos externos a éste como servomotores, o drivers en puente en H para el control de motores.
+
+\item \textbf{Plataforma robótica base}
+
+Módulo que implementa las funcionalidades de la plataforma robótica base: control de posición, odometría, gestión de trayectorias y evitación de obstáculos.
+
+\item \textbf{Sistemas mecánicos}
+
+Módulo que abstrae el control de los diferentes sistemas mecánicos del robot mediante los cuales se manipulan los elementos del  juego. Este módulo a su vez se encuentra dividido en varios niveles, representados en el microcontrolador esclavo del robot principal de la figura \ref{fig_sw_diagrama_bloques_resumen}).
+
+\item \textbf{Temática de juego}
+
+Nivel que integra toda la funcionalidad de los niveles inferiores y sistemas externos, como la baliza y el robot secundario, para implementar las funcionalidades del robot relativas a la prueba de Eurobot y a la navegación del robot por el campo de juego.
+
+\item \textbf{Estrategia de juego}
+
+Esta capa implementa la estrategia de juego de un partido así como las diferentes fases de las que se compone un partido.
+
+\item \textbf{Linea de comandos}
+
+Capa de mayor nivel que permite ejecutar comandos de cualquier módulo o nivel. De esta forma durante el desarrollo de las diferentes capas o módulos, las funcionalidades de éstas pueden ser probadas por partes y verificar su correcto funcionamiento.
+
+\end{description}
+ 
+Por último, el SW desarrollado incluye adamas un \textbf{simulador de los robots y del campo de juego}, implementado a partir la compilación del código fuente de los robots en un \emph{host} GNU/Linux.
+
+
+
+
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
