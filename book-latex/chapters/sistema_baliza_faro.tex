@@ -262,7 +262,7 @@ uint16_t get_dist_array(uint8_t sensor, int32_t size, int32_t period)
 \end{verbatim}
 }
 
-La obtención de la distancia mediante un array de datos permite obtener la medida sin penalizar en tiempo de cálculo.
+La obtención de la distancia mediante un \emph{array} de datos permite obtener la medida sin penalizar en tiempo de cálculo.
 
 Una vez obtenida la distancia y el ángulo relativos de la baliza detectada se obtiene su posición relativa y junto con la posición absoluta del robot, dada por la odometría, se obtiene la posición absoluta $(x,y)$ de la baliza. Normalmente la baliza se encuentra alineada con el centro de giro del robot y las medidas relativas de la baliza coinciden con las medidas relativas al robot. En caso de no se así, tanto las medidas relativas como las medidas absolutas deben ser corregidas teniendo en cuenta el desplazamiento de la baliza respecto al centro de giro del robot.
 
@@ -276,7 +276,7 @@ Mediante una comunicación por mensaje y respuesta el robot realiza peticiones pe
 
 \section{Ajustes, modelado y calibración}
 
-A la hora de poner en marcha la baliza tipo faro es necesario realizar algunos ajustes con el fin de obtener el rango de medida de distancia máximo y ajustado a las necesidades. En el caso de la medida de ángulo, dependiendo de la implementación mecánica puede ser necesario ajustar el offset que define el ángulo $0^o$. Pero no es el caso de los dos tipos de balizas implementadas, ya que en ambas el sensor de medida de periodo de vuelta se encuentra sincronizado mecánicamente con la orientación $0^o$. Cabría un offset entre la interrupción de la señal del sensor y la captura del timer asociado, pero se puede considerar despreciable.
+A la hora de poner en marcha la baliza tipo faro es necesario realizar algunos ajustes con el fin de obtener el rango de medida de distancia máximo y ajustado a las necesidades. En el caso de la medida de ángulo, dependiendo de la implementación mecánica puede ser necesario ajustar el offset que define el ángulo $0^o$. Pero no es el caso de los dos tipos de balizas implementadas, ya que en ambas el sensor de medida de periodo de vuelta se encuentra sincronizado mecánicamente con la orientación $0^o$. Cabría un offset entre la interrupción de la señal del sensor y la captura del \emph{timer} asociado, pero se puede considerar despreciable.
 
 Una vez realizados los ajustes, la forma de obtener la medida de ángulo se corresponde con el modelo teórico \eqref{eq_alpha}. Respecto a la medida de distancias, se ha optado por obtener un modelado experimental.
 
@@ -373,14 +373,14 @@ La distancia corregida y la medida de ancho de pulso procesada se utiliza para m
 
 Se observa que la respuesta se aproxima a una función lineal pero se pueden diferenciar 3 zonas levemente curvas. Aunque se podía haber aproximado a la ecuación de una recta se ha preferido tratar de preservar fehacientemente el modelo obtenido.
 
-Dado el elevado orden del polinomio ($N=6$), se ha optado por implementar un método de obtención de la medida de distancia basado en una tabla o array de valores de distancias y cuyo índice es calculado a partir de la medida de ancho de pulso \texttt{measure}. Para ello utilizando el polinomio calculado se han obtenido un grupo de muestras suficientes para garantizar una resolución $1cm$ en la medida de distancias. Dicho grupo de muestras está definido por el valor mínimo y máximo de ancho de pulso (correspondientes a la distancia máxima y mínima, respectivamente) y un incremento de ancho de pulso (que define la resolución en la medida de distancia). El valor de incremento de ancho de pulso es el mínimo para garantizar la resolución de $1cm$ y genere con un numero datos almacenable en la memoria del microcontrolador.
+Dado el elevado orden del polinomio ($N=6$), se ha optado por implementar un método de obtención de la medida de distancia basado en una tabla o \emph{array} de valores de distancias y cuyo índice es calculado a partir de la medida de ancho de pulso \texttt{measure}. Para ello utilizando el polinomio calculado se han obtenido un grupo de muestras suficientes para garantizar una resolución $1cm$ en la medida de distancias. Dicho grupo de muestras está definido por el valor mínimo y máximo de ancho de pulso (correspondientes a la distancia máxima y mínima, respectivamente) y un incremento de ancho de pulso (que define la resolución en la medida de distancia). El valor de incremento de ancho de pulso es el mínimo para garantizar la resolución de $1cm$ y genere con un numero datos almacenable en la memoria del microcontrolador.
 
 El resultado se muestra en la figura \ref{fig_beacon_robot_calib_3m_fig_2_small}, el conjunto de datos de la tabla de distancia obtenido es de 561 muestras de distancia y la diferencia entre muestras en ningún caso supera el cm.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.8\textwidth]{beacon_robot_calib_3m_fig_2_1_small.pdf}
-\caption[]{Discretización del modelo continuo de medida de distancia para su mapeado en un array de datos }
+\caption[]{Discretización del modelo continuo de medida de distancia para su mapeado en un \emph{array} de datos }
 \label{fig_beacon_robot_calib_3m_fig_2_small}
 \end{figure}
 

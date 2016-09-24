@@ -32,7 +32,7 @@
 
 \begin{FraseCelebre}
   \begin{Frase}
-Desde hace muchas generaciones un P.Tinto se ha distinguido por tres cualidades que lo hacen inconfundible en cualquier lugar del mundo: un P.Tinto siempre mira hacia arriba con optimismo, a un P.Tinto la elegancia se le reconoce donde quiera que valla,...informal sí, pero elegante. Y por sobre todo, un P.Tinto siempre lleva su propia energía, sin olvidar que a un P.Tinto le gusta echarse azúcar en el café hasta que haga isla.
+Desde hace muchas generaciones un P.Tinto se ha distinguido por tres cualidades que lo hacen inconfundible en cualquier lugar del mundo: un P.Tinto siempre mira hacia arriba con optimismo, a un P.Tinto la elegancia se le reconoce dónde quiera que vaya,...informal sí, pero elegante. Y por sobre todo, un P.Tinto siempre lleva su propia energía, sin olvidar que a un P.Tinto le gusta echarse azúcar en el café hasta que haga isla.
   \end{Frase}
   \begin{Fuente}
 Padre de P.Tinto, película \emph{El milagro de P.Tinto}
@@ -51,20 +51,20 @@ El desarrollo software del robot de Eurobot se organiza en capas o módulos funci
 
 El módulo \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. Al mismo nivel, se encuentra el módulo \emph{sistemas mecánicos} encargado de controlar los mecanismos utilizados por el robot para manipular los elementos de juego. Ambos módulos se integran y se sincronizan en la capa de \emph{temática de juego} para implementar funcionalidades propias de la temática de Eurobot. Por último, la capa \emph{estratégia de juego} decide cuando y que acciones del juego realizar en cada momento para jugar un partido de Eurobot.
 
-Así por ejemplo, si la capa de estrategia decide recolectar el tomate 1 llama a funciones del tipo \texttt{harvest\_tomato(TOMATO\_1)} de la capa de temática de juego, la cual a su vez utilizará funciones de la plataforma robótica del tipo \texttt{goto\_avoid\_xy(TOMATO\_1\_X, TOMATO\_1\_Y)} para moverse evitando los obstáculos hacia la posición del tomate 1 y, funciones de los sistemas mecánicos del tipo \texttt{system\_tomatoes\_set\_mode(MODE\_HARVEST)} para recolectar el tomate mediante el sistema mecánico de recolección de tomates.
+Así por ejemplo, si la capa de estrategia decide recolectar el tomate 1, llama a funciones del tipo \texttt{harvest\_tomato(TOMATO\_1)} de la capa de temática de juego, la cual a su vez utilizará funciones de la plataforma robótica del tipo \texttt{goto\_avoid\_xy(TOMATO\_1\_X, TOMATO\_1\_Y)} para moverse evitando los obstáculos hacia la posición del tomate 1 y, funciones de los sistemas mecánicos del tipo \texttt{system\_tomatoes\_set\_mode(MODE\_HARVEST)} para recolectar el tomate mediante el sistema mecánico de recolección de tomates.
 
 
 \section{Librerias Aversive y Aversive4dspic}
 
 La implementación SW de los robots se ha realizado a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. 
 
-Las librerías Aversive4dspic son una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por en el HW desarrollado para los robots. Para realizar la migración de las librerías Aversive ha sido necesario desarrollar la capa de \emph{drivers de dispositivos HW} dependiente directamente del microcontrolador dsPIC, manteniendo las interfaces de los drivers equivalentes de microcontroladores AVR. Además ha sido necesario migrar dependencias específicas del compilador utilizado por las plataformas AVR al equivalente en el compilador para dsPICs. 
+Las librerías Aversive4dspic son una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por el HW desarrollado para los robots. Para realizar la migración de las librerías Aversive ha sido necesario desarrollar la capa de \emph{drivers de dispositivos HW} dependiente directamente del microcontrolador dsPIC, manteniendo las interfaces de los drivers equivalentes de microcontroladores AVR. Además, ha sido necesario migrar dependencias específicas del compilador utilizado por las plataformas AVR al equivalente en el compilador para dsPICs. 
 
-Las librerías Aversive4dspic mantienen la compatibilidad hacia atrás y permiten trabajar también con plataformas AVR. El código nuevo desarrollado o las modificaciones de código existente ha sido realizadas siguiendo la misma convención de código de las librerías originales.
+Las librerías Aversive4dspic mantienen la compatibilidad hacia atrás y permiten trabajar también con plataformas AVR. El código nuevo desarrollado o las modificaciones de código existente han sido realizadas siguiendo la misma convención de código que las librerías originales.
 
-Las librerías Aversive utilizan un \emph{toolchain} basado en la herramienta \texttt{make}. Así, a partir de un fichero \texttt{makefile} es posible configurar el proyecto para utilizar los módulos necesarios de la librería, especificar los ficheros de código fuente, compilar el código fuente y programar el microcontrolador. Además de soportar la compilación cruzada para microcontroladores AVR, estas librerías soportan la compilación y ejecución en \emph{HOST} para plataformas GNU/Linux.
+Las librerías Aversive utilizan un \emph{toolchain} basado en la herramienta \texttt{make}. Así, a partir de un fichero \texttt{makefile}, es posible configurar el proyecto para utilizar los módulos necesarios de la librería, especificar los ficheros de código fuente, compilar el código fuente y programar el microcontrolador. Además de soportar la compilación cruzada para microcontroladores AVR, estas librerías soportan la compilación y ejecución en \emph{HOST} para plataformas GNU/Linux.
 
-Respecto las librerías Aversive4dspic, soportan la creación de un proyecto y configuración de los módulos a utilizar mediante la herramienta \texttt{make} y la compilación en \emph{HOST}. La compilación cruzada para microcontroladores dsPIC y su programación se realiza mediante el entorno de desarrollo de Microchip MPlab y MPlabX.
+Respecto a las librerías Aversive4dspic, soportan la creación de un proyecto y configuración de los módulos a utilizar mediante la herramienta \texttt{make} y la compilación en \emph{HOST}. La compilación cruzada para microcontroladores dsPIC y su programación se realiza mediante el entorno de desarrollo de Microchip MPlab y MPlabX.
 
 Las estructura de las librerías se divide en 5 carpetas principales:
 
@@ -73,7 +73,7 @@ Las estructura de las librerías se divide en 5 carpetas principales:
 
 \item \textbf{\texttt{include}}: ficheros de cabecera generales, no relacionados con los módulos de la librería.
 
-\item \textbf{\texttt{mk}}: ficheros \texttt{makefiles} de las librerias (proyecto, módulos y plantillas)
+\item \textbf{\texttt{mk}}: ficheros \texttt{makefiles} de las librerías (proyecto, módulos y plantillas).
 
 \item \textbf{\texttt{modules}}: módulos de la librería. Un módulo es una pequeña librería con una funcionalidad específica.
 
@@ -90,7 +90,7 @@ Los módulos se encuentran organizados en las siguientes carpetas:
 \item \textbf{\texttt{modules/devices}}: módulos de dispositivos específicos no dependientes del HW del microcontrolador (LCDs, motores, ...).
 \item \textbf{\texttt{modules/encoding}}: módulos de codificación (base 64, \emph{hamming}, ...).
 \item \textbf{\texttt{modules/hardware}}: módulos de interfaces del microcontrolador (\emph{timers}, ADC, ...).
-\item \textbf{\texttt{modules/ihm}}: módulos de interfaz hombre-maquina (menues, interfaz de comandos, ...)
+\item \textbf{\texttt{modules/ihm}}: módulos de interfaz hombre-máquina (menues, interfaz de comandos, ...)
 \end{itemize}
 
 Algunos módulos incluyen una configuración previa a la compilación. En estos casos, los módulos tienen asociado un fichero de cabecera de configuración con el formato \texttt{nombre\_modulo\_config.h}. Estos ficheros se encuentran en la carpeta \texttt{config} de cada módulo. Durante la configuración de un proyecto Aversive, estos ficheros son copiados a la carpeta raíz del proyecto, donde pueden ser modificados para ajustar la configuración a las necesidades del proyecto.
@@ -105,11 +105,11 @@ La librería incluye varios módulos matemáticos que permiten realizar operaciones
 
 \begin{itemize}
 \item \textbf{\texttt{modules/base/math/fixed\_point}}: operaciones matemáticas en punto fijo.
-\item \textbf{\texttt{modules/base/math/geometry}}: operaciones con puntos, lineas, polígonos y círculos.
+\item \textbf{\texttt{modules/base/math/geometry}}: operaciones con puntos, líneas, polígonos y círculos.
 \item \textbf{\texttt{modules/base/math/vect2}}: operaciones con vectores.
 \end{itemize}
 
-Estos módulos son utilizados por ejemplo para la implementación sistemas de control en punto fijo, o en la implementación de evitación de obstáculos del robot, donde cada obstáculo es representado por un polígono.
+Estos módulos son utilizados por ejemplo para la implementación de sistemas de control en punto fijo, o en la implementación de evitación de obstáculos del robot, donde cada obstáculo es representado por un polígono.
 
 \subsection{Gestión de \emph{buffers} de datos}
 
@@ -117,15 +117,15 @@ Es muy común que para la implementación de interfaces de comunicación (UART, I2C
 
 \subsection{Planificador de eventos}
 
-El módulo \textbf{\texttt{modules/base/scheduler}} implementa un planificador de eventos con prioridad. Los eventos pueden ser periódicos o eventuales, lo primeros llevan asociado un periodo y los segundos un instante de ejecución a partir del momento de creación.
+El módulo \textbf{\texttt{modules/base/scheduler}} implementa un planificador de eventos con prioridad. Los eventos pueden ser periódicos o de ejecución única. Lo primeros llevan asociado un periodo y los segundos un instante de ejecución a partir del momento de creación.
 
-El módulo \emph{scheduler} está pensado para ejecutarse en la interrupción de un \emph{timer}, el periodo de dicho \emph{timer} constituye el periodo base del \emph{scheduler} (por ejemplo 1ms). Cada periodo se evalúa que evento ejecutar. Dado que los eventos se ejecutan en un contexto de interrupción las funciones asociadas a estos han de ser de corta duración y no bloqueantes.
+El módulo \emph{scheduler} está pensado para ejecutarse en la interrupción de un \emph{timer}, el periodo de dicho \emph{timer} constituye el periodo base del \emph{scheduler} (por ejemplo 1ms). En cada periodo se evalúa que evento ejecutar. Dado que los eventos se ejecutan en un contexto de interrupción, las funciones asociadas a estos han de ser de corta duración y no bloqueantes.
 
-Mediante eventos del \emph{scheduler} el robot implementa por ejemplo la lectura de sensores cada 10ms, los sistemas de control cada 5ms o los protocolos de comunicación con la baliza o el robot secundario cada 10ms.  
+Mediante eventos del \emph{scheduler}, el robot implementa por ejemplo: la lectura de sensores cada 10ms, los sistemas de control cada 5ms o los protocolos de comunicación con la baliza o el robot secundario cada 10ms.  
 
 \subsection{Medida de tiempo}
 
-El módulo \textbf{\texttt{modules/base/time}} permite medir de tiempo del sistema. Este módulo se ejecuta como un evento del \emph{scheduler} y su periodo de ejecución se corresponde con la resolución de medida del tiempo. Permite obtener el tiempo transcurrido desde su inicialización en horas, minutos, segundos y microsegundos. 
+El módulo \textbf{\texttt{modules/base/time}} permite medir el tiempo del sistema. Este módulo se ejecuta como un evento del \emph{scheduler} y su periodo de ejecución se corresponde con la resolución de medida del tiempo. Permite obtener el tiempo transcurrido desde su inicialización en horas, minutos, segundos y microsegundos. 
 
 Este módulo permite implementar esperas bloqueantes o no bloqueantes. Por ejemplo, a los 90 segundos los robots han de dejar de jugar y desactivar todos los sistemas. Esta espera se puede implementar de forma precisa a partir de este módulo evaluando periódicamente el número de segundos transcurridos desde el inicio de partido.  
 
@@ -133,14 +133,14 @@ Este módulo permite implementar esperas bloqueantes o no bloqueantes. Por ejempl
 
 El módulo \textbf{\texttt{modules/debug/error}} implementa mensajes de depuración o \emph{logs} que permiten trazar el funcionamiento del software implementado con el fin de verificar su correcta ejecución. Cada mensaje tiene asociado un número de error y un nivel de gravedad: EMERG, ERROR, WARNING, NOTICE y DEBUG. 
 
-El módulo permite definir la función a partir de cual los mensajes son generados para cada nivel de gravedad. En dicha función se define el formato de los mensajes, la información de estos y la interfaz por la cual son transmitidos (UART, SPI, I2C, etc.). 
+El módulo permite definir la función a partir de la cual los mensajes son generados para cada nivel de gravedad. En dicha función se define el formato de los mensajes, la información de estos y la interfaz por la cual son transmitidos (UART, SPI, I2C, etc.). 
 
 El software desarrollado para los robots y los módulos de las librerías utilizan el módulo \emph{error}. En este caso, la función que genera los mensajes utiliza la salida estándar (conectada a una UART) para transmitir los mensajes. Esta función, además, filtra los mensajes por número de error y nivel de gravedad, de forma que sólo aquellos mensajes con números de error habilitados y de nivel de gravedad superior al establecido serán transmitidos, con la excepción de los mensajes de nivel ERROR que serán siempre transmitidos.
 
 
-\subsection{Interfaz de linea comandos}
+\subsection{Interfaz de línea comandos}
 
-Las librerías permiten implementar una interfaz de linea comandos similar a la de sistemas GNU/Linux con las siguientes características:
+Las librerías permiten implementar una interfaz de línea comandos similar a la de sistemas GNU/Linux con las siguientes características:
 
 \begin{itemize}
 \item Interfaz de comunicación serie configurable (UART, I2C, SPI, ...).
@@ -149,27 +149,27 @@ Las librerías permiten implementar una interfaz de linea comandos similar a la d
 \item Completado automático de argumentos y sugerencia del tipo de argumento a introducir.
 \item Tipo de argumentos: texto (\emph{strings}), números enteros (8 y 16 bits) y números decimales (\emph{float}). 
 \item Comprobación de número argumentos y tipo de los argumentos.
-\item Histórico de comandos ejecutados
+\item Histórico de comandos ejecutados.
 \end{itemize}
 
-La interfaz de linea de comandos se implementa a partir de los siguientes módulos:
+La interfaz de línea de comandos se implementa a partir de los siguientes módulos:
 
 \begin{itemize}
 \item \textbf{\texttt{modules/ihm/vt100}}: módulo que permite interpretar los caracteres no imprimibles VT100.
-\item \textbf{\texttt{modules/ihm/rdline}}: módulo de lectura de una linea, terminada en retorno de carro, a través de una interfaz serie de entrada, por ejemplo una UART.
-\item \textbf{\texttt{modules/ihm/parse}}: módulo que realiza la correlación de una linea con los posibles comandos a ejecutar y sus argumentes, y en caso de coincidencia, ejecuta el comando correspondiente.
+\item \textbf{\texttt{modules/ihm/rdline}}: módulo de lectura de una línea, terminada en retorno de carro, a través de una interfaz serie de entrada, por ejemplo una UART.
+\item \textbf{\texttt{modules/ihm/parse}}: módulo que realiza la correlación de una línea con los posibles comandos a ejecutar y sus argumentos, y en caso de coincidencia, ejecuta el comando correspondiente.
 \end{itemize}
 
-Los módulos \texttt{rdline} y \texttt{parse} utilizan el módulo \texttt{vt100} para poder interpretar los caracteres no imprimibles como el tabulador o los cursores. Por ejemplo, el tabulador es utilizado para completar un argumento tipo texto o para indicar el tipo del argumento siguiente. Por otro lado, los cursores permiten moverse por el listado de comandos ejecutados o por una linea escrita para modificarla.
+Los módulos \texttt{rdline} y \texttt{parse} utilizan el módulo \texttt{vt100} para poder interpretar los caracteres no imprimibles como el tabulador o los cursores. Por ejemplo, el tabulador es utilizado para completar un argumento tipo texto o para indicar el tipo del argumento siguiente. Por otro lado, los cursores permiten moverse por el listado de comandos ejecutados o por una línea escrita para modificarla.
 
-El módulo \emph{parse} tiene asociado una lista de comandos y cada comando tiene asociado unos parámetros de entrada y una función a ejecutar. A medida que \emph{rdline} recibe una linea utiliza información del la lista de comandos de \emph{parse} para implementar el completado de argumentos de texto o indicar el tipo del siguiente argumento. Si el comando y sus argumentos coinciden con alguno de los comandos de la lista de comandos, el módulo \emph{parse} ejecuta la función asociada al comando, propagando los argumentos introducidos por la línea de comandos a dicha función.
+El módulo \emph{parse} tiene asociado una lista de comandos y cada comando tiene asociado unos parámetros de entrada y una función a ejecutar. A medida que \emph{rdline} recibe una línea utiliza información de la lista de comandos de \emph{parse} para implementar el completado de argumentos de texto o indicar el tipo del siguiente argumento. Si el comando y sus argumentos coinciden con alguno de los comandos de la lista de comandos, el módulo \emph{parse} ejecuta la función asociada al comando, propagando los argumentos introducidos por la línea de comandos a dicha función.
 
-En el caso del desarrollo software del robot de Eurobot, la interfaz de linea de comandos constituye la capa de mayor nivel, más abstracta y la interfaz entre el robot y sus desarrolladores. La linea de comandos está presente durante todo el desarrollo del robot e implementa comandos mediante los cuales controlar o probar el funcionamiento de las diferentes capas o niveles del software. Así, hay comandos que permiten controlar directamente el HW del robot, como la generación de señales PWM o la lectura del valor de sensores, o comandos muchos más abstractos que permiten mover el robot hasta una posición (x,y) del campo o iniciar un partido de Eurobot.
+En el caso del desarrollo software del robot de Eurobot, la interfaz de línea de comandos constituye la capa de mayor nivel, más abstracta y la interfaz entre el robot y sus desarrolladores. La línea de comandos está presente durante todo el desarrollo del robot e implementa comandos mediante los cuales controlar o probar el funcionamiento de las diferentes capas o niveles del software. Así, hay comandos que permiten controlar directamente el HW del robot, como la generación de señales PWM o la lectura del valor de sensores, o comandos muchos más abstractos que permiten mover el robot hasta una posición (x,y) del campo o iniciar un partido de Eurobot.
 
  
 \section{Arquitectura software}
 
-La arquitectura SW desarrollada se definió en el año 2010 durante el desarrollo del robot Tropetero. Por aquel entonces sólo se competía con un robot por equipo, más tarde, en el año 2014 la arquitectura evolucionó hacia la competición con dos robots por equipo. 
+La arquitectura SW desarrollada se definió en el año 2010 durante el desarrollo del robot Trompetero. Por aquel entonces sólo se competía con un robot por equipo, más tarde, en el año 2014, la arquitectura evolucionó hacia la competición con dos robots por equipo. 
 
 La figura \ref{fig_sw_diagrama_bloques} muestra el diagrama de bloques SW de un equipo de dos robots: un robot principal y uno secundario. Ambos robots implementan la misma arquitectura SW diferenciándose únicamente en el número de elementos implicados en la implementación. Debido a la complejidad de los sistemas mecánicos del robot principal, éste implementa la arquitectura mediante dos microcontroladores, mientras que el robot secundario utiliza un único microcontrolador. Además, la baliza tipo faro del robot principal constituye un sistema independiente, mientras que la baliza del robot secundario se encuentra integrada en la arquitectura HW y SW del robot. 
 
@@ -180,9 +180,9 @@ La figura \ref{fig_sw_diagrama_bloques} muestra el diagrama de bloques SW de un 
 \label{fig_sw_diagrama_bloques}
 \end{figure}
 
-Cada robot tiene una interfaz serie que permite acceder a la linea de comandos de cada uno utilizando un terminal serie de un ordenador. En el caso del robot principal, utiliza una interfaz serie RS-232, mientras que el robot secundario utiliza una interfaz serie Bluetooth (perfil SPP, \emph{Serial Port Profile}).
+Cada robot tiene una interfaz serie que permite acceder a la línea de comandos de cada uno, utilizando un terminal serie de un ordenador. En el caso del robot principal, utiliza una interfaz serie RS-232, mientras que el robot secundario utiliza una interfaz serie Bluetooth (perfil SPP, \emph{Serial Port Profile}).
 
-Ambos robots y la baliza del robot principal se encuentran conectados mediante sendos canales serie Bluetooth. Estos canales son utilizados para implementar el protocolo de comunicación entre el robot principal y la baliza, y entre el robot principal y el robot secundario. También es posible utilizar estos canales Bluetooth para acceder a la linea de comandos de la baliza y del robot secundario desde el terminal serie del ordenador, a partir de un \emph{bypass} de los datos en el robot principal.
+Ambos robots y la baliza del robot principal se encuentran conectados mediante sendos canales serie Bluetooth. Estos canales son utilizados para implementar el protocolo de comunicación entre el robot principal y la baliza, y entre el robot principal y el robot secundario. También es posible utilizar estos canales Bluetooth para acceder a la línea de comandos de la baliza y del robot secundario desde el terminal serie del ordenador, a partir de un \emph{bypass} de los datos en el robot principal.
 
 Igualmente, ambos robots utilizan una interfaz I2C maestro-esclavo para acceder a dispositivos de expansión de E/S, a los que se encuentran conectados sensores. Además, en el caso del robot principal, esta interfaz es utilizada por el microcontrolador principal para comunicarse con el microcontrolador esclavo (SLAVE DSPIC), el cual implementa el control de sistemas mecánicos. Mediante la interfaz I2C se implementa un protocolo de mensajes que permite compartir la información de los dispositivos conectados al bus (sensores) con ambos microcontroladores y, una gestión de los sistemas mecánicos por parte del microcontrolador principal. 
 
@@ -205,22 +205,22 @@ Módulo que abstrae el control de los diferentes sistemas mecánicos del robot med
 
 Esta capa permite abstraer completamente las funcionalidades de la plataforma robótica y de los sistemas mecánicos e integra la información de la baliza. De esta forma, a este nivel se trabaja con funciones que sincronizan los movimientos del robot con los sistemas mecánicos, como \texttt{harvest\_tomato(TOMATO\_1)} (ir hasta la posición del tomate 1 y recolectarlo).
 
-Esta capa también tiene funciones que integran la información de varios módulos, como la información de odometría, del tiempo transcurrido, de la baliza y de los sensores de obstáculos. Es el caso de la función \texttt{wait\_traj\_end(END\_TRAJ|END\_TIMER|END\_OBSTACLE)} que esperar el fin de una trayectoria debido a diferentes razones: \emph{punto destino alcanzado}, \emph{tiempo de partido se acaba}, o por \emph{obstáculo en el camino encontrado}.
+Esta capa también tiene funciones que integran la información de varios módulos, como la información de odometría, del tiempo transcurrido, de la baliza y de los sensores de obstáculos. Es el caso de la función \texttt{wait\_traj\_end(END\_TRAJ|END\_TIMER|END\_OBSTACLE)}, que espera el fin de una trayectoria debido a diferentes razones: \emph{punto destino alcanzado}, \emph{el tiempo de partido se acaba}, o por un \emph{obstáculo en el camino encontrado}.
 
 
 \item \textbf{Estrategia de juego}
 
-Esta capa implementa la estrategia de juego de un partido así como las diferentes fases de las que se compone un partido. Las funciones esperadas a este nivel son del tipo \texttt{is\_the\_opponent\_in\_zone(ZONE\_TOMATOES\_1)} (¿está el oponente en la zona de los tomates?), o \texttt{goto\_zone(ZONE\_TOMATOES\_1)} (ir a la zona de los tomates), o \texttt{work\_on\_zone(ZONE\_TOMATOES\_1)} (trabajar en la zona de los tomates).
+Esta capa implementa la estrategia de juego de un partido, así como las diferentes fases de las que se compone un partido. Las funciones esperadas a este nivel son del tipo \texttt{is\_the\_opponent\_in\_zone(ZONE\_TOMATOES\_1)} (¿está el oponente en la zona de los tomates?), o \texttt{goto\_zone(ZONE\_TOMATOES\_1)} (ir a la zona de los tomates), o \texttt{work\_on\_zone(ZONE\_TOMATOES\_1)} (trabajar en la zona de los tomates).
 
 Como se puede observar en la \ref{fig_sw_diagrama_bloques}, la capa \emph{estrategia de juego} no se encuentra implementada en el robot secundario. Esto es debido a que la estrategia se encuentra centralizada en el robot principal y, es éste, el que decide en todo momento lo que le corresponde hacer al robot secundario. 
 
-\item \textbf{Linea de comandos}
+\item \textbf{Línea de comandos}
 
-La linea de comandos permite ejecutar comandos de cualquier módulo o nivel. De esta forma durante el desarrollo de las diferentes capas o módulos, las funcionalidades de éstas pueden ser probadas por partes y verificar su correcto funcionamiento. Por ejemplo a nivel estrategia el comando \texttt{init yellow}, inicializa los robots para jugar en el lado amarillo del campo de juego. Y mediante el comando \texttt{start qualification match}, se ejecuta un partido con la estrategia diseñada para la fase de clasificación de una competición de Eurobot.
+La línea de comandos permite ejecutar comandos de cualquier módulo o nivel. De esta forma durante el desarrollo de las diferentes capas o módulos, las funcionalidades de éstas pueden ser probadas por partes y verificar su correcto funcionamiento. Por ejemplo, a nivel estrategia, el comando \texttt{init yellow}, inicializa los robots para jugar en el lado amarillo del campo de juego. Y mediante el comando \texttt{start qualification match}, se ejecuta un partido con la estrategia diseñada para la fase de clasificación de una competición de Eurobot.
 
 \end{description}
 
-Respecto al módulo \emph{sistemas mecánicos} a su vez se encuentra dividido en varias capas o módulos, los cuales se encuentran representados en el microcontrolador esclavo del robot principal, el cual, implementa únicamente el control de los sistemas mecánicos (ver figura \ref{fig_sw_diagrama_bloques}). Aclarar, que en el caso del robot secundario estas capas se encuentra integradas en un único microcontrolador. 
+Respecto al módulo \emph{sistemas mecánicos}, a su vez se encuentra dividido en varias capas o módulos, los cuales se encuentran representados en el microcontrolador esclavo del robot principal, el cual, implementa únicamente el control de los sistemas mecánicos (ver figura \ref{fig_sw_diagrama_bloques}). Aclarar, que en el caso del robot secundario estas capas se encuentra integradas en un único microcontrolador. 
 
 
 
@@ -255,10 +255,10 @@ Para alcanzar las coordenadas de destino, pueden ser necesarios varios movimient
 
 \item \texttt{modules/devices/robot/}\textbf{\texttt{obstacle\_avoidance}}
 
-Módulo de evitación de obstáculos que permite a partir de un punto de destino y una lista de obstáculos, representados por polígonos, obtener el camino más corto para llegar a dicho punto. Como resultado, el módulo devuelve la lista de puntos que representa el camino a seguir.
+Módulo de evitación de obstáculos que permite, a partir de un punto de destino y una lista de obstáculos, representados por polígonos, obtener el camino más corto para llegar a dicho punto. Como resultado, el módulo devuelve la lista de puntos que representa el camino a seguir.
 \end{description}
 
-Estos dos módulo permiten por ejemplo, implementar a nivel de temática de juego una función que permita al robot ir hasta un punto determinado del campo de juego, independientemente de si hay obstáculos en medio. El nivel de temática de juego conoce las dimensiones del campo de juego, la posición de sus elementos, y tiene información de la posición de los oponentes (obtenida de la baliza). Así por ejemplo, la función \texttt{goto\_avoid(x,y)} de la figura \ref{fig_sw_diagrama_plataforma_robotica} utiliza el módulo de evitación de obstáculos para obtener los puntos del camino a recorrer para alcanzar una coordenada (x,y), y mediante el módulo de gestión de trayectorias hace que el robot vaya pasando por cada uno de ellos hasta llegar al destino.
+Estos dos módulo permiten, por ejemplo, implementar a nivel de temática de juego una función que permita al robot ir hasta un punto determinado del campo de juego, independientemente de si hay obstáculos en medio. El nivel de temática de juego conoce las dimensiones del campo de juego, la posición de sus elementos, y tiene información de la posición de los oponentes (obtenida de la baliza). Así por ejemplo, la función \texttt{goto\_avoid(x,y)} de la figura \ref{fig_sw_diagrama_plataforma_robotica}, utiliza el módulo de evitación de obstáculos para obtener los puntos del camino a recorrer para alcanzar una coordenada (x,y), y mediante el módulo de gestión de trayectorias, hace que el robot vaya pasando por cada uno de ellos hasta llegar al destino.
 
 \begin{figure}[p]
 \centering
@@ -278,7 +278,7 @@ Módulo que hace de interfaz entre los drivers de dispositivos HW, y el control d
 
 \item \texttt{modules/devices/control\_system/}\textbf{\texttt{control\_system\_manager}}
 
-Modulo a partir del cual se implementan los controladores de posición de distancia y ángulo del  robot. El módulo gestiona y hace de interfaz entre los diferentes bloques que forma un sistemas de control clásico.
+Módulo a partir del cual se implementan los controladores de posición de distancia y ángulo del  robot. El módulo gestiona y hace de interfaz entre los diferentes bloques que forma un sistemas de control clásico.
 
 \end{description}
 
@@ -308,7 +308,7 @@ El módulo de sistemas mecánicos tiene como objetivo abstraer su control y gestió
 \begin{description}
 \item \textbf{Sensores}
 
-Módulo encargado de la adquisición y procesamiento de los sensores de los sistemas mecánicos (finales de carrera, medidores de distancia, detectores de color, etc.). Este módulo implementa funciones del tipo \texttt{sensor\_get(SENSOR1)} para, por ejemplo, leer el estado del sensor numero 1.
+Módulo encargado de la adquisición y procesamiento de los sensores de los sistemas mecánicos (finales de carrera, medidores de distancia, detectores de color, etc.). Este módulo implementa funciones del tipo \texttt{sensor\_get(SENSOR1)} para, por ejemplo, leer el estado del sensor número 1.
 
 \item \textbf{Actuadores}
 
@@ -322,7 +322,7 @@ Esta capa abstrae e integra los actuadores y sensores que forman mecanismos func
 
 Esta capa gestiona los diferentes mecanismos de los que se compone un sistema mecánico, e implementa los diferentes modos de funcionamiento de éste. Por ejemplo, un sistema mecánico puede ser el sistema de recolección de tomates. Éste sistema puede estar compuesto por un mecanismo de clasificación de tomates, un sensor detector de presencia de tomates, un mecanismo de almacenamiento y un mecanismo de liberación de los tomates recolectados. El sistema, por ejemplo, puede trabajar en modo \emph{recolectar} o \emph{liberar tomates} y, permite \emph{clasificar} los tomates rojos y verdes. Dependiendo del modo de funcionamiento se han de utilizar unos mecanismos u otros.
 
-La forma más común de implementar esta capa es mediante máquinas de estado. Por ejemplo, la maquina de estados del ejemplo anterior puede corresponderse con la función \texttt{do\_sytem\_tomatoes(uint8\_t mode, uint8\_t tomato\_type)}, la cual permite hacer funcionar el sistema de recolección de tomates en sus diferente modos de funcionamiento (parámetro \texttt(mode)), y elegir el tipo de tomate (parámetro \texttt{tomato\_type}).  
+La forma más común de implementar esta capa es mediante máquinas de estado. Por ejemplo, la máquina de estados del ejemplo anterior puede corresponderse con la función \texttt{do\_sytem\_tomatoes(uint8\_t mode, uint8\_t tomato\_type)}, la cual permite hacer funcionar el sistema de recolección de tomates en sus diferente modos de funcionamiento (parámetro \texttt(mode)), y elegir el tipo de tomate (parámetro \texttt{tomato\_type}).  
 
 \end{description}
 
@@ -330,20 +330,20 @@ Por ejemplo, en el juego \emph{Robomovies} de Eurobot 2015, los robots tenían qu
 
 \begin{itemize}
 \item Construir focos de cine (\emph{spotlights}) a partir de las piezas (\emph{stands} y \emph{bulblight}) repartidas por todo el campo de juego. 
-\item Cerrar unas claquetas de cine (\emph{claperboards}).
-\item Llenar vasos con palomitas de maíz (\emph{popcorns}).
+\item Cerrar unas claquetas de cine (\emph{claperboards})
+\item Llenar vasos con palomitas de maíz (\emph{popcorns})
 \item Poner unas alfombras rojas es una escalinata.
 \item Subir la escalinata.
 \end{itemize} 
 
-Entre todas estas acciones el robot P.Tinto se encargaba de las tres primeras. Para cada una de ellas, P.Tinto tenía un sistema mecánico dedicado. De forma que a cada sistema mecánico le corresponde una implementación HW y SW.
+Entre todas estas acciones el robot P.Tinto se encarga de las tres primeras. Para cada una de ellas, P.Tinto tiene un sistema mecánico dedicado. De forma que a cada sistema mecánico le corresponde una implementación HW y SW.
 
 La figura \ref{fig_sw_diagrama_sys_mecanicos} representa la organización y funcionamiento de la implementación SW de los sistemas mecánicos de P.Tinto:
 
 \begin{itemize}
 \item Sistema de focos de cine (\texttt{stands\_system})
 \item Sistema de palomitas (\texttt{popcorns\_system})
-\item Sistema de claquetas (\texttt{claperboards\_system}) 
+\item Sistema de claquetas (\texttt{claperboards\_system})
 \end{itemize}
 
 Los módulos correspondientes a estos sistemas forman el nivel de \emph{control de sistemas mecánicos}. Por encima, el nivel de \emph{temática de juego} gestiona los modos de funcionamiento de éstos y obtiene información de su estado.
@@ -379,7 +379,7 @@ En el caso de la figura \ref{fig_sw_diagrama_sys_mecanicos} los mecanismos están
 \item Servomotores estándar
 \end{itemize} 
 
-El módulo \texttt{cs} implementa un sistema de control utilizando las librerías Aversive4dspic, de igual forma que la plataforma robótica implementa el control de posición del robot. Tanto el controlador de motores como el de servomotores AX12 permiten conocer la posición real del actuador. Esta información es utilizado para sincronizar las operaciones sin necesitar de sensores adicionales. Sin embargo, en el caso de los servomotores estándar no es posible obtener directamente esta información, y la sincronización ha de realizarse por tiempo o mediante sensores adicionales. Notar que en el caso del mecanismo \texttt{stands\_clamps} no existe controlador de actuadores, y utiliza directamente el driver generador de PWM \texttt{pwm\_servo}.
+El módulo \texttt{cs} implementa un sistema de control utilizando las librerías Aversive4dspic, de igual forma que la plataforma robótica implementa el control de posición del robot. Tanto el controlador de motores como el de servomotores AX12 permiten conocer la posición real del actuador. Esta información es utilizada para sincronizar las operaciones sin necesitar de sensores adicionales. Sin embargo, en el caso de los servomotores estándar no es posible obtener directamente esta información, y la sincronización ha de realizarse por tiempo o mediante sensores adicionales. Notar que en el caso del mecanismo \texttt{stands\_clamps} no existe controlador de actuadores, y utiliza directamente el driver generador de PWM \texttt{pwm\_servo}.
 
 
 
@@ -413,17 +413,17 @@ Los módulos de navegación son los siguientes:
 \begin{description}
 \item \textbf{\texttt{strat\_base}}
 
-Módulo principal de navegación. Permite iniciar una trayectoria hacia un punto dado y conocer el fin de la misma. Para ejecutar la trayectoria utiliza el módulo de gestión de trayectorias del la plataforma robótica. El final de una trayectoria se determina a partir de la información de varios módulos:
+Módulo principal de navegación. Permite iniciar una trayectoria hacia un punto dado y conocer el fin de la misma. Para ejecutar la trayectoria utiliza el módulo de gestión de trayectorias de la plataforma robótica. El final de una trayectoria se determina a partir de la información de varios módulos:
 
 \begin{itemize}
 \item Punto destino alcanzado: obtenido por el módulo de gestión de trayectorias.
 \item Punto destino cercano: el robot se encuentra cerca del punto destino (a una distancia máxima). Esta información es dada también por el módulo de gestión de trayectorias.
 \item Obstáculo en la trayectoria: por detección de los sensores de obstáculos de corto alcance.
 \item Oponente en la trayectoria: por la información de la baliza.
-\item Tiempo de partido: por la cuenta de tiempo de partido (módulo Aversive4dspic \texttt{time}.
+\item Tiempo de partido: por la cuenta de tiempo de partido (módulo Aversive4dspic \texttt{time}).
 \end{itemize}
 
-Además, este módulo implementa la gestión de la velocidad durante las trayectoria dependiendo de la posición y distancia a los oponentes. Por ejemplo, al acercarse o pasar por el lado de un oponente la velocidad se decrementa para prevenir una posible colisión o maniobra de evitación. 
+Además, este módulo implementa la gestión de la velocidad durante las trayectoria dependiendo de la posición y distancia a los oponentes. Por ejemplo, al acercarse o pasar por el lado de un oponente, la velocidad se decrementa para prevenir una posible colisión o maniobra de evitación. 
 
 \item \textbf{\texttt{strat\_avoid}}
 
@@ -440,17 +440,17 @@ Respecto a los módulos relativos a acciones del juego, estos tienen una fuerte d
 
 \begin{itemize}
 \item \textbf{\texttt{strat\_clapperboard}}: acciones de claquetas de cine.
-\item \textbf{\texttt{strat\_popcorn}}: acciones de vas de palomitas.
+\item \textbf{\texttt{strat\_popcorn}}: acciones de vasos de palomitas.
 \item \textbf{\texttt{strat\_spotlight}}: acciones de focos de cine.
 \item \textbf{\texttt{strat\_secondary\_robot}}: acciones delegadas en el robot secundario. Incluyen acciones de claquetas, vasos de palomitas y de las alfombras rojas.
 \end{itemize}
 
-Los módulos funcionan siguiendo un mismo patrón que implementa la sincronización de movimientos del robot con la manipulación de elementos de juego. La figura \ref{fig_sw_estrategia_y_tematica} muestra el caso del modulo \texttt{strat\_spotlight}. Por un lado, las acciones a realizar están pensadas para ser ejecutadas en las cercanías de los elementos de juego donde los desplazamientos son pequeños. Por ello, se realizan trayectorias sin evitación de obstáculos utilizando el módulos. Por otro lado, la manipulación de los elementos se realiza a partir de los modos de funcionamiento del sistema mecánico correspondiente. La sincronización se consigue a partir del estado de la trayectoria y de los mecanismos.
+Los módulos funcionan siguiendo un mismo patrón que implementa la sincronización de movimientos del robot con la manipulación de elementos de juego. La figura \ref{fig_sw_estrategia_y_tematica} muestra el caso del módulo \texttt{strat\_spotlight}. Por un lado, las acciones a realizar están pensadas para ser ejecutadas en las cercanías de los elementos de juego donde los desplazamientos son pequeños. Por ello, se realizan trayectorias sin evitación de obstáculos utilizando el módulo. Por otro lado, la manipulación de los elementos se realiza a partir de los modos de funcionamiento del sistema mecánico correspondiente. La sincronización se consigue a partir del estado de la trayectoria y de los mecanismos.
 
-La forma de llegar hasta el control de los sistemas mecánicos depende de donde estén implementados. En el caso del módulo \texttt{strat\_spotlight} se realiza por medio del protocolo I2C, ya que los sistemas mecánicos se encuentra implementados en el microcontrolador esclavo. Igualmente, las acciones delegadas en el robot secundario, gestionadas por medio del enlace Bluetooth y del protocolo de comunicaciones asociado.
+La forma de llegar hasta el control de los sistemas mecánicos depende de dónde estén implementados. En el caso del módulo \texttt{strat\_spotlight} se realiza por medio del protocolo I2C, ya que los sistemas mecánicos se encuentran implementados en el microcontrolador esclavo. Igualmente, las acciones delegadas en el robot secundario, son gestionadas por medio del enlace Bluetooth y del protocolo de comunicaciones asociado.
 
 
-Por último, el módulo \textbf{\texttt{strat\_utils}} implementa funciones de ayuda a la estrategia a partir de información posición del robot, obtenida de la odometría de la plataforma base, e información de la posición de los oponentes.
+Por último, el módulo \textbf{\texttt{strat\_utils}} implementa funciones de ayuda a la estrategia a partir de la información de posición del robot, obtenida de la odometría de la plataforma base, e información de la posición de los oponentes, obtenida de la baliza.
 
 
 
@@ -509,12 +509,12 @@ La obtención de la siguiente zona a la que ir a trabajar, se realiza a partir de
 
 El desplazamiento a la zona elegida se realiza utilizando el modulo \texttt{strat\_avoid}, que permite evitar los posibles obstáculos en el camino hacia el punto de inicio de la zona. Si la zona no pudiese ser alcanzada se volvería a obtener una nueva zona.
 
-Una vez alcanzada la zona, en función del tipo de elemento de juego se utilizaría el módulo de la temática correspondiente. Por ejemplo, si la zona es tipo \emph{stand} se llamaría a la función de recolección de \emph{stands} del módulo \texttt{strat\_spotlight}.
+Una vez alcanzada la zona, en función del tipo de elemento de juego, se utilizaría el módulo de la temática correspondiente. Por ejemplo, si la zona es tipo \emph{stand} se llamaría a la función de recolección de \emph{stands} del módulo \texttt{strat\_spotlight}.
 
 
 \section{Simulador de robots y campo de juego}
 
-La utilización de un simulador vino motivada porque en el año 2014 dos de los integrantes del equipo, los encargados de desarrollar la estrategia, estaban viviendo en Alemania. El desarrollo del simulador permitió trabajar conjuntamente con el desarrollo del resto del robot en España. 
+La utilización de un simulador vino motivada porque en el año 2014 dos de los integrantes del equipo, encargados de desarrollar la estrategia, estaban viviendo en Alemania. El desarrollo del simulador permitió trabajar conjuntamente con el desarrollo del resto del robot en España. 
 
 El poder simular el comportamiento del robot y los elementos del campo de juego, como los robots oponentes, en una plataforma PC tiene grandes ventajas:
 
@@ -526,7 +526,7 @@ El poder simular el comportamiento del robot y los elementos del campo de juego,
 
 \item Reduce el tiempo de puesta en marcha de la estratégica y permite simular todo tipo de situaciones.
 
-\item Permite probar cambios de estrategia de ultimo momento sin necesidad de realizar pruebas en el campo de juego.
+\item Permite probar cambios de estrategia de último momento sin necesidad de realizar pruebas en el campo de juego.
 
 \end{itemize}
 
@@ -534,9 +534,9 @@ El poder simular el comportamiento del robot y los elementos del campo de juego,
 Las desventajas son pocas, pero a tener en cuenta:
 
 \begin{itemize}
-\item La implementación de los elementos simulados simulados: dispositivos HW, sistemas mecánicos, elementos externos, como la baliza, o interfaces de comunicación; ha de tener un comportamiento idéntico al real. En caso contrario las pruebas realizadas en simulación no se corresponderán con pruebas reales en el campo de juego.
+\item La implementación de los elementos simulados: dispositivos HW, sistemas mecánicos, elementos externos, como la baliza, o interfaces de comunicación; han de tener un comportamiento idéntico al real. En caso contrario las pruebas realizadas en simulación no se corresponderán con pruebas reales en el campo de juego.
 
-\item Tendencia a confiar demasiado en la simulación. Aunque la simulación dé como resultado el comportamiento esperado es necesario validarlos en pruebas reales, siempre que sea posible.
+\item Tendencia a confiar demasiado en la simulación. Aunque la simulación dé como resultado el comportamiento esperado, es necesario validarlos en pruebas reales, siempre que sea posible.
 \end{itemize}
 
 El simulador desarrollado permite simular el funcionamiento del robot y el campo de juego. Está basado en el simulador desarrollado por el equipo Microb Technology \cite{microb} y utiliza la capacidad de las librerías Aversive4dspic para ser compiladas para un \emph{host GNU/Linux}.
@@ -558,7 +558,7 @@ La implementación del simulador consta de tres partes:
 \item Visualizador de campo de juego y robots.
 \end{itemize}
 
-La simulación de algunas funcionalidades o módulos de las librerías Aversive4dspicse se realiza mediante el módulo \texttt{hostsim} (de \texttt{modules/base}). Este módulo simula la salida estándar del modulo de comunicaciones \texttt{uart}, la medida de tiempo y la ejecución periódica del gestor de eventos, mediante una implementación mediante recursos propios del sistema GNU/Linux.
+La simulación de algunas funcionalidades o módulos de las librerías Aversive4dspicse se realiza mediante el módulo \texttt{hostsim} (de \texttt{modules/base}). Este módulo simula la salida estándar del módulo de comunicaciones \texttt{uart}, la medida de tiempo y la ejecución periódica del gestor de eventos, mediante una implementación mediante recursos propios del sistema GNU/Linux.
 
 Respecto a la simulación del robot esta se realiza mediante el módulo \texttt{robotsim} que implementa la simulación de los elementos mecánicos y dependientes del HW. Este módulo es compilado con el proyecto del robot. El ejecutable obtenido da como resultado un robot virtual que corre sobre GNU/Linux.
 
@@ -584,15 +584,15 @@ Simulación del comportamiento y medidas reales de la baliza del robot en función
 
 \item \textbf{Colisión con obstáculos}
 
-Simulación de bloqueos mecánico y de sensores de obstáculos. Por ejemplo, simulación de la colisión con las paredes del campo de juego, de forma que el robot detecte un obstáculo por bloqueo en los límites del campo de juego.
+Simulación de bloqueos mecánicos y de sensores de obstáculos. Por ejemplo, simulación de la colisión con las paredes del campo de juego, de forma que el robot detecte un obstáculo por bloqueo en los límites del campo de juego.
 
 \end{description}
 
-De esta forma, al compilar el proyecto de ambos robots se generan sendos programas, que al ser ejecutados en un terminal dan como resultado dos robots virtuales comunicados entre sí y controlador mediante la línea de comandos de cada uno (ver figura \ref{fig_sw_ventanas_simulador}).
+De esta forma, al compilar el proyecto de ambos robots se generan sendos programas, que al ser ejecutados en un terminal, dan como resultado dos robots virtuales comunicados entre sí y controlados mediante la línea de comandos de cada uno (ver figura \ref{fig_sw_ventanas_simulador}).
 
 Respecto al tercer elemento en juego, el simulador de campo de juego está realizado en Python (\texttt{display.py}) y permite la visualización de los robots en un campo de juego virtual y la simulación de robots oponentes. La visualización se implementa mediante la librería \texttt{visual} de Python que utiliza el API de renderización OpenGL. La simulación de los robots oponentes se consigue mediante eventos de un dispositivo tipo ratón. El desarrollador puede simular la posición y movimiento de los robots oponentes interactuando con el ratón sobre el campo de juego virtual.
 
-Como representa la figura \ref{fig_sw_ventanas_simulador}, el simulador de campo de juego se encuentra conectado con cada simulador de robot por un fichero de lectura y uno de escritura. De esta forma cada simulador de robot envían la posición del robot al visualizador de campo de juego y, este a su vez, envía la posición de los oponentes a lo simuladores de robot para que lo procesen como medidas de la baliza.
+Como representa la figura \ref{fig_sw_ventanas_simulador}, el simulador de campo de juego se encuentra conectado con cada simulador de robot por un fichero de lectura y uno de escritura. De esta forma cada simulador de robot envía su posicion al visualizador de campo de juego y, éste a su vez, envía la posición de los oponentes a los simuladores de los robots para que las procesen como medidas de la baliza.
 
 La ejecución de los programas de cada robot y del visualizador del campo de juego conforman el entorno de simulación completo que se muestra en la figura \ref{fig_sw_ventanas_simulador}.
 

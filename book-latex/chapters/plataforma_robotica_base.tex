@@ -76,9 +76,9 @@ Respecto a la \textbf{evitación de obstáculos}, ésta se realiza a partir de sens
 \label{fig_plataforma_partes_2}
 \end{figure}
 
-La \textbf{implementación software} de todos los sistemas y funcionalidades de la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src}, desarrolladas para microcontroladores AVR, a microcontroladores dsPIC (utilizados por la tarjeta principal de la plataforma robot). Entre las características de las librerías Aversive y Aversive4dspic se encuentran modulos específicos para la implementación de sistemas de control y de robots como los de Eurobot.
+La \textbf{implementación software} de todos los sistemas y funcionalidades de la plataforma robótica ha sido realizada a partir de las librerías Aversive4dspic. Estas librerías han sido migradas de las librerías Aversive \cite{aversive_src}, desarrolladas para microcontroladores AVR, a microcontroladores dsPIC (utilizados por la tarjeta principal de la plataforma robot). Entre las características de las librerías Aversive y Aversive4dspic se encuentran módulos específicos para la implementación de sistemas de control y de robots como los de Eurobot.
 
-Por último, la plataforma robótica desarrollada permite que en caso de contar con \textbf{dos robots por equipo}, la misma  arquitectura mecánica, hardware y software pueda ser utilizada en el robot principal y secundario. Y la comunicación entre ambos robots puede ser implementada mediante la inferfaz \emph{Bluetooth} de las tarjetas principales de cada robot.
+Por último, la plataforma robótica desarrollada permite que en caso de contar con \textbf{dos robots por equipo}, la misma  arquitectura mecánica, hardware y software pueda ser utilizada en el robot principal y secundario. Y la comunicación entre ambos robots puede ser implementada mediante la interfaz \emph{Bluetooth} de las tarjetas principales de cada robot.
 
 
 \section{Sistema de tracción diferencial}
@@ -123,7 +123,7 @@ Es posible que además los motores tengan un encoder conectado directamente su ej
 \label{fig_ruedas_libres_lineal}
 \end{figure}
 
-Inicialmente, para el robot Trompetero (Eurobot 2010) se implemento un sistema de ruedas libres lineal como el de la figura \ref{fig_ruedas_libres_lineal}. Este sistema esta compuesto por una rueda que como neumático tiene una junta tórica de goma. Dicha rueda se encuentra conectada con un encoder incremental de dos canales en cuadratura. El conjunto rueda y encoder se encuentran fijados a la base del robot mediante un sistema de dos guías lineales con amortiguación. La amortiguación permite asegurar que ante cualquier desperfecto del campo la rueda siempre esté en contacto con el suelo. Cada guia tiene dos rodamientos lineales para disminuir el rozamiento. La implementación de este sistema mecánico es complejo y necesita de un ajuste de cierta precisión de forma que las dos guías lineales se encuentre perfectamente paralelas para que no existan rozamientos que impliquen errores no sistemáticos.
+Inicialmente, para el robot Trompetero (Eurobot 2010) se implemento un sistema de ruedas libres lineal como el de la figura \ref{fig_ruedas_libres_lineal}. Este sistema esta compuesto por una rueda que como neumático tiene una junta tórica de goma. Dicha rueda se encuentra conectada con un encoder incremental de dos canales en cuadratura. El conjunto rueda y encoder se encuentran fijados a la base del robot mediante un sistema de dos guías lineales con amortiguación. La amortiguación permite asegurar que ante cualquier desperfecto del campo la rueda siempre esté en contacto con el suelo. Cada guía tiene dos rodamientos lineales para disminuir el rozamiento. La implementación de este sistema mecánico es complejo y necesita de un ajuste de cierta precisión de forma que las dos guías lineales se encuentre perfectamente paralelas para que no existan rozamientos que impliquen errores no sistemáticos.
 
 \begin{figure}[ht]
 \centering
@@ -913,7 +913,7 @@ C_a &= K_{imp}\,C_d\, T_s^2  			  \,\Big[\frac{pulsos/T_s^2}{m/s^2}\Big]
 
 Por ejemplo, para un $K_{imp}=10$ el valor de la consigna de aceleración seria $a_r=75$ lo que equivale a un error menor del 1\%.
 
-Para que la conversión sea válida, el factor $K_{imp}$ ha de integrarse en el controlador. Como muestra la figura \ref{fig_control_polar_kimp}, la integración se realiza en el lazo de realimentación de forma que el factor $K_{imp}$ multiplica a la medida de posición de los encoders. Notar que la constante $K_{imp}$ no tiene efecto sobre la medida de angulo.
+Para que la conversión sea válida, el factor $K_{imp}$ ha de integrarse en el controlador. Como muestra la figura \ref{fig_control_polar_kimp}, la integración se realiza en el lazo de realimentación de forma que el factor $K_{imp}$ multiplica a la medida de posición de los encoders. Notar que la constante $K_{imp}$ no tiene efecto sobre la medida de ángulo.
 
 \begin{figure}[ht]
 \centering
