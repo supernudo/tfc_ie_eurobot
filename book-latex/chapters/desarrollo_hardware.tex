@@ -51,11 +51,11 @@ La experiencia de los integrantes del equipo de Eurobot y el estudio de los robo
 Respecto a los sensores se obtuvieron varias conclusiones:
 
 \begin{itemize}
-\item La utilización de sensores utilizados en aplicaciones fuera de su rango de aplicación no son fiables y antes o después constituyen un problema. En años anteriores al 2010 se utilizaron sensores fotoeléctricos como el GP2D12 (un sensor de distancia analógico) como sensores de detección de obstáculos. Estos sensores o similares están pensados para ser utilizados en entornos cerrados protegidos de focos de luz intensa, como por ejemplo el interior de una fotocopiadora. Durante un partido de Eurobot la propia iluminación del campo de juego puede influir en ellos.
+\item La utilización de sensores en aplicaciones fuera de su rango de aplicación no son fiables y antes o después constituyen un problema. En años anteriores al 2010 se utilizaron sensores fotoeléctricos como el GP2D12 (un sensor de distancia analógico), como sensores de detección de obstáculos. Estos sensores o similares están pensados para ser utilizados en entornos cerrados protegidos de focos de luz intensa, como por ejemplo el interior de una fotocopiadora. Durante un partido de Eurobot la propia iluminación del campo de juego puede influir en ellos.
 
 \item Los sensores a utilizar han de ser sensores diseñados específicamente para la aplicación y para el uso que se les va a dar. Han de ser robustos, reemplazables y fiables.
 
-\item El mercado de sensores industriales, destinados a lineas de producción automatizadas, constituye un mercado de referencia para los sensores de un robot de Eurobot. 
+\item El mercado de sensores industriales, destinados a líneas de producción automatizadas, constituye un mercado de referencia para los sensores de un robot de Eurobot. 
 
 \item La principal razón por la que se utilizan sensores no específicos para la aplicación es el coste. La experiencia ha demostrado que merece la pena tratar de conseguir sensores específicos aunque tengan un coste mayor.
 
@@ -64,14 +64,14 @@ Respecto a los sensores se obtuvieron varias conclusiones:
 \item El mercado de segunda mano o chino (eBay, Aliexpress, Alibaba, Taobao) permite conseguir sensores industriales a menor coste. Es un compromiso entre la compra a demanda de las especificaciones de diseño, de coste elevado, y la fiabilidad de los sensores a utilizar. No obstante, sobre todo en el mercado chino, hay que tener cuidado con las falsificaciones.
 \end{itemize}
 
-Los actuadores eléctricos como motores y servomotores son los más comunes, aunque también se utilizan actuadores neumáticos o de vacío. Respecto a los actuadores las conclusiones van en la misma linea de los sensores, además hay que tener en cuenta que los actuadores tienen un desgaste mecánico:
+Los actuadores eléctricos como motores y servomotores son los más comunes, aunque también se utilizan actuadores neumáticos o de vacío. Respecto a los actuadores, las conclusiones van en la misma linea de los sensores. Además, hay que tener en cuenta que los actuadores tienen un desgaste mecánico:
 
 \begin{itemize}
-\item Evitar la reutilización o utilización de actuadores de aplicación no específica o cuyas características no sean las adecuada para la aplicación. Esto puede derivar en unos requisitos del hardware mayores, complicar el control de los mecanismos u obtener un rendimiento mecánico insuficiente. En años anteriores se utilizaron motores de taladradoras o atornilladores eléctricos como motores de tracción del robot. Estos motores tienen un rendimiento muy pobre y un consumo muy elevado que implica una electrónica de control de alta potencia. Además, el uso de este tipo de motores para aplicaciones de control de posición o de velocidad complican el ajuste de los controladores debido a respuestas no lineales, que en el caso de un atornillador no son importantes, pero para un robot de Eurobot si.
+\item Evitar la reutilización o utilización de actuadores de aplicación no específica o cuyas características no sean las adecuada para la aplicación. Esto puede derivar en unos requisitos del hardware mayores, complicar el control de los mecanismos u obtener un rendimiento mecánico insuficiente. En años anteriores se utilizaron motores de taladradoras o atornilladores eléctricos como motores de tracción del robot. Estos motores tienen un rendimiento muy pobre y un consumo muy elevado que implica una electrónica de control de alta potencia. Además, el uso de este tipo de motores para aplicaciones de control de posición o de velocidad, complican el ajuste de los controladores debido a respuestas no lineales, que en el caso de un atornillador no son importantes, pero para un robot de Eurobot si.
 
 \item Evitar utilizar actuadores cuyas especificaciones sean incompletas.
 
-\item Evitar utilizar actuadores de materiales de baja calidad. Especialmente el de las reductoras de los motores, muchas veces constituye la parte más débil en un sistema mecánico, sobretodo en los servomotores.
+\item Evitar utilizar actuadores de materiales de baja calidad. Especialmente el de las reductoras de los motores. Muchas veces constituye la parte más débil en un sistema mecánico, sobretodo en los servomotores.
 
 \item Al igual que con los sensores, los motores, si se cuidan adecuadamente, pueden ser reutilizados de robot en robot.
 
@@ -79,9 +79,9 @@ Los actuadores eléctricos como motores y servomotores son los más comunes, aunqu
 
 \end{itemize}
 
-Sin duda, el actuador más versátil y utilizado en la implementación de sistemas mecánicos es el servomotor o común mente llamado \emph{servo}. Un motor de par elevado y controlado en posición que simplifica la implementación de sistemas mecánicos. Los más conocidos son los servos estandar utilizados ampliamente en aeromodelismo y radio-control, pero también existen servos industriales de un rango de características muy amplio. Para controlar estos servos sólo se necesita de una señal digital de 20Hz modulada en ancho de pulso (PWM).
+Sin duda, el actuador más versátil y utilizado en la implementación de sistemas mecánicos es el servomotor o comúnmente llamado \emph{servo}. Un motor de par elevado y controlado en posición que simplifica la implementación de sistemas mecánicos. Los más conocidos son los servos estándar utilizados ampliamente en aeromodelismo y radio-control, pero también existen servos industriales de un rango de características muy amplio. Para controlar estos servos sólo se necesita de una señal digital de 20Hz modulada en ancho de pulso (PWM).
 
-En los últimos 6 años, han aparecido en el mercado de la robótica educativa servos que podrían denominarse inteligentes. Estos servos tienen una interfaz digital y son controlados mediante comandos. Además, mediante dicha interfaz es posible obtener información de su estado (velocidad, consumo, temperatura, par, entre otros). Es el caso de los actuadores AX12 de la marca Dynamixel. Estos actuadores pueden ser conectados en cadena simplificando así el cableado de los mismos, además tienen una interfaz serie half-duplex de hasta 1 Mbps que permite un control prácticamente simultáneo de hasta 254 actuadores.
+En los últimos 6 años, han aparecido en el mercado de la robótica educativa servos que podrían denominarse inteligentes. Estos servos tienen una interfaz digital y son controlados mediante comandos. Además, mediante dicha interfaz es posible obtener información de su estado (velocidad, consumo, temperatura, par, entre otros). Es el caso de los actuadores AX12 de la marca Dynamixel. Estos actuadores pueden ser conectados en cadena simplificando así el cableado de los mismos. Además, tienen una interfaz serie half-duplex de hasta 1 Mbps que permite un control prácticamente simultáneo de hasta 254 actuadores.
 
 
 
@@ -89,7 +89,7 @@ En los últimos 6 años, han aparecido en el mercado de la robótica educativa serv
 
 Como se ha comentado en la sección anterior, la arquitectura HW se ha definido a partir del tipo de actuadores y sensores, y de los sistemas a implementar con ellos: la plataforma robótica base y los sistemas mecánicos de manipulación de elementos del juego. 
 
-El elemento principal de la arquitecura HW es un microcontrolador. Dicho microcontrolador tiene parte de sus recursos dedicados a la implementación de la plataforma robótica base y el resto a los sistema mecánicos. Dado que el número de recursos de estos es variable y la carga de procesamiento no es conocida, una de las especificaciones de la arquitectura es la de una interfaz  de expansión de recursos de entrada/salida (E/S) y de procesamiento. Es decir, la implementación de un sistema de procesamiento distribuido.
+El elemento principal de la arquitectura HW es un microcontrolador. Dicho microcontrolador tiene parte de sus recursos dedicados a la implementación de la plataforma robótica base y el resto a los sistema mecánicos. Dado que el número de recursos de estos es variable y la carga de procesamiento no es conocida, una de las especificaciones de la arquitectura es la de una interfaz  de expansión de recursos de entrada/salida (E/S) y de procesamiento. Es decir, la implementación de un sistema de procesamiento distribuido.
 
 La figura \ref{fig_hardware_arquitectura_principal} muestra el diagrama de bloques de la arquitectura HW. Dos microcontroladores se encuentran conectados mediante un bus I2C del que cuelga además un expansor E/S. La utilización de un bus I2C permite una implementación distribuida maestro-esclavo o multi-maestro. Ambas implementaciones permiten compartir los recursos de procesamiento y de E/S entre los dispositivos del bus.
 
@@ -100,11 +100,11 @@ La figura \ref{fig_hardware_arquitectura_principal} muestra el diagrama de bloqu
 \label{fig_hardware_arquitectura_principal}
 \end{figure}
 
-Una característica muy importante de la arquitectura HW es una interfaz de depuración independiente a través de la cual poder controlar, monitorizar y probar el hardware y el software. Para ello la arquitectura incluye una interfaz serie RS-232 conectada a una UART del microcontrolador principal. Este a su vez se encuentra conectado en cadena por una segunda UART con el microcontrolador secundario y así sucesivamente con otros microcontroladores. Esto permite acceder a cualquier microcontrolador mediante un \emph{bypass} del los datos. 
+Una característica muy importante de la arquitectura HW es una interfaz de depuración independiente a través de la cual poder controlar, monitorizar y probar el hardware y el software. Para ello la arquitectura incluye una interfaz serie RS-232 conectada a una UART del microcontrolador principal. Este a su vez se encuentra conectado en cadena por una segunda UART con el microcontrolador secundario y así sucesivamente con otros microcontroladores. Esto permite acceder a cualquier microcontrolador mediante un \emph{bypass} de los datos. 
 
 Otro aspecto que se tuvo en cuenta fue la comunicación con la baliza tipo faro y con otro posible robot o sistema. Para ello la arquitectura cuenta con una interfaz inalámbrica Bluetooth conectada a una UART del microcontrolador principal. Mediante esta interfaz es posible implementar hasta 16 canales serie independientes en una configuración tipo estrella.
 
-Por otro lado, a partir del estudio de los posibles sensores y actuadores industriales del mercado, y de algunos de los ya se disponía, se determinó el tipo de recursos de entrada y salida necesarios, así como las interfaces necesarias en el microcontrolador. El resultado se muestra en las tablas \ref{tab_recursos_actuadores} y \ref{tab_recursos_sensores}.
+Por otro lado, a partir del estudio de los posibles sensores y actuadores industriales del mercado, y de algunos de los que ya se disponía, se determinó el tipo de recursos de entrada y salida necesarios, así como las interfaces necesarias en el microcontrolador. El resultado se muestra en las tablas \ref{tab_recursos_actuadores} y \ref{tab_recursos_sensores}.
 
 \begin{table}[ht]
 \centering
@@ -139,7 +139,7 @@ Sensores inteligentes 						& Bus de comunicación (I2C, UART)\\
 \end{tabular}
 \end{table}
 
-La cantidad de los recursos de cada tipo y su distribución entre los dos microcontroladores se define en a partir de los requisitos de la plataforma robótica base y los sistemas mecánicos de manipulación.
+La cantidad de los recursos de cada tipo y su distribución entre los dos microcontroladores se define a partir de los requisitos de la plataforma robótica base y los sistemas mecánicos de manipulación.
 
 \begin{figure}[hb]
 \centering
@@ -153,7 +153,7 @@ La cantidad de los recursos de cada tipo y su distribución entre los dos microco
 
 Esta arquitectura HW fue implementada inicialmente en tarjeta prototipo \emph{dspic33\_protoboard}, mediante la cual se desarrollo un prototipo de plataforma robótica base, el \emph{Dummy robot} (ver figura \ref{fig_tarjeta_dspic33_protoboard}). Esta tarjeta implementaba la arquitectura basada en un único microcontrolador e incluía todas las interfaces y recursos especificados anteriormente.
 
-Una vez validada la arquitectura, esta ha sido implementada de diferentes formas dependiendo de las necesidades del robot a desarrollar. En el caso del robot principal ha sido necesario utilizar dos microcontroladores, mientras que en el caso del robot secundario con un microcontrolador ha sido suficiente. En el caso del robot principal la implementación se dividió en 3 tarjetas electrónicas, mientras que en el robot secundario se desarrolló una única tarjeta que además controlaba la baliza tipo faro. Independientemente de la implementación, la arquitectura se ha mantenido en todos los robots desarrollados desde el año 2010, lo que ha posibilitado reutilizar el desarrollo HW y SW, reducir el tiempo de desarrollo y aumentar la fiabilidad de los robots.
+Una vez validada la arquitectura, ésta ha sido implementada de diferentes formas dependiendo de las necesidades del robot a desarrollar. En el caso del robot principal ha sido necesario utilizar dos microcontroladores, mientras que en el caso del robot secundario con un microcontrolador ha sido suficiente. En el caso del robot principal la implementación se dividió en 3 tarjetas electrónicas, mientras que en el robot secundario se desarrolló una única tarjeta que además controlaba la baliza tipo faro. Independientemente de la implementación, la arquitectura se ha mantenido en todos los robots desarrollados desde el año 2010, lo que ha posibilitado reutilizar el desarrollo HW y SW, reducir el tiempo de desarrollo y aumentar la fiabilidad de los robots.
 
 
 \subsection{Plataforma robótica base}
@@ -165,15 +165,15 @@ Una vez validada la arquitectura, esta ha sido implementada de diferentes formas
 \label{fig_hardware_arquitectura_plataforma_robotica}
 \end{figure}
 
-La figura \ref{fig_hardware_arquitectura_plataforma_robotica} muestra los recursos de la arqutectura HW destinados a la plataforma robótica base. La elección del microcontrolador vino dada por las necesidades de la plataforma robótica, concretamente por los motores de tracción y los encoders.
+La figura \ref{fig_hardware_arquitectura_plataforma_robotica} muestra los recursos de la arquitectura HW destinados a la plataforma robótica base. La elección del microcontrolador vino dada por las necesidades de la plataforma robótica, concretamente por los motores de tracción y los encoders.
 
 Con anterioridad al diseño del HW se disponían de motores Dunkermotoren, destinados a la tracción del robot o a sistemas mecánicos de alto par. Estos motores incluyen el driver de control y una reductora mecánica. La velocidad se controla mediante una señal analógica de rango ajustable entre 4 y 10V, y el sentido de giro mediante una entrada digital. Además tienen una señal de freno.
 
-Por otro lado, se disponía de encoders HENGSTLER de referencia RI41-3600, destinados a implementar la odometría y control en posición del robot, o cualquier otro sistema mecánico realimentado. Estos encoders son de 3600 pulsos/vuelta y de dos canales de salida en cuadratura (desfasados 90 grados). La decodificación de dichas señales permite determinar el sentido de giro del encoder y obtener una medida de la posición de una resolución 4 veces mayor a la de las señales. La decodificacion de las señales de los encoders constituyen un factor muy importante, sobre todo en la implementación de la odometría. Esta decodifiación se puede realizar por SW por HW. El primer caso no es recomendable dada la carga de procesamiento. Lo ideal es realizar una decodificación por HW. Aunque existen dispositivos específicos para la decodificación HW de las señales en cuadratura, no son fáciles de conseguir. En este caso la decodificación de los encoders se realizó mediante un microcontrolador con modulos decodificacores HW integrados.
+Por otro lado, se disponía de encoders HENGSTLER de referencia RI41-3600, destinados a implementar la odometría y el control en posición del robot, o cualquier otro sistema mecánico realimentado. Estos encoders son de 3600 pulsos/vuelta y de dos canales de salida en cuadratura (desfasados 90 grados). La decodificación de dichas señales permite determinar el sentido de giro del encoder y obtener una medida de la posición de una resolución 4 veces mayor a la de las señales. La decodificación de las señales de los encoders constituyen un factor muy importante, sobre todo en la implementación de la odometría. Esta decodificación se puede realizar por SW por HW. El primer caso no es recomendable dada la carga de procesamiento. Lo ideal es realizar una decodificación por HW. Aunque existen dispositivos específicos para la decodificación HW de las señales en cuadratura, no son fáciles de conseguir. En este caso la decodificación de los encoders se realizó mediante un microcontrolador con módulos decodificadores HW integrados.
 
 El microcontrolador utilizado es el dsPIC33FJ128MC804 de la familia dsPIC33 de Microchip y pensado para aplicaciones de control de motores (familia MC). Este microcontrolador incluye 2 decodificadores de encoders en cuadratura y un conversor digital analógico (DAC) que cumplen con los requisitos de los motores Dunkermotoren y los encoders planteados anteriormente. 
 
-Los microcontroladores dsPIC33 tienen una arquitectura Harvard de 16 bits con una capacidad de procesamiento de 40 MIPS. Como se puede observar en la tabla \ref{tab_dspic_resources_table}, la familia MC dispone los recursos necesarios para implementar la arquitectura HW especificada. Dado que la salida analógica es un requisito indispensable se entre las posibles opciones se utilizó la de mayor memoria de programa y memoria RAM.
+Los microcontroladores dsPIC33 tienen una arquitectura Harvard de 16 bits con una capacidad de procesamiento de 40 MIPS. Como se puede observar en la tabla \ref{tab_dspic_resources_table}, la familia MC dispone los recursos necesarios para implementar la arquitectura HW especificada. Dado que la salida analógica es un requisito indispensable, entre las posibles opciones se utilizó la de mayor memoria de programa y memoria RAM.
 
 \begin{table}[ht]
 \centering
@@ -194,18 +194,18 @@ Los microcontroladores dsPIC33 tienen una arquitectura Harvard de 16 bits con un
 \end{sidewaysfigure}
 
 
-Los recursos del microcontrolador principal no asignados a la plataforma robótica son utilizados en la implementación de los sistemas mecánicos. En el caso de no ser suficientes, serán necesarios los recursos de un segundo microcontrolador. En tipo y número de sensores y/o actuadores a utilizar a priori es desconocido. Dependerán en última medida del diseño específico de los sistemas mecánicos destinados a manipular los elementos de juego de la tematica de Eurobot.
+Los recursos del microcontrolador principal no asignados a la plataforma robótica son utilizados en la implementación de los sistemas mecánicos. En el caso de no ser suficientes, serán necesarios los recursos de un segundo microcontrolador. El tipo y número de sensores y/o actuadores a utilizar a priori es desconocido. Dependerán en última medida del diseño específico de los sistemas mecánicos destinados a manipular los elementos de juego de la temática de Eurobot.
 
 La figura \ref{fig_hardware_arquitectura} da una idea del tipo de sensores y actuadores posibles. De cara a la implementación de los sistemas mecánicos es preferible utilizar sensores digitales a los analógicos. Es por ello que la E/S digital se encuentra  reforzada mediante un expansor I2C de E/S. No obstante, en el mismo bus I2C también tiene cabida la expansión de E/S analógica.
 
 Al igual que el microcontrolador principal, el secundario es también un dsPIC33FJ128MC804, lo que permite la implementación de sistemas mecánicos basados en el motor Dunkermotoren y encoders de salida en cuadratura. Además, el dsPIC33 dispone de salidas PWM específicas para el control de motores DC. 
 
-Por otro lado, los servomotores estandar de los sistemas mecánicos son controlados a partir de la señar PWM generada mediante \emph{timers} en modo salida por comparación. Respecto a los servos AX12, estos se manejan utilizando uno de los módulos UART del microcontrolador. Cabe destacar, que la implementación half-duplex se ha realizado internamente al microcontrolador utilizando la característica de mapeado dinámico de pines del mismo. Un mismo pin físico del microcontrolador hace las veces de pin de transmisión y de pin de recepción. El ahorro de recursos E/S es notable, una implementación externa necesita de 3 pines y dos \emph{bufferes} externos, mientras que la implementación interna utiliza únicamente un pin.
+Por otro lado, los servomotores estándar de los sistemas mecánicos son controlados a partir de la señal PWM generada mediante \emph{timers} en modo salida por comparación. Respecto a los servos AX12, estos se manejan utilizando uno de los módulos UART del microcontrolador. Cabe destacar, que la implementación half-duplex se ha realizado internamente al microcontrolador utilizando la característica de mapeado dinámico de pines del mismo. Un mismo pin físico del microcontrolador hace las veces de pin de transmisión y de pin de recepción. El ahorro de recursos E/S es notable, una implementación externa necesita de 3 pines y dos \emph{bufferes} externos, mientras que la implementación interna utiliza únicamente un pin.
 
 
-\subsection{Árbol de alimentación}
+\subsection{Esquema de alimentación}
 
-La alimentación de hardware, motores y sensores del robots se obtiene a partir de una batería de 24V. A partir de dicha tensión se obtienen las tensiones necesarias para cada elemento. La tabla \ref{tab_alimentacion_tensiones_potencia} muestra las tensiones y potencia características asociada a los elementos más representativos el robot que constituyen una carga a alimentar.
+La alimentación de hardware, motores y sensores del robots se obtiene a partir de una batería de 24V. A partir de dicha tensión se obtienen las tensiones necesarias para cada elemento. La tabla \ref{tab_alimentacion_tensiones_potencia} muestra las tensiones y potencia características asociada a los elementos más representativos del robot que constituyen una carga a alimentar.
 
 \begin{table}[ht]
 \centering
@@ -226,7 +226,7 @@ Motores tracción		& 24	& 30 	\\
 \end{tabular}
 \end{table}
 
-En definitiva se necesitan tensiones de 24V, 12V, 5V y 3,3V. Todas ellas son obtedidas a partir de un esquema de alimentación con una distribución en arbol. Como se puede ver en la figura \ref{fig_hardware_arquitectura_alimentacion}, la tensión de 24V se obtiene directamente de la tensión de batería, la cual es regulada mediante sendas fuentes de alimentación para obtener 12V y 5V. Y esta tensión de 5V a su vez es reguladas por una terdera fuente de alimentación para obener 3,3V. 
+En definitiva se necesitan tensiones de 24V, 12V, 5V y 3,3V. Todas ellas son obtenidas a partir de un esquema de alimentación con una distribución en árbol. Como se puede ver en la figura \ref{fig_hardware_arquitectura_alimentacion}, la tensión de 24V se obtiene directamente de la tensión de batería, la cual es regulada mediante sendas fuentes de alimentación para obtener 12V y 5V. Y ésta tensión de 5V a su vez es regulada por una tercera fuente de alimentación para obtener 3,3V. 
 
 \begin{figure}[ht]
 \centering
@@ -235,9 +235,9 @@ En definitiva se necesitan tensiones de 24V, 12V, 5V y 3,3V. Todas ellas son obt
 \label{fig_hardware_arquitectura_alimentacion}
 \end{figure}
 
-Notar que todo el arbol de alimentación cuelga del bloque interruptor de emergencia y del bloque fusible. Por normativa, el robot ha de llevar un interruptor de emergencia visible y rojo (la seta de emergencia). En caso de accionarse toda la alimentación del robot quedaría desabilitada. El fusible tiene tambien una función de seguridad y se dimensiona para proteger la batería en caso de cortocircuito de la tensión de 24V.
+Notar que todo el árbol de alimentación cuelga del bloque interruptor de emergencia y del bloque fusible. Por normativa, el robot ha de llevar un interruptor de emergencia visible y rojo (la seta de emergencia). En caso de accionarse toda la alimentación del robot quedaría deshabilitada. El fusible tiene también una función de seguridad y se dimensiona para proteger la batería en caso de cortocircuito de la tensión de 24V.
 
-Por otro lado, cada una de las tensiones de alimentación tiene asociado un bloque de habilitación independiente. Esto permite utilizar sólo las tensiones de alimentación necesarias durante las diferentes fases de implementación del robot o ayudar depurar algun problema relacionado con la alimentación, desabilitando los dispositivos asociados a una o varias tensiones.
+Por otro lado, cada una de las tensiones de alimentación tiene asociado un bloque de habilitación independiente. Esto permite utilizar sólo las tensiones de alimentación necesarias durante las diferentes fases de implementación del robot o ayudar a depurar algún problema relacionado con la alimentación, deshabilitando los dispositivos asociados a una o varias tensiones.
 
 Respecto a los requisitos de potencia, como se puede observar en la tabla \ref{tab_alimentacion_tensiones_potencia} estos vienen dados principalmente por los actuadores (motores y servomotores) y sensores. La potencia de la electrónica apenas tiene peso. 
 
@@ -280,9 +280,9 @@ Batería 24V				& 185,3	& 7,72	\\
 \end{tabular}
 \end{table}
 
-Comentar que este robot es de los robots con más sensores y servomotore de los desarrollados para la competición Eurobot. Hay que tener en cuenta que estos valores son para el caso de que todos los elementos estén consumiendo su potencia máxima al mismo tiempo. En la práctica, no todos los servomotores AX12 estarán demandando su máxima potencia. Aun así, cada bloque de alimentación ha de elegirse teniendo en cuenta dicha potencia máxima.
+Comentar que este robot es de los robots con más sensores y servomotores de los desarrollados para la competición Eurobot. Hay que tener en cuenta que estos valores son para el caso de que todos los elementos estén consumiendo su potencia máxima al mismo tiempo. En la práctica, no todos los servomotores AX12 estarán demandando su máxima potencia. Aun así, cada bloque de alimentación ha de elegirse teniendo en cuenta dicha potencia máxima.
 
-Por último, a la hora de implemntar el esquema de alimentación tipo arbol, para cada tensión de alimentación (3,3V, 5V, 12V y 24V) se ha de implentar una distribución en estrella de forma que se minimice la impedancia comun entre dispositivos de diferente potencia y misma tensión de alimentación. Por ejemplo, en el caso de la tensión de 5V, deben de implentarse dos caminos de alimentación diferenciados para la lógica E/S y los servomotores estandar, y cuyo punto de unión se sitúe lo más cerca de la fuente. En este caso de la fuente de alimentación de 5V. De esta forma se minimiza el ruido producido por la corriente de los servomotores en las líneas de alimentación de la lógica E/S.   
+Por último, a la hora de implementar el esquema de alimentación tipo árbol, para cada tensión de alimentación (3,3V, 5V, 12V y 24V) se ha de implementar una distribución en estrella de forma que se minimice la impedancia común entre dispositivos de diferente potencia y misma tensión de alimentación. Por ejemplo, en el caso de la tensión de 5V, deben de implantarse dos caminos de alimentación diferenciados para la lógica E/S y los servomotores estándar, y cuyo punto de unión se sitúe lo más cerca de la fuente. En este caso de la fuente de alimentación de 5V. De esta forma se minimiza el ruido producido por la corriente de los servomotores en las líneas de alimentación de la lógica E/S.   
 
 
 \section{Implementación HW del robot principal}
@@ -296,17 +296,17 @@ Por último, a la hora de implemntar el esquema de alimentación tipo arbol, para 
 
 El robot principal de Eurobot suele tener asociado un mayor número de motores y sensores que el robot secundario debido principalmente a que el perímetro máximo permitido es mayor. Esto hace que el robot principal implemente un mayor numero de sistemas mecánicos y más complejos que los que pueda tener el robot secundario. 
 
-La implentación de la arquitectura HW descrita anteriormente, para el caso de un robot principal, se ha dividido en 5 tarjetas electrónicas:
+La implementación de la arquitectura HW descrita anteriormente, para el caso de un robot principal, se ha dividido en 5 tarjetas electrónicas:
 
 \begin{description}
 \item Tarjeta principal\\
-Implemementa la mayor parte de los bloques de la arquitectura HW. Contiene dos microcontroladores, uno principal destinado al control de la plataforma robótica y estratégia de juego, y uno secundario destinado al control de los sistemas mecánicos.
+Implementa la mayor parte de los bloques de la arquitectura HW. Contiene dos microcontroladores, uno principal destinado al control de la plataforma robótica y estrategia de juego, y uno secundario destinado al control de los sistemas mecánicos.
 
 \item Tarjeta sensores\\
 Implementa la expansión de entradas digitales para sensores.
 
-\item Tarjeta sistemas de vacio\\
-Implementa la expansión de salidas de potencia. Especificamente de saliodas de control para actuadores de sistemas de vacio (bombas de vacio y electrovalvulas).
+\item Tarjeta sistemas de vacío\\
+Implementa la expansión de salidas de potencia. Específicamente de salidas de control para actuadores de sistemas de vacío (bombas de vacío y electroválvulas).
 
 \item Tarjeta de alimentación\\
 Implementa las fuentes de alimentación de 12V y 5V del esquema de alimentación.
@@ -316,14 +316,14 @@ Implementa la habilitación de las diferentes tensiones de alimentación.
 
 \end{description}
 
-Estas tarjetas junto con el interruptor de emergencia y la batería de 24V forma el diagrama de bloques HW del robot principal. La conexión entre estos elementos se muestra en la figura \ref{fig_hardware_robot_principal}. Los 24V de la batería pasan por el interruptor de emergencia antes conectarse con la tarjeta de alimentación de 12V y 5V. Las tensiones de alimentación de 24V, 12V y 5V son conectadas a la tarjeta principal pasando por la tarjeta de habilitación de alimentación. Internamiente a la tarjeta principal la tensión de 3,3V es generada a partir de la tensión de 5V.
+Estas tarjetas junto con el interruptor de emergencia y la batería de 24V forman el diagrama de bloques HW del robot principal. La conexión entre estos elementos se muestra en la figura \ref{fig_hardware_robot_principal}. Los 24V de la batería pasan por el interruptor de emergencia antes conectarse con la tarjeta de alimentación de 12V y 5V. Las tensiones de alimentación de 24V, 12V y 5V son conectadas a la tarjeta principal pasando por la tarjeta de habilitación de alimentación. Internamente a la tarjeta principal, la tensión de 3,3V es generada a partir de la tensión de 5V.
 
-La tarjeta de sensores se encuentra conectada a la tarjeta principal y se alimenta mediante las tensiónes de 12V y 5V desde la misma. Además ambas se encuentran conectadas mediante una interfaz I2C. Por último, la tarjeta de sistemas de vacío se alimenta directamente de las tensiones de 24V y 12V, pasando igualmente por la tarjeta de habilitación de alimentación. El control de esta tarjeta se realiza mediante el cableado de algunas de las salidas digitales o PWM de la tarjeta principal.
+La tarjeta de sensores se encuentra conectada a la tarjeta principal y se alimenta mediante las tensiones de 12V y 5V desde la misma. Además ambas se encuentran conectadas mediante una interfaz I2C. Por último, la tarjeta de sistemas de vacío se alimenta directamente de las tensiones de 24V y 12V, pasando igualmente por la tarjeta de habilitación de alimentación. El control de esta tarjeta se realiza mediante el cableado de algunas de las salidas digitales o PWM de la tarjeta principal.
 
 
 \subsection{Tarjeta principal}
 
-La tarjeta principal \emph{mainboard\_v02} se muestra en la figura \ref{fig_tarjeta_mainboard_v01_v02} y su diagrama de bloques es el representado en la figura \ref{fig_hardware_robot_principal}. Está compuesta por dos microcontroladores dsPIC33 comunicados por I2C, un maestro y un esclavo. El maestro está pensado para controlar la plataforma robótica base y la estrategia del robot, y el esclavo para controlar los sistemas mecánicos. La versión v01 de esta tarjeta tarjeta fué desarrollada para el robot Trompetero (Eurobot 2010). La versión v02 utilizada a partir del robot Zamorano (Eurobot 2011) soluciona varios errores de la primera versión.
+La tarjeta principal \emph{mainboard\_v02} se muestra en la figura \ref{fig_tarjeta_mainboard_v01_v02} y su diagrama de bloques es el representado en la figura \ref{fig_hardware_robot_principal}. Está compuesta por dos microcontroladores dsPIC33 comunicados por I2C, un maestro y un esclavo. El maestro está pensado para controlar la plataforma robótica base y la estrategia del robot, y el esclavo para controlar los sistemas mecánicos. La versión v01 de esta tarjeta tarjeta fue desarrollada para el robot Trompetero (Eurobot 2010). La versión v02 utilizada a partir del robot Zamorano (Eurobot 2011) soluciona varios errores de la primera versión.
 
 \begin{figure}[ht]
 \centering
@@ -337,9 +337,9 @@ Las características de esta tarjeta son las siguientes:
 \item 3 motores Dunkermotoren
 \item 2 motores DC de 12V 
 \item 1 solenoide de 12V
-\item 1 rele 
+\item 1 relé 
 \item 2 telémetros lásers
-\item 5 servos standar
+\item 5 servos estándar
 \item 1 interfaz servos AX12
 \item 3 encoders con salida en cuadratura
 \item 7 sensores 12V
@@ -351,9 +351,9 @@ Las características de esta tarjeta son las siguientes:
 
 \subsection{Tarjeta de sensores digitales}
 
-La tarjeta de sensores digitales \emph{sensorboard} se conecta directamente sobre la tarjeta principal \emph{mainboard} como una tarjeta hija (ver figura \ref{fig_tarjeta_sensorboard}). Esta tarjeta incluye dos dispositivos expansores de E/S con interfaz I2C y la electrónica de acondicionamiento necesaria para la conexión de sensores digitales alimentados a 12V y de salida en colector o drenador habierto (salida PNP o NPN). Cada dispositivo expansor de puertos cuenta con 2 puertos de 8 lineas, en total la tarjeta soporta hasta 32 E/S.
+La tarjeta de sensores digitales \emph{sensorboard} se conecta directamente sobre la tarjeta principal \emph{mainboard} como una tarjeta hija (ver figura \ref{fig_tarjeta_sensorboard}). Esta tarjeta incluye dos dispositivos expansores de E/S con interfaz I2C y la electrónica de acondicionamiento necesaria para la conexión de sensores digitales alimentados a 12V y de salida en colector o drenador abierto (salida PNP o NPN). Cada dispositivo expansor de puertos cuenta con 2 puertos de 8 líneas. En total la tarjeta soporta hasta 32 E/S.
 
-Esta tajeta fué desarrollada junto con la tarjeta \emph{mainboard} en el año 2010 y ha sido reutilizada desde entonces.
+Esta tarjeta fue desarrollada junto con la tarjeta \emph{mainboard} en el año 2010 y ha sido reutilizada desde entonces.
 
 \begin{figure}[H]
 \centering
@@ -362,9 +362,9 @@ Esta tajeta fué desarrollada junto con la tarjeta \emph{mainboard} en el año 201
 \label{fig_tarjeta_sensorboard}
 \end{figure}
 
-\subsection{Tarjeta de sistemas de vacio}
+\subsection{Tarjeta de sistemas de vacío}
 
-La tarjeta \emph{vacuumboard} (ver figura \ref{fig_tarjeta_vacuumboard} fué desarrollada para el robot Automático (Eurobot 2014), el cual utilizava un sistema de vacio para manipular los elementos del juego. Esta tarjeta permite el control de 4 electrovalvulas y 4 bombas de vacio. Para ello utiliza drivers de potencia alimentados a 12V y 24V. Esta tarjeta es controlada por la tarjeta principal mediante las salidas digitales y las salidas PWM para servomotores.
+La tarjeta \emph{vacuumboard} (ver figura \ref{fig_tarjeta_vacuumboard} fue desarrollada para el robot Automático (Eurobot 2014), el cual utilizaba un sistema de vacío para manipular los elementos del juego. Esta tarjeta permite el control de 4 electroválvulas y 4 bombas de vacío. Para ello utiliza drivers de potencia alimentados a 12V y 24V. Esta tarjeta es controlada por la tarjeta principal mediante las salidas digitales y las salidas PWM para servomotores.
 
 \begin{figure}[H]
 \centering
@@ -377,7 +377,7 @@ La tarjeta \emph{vacuumboard} (ver figura \ref{fig_tarjeta_vacuumboard} fué desa
 
 La tarjeta de control de alimentación \emph{switchboard} permite habilitar de forma controlada las diferentes alimentaciones del robot (24V, 12V y 5V). Para ello cuenta con 3 interruptores, uno por cada alimentación, como muestra la figura \ref{fig_tarjeta_switchboard}. La tarjeta está diseñada para asegurar un correcto encendido del robot. Las tensiones de 12V y 24V dependen de la tensión de 5V, si esta no es habilitada ninguna otra puede ser encendida. De la misma forma, la tensión de 24V depende de la tensión de 12V.
 
-Esta tarjeta fué diseñada en el año 2010 y se ha reutilizado desde entonces.
+Esta tarjeta fue diseñada en el año 2010 y se ha reutilizado desde entonces.
 
 \begin{figure}[H]
 \centering
@@ -388,9 +388,9 @@ Esta tarjeta fué diseñada en el año 2010 y se ha reutilizado desde entonces.
 
 \subsection{Tarjeta de alimentación}
 
-La tarjeta de alimentación M4-ATX es una fuente de alimentación comercial mini ATX. Perminte un rango de alimentación variable entre 6V y 30V y da salidas de +/-12V, 5V y 3.3V. A partir de ella se obtienen las tensiones de 5V y 12V necesarias para el robot. Su amplio margen de entrada permite además utilizar una batería de 24V o de 12V, segun las necesidades del robot.
+La tarjeta de alimentación M4-ATX es una fuente de alimentación comercial mini ATX. Permite un rango de alimentación variable entre 6V y 30V y da salidas de +/-12V, 5V y 3.3V. A partir de ella se obtienen las tensiones de 5V y 12V necesarias para el robot. Su amplio margen de entrada permite además utilizar una batería de 24V o de 12V, según las necesidades del robot.
 
-Por otro lado tiene una potencia total de 250w, de los cuales 75w son de la salida de 5V (15A) y 120w (10A) de la salida de 12V, llegando a picos de corriente de 20A y 16A, respectivamente. La potencia suministrada por esta tarjeta deja un amplio margen al diseño de los sistemás mecánicos. Comparando estas pontencias con estimación de consumo del robot P.Tinto (ver tabla \ref{tab_potencia_ptinto}) se puede dar por valido el uso de esta tarjeta, y así se ha comprobado. 
+Por otro lado tiene una potencia total de 250w, de los cuales 75w son de la salida de 5V (15A) y 120w (10A) de la salida de 12V, llegando a picos de corriente de 20A y 16A, respectivamente. La potencia suministrada por esta tarjeta deja un amplio margen al diseño de los sistemas mecánicos. Comparando estas potencias con estimación de consumo del robot P.Tinto (ver tabla \ref{tab_potencia_ptinto}) se puede dar por válido el uso de esta tarjeta, y así se ha comprobado. 
 
 Este modelo de tarjeta se ha utilizado desde Eurobot 2010 para alimentar la electrónica tanto del robot principal como del robot secundario.
 
@@ -404,7 +404,7 @@ Este modelo de tarjeta se ha utilizado desde Eurobot 2010 para alimentar la elec
 
 \section{Implementación HW del robot secundario}
 
-La implemntación de la arquitectura HW en el robot secundario está compuesta únicamente por dos tarjetas: una tarjeta principal y una tarjeta de alimentación M4-ATX, como la utilizada en el robot principal. Además incluye el interruptor de emergencia y dos interruptores que habilitan la alimentación de 24V y, de 12 y 5V simultáneamente.
+La implementación de la arquitectura HW en el robot secundario está compuesta únicamente por dos tarjetas: una tarjeta principal y una tarjeta de alimentación M4-ATX, como la utilizada en el robot principal. Además incluye el interruptor de emergencia y dos interruptores que habilitan la alimentación de 24V y, de 12 y 5V simultáneamente.
 
 El diagrama de conexionado ente estos elementos se muestra en la figura \ref{fig_hardware_robot_secundario}. Al igual que en el robot principal, la batería conecta por medio del interruptor de emergencia con un sistema de habilitación de alimentación y con la fuente de alimentación de 12V y 5V. En este caso la tensión de 24V es habilitada mediante un interruptor y las tensiones de 12V y 5V mediante un segundo interruptor que habilita la fuente de alimentación. Por último, todas estas tensiones alimentan a la tarjeta principal.
 
@@ -415,9 +415,9 @@ El diagrama de conexionado ente estos elementos se muestra en la figura \ref{fig
 \label{fig_hardware_robot_secundario}
 \end{figure}
 
-Respecto a la tarjeta principal, a partir de año 2012 las reglas de Eurobot permitieron la participación de dos robots por equipo: un robot principal y uno secundario. El robot secundario con un perímetro máximo mucho menor. Dicho año se desarrollaron dos robots: Automático (principal) y Crispín (secundario). Crisín fué implementado a a partir de la tarjeta \emph{dspic33\_protoboard}, tarjeta prototipo con la que se validó la arquitectura HW (ver figura \ref{fig_tarjeta_dspic33_protoboard}. Al año siguiente se desarrolló la tarjeta \emph{mainboard\_v03} (ver figura \ref{fig_tarjeta_mainboard_v03}). 
+Respecto a la tarjeta principal, a partir de año 2012 las reglas de Eurobot permitieron la participación de dos robots por equipo: un robot principal y uno secundario. El robot secundario con un perímetro máximo mucho menor. Dicho año se desarrollaron dos robots: Automático (principal) y Crispín (secundario). Crispín fue implementado a a partir de la tarjeta \emph{dspic33\_protoboard}, tarjeta prototipo con la que se validó la arquitectura HW (ver figura \ref{fig_tarjeta_dspic33_protoboard}). Al año siguiente se desarrolló la tarjeta \emph{mainboard\_v03} (ver figura \ref{fig_tarjeta_mainboard_v03}). 
 
-La tarjeta \emph{mainboard\_v03} está está diseñada para controlar la plataforma robótica, la baliza tipo faro y los sistemas mecánicos del robot secundario. E integra todo lo necesaro para ello. El diagrama de bloques de la tarjeta se encuentra represenstado en la figura \ref{fig_hardware_robot_secundario}. Un único microcontrolador dsPIC33 es elemento principal de la tarjeta. Sus recursos se distribuyen entre los elementos de la plataforma robótica y la baliza tipo faro de espejo giratorio. El resto de recursos E/S están destinados al control de los sistémas mecánicos. Aunque éstos suelen ser mucho menos complejos y simples que los del robot principal, la tarjeta además incluye un expansor de E/S digital por I2C de 16 lineas.
+La tarjeta \emph{mainboard\_v03} está diseñada para controlar la plataforma robótica, la baliza tipo faro y los sistemas mecánicos del robot secundario, e integra todo lo necesario para ello. El diagrama de bloques de la tarjeta se encuentra represenstado en la figura \ref{fig_hardware_robot_secundario}. Un único microcontrolador dsPIC33 es un elemento principal de la tarjeta. Sus recursos se distribuyen entre los elementos de la plataforma robótica y la baliza tipo faro de espejo giratorio. El resto de recursos E/S están destinados al control de los sistemas mecánicos. Aunque éstos suelen ser mucho menos complejos y simples que los del robot principal, la tarjeta además incluye un expansor de E/S digital por I2C de 16 líneas.
 
 \begin{figure}[ht]
 \centering
@@ -429,7 +429,7 @@ La tarjeta \emph{mainboard\_v03} está está diseñada para controlar la plataforma
 El resto de características de E/S de la tarjeta \emph{mainboard\_v03} son las siguientes: 
 \begin{itemize}
 \item 3 motores DC de 12V
-\item 4 servomotores estandar
+\item 4 servomotores estándar
 \item 1 interfaz servos AX12 
 \item 2 encoders con salida en cuadratura
 \item 1 encoder con salida en cuadratura (módulo x4, sin decodificación de signo).
@@ -440,9 +440,9 @@ El resto de características de E/S de la tarjeta \emph{mainboard\_v03} son las s
 \item 1 interfaz SPI
 \end{itemize}
 
-Respecto a la plataforma robótica, ésta utiliza 2 de las 3 salidas PWM para motores y las entradas en cuadratura decodificadas por el microcontrolador. Además, los sensores de detección de obstaculos se conectan algunas de las entradas digitales. La comunicación con el robot principal así como la depuración del robot se realiza mediante una de las UART del microcontrolador, que se encuentra cableada a la interfaz Bluetooth y a la interfaz RS-232 mediante el mapeado dinámico de pines del microcontrolador. 
+Respecto a la plataforma robótica, ésta utiliza 2 de las 3 salidas PWM para motores y las entradas en cuadratura decodificadas por el microcontrolador. Además, los sensores de detección de obstáculos se conectan a algunas de las entradas digitales. La comunicación con el robot principal así como la depuración del robot se realiza mediante una de las UART del microcontrolador, que se encuentra cableada a la interfaz Bluetooth y a la interfaz RS-232 mediante el mapeado dinámico de pines del microcontrolador. 
 
-Respecto a la implmementación de la baliza tipo faro, ésta utiliza la 2 entradas de captura de tiempo, la tercera entrada de encoder y la tercera de las salidas para motor DC. El resto de recursos (salidas PWM de servomotores estandar, la interfaz de servomotores AX12 y la E/S digital) quedan a disposición de los sistemas mecánicos. Por último, la tarjeta cuenta con una interfaz I2C y SPI accesible para posibles amplicaciones de recursos E/S.
+Respecto a la implementación de la baliza tipo faro, ésta utiliza las 2 entradas de captura de tiempo, la tercera entrada de encoder y la tercera de las salidas para motor DC. El resto de recursos (salidas PWM de servomotores estándar, la interfaz de servomotores AX12 y la E/S digital) quedan a disposición de los sistemas mecánicos. Por último, la tarjeta cuenta con una interfaz I2C y SPI accesible para posibles ampliaciones de recursos E/S.
 
 
 
