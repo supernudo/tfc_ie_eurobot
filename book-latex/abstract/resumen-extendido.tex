@@ -61,7 +61,7 @@ Un robot de Eurobot ha de ser completamente autónomo y ser capaz de:
 \item Resolver la temática del juego, lo cual implica el manejo de los elementos o piezas propias del juego.
 \end{enumerate}
 
-En base a esto, el robot de Eurobot se compone de los siguientes bloques funcionales:
+En base a esto, el robot de Eurobot se puede dividir en los siguientes bloques funcionales:
 
 \begin{enumerate}
 \item Desplazamiento y localización.
@@ -71,14 +71,22 @@ En base a esto, el robot de Eurobot se compone de los siguientes bloques funcion
 \item Estrategia de juego.
 \end{enumerate}
 
-El desarrollo del robot se ha dividido entre la \textbf{plataforma robótica base} y los \textbf{sistemas mecánicos de manipulación de elementos de juego}. La plataforma robótica está formada por los tres primeros bloques funcionales, cuyo desarrollo es independientemente de la temática de la prueba de Eurobot, y por lo tanto, puede ser reutilizable en el diseño de nuevos robots. El resto de las partes depende de la temática de la prueba e implica un desarrollo específico.
+Se 
+
+ 
+
+
+El desarrollo del robot se ha dividido en dos partes fundamentales: la \textbf{plataforma robótica base} y los \textbf{sistemas mecánicos de manipulación de elementos de juego}. La plataforma robótica está formada por los tres primeros bloques funcionales, cuyo desarrollo es independientemente de la temática de la prueba de Eurobot. De esta forma, la arquitectura mecánica, hardware (HW) y software (SW) de la plataforma robótica base, puede ser reutilizado y/o adaptada en futuros desarrollos de robots de Eurobot (o similares). En cambio, el resto de las partes, sistemas mecánicos y estrategia, dependen de la temática de la prueba e implica un desarrollo específico.
 
 % PLATAFORMA ROBÓTICA BASE
-El \emph{desplazamiento y localización} de la plataforma robótica se implementa a partir de un \emph{sistema de tracción diferencial} y un \emph{sistema de posicionamiento por odometría}. Mediante la unión de estos dos sistemas se implementa a su vez un \emph{control de posición polar}, a partir del cual, se gestiona la \emph{generación de trayectorias}.
+La función de \textbf{desplazamiento y localización} de la plataforma robótica se implementa a partir de un \emph{control de posición polar} y un \emph{sistema de posicionamiento por odometría}, a partir del los cuales, se gestiona la \emph{generación de trayectorias}.
 
-Mecánicamente el sistema de tracción diferencial consiste en un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_resumen}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y el control de posición del robot.
+Mecánicamente la plataforma robótica estar forma da por un sistema de tracción diferencial consiste en un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_resumen}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y el control de posición del robot.
 
-El estudio del modelo dinámico de la plataforma robótica permite conocer los límites de aceleración y velocidad, a partir de los cuales, dimensionar y especificar los elementos que componen el sistema de tracción diferencial (la reductora y los motores de tracción), y las características físicas de la estructura del robot (puntos de apoyo y centro de gravedad).
+El estudio del modelo dinámico de la plataforma robótica permite dimensionar y especificar los elementos que componen el sistema de tracción diferencial (la reductora y los motores de tracción), y las características físicas de la estructura del robot (puntos de apoyo y centro de gravedad).
+
+El control de posición polar está formado por sendos controladores de posición en distancia y ángulo. Ambos controladores implementan un perfil de velocidad trapezoidal, cuya velocidad y aceleración vienen determinados por el modelo dinámico de la plataforma robótica. El posicionamiento por odometría se obtiene mediante la aproximación lineal del modelo del sistema de encoders libres de la plataforma robótica. La medida y corrección de los errores sistemáticos del sistema permite reducir el error acumulativo de odometría.
+
 
 \begin{figure}[ht]
 \centering
@@ -88,19 +96,16 @@ El estudio del modelo dinámico de la plataforma robótica permite conocer los lím
 \label{fig_plataforma_partes_resumen}
 \end{figure}
 
-Respecto a la \emph{evitación de obstáculos}, ésta se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_resumen}) y a partir de un \emph{sistema de balizamiento} que hace uso de los soportes y espacios destinados a las balizas de la competición Eurobot. Éste sistema está compuesto por un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_resumen}). Y está específicamente desarrollado para medir la distancia y ángulo de los oponentes relativo a la posición del robot de Eurobot.
+La \emph{evitación de obstáculos} se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_resumen}) y a partir de un \emph{sistema de balizamiento} que hace uso de los soportes y espacios destinados a las balizas de la competición Eurobot. Éste sistema está compuesto por un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_resumen}). Y está específicamente desarrollado para medir la distancia y ángulo de los oponentes relativo a la posición del la plataforma robótica.
 
 % (BALIZA)
-%El sistema de baliza tipo faro se compone de un sensor giratorio y una o varias balizas cilíndricas reflectantes. El sensor gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes cuando el sensor se encuentra enfrentado con ellas.  La medida de distancia se basa en el principio por el cual un objeto cercano se ve más grande que uno lejano. De forma que a una distancia cercana le corresponde un ángulo relativo de detección $\alpha_d$ mayor que el de una distancia más lejana. Por otro lado, la medida de ángulo se obtiene a partir del ángulo durante el cual se detecta la baliza reflectante.
-
-El hardware (HW) de la plataforma robótica está compuesto por varias tarjetas que en conjunto tienen la capacidad de gestionar e implementar los sistemas mencionados anteriormente, así como los sistemas mecánicos específicos de la prueba de Eurobot, destinados a la manipulación de elementos de juego.
-
-La implementación software (SW) de todos los sistemas y funcionalidades de la plataforma robótica a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. A partir de estas librerías se crearon las librerías Aversive4dspic, una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por en el HW desarrollado para los robots. 
-
-En el caso de equipos formados por dos robots (uno principal y otro secundario), la plataforma robótica desarrollada permite que la misma arquitectura mecánica, hardware y software pueda ser utilizada en ambos robots. Implementándose la \textbf{comunicación entre robots} mediante la inferfaz \emph{Bluetooth} de las tarjetas principales de cada robot.
+El sistema de baliza tipo faro se compone de un sensor giratorio y de una o varias balizas cilíndricas reflectantes. El sensor gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes cuando el sensor se encuentra enfrentado con ellas.  La medida de distancia se basa en el principio por el cual un objeto cercano se ve más grande que uno lejano. De forma que a una distancia cercana le corresponde un ángulo relativo de detección $\alpha_d$ mayor que el de una distancia más lejana. Por otro lado, la medida de ángulo se obtiene a partir del ángulo durante el cual se detecta la baliza reflectante.
 
 % HW
-La \textbf{arquitectura HW} de los robots implementa un sistema embebido basado en microcontroladores dsPIC que tiene sus recursos repartidos entre, la implementación de la plataforma robótica base y de los sistema mecánicos. Debido a que los recursos destinados a los sistemas mecánicos dependen de la temática de la prueba, la arquitectura tiene una interfaz I2C destinada expansión de recursos de entrada/salida (E/S) y a la implementación de un procesamiento distribuido.
+La \textbf{arquitectura HW} de la plataforma robótica implementa un sistema embebido basado en microcontroladores dsPIC que tiene sus recursos repartidos entre, la implementación de la plataforma robótica base y de los sistema mecánicos. Debido a que los recursos destinados a los sistemas mecánicos dependen de la temática de la prueba, la arquitectura tiene una interfaz I2C destinada expansión de recursos de entrada/salida (E/S) y a la implementación de un procesamiento distribuido.
+
+Por otro lado, la arquitectura HW tiene una interfaz de depuración RS-232 a través de la cual poder controlar, monitorizar y probar el hardware y el software desarrollado. Esta interfaz forma una cadena serie con el resto de microcontroladores que permite acceder a cualquiera de ellos mediante un \emph{bypass} del los datos. Además, la arquitectura cuenta con una interfaz inalámbrica Bluetooth, mediante la cual se implementa la \textbf{comunicación con la baliza tipo faro y el robot secundario}. Dependiendo de las características del robot, esta arquitectura HW ha sido implementada en una o varias tarjetas electrónicas, como se muestra en varios ejemplos.
+
 
 % (ver figura \ref{fig_hardware_arquitectura_principal_resumen}).
 
@@ -111,11 +116,12 @@ La \textbf{arquitectura HW} de los robots implementa un sistema embebido basado 
 %\label{fig_hardware_arquitectura_principal_resumen}
 %\end{figure}
 
-Por otro lado, la arquitectura HW tiene una interfaz de depuración RS-232 a través de la cual poder controlar, monitorizar y probar el hardware y el software desarrollado. Esta interfaz forma una cadena serie con el resto de microcontroladores que permite acceder a cualquiera de ellos mediante un \emph{bypass} del los datos. Además la arquitectura cuenta con una interfaz inalámbrica Bluetooth, mediante la cual se implementa la comunicación con la baliza tipo faro y el robot secundario. Dependiendo de las características del robot, esta arquitectura HW ha sido implementada en una o varias tarjetas electrónicas.
 
 % SW
 
-La \textbf{arquitectura SW} de los robots se organiza en capas o módulos funcionales, de forma que aquellos de nivel superior implementan funciones más abstractas que los inferiores:
+El desarrollo software (SW) de la plataforma robótica y del robot en su conjunto se a realizado a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. A partir de estas librerías se crearon las librerías Aversive4dspic, una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por el HW desarrollado. 
+
+La \textbf{arquitectura SW} de la plataforma robótica y de los robots se organiza en capas o módulos funcionales, de forma que aquellos de nivel superior implementan funciones más abstractas que los inferiores:
 
 \begin{description}
 \item \textbf{Drivers de dispositivos HW}
