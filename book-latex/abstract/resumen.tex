@@ -39,14 +39,12 @@ Eurobot es una competición internacional cuyas reglas y temática el juego cambia
 
 La plataforma robótica se basa en un \emph{sistema de tracción diferencial} que implementa un \emph{posicionamiento por odometría} y un \emph{control de posición polar}. La plataforma, además, utiliza sensores para detectar obstaculos y un \emph{sistema de balizas} para la medir la posición de los robots oponentes, a partir del cual se implementa la \emph{evitación de obstáculos}.
 
-Mediante el estudio del modelo dinámico de la plataforma robótica se determinan los límites de aceleración y velocidad, a partir de los cuales, dimensionar y especificar los elementos que componen el sistema de tracción diferencial (la reductora y los motores de tracción), y las características físicas de la estructura del robot (puntos de apoyo y centro de gravedad).
+Mediante el estudio del modelo dinámico de la plataforma robótica se determinan los límites de aceleración y velocidad, a partir de los cuales, dimensionar y especificar los elementos mecánicos y estructura de la misma.
 
 El desarrollo \emph{hardware} implementa una \emph{arquitectura} que permite ser reutilizada en el desarrollo de nuevos robots de Eurobot. Se trata de un sistema embebido basado en \emph{microcontroladores dsPIC} que reparte sus recursos entre la implementación de la plataforma robótica y los sistema mecánicos.
 
-El \emph{software} desarrollado también está basado en una \emph{arquitectura} pensada para ser reutilizada. Ésta se organiza en capas y/o módulos funcionales con diferentes niveles de abstración. El módulo \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. Al mismo nivel, se encuentra el módulo \emph{sistemas mecánicos} encargado de controlar los mecanismos utilizados por el robot para manipular los elementos de juego. Ambos módulos se integran y se sincronizan en la capa de \emph{temática de juego} para implementar funcionalidades propias de la temática de Eurobot. Por último, la capa \emph{estratégia de juego} decide cuando y que acciones del juego realizar en cada momento para jugar un partido de Eurobot.
-
-
-El desarrollo software, incluye además, un \emph{simulador de los robots y del campo de juego}. Este simulador se implementa a partir de la compilación del código fuente de los robots en un \emph{host} GNU/Linux y de la emulación del hardware y elementos mecánicos del robot. El entorno de simulación permite visualizar los movimientos de los robots sobre un campo de juego virtual y simular robots oponentes.
+El desarrollo \emph{software} también está basado en una \emph{arquitectura} pensada para ser reutilizada. Ésta se organiza en capas y/o módulos funcionales con diferentes niveles de abstración. El desarrollo software, incluye además, un \emph{simulador de los robots y del campo de juego}. El entorno de simulación permite visualizar los movimientos de los robots sobre un campo de juego virtual y simular robots oponentes.
+ 
 
 \textbf{Palabras clave:} \mybookpalabrasclave.
 
