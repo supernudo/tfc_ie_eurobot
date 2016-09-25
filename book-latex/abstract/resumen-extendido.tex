@@ -51,40 +51,40 @@ El libro trata de describir el desarrollo de este tipo de robots utilizando patr
 
 Eurobot es un concurso internacional de robótica creado en 1998 a partir de la Copa de Francia de la robótica \cite{cdr} (Coupe de France de robotique). Las reglas y la temática de Eurobot cambian cada año, sin embargo, la base es siempre la misma: tamaño de los robots, dimensiones del campo de juego y duración de los partidos.
 
-Los robots que se presentan en este proyecto han sido desarrollados por el equipo \emph{Eurobotics Engineering} \cite{arc_robots},  un equipo participante en Eurobot, perteneciente a la Asociación de Robótica de Coslada (ARC), y que tuvo su origen en antiguos equipos de la Universidad de Alcalá (UAH) creados por el Departamento de Electrónica de la UAH.
+Los robots que se presentan en este proyecto han sido desarrollados por el equipo \emph{Eurobotics Engineering} \cite{arc_robots},  un equipo participante en Eurobot, perteneciente a la Asociación de Robótica de Coslada (ARC), y que tuvo su origen en antiguos equipos de la Universidad de Alcalá (UAH), creados por el Departamento de Electrónica de la UAH.
 
 % EL ROBOT DE EUROBOT
 
 Un robot de Eurobot ha de ser completamente autónomo y ser capaz de:
 
-\begin{enumerate}
-\item Desplazarse hasta las diferentes zonas del campo donde se sitúan los elementos del juego o donde se almacenan.
+\begin{itemize}
+\item Desplazarse hasta las diferentes zonas del campo, donde se sitúan los elementos del juego o donde se almacenan.
 \item Evitar chocar con elementos del campo de juego y con otros robots oponentes durante los desplazamientos entre zonas del campo.
 \item Resolver la temática del juego, lo cual implica el manejo de los elementos o piezas propias del juego.
-\end{enumerate}
+\end{itemize}
 
-En base a esto, el desarrollo de un robot de Eurobot se ha dividido en las siguientes partes principales:
+En base a esto, el desarrollo de un robot de Eurobot se ha dividido en las siguientes partes funcionales principales:
 
 \begin{enumerate}
 \item Desplazamiento y localización.
 \item Evitación de obstáculos.
 \item Comunicación entre robots (en caso de jugar con 2 robots).
-\item Manipulación de elementos de juego. 
+\item Manipulación de elementos de juego.
 \item Estrategia de juego.
 \end{enumerate}
 
-Desde la experiencia, se han descrito y sintetizado lo que implica el desarrollo de cada una de estas partes aportando ejemplos y casos reales. También se reflexiona sobre los objetivos que llevan a desarrollar este tipo de robots y a participar en Eurobot desde el punto de vista del equipo y sus integrantes. Igualmente, se tratan las diferentes fases de las que se compone el desarrollo de un robot de Eurobot.
+Desde la experiencia, se ha descrito y sintetizado lo que implica el desarrollo de cada una de estas partes, aportando ejemplos y casos reales. También, se reflexiona sobre los objetivos que llevan a desarrollar este tipo de robots y a participar en Eurobot, desde el punto de vista del equipo y sus integrantes. Igualmente, se tratan las diferentes fases de las que se compone el desarrollo de un robot de Eurobot.
 
-Se presenta un desarrollo formado dos partes fundamentales: la \textbf{plataforma robótica base} y los \textbf{sistemas mecánicos de manipulación de elementos de juego}. La plataforma robótica está formada por los tres primeros bloques funcionales, cuyo desarrollo es independientemente de la temática de la prueba de Eurobot. De esta forma, la arquitectura mecánica, hardware (HW) y software (SW) de la plataforma robótica base, puede ser reutilizado y/o adaptada en futuros desarrollos de robots de Eurobot (o similares). En cambio, el resto de las partes, sistemas mecánicos y estrategia, dependen de la temática de la prueba e implica un desarrollo específico.
+Se presenta un desarrollo formado dos partes fundamentales: la \textbf{plataforma robótica base} y los \textbf{sistemas mecánicos de manipulación de elementos de juego}. La plataforma robótica está formada por los tres primeros bloques funcionales mencionados anteriormente, cuyo desarrollo, es independientemente de la temática de la prueba de Eurobot. De esta forma, la arquitectura mecánica, hardware (HW) y software (SW) de la plataforma robótica base, puede ser reutilizado y/o adaptada en futuros desarrollos de robots de Eurobot (o similares). En cambio, el resto de las partes, como los sistemas mecánicos y la estrategia, dependen de la temática de la prueba e implica un desarrollo específico.
 
 % PLATAFORMA ROBÓTICA BASE
-La función de \textbf{desplazamiento y localización} de la plataforma robótica se implementa a partir de un \emph{control de posición polar} y un \emph{sistema de posicionamiento por odometría}, a partir del los cuales, se gestiona la \emph{generación de trayectorias}.
+La función de \textbf{desplazamiento y localización} de la plataforma robótica, se implementa a partir de un \emph{control de posición polar} y un \emph{sistema de posicionamiento por odometría}, a partir del los cuales, se gestiona la \emph{generación de trayectorias}.
 
-Mecánicamente la plataforma robótica estar forma da por un sistema de tracción diferencial consiste en un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_resumen}). Sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y el control de posición del robot.
+Mecánicamente, la plataforma robótica está basada en un sistema de tracción diferencial. Éste, se compone de un bloque motor formado por dos motores unidos mediante una reductora mecánica a dos ruedas motrices (ver figura \ref{fig_plataforma_partes_resumen}). Además, sobre el eje motriz, en sus extremos, el robot tiene dos ruedas libres conectadas a sensores tipo encoder que se utilizan para implementar el sistema de posicionamiento por odometría y el control de posición del robot.
 
-El estudio del modelo dinámico de la plataforma robótica permite dimensionar y especificar los elementos que componen el sistema de tracción diferencial (la reductora y los motores de tracción), y las características físicas de la estructura del robot (puntos de apoyo y centro de gravedad).
+El estudio del modelo dinámico de la plataforma robótica, permite dimensionar y especificar los elementos que componen el sistema de tracción diferencial (la reductora y los motores de tracción), y las características físicas de la estructura del robot (puntos de apoyo y centro de gravedad).
 
-El control de posición polar está formado por sendos controladores de posición en distancia y ángulo. Ambos controladores implementan un perfil de velocidad trapezoidal, cuya velocidad y aceleración vienen determinados por el modelo dinámico de la plataforma robótica. El posicionamiento por odometría se obtiene mediante la aproximación lineal del modelo del sistema de encoders libres de la plataforma robótica. La medida y corrección de los errores sistemáticos del sistema permite reducir el error acumulativo de odometría.
+El control de posición polar está formado por sendos controladores de posición en distancia y ángulo. Ambos controladores, implementan un perfil de velocidad trapezoidal, cuya velocidad y aceleración, vienen determinados por el modelo dinámico de la plataforma robótica. El posicionamiento por odometría se obtiene mediante la aproximación lineal del modelo del sistema de encoders libres de la plataforma robótica. La medida y corrección de los errores sistemáticos del sistema, permite reducir el error acumulativo de odometría.
 
 
 \begin{figure}[ht]
@@ -95,15 +95,15 @@ El control de posición polar está formado por sendos controladores de posición e
 \label{fig_plataforma_partes_resumen}
 \end{figure}
 
-La \textbf{evitación de obstáculos} se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_resumen}) y a partir de un \emph{sistema de balizamiento} que hace uso de los soportes y espacios destinados a las balizas de la competición Eurobot. Éste sistema está compuesto por un sensor tipo faro situado en el robot y balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_resumen}). Y está específicamente desarrollado para medir la distancia y ángulo de los oponentes relativo a la posición del la plataforma robótica.
+La \textbf{evitación de obstáculos} se realiza a partir de sensores de distancia situados en las caras del robot (ver figura \ref{fig_plataforma_partes_resumen}), y a partir de un \emph{sistema de balizamiento} que hace uso de los soportes y espacios destinados a las balizas de la competición Eurobot. Éste sistema, está compuesto por un sensor tipo faro situado en el robot, y por balizas reflectantes situadas en el oponente (ver figura \ref{fig_plataforma_partes_resumen}). Además, está específicamente desarrollado para medir la distancia y ángulo de los oponentes, relativos a la posición de la plataforma robótica.
 
 % (BALIZA)
-El sistema de baliza tipo faro se compone de un sensor giratorio y de una o varias balizas cilíndricas reflectantes. El sensor gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes cuando el sensor se encuentra enfrentado con ellas.  La medida de distancia se basa en el principio por el cual un objeto cercano se ve más grande que uno lejano. De forma que a una distancia cercana le corresponde un ángulo relativo de detección $\alpha_d$ mayor que el de una distancia más lejana. Por otro lado, la medida de ángulo se obtiene a partir del ángulo durante el cual se detecta la baliza reflectante.
+El sensor de la baliza tipo faro gira sobre el plano $xy$ y emite una luz que es reflejada por balizas reflectantes, cuando el sensor se encuentra enfrentado con ellas.  La medida de distancia se basa en el principio por el cual, un objeto cercano se ve más grande que uno lejano. De forma que, a una distancia cercana le corresponde un ángulo relativo de detección $\alpha_d$, mayor que el de una distancia más lejana. Por otro lado, la medida de ángulo, se obtiene a partir del ángulo durante el cual se detecta la baliza reflectante.
 
 % HW
-El desarrollo HW propuesto, implementa una \textbf{arquitectura HW} que contempla la implementación tanto de la plataforma robótica, como de los sistemas mecánicos del robot. Se basa un sistema embebido basado en microcontroladores dsPIC que tiene sus recursos repartidos entre, la implementación de la plataforma robótica base y de los sistema mecánicos. Debido a que los recursos destinados a los sistemas mecánicos dependen de la temática de la prueba, la arquitectura tiene una interfaz I2C destinada expansión de recursos de entrada/salida (E/S) y a la implementación de un procesamiento distribuido.
+El desarrollo HW presentado, implementa una \textbf{arquitectura HW} que contempla la implementación, tanto de la plataforma robótica, como de los sistemas mecánicos del robot. La arquitectura implementa un sistema embebido basado en microcontroladores dsPIC, que tiene sus recursos repartidos entre la implementación de la plataforma robótica y de los sistema mecánicos. Debido a que los recursos destinados a los sistemas mecánicos dependen de la temática de la prueba, la arquitectura tiene una interfaz I2C destinada expansión de recursos de entrada/salida (E/S) y a la implementación de un procesamiento distribuido.
 
-Por otro lado, la arquitectura HW tiene una interfaz de depuración RS-232 a través de la cual poder controlar, monitorizar y probar el hardware y el software desarrollado. Esta interfaz forma una cadena serie con el resto de microcontroladores que permite acceder a cualquiera de ellos mediante un \emph{bypass} del los datos. Además, la arquitectura cuenta con una interfaz inalámbrica Bluetooth, mediante la cual se implementa la \textbf{comunicación con la baliza tipo faro y el robot secundario}. Dependiendo de las características del robot, esta arquitectura HW ha sido implementada en una o varias tarjetas electrónicas, como se muestra en varios ejemplos de robots desarrollados.
+Por otro lado, la arquitectura HW tiene una interfaz de depuración RS-232 a través de la cual poder controlar, monitorizar y probar el hardware y el software desarrollado. Esta interfaz, forma una cadena serie con el resto de microcontroladores que permite acceder a cualquiera de ellos mediante un \emph{bypass} del los datos. Además, la arquitectura cuenta con una interfaz inalámbrica Bluetooth, mediante la cual se implementa la \textbf{comunicación con la baliza tipo faro y el robot secundario}. Dependiendo de las características del robot, esta arquitectura HW ha sido implementada en una o varias tarjetas electrónicas, como se muestra en varios ejemplos de robots desarrollados.
 
 
 % (ver figura \ref{fig_hardware_arquitectura_principal_resumen}).
@@ -117,11 +117,11 @@ Por otro lado, la arquitectura HW tiene una interfaz de depuración RS-232 a trav
 
 
 % SW
-Se describe un desarrollo SW que implementa una \textbf{arquitectura SW} cuya estructura incluye la implementación funcional de la plataforma robótica, los sistemas mecánicos y las funcionalidades propias de la temática y estrategia de juego del robot de Eurobot. Se tratan ejemplos de robots desarrollados que implementan esta arquitectura SW.
+Se describe un desarrollo SW que basado en una \textbf{arquitectura SW}, cuya estructura, contempla la implementación funcional de la plataforma robótica, los sistemas mecánicos y las funcionalidades propias de la temática y estrategia de juego del robot de Eurobot. Así mismo, se tratan ejemplos de robots desarrollados que implementan esta arquitectura SW.
 
-La implementación SW de la plataforma robótica se ha realizado a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. A partir de estas librerías se crearon las librerías Aversive4dspic, una migración de las librerías Aversive a microcontroladores dsPIC de Microchip, utilizados por el HW desarrollado. 
+La implementación SW de la plataforma robótica se ha realizado a partir de las librerías Aversive \cite{aversive_src}, desarrolladas por el equipo de Eurobot Microb Technology \cite{microb}. Las librerías Aversive constituyen un marco de trabajo para el desarrollo de sistemas basados en microcontroladores AVR de Atmel. A partir de estas librerías, se crearon las librerías Aversive4dspic, una migración de las librerías Aversive a los microcontroladores dsPIC de Microchip, utilizados por el HW desarrollado. 
 
-La arquitectura SW propuesta se organiza en capas o módulos funcionales, de forma que aquellos de nivel superior implementan funciones más abstractas que los inferiores. El módulo \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. Al mismo nivel, se encuentra el módulo \emph{sistemas mecánicos} encargado de controlar los mecanismos utilizados por el robot para manipular los elementos de juego. Ambos módulos se integran y se sincronizan en la capa de \emph{temática de juego} para implementar funcionalidades propias de la temática de Eurobot. Por último, la capa \emph{estrategia de juego} decide cuando y que acciones del juego realizar en cada momento para jugar un partido de Eurobot.
+La arquitectura SW propuesta se organiza en capas o módulos funcionales, de forma que aquellos de nivel superior implementan funciones más abstractas que los inferiores. El módulo \emph{plataforma robótica} incluye las funcionalidades de desplazamiento, localización y evitación de obstáculos. Al mismo nivel, se encuentra el módulo \emph{sistemas mecánicos}, encargado de controlar los mecanismos utilizados por el robot para manipular los elementos de juego. Ambos módulos, se integran y se sincronizan en la capa de \emph{temática de juego}, que implementa las funcionalidades propias de la prueba de Eurobot. El nivel más abstracto lo implementa la capa \emph{estrategia de juego}, la cual decide cuándo y qué acciones del juego realizar en cada momento durante un partido de Eurobot.
 
 %\begin{description}
 %\item \textbf{Drivers de dispositivos HW}
@@ -159,7 +159,7 @@ La arquitectura SW propuesta se organiza en capas o módulos funcionales, de form
 
 %La figura \ref{fig_sw_diagrama_bloques_resumen} representa la implementación de la arquitectura el caso de dos robots: un robot principal y uno secundario se muestra en la figura \ref{fig_sw_diagrama_bloques_resumen}. Ambos robots implementan la misma arquitectura. El robot principal, implementa la arquitectura mediante dos microcontroladores, mientras que el secundario utiliza únicamente un único microcontrolador.
 
-Por último, el desarrollo SW incluye además un \textbf{simulador de los robots y del campo de juego}. Este simulador se implementa a partir de la compilación del código fuente de los robots en un \emph{host} GNU/Linux y de la emulación del HW y elementos mecánicos del robot. El entorno de simulación permite visualizar los movimientos de los robots sobre un campo de juego virtual y simular robots oponentes.
+Por último, el desarrollo SW incluye además un \textbf{simulador de los robots y del campo de juego}. Éste simulador, se implementa a partir de la compilación del código fuente de los robots en un \emph{host} GNU/Linux, y de la emulación del HW y elementos mecánicos del robot. El entorno de simulación, permite visualizar los movimientos de los robots sobre un campo de juego virtual y simular robots oponentes.
 
 
 
