@@ -237,7 +237,7 @@
 
 
 \section{El robot de Eurobot}
-%\subsection{Especificaciones}
+\subsection{Especificaciones}
 
 \begin{frame}{El juego y sus elementos}
 \includegraphics[width=.9\textwidth]{campo_2015}
@@ -252,9 +252,9 @@
 \item Realizar acciones del juego
 \item Evitar colisiones
 \item Hasta 2 robots por equipo
-\item Perímetro máximo 1,2/1.5m (70/90cm)
+\item Perímetro máximo 1,2/1,5m (70/90cm)
 \item Altura máxima 35cm
-\item Sistemas de balizas
+\item Balizas campo y robot oponente
 \end{itemize}
 
 \column{.5\textwidth}
@@ -264,85 +264,264 @@
 \end{frame}
 
 
-%\subsection{Funcionalidades}
+\subsection{Funcionalidades}
 
 \begin{frame}{Funcionalidades a desarrollar}
 
-\alt<1> {
-	\begin{enumerate}
-	\item Estrategia de juego
-	\item Evitación de obstáculos
-	\item Comunicación entre robots
-	\item Manipulación de elementos de juego
-	\end{enumerate}
-}{}
+\begin{enumerate}
+\item<4-> Estrategia de juego
+\item<1-> Desplazamiento y localización
+\item<2-> Evitación de obstáculos
+\item<5-> Comunicación entre robots
+\item<3-> Manipulación de elementos de juego
+\end{enumerate}
 
-\alt<2>{\includegraphics[width=.9\textwidth]{partes_robot_eurobot}}{}
 \end{frame}
 
-%\begin{frame}{Estrategia de juego}
-%\includegraphics[width=\textwidth]{}
-%\end{frame}
+\begin{frame}{La plataforma robótica base}
+\centering
+\includegraphics[width=.9\textwidth]{partes_robot_eurobot}
+\end{frame}
 
-%\begin{frame}{Desplazamiento y localización}
-%\includegraphics[width=\textwidth]{}
-%\end{frame}
-
-%\begin{frame}{Evitación de obstáculos}
-%\alt<1>{\includegraphics[width=\textwidth]{}}{}
-%\alt<1>{\includegraphics[width=\textwidth]{}}{}
-%\alt<1>{\includegraphics[width=\textwidth]{}}{}
-%\end{frame}
-
-%\begin{frame}{Comunicación entre robots}
-%\includegraphics[width=\textwidth]{}
-%\end{frame}
-
-%\begin{frame}{Manipulación de elementos de juego}
-%\includegraphics[width=\textwidth]{}
-%\end{frame}
-
-%\subsection{Desarrollo}
+\subsection{Desarrollo}
 
 \begin{frame}{Fases de desarrollo}
+
+\begin{itemize}
+\item<1-> Fabricación del campo de juego y sus elementos
+\item<2-> Diseño de la estrategia
+\item<3-> Realización de prototipos mecánico y pruebas de concepto
+\item<4-> Diseño y fabricación de la mecánica y de la electrónica
+\item<5-> Montaje del robot y cableado
+\item<4-> Implementación SW de la funcionalidad del robot
+\item<4-> Implementación SW de la estrategia de juego
+\item<6-> Puesta en marcha y verificación
+\end{itemize}
 \end{frame}
-
-%\begin{frame}{Diseño de la estrategia}
-%\includegraphics[width=\textwidth]{}
-%\end{frame}
-
-%\begin{frame}{Prototipos y pruebas de concepto}
-%\alt<1>{\includegraphics[width=\textwidth]{}
-%		\includegraphics[width=\textwidth]{}}{}
-%\alt<2>{\includegraphics[width=\textwidth]{}
-%		\includegraphics[width=\textwidth]{}}{}
-%\end{frame}
-
-
-
 
 \section{Plataforma robótica base}
-\subsection{Partes principlales}
+\subsection{Partes principales}
 
-\begin{frame}{Bloque motor, ruedas libres y electrónica}
-\end{frame}
-
-\begin{frame}{Puntos de apoyo}
-\end{frame}
-
-\begin{frame}{Detección de obstáculos y oponentes}
+\begin{frame}{Bloque motor y electrónica}
+\begin{center}
+\alt<1>{\includegraphics[height=.8\textheight]{plataforma_partes_1}}{}
+\alt<2>{\includegraphics[height=.8\textheight]{sistema_traccion_rollones}}{}
+\end{center}
 \end{frame}
 
 \begin{frame}{Ruedas libres}
-%\alt<1>{\includegraphics[width=\textwidth]{}}{}
-%\alt<2>{\includegraphics[width=\textwidth]{}}{}
+\begin{center}
+\alt<1>{\includegraphics[width=\textwidth]{ruedas_libres_lineal}}{}
+\alt<2>{\includegraphics[width=\textwidth]{ruedas_libres_pivotante}}{}
+\end{center}
+\end{frame}
+
+\begin{frame}{Detección de obstáculos y oponentes}
+\begin{center}
+\alt<1>{\includegraphics[height=.8\textheight]{plataforma_partes_2}}{}
+\end{center}
+\end{frame}
+
+\subsection{Dinámica}
+
+\begin{frame}{Desplazamiento lineal sobre un plano horizontal}
+\end{frame}
+
+\begin{frame}{Coheficiente de adherencia $K_a$}
+\begin{center}
+\alt<1>{\includegraphics[width=.9\textwidth]{dinamica_basica}\\
+
+		\begin{equation*}
+		  \label{eq_fx_max_f_ka}
+		  F_{x\,max} = K_a \, F_n
+		\end{equation*}
+}{}
+
+\alt<2>{\includegraphics[width=.8\textwidth]{metodo_cubo}\\
+
+		\begin{equation*}
+		  \label{eq_ka=f(p1,p2)}
+		  \boxed{K_a = \frac{P2}{P1}}
+		\end{equation*}
+}{}
+
+\alt<3>{\includegraphics[width=.4\textwidth]{ruedas_foam_silicona}\\
+		\vspace{.5cm}
+		\begin{tabular}{lccc}
+		\hline
+		Robot & $P1$ & $P2$ & $K_a$ \\
+		\hline
+		Zamorano (2011) 	& 14,5   & 15,6   & 1,076  \\
+		Automático (2012)   & 17,6   & 17,3   & 0,983  \\
+		\hline
+		\end{tabular}
+}{}
+\end{center}
+\end{frame}
+
+\begin{frame}{Aceleración máxima de un robot con ruedas atrás}
+\begin{center}
+\alt<1>{\includegraphics[width=.4\textwidth]{dinamica_a_max_ruedas_atras}\\
+		\vspace{.2cm}
+		\includegraphics[width=.8\textwidth]{dinamica_a_max_ruedas_medio}
+}{}
+
+\alt<2>{\includegraphics[width=.4\textwidth]{dinamica_a_max_ruedas_atras}\\
+
+		\begin{align*}
+		(2F1)/mg &= d2/d + (a/g)(h/d)\\
+		(2F2)/mg &= d1/d - (a/g)(h/d)
+		\end{align*}
+}{}
+
+\alt<3>{
+\begin{columns}
+\column{.5\textwidth}
+\includegraphics[width=.8\textwidth]{dinamica_a_max_ruedas_atras}\\
+Condición de derrape:
+\begin{equation*}
+|F_x| < K_a \, F1.
+\end{equation*}
+
+Condición de \emph{caballito}:
+\begin{equation*}
+F2 > 0, F1 > 0
+\end{equation*}
+
+\column{.5\textwidth}
+Fase de aceleración ($a>0$):
+\begin{align*}
+a_{max1} &= g\,\frac{K_a \, d2}{d-(K_a \, h)}\\
+a_{max2} &= g\,\frac{d1}{h}
+\end{align*}
+
+Fase de frenado ($a<0$):
+\begin{align*}
+a_{max1} &= g\,\frac{K_a \, d2}{d+(K_a \, h)}\\
+a_{max2} &= g\,\frac{d2}{h}
+\end{align*}
+
+%\begin{equation*}
+%a_{max} = Min\{a_{max1}, a_{max2}\}
+%\end{equation*}
+\end{columns}
+}{}
+
+\alt<4>{\includegraphics[width=.9\textwidth]{ejemplo_a_max}\\
+		\vspace{.3cm}
+	
+		\begin{tabular}{ lcccc }
+		\hline
+					& Acel. R1 & Fren. R1 & Acel. R2 & Fren. R2 \\
+		\hline
+		$a_{max1}$ 	& $1,2g$ 		& $0,4g$ 		& $3,0g$ 		& $0,3g$ 	\\
+		$a_{max2}$ 	& $0,8g$ 		& $1,2g$ 		& $0,5g$ 		& $0,75g$ 	\\
+		$a_{max}$ 	& $0,8g$ 		& $0,4g$ 		& $0,5g$ 		& $0,3g$ 	\\
+					& ($8\,m/s$) 		& ($4\,m/s$) 		& ($5\,m/s$) 		& ($3\,m/s$)  \\
+		\hline
+		\end{tabular}
+}{}
+
+\alt<5>{\includegraphics[width=.6\textwidth]{medida_centro_gravedad}\\
+}{}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Perfil de velocidad trapezoidal}
+\begin{center}
+\includegraphics[width=.55\textwidth]{perfil_trapezoidal}
+\end{center}
+\end{frame}
+
+\begin{frame}{Dimensionamiento de la reductora}
+\begin{center}
+\alt<1>{\includegraphics[width=.9\textwidth]{modelo_reductora_motor}\\
+		\vspace{.5cm}
+		\begin{columns}
+		\column{.5\textwidth}
+		El par en el motor necesario:
+		\begin{equation*}
+		M1 = \frac{K_a\,mg\,(d2/d)}{K\,Rd\,D}
+		\end{equation*}
+
+		\column{.5\textwidth}
+		Par motor máximo en la reductora:
+		\begin{align*}
+		M2 &= K_m\,i = K_m\,\frac{v_{sat}}{r}
+		\end{align*}
+		\end{columns}
+}{}
+
+\alt<2>{\includegraphics[width=.9\textwidth]{modelo_reductora_motor}\\
+		\vspace{.5cm}
+		\begin{columns}
+		\column{.5\textwidth}
+		Condición de deslizamiento:
+		\begin{equation*}
+		M2 >= 1,2\,M1
+		\end{equation*}
+
+		\column{.5\textwidth}
+		Valor de reducción:
+		\begin{equation*}
+		\boxed{K_{min} = 1,2\,\frac{K_a\,mg\,(d2/d)\,D\,r}{4\,K_m\,Rd\,v_{sat}}}
+		\end{equation*}
+		\end{columns}
+}{}
+
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Velocidad máxima}
 \end{frame}
 
 
+\subsection{Control de posición polar}
 
-\subsection{Dinámica}
-\subsection{Control de posición}
+\begin{frame}{Controladores de ángulo y distancia}
+\end{frame}
+
+\begin{frame}{Implementación del perfil trapezoidal}
+\end{frame}
+
+\begin{frame}{Ajuste de los controladores}
+\end{frame}
+
 \subsection{Odometría}
+
+\begin{frame}{Calculo de la posición del robot}
+\end{frame}
+
+\begin{frame}{Medida y corrección de errores sitemáticos}
+\end{frame}
+
+
+\subsection{Baliza tipo faro}
+
+\begin{frame}{Mecánica de la baliza}
+\begin{center}
+\alt<1>{\includegraphics[width=.9\textwidth]{baliza_mecanica}}{}
+\alt<2>{\includegraphics[width=.8\textwidth]{baliza_catadioptrica}}{}
+\end{center}
+\end{frame}
+
+\begin{frame}{Fundamento}
+\begin{center}
+\alt<1>{\includegraphics[height=.9\textheight]{baliza_fundamento}}{}
+\end{center}
+
+\alt<2>{\includegraphics[width=\textwidth]{baliza_signal}}{}
+\end{frame}
+
+\begin{frame}{Implementación y resultados}
+\alt<1>{\includegraphics[height=.8\textheight]{baliza_bloques_hw_sw}}{}
+\begin{center}
+\alt<2>{\includegraphics[height=.8\textheight]{beacon_robot_calib_3m_fig_1_small.pdf}}{}
+\end{center}
+\end{frame}
+
 
 \section{Desarrollo HW y SW}
 
