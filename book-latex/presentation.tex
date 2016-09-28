@@ -51,6 +51,7 @@
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{multicol}
+\usepackage{empheq}
 
 % path to directories containing images
 \graphicspath{{./logos/}{./figures/}{./diagrams/}} % Edit this to your
@@ -471,10 +472,56 @@ a_{max2} &= g\,\frac{d2}{h}
 }{}
 
 \end{center}
-
 \end{frame}
 
 \begin{frame}{Velocidad máxima}
+\alt<1>{
+		\begin{columns}
+		\column{.5\textwidth}
+		\includegraphics[width=\textwidth]{dimensionamiento_motores}
+
+		\column{.5\textwidth}
+		Tensión del motor:
+		\begin{equation*}
+		U = \Big(\frac{r\,m\,D}{4K\,Rd\,K_m}\Big)\,a + \Big(\frac{2K_m\,K}{D}\Big)\,v
+		\end{equation*}
+
+		Equivale a una recta:
+		\begin{equation*}
+		v = v_o - \frac{v_o}{a_o}\,a
+		\end{equation*}
+		Donde
+		\begin{equation*}
+		v_o = \frac{\,U\,D}{2K\,K_m}, \,\,\,\,\,\, a_o = \frac{4K\,U\,Rd\,K_m}{r\,D\,m}
+		\end{equation*}
+
+		\end{columns}
+}{}
+
+\alt<2>{
+		\begin{columns}
+		\column{.5\textwidth}
+
+		\begin{empheq}[box=\fbox]{align}
+		v_{max} &= v_o\, (1-\frac{a_{max}}{a_o})\\
+		v_o &= \frac{\,U\,D}{2K\,K_m}\\ 
+		a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m}
+		\end{empheq}
+
+		\column{.5\textwidth}
+		\includegraphics[width=\textwidth]{recta_velocidad_maxima}
+		\end{columns}
+}{}
+
+\alt<3>{
+		\begin{columns}
+		\column{.55\textwidth}
+		\includegraphics[width=\textwidth]{perfil_vmax_amax}
+		\column{.55\textwidth}
+		\includegraphics[width=\textwidth]{recta_velocidad_maxima_ptinto}
+		\end{columns}
+}{}
+
 \end{frame}
 
 
