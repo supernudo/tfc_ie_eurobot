@@ -52,6 +52,7 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{empheq}
+\usepackage{multimedia}
 
 % path to directories containing images
 \graphicspath{{./logos/}{./figures/}{./diagrams/}} % Edit this to your
@@ -108,7 +109,7 @@
 %  \end{frame}
 %}
 
-\AtBeginSection[]
+\AtBeginSubsection[]
 {
   \begin{frame}<beamer>
     %\frametitle{Contenido} 
@@ -200,7 +201,7 @@
 \begin{frame}{La competición Eurobot}
 \begin{center}
 \alt<1>{\includegraphics[width=.6\textwidth]{eurobot2}}{}
-\alt<2>{\includegraphics[width=.9\textwidth]{eurobot_family}}{}
+%\alt<2>{\includegraphics[width=.9\textwidth]{eurobot_family}}{}
 \end{center}
 \end{frame}
 
@@ -226,15 +227,15 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Motivación}
+%\begin{frame}{Motivación}
 
-\begin{itemize}
-\item Afición a la robótica, electrónica y los sistemas embebidos
-\item Inquietud Maker
-\item Divulgación del conocimiento
-\end{itemize}
+%\begin{itemize}
+%\item Afición a la robótica, electrónica y los sistemas embebidos
+%\item Inquietud Maker
+%\item Divulgación del conocimiento
+%\end{itemize}
 
-\end{frame}
+%\end{frame}
 
 
 \section{El robot de Eurobot}
@@ -284,21 +285,21 @@
 \includegraphics[width=.9\textwidth]{partes_robot_eurobot}
 \end{frame}
 
-\subsection{Desarrollo}
+%\subsection{Desarrollo}
 
-\begin{frame}{Fases de desarrollo}
+%\begin{frame}{Fases de desarrollo}
 
-\begin{itemize}
-\item<1-> Fabricación del campo de juego y sus elementos
-\item<2-> Diseño de la estrategia
-\item<3-> Realización de prototipos mecánico y pruebas de concepto
-\item<4-> Diseño y fabricación de la mecánica y de la electrónica
-\item<5-> Montaje del robot y cableado
-\item<4-> Implementación SW de la funcionalidad del robot
-\item<4-> Implementación SW de la estrategia de juego
-\item<6-> Puesta en marcha y verificación
-\end{itemize}
-\end{frame}
+%\begin{itemize}
+%\item<1-> Fabricación del campo de juego y sus elementos
+%\item<2-> Diseño de la estrategia
+%\item<3-> Realización de prototipos mecánico y pruebas de concepto
+%\item<4-> Diseño y fabricación de la mecánica y de la electrónica
+%\item<5-> Montaje del robot y cableado
+%\item<4-> Implementación SW de la funcionalidad del robot
+%\item<4-> Implementación SW de la estrategia de juego
+%\item<6-> Puesta en marcha y verificación
+%\end{itemize}
+%\end{frame}
 
 \section{Plataforma robótica base}
 \subsection{Partes principales}
@@ -326,6 +327,7 @@
 \subsection{Dinámica}
 
 \begin{frame}{Desplazamiento lineal sobre un plano horizontal}
+\alt<1>{\includegraphics[width=.9\textwidth]{dinamica_basica}}{}
 \end{frame}
 
 \begin{frame}{Coheficiente de adherencia $K_a$}
@@ -360,7 +362,7 @@
 \end{center}
 \end{frame}
 
-\begin{frame}{Aceleración máxima de un robot con ruedas atrás}
+\begin{frame}{Cálculo de la aceleración máxima}
 \begin{center}
 \alt<1>{\includegraphics[width=.4\textwidth]{dinamica_a_max_ruedas_atras}\\
 		\vspace{.2cm}
@@ -441,7 +443,7 @@ a_{max2} &= g\,\frac{d2}{h}
 		\vspace{.5cm}
 		\begin{columns}
 		\column{.5\textwidth}
-		El par en el motor necesario:
+		Par motor necesario:
 		\begin{equation*}
 		M1 = \frac{K_a\,mg\,(d2/d)}{K\,Rd\,D}
 		\end{equation*}
@@ -474,7 +476,7 @@ a_{max2} &= g\,\frac{d2}{h}
 \end{center}
 \end{frame}
 
-\begin{frame}{Velocidad máxima}
+\begin{frame}{Cálculo de la velocidad máxima}
 \alt<1>{
 		\begin{columns}
 		\column{.5\textwidth}
@@ -498,22 +500,22 @@ a_{max2} &= g\,\frac{d2}{h}
 		\end{columns}
 }{}
 
+%\alt<2>{
+%		\begin{columns}
+%		\column{.5\textwidth}
+
+%		\begin{empheq}[box=\fbox]{align}
+%		v_{max} &= v_o\, (1-\frac{a_{max}}{a_o})\\
+%		v_o &= \frac{\,U\,D}{2K\,K_m}\\ 
+%		a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m}
+%		\end{empheq}
+
+%		\column{.5\textwidth}
+%		\includegraphics[width=\textwidth]{recta_velocidad_maxima}
+%		\end{columns}
+%}{}
+
 \alt<2>{
-		\begin{columns}
-		\column{.5\textwidth}
-
-		\begin{empheq}[box=\fbox]{align}
-		v_{max} &= v_o\, (1-\frac{a_{max}}{a_o})\\
-		v_o &= \frac{\,U\,D}{2K\,K_m}\\ 
-		a_o &= \frac{4K\,U\,Rd\,K_m}{r\,D\,m}
-		\end{empheq}
-
-		\column{.5\textwidth}
-		\includegraphics[width=\textwidth]{recta_velocidad_maxima}
-		\end{columns}
-}{}
-
-\alt<3>{
 		\begin{columns}
 		\column{.55\textwidth}
 		\includegraphics[width=\textwidth]{perfil_vmax_amax}
@@ -528,20 +530,185 @@ a_{max2} &= g\,\frac{d2}{h}
 \subsection{Control de posición polar}
 
 \begin{frame}{Controladores de ángulo y distancia}
+\begin{center}
+\includegraphics[width=.7\textwidth]{control_polar_kimp}
+\end{center}
 \end{frame}
 
 \begin{frame}{Implementación del perfil trapezoidal}
+El Filtro consigna limita la primera y segunda derivada de la consiga de posición:
+\begin{center}
+\includegraphics[width=\textwidth]{filtro_consigna}
+\end{center}
 \end{frame}
 
-\begin{frame}{Ajuste de los controladores}
+\begin{frame}{Ajuste de los controladores PD}
+\begin{itemize}
+\item<1-> Método experimental similar a de las reglas de Ziegler-Nichols
+\item<1-> Herramienta de depuración (gráficas)
+\item<2-> Orden:
+	\begin{enumerate}
+	\item Ángulo (consigna d=0)
+	\item Distancia (consigna a=0)
+	\end{enumerate} 
+\item<3-> Ajuste inicial (sin perfil trapezoidal):
+	\begin{enumerate}
+	\item Ganancia Kp --> respuesta amortiguada 1 o 2s.
+	\item Ganancia Kd --> respuesta subamortiguada de $Mp = 4,6\%$
+	\end{enumerate}
+\item<4-> Ajuste fino (con perfil trapezoidal)
+\end{itemize}
 \end{frame}
+
+\begin{frame}{Ajuste de los controladores PD}
+\begin{center}
+%\alt<1>{\includegraphics[width=\textwidth]{ajuste_kp_figure_2}}{}
+%\alt<2>{\includegraphics[width=\textwidth]{ajuste_kd_figure_2}}{}
+\alt<1>{\includegraphics[width=.56\textwidth]{ajuste_kp_kd_perfil_figure_1}}{}
+\end{center}
+\end{frame}
+
 
 \subsection{Odometría}
 
-\begin{frame}{Calculo de la posición del robot}
+\begin{frame}{Cálculo de la posición del robot}
+\alt<1>{
+		\begin{columns}
+		\column{.5\textwidth}
+		\includegraphics[width=\textwidth]{odometria_dimensiones}
+		\column{.5\textwidth}
+
+		Medida instantánea:
+		\begin{align*}
+		d = \frac{N_D + N_I}{2}\, [pulsos]\\
+		\theta = (N_D - N_I)\, [pulsos]
+		\end{align*}
+
+		Conversión de unidades:
+		\begin{align*}
+		C_d &= \frac{N\times M}{\pi\,D_n} \,\Big[\frac{pulsos}{m}\Big]\\
+		C_\theta &= C_d\,\frac{b}{2} \Big[\frac{pulsos}{rad}\Big]
+		\end{align*}
+		\end{columns}
+}{}
+
+\alt<2>{
+		\begin{columns}
+		\column{.5\textwidth}
+		\includegraphics[width=\textwidth]{odometria_geometria}
+
+		\column{.5\textwidth}
+		Medida de orientación:
+		\begin{align*}
+		\boxed{\theta_n = \frac{N_{D\,n} - N_{I\,n}}{C_\theta} [rad]}
+		\end{align*}
+
+		Medida de posición:
+		\begin{empheq}[box=\fbox]{align}
+		dx &= L\,\cos(\theta_{avg})\\
+		dy &= L\,\sin(\theta_{avg})
+		\end{empheq}
+
+		Aproximación lineal:
+		\begin{equation*}
+		L = d_n - d_{n-1}
+		\end{equation*}
+		\end{columns}
+}{}
+
 \end{frame}
 
-\begin{frame}{Medida y corrección de errores sitemáticos}
+\begin{frame}{Errores sistemáticos}
+\alt<1>{
+		\begin{columns}
+		\column{.4\textwidth}
+		\includegraphics[width=\textwidth]{odometria_dimensiones}
+		\column{.6\textwidth}
+		Error por diferencia de diámetros:
+		\begin{equation*}
+		E_d = \frac{D_R}{D_L}
+		\end{equation*}
+
+		Error de distancia entre ejes:
+		\begin{equation*}
+		E_b = \frac{b_{real}}{b_{nominal}}
+		\end{equation*}
+
+		El error de orientación:
+		\begin{equation*}
+		\boxed{D_{avg} = \frac{D_L+D_R}{2}} \label{eq_D_avg}
+		\end{equation*}
+		\end{columns}
+}{}
+
+%\alt<2>{
+%		\begin{columns}
+%		\column{.5\textwidth}
+%		\emph{H. E. J. Borenstein and L.Feng, Measurement and Correction of Systematic Odometry Errors in
+%Mobile Robots}
+%		\vspace{.5cm}
+%		\begin{center}
+%		\includegraphics[width=\textwidth]{paper58_errores_giro}
+%		\end{center}
+%		\column{.5\textwidth}
+%		\begin{enumerate}
+%		\item Diámetros distintos de rueda no causan un error de orientación durante los giros.
+%		\item El error de orientación depende del \emph{diámetro medio de las ruedas}:
+%		\begin{equation*}
+%		\boxed{D_{avg} = \frac{D_L+D_R}{2}} \label{eq_D_avg}
+%		\end{equation*}
+
+%		\item $E_d$ tiene un efecto menor (desplazamiento lateral)
+
+%		\end{enumerate}
+%		\end{columns}
+%}{}
+\end{frame}
+
+\begin{frame}{Medida y corrección de errores sistemáticos}
+\alt<1>{
+		\begin{columns}
+		\column{.5\textwidth}
+		\begin{enumerate}
+		\item[1] Medida y corrección del error $E_d$.
+		%\item Medida y corrección del error $E_b$.
+		\end{enumerate} 
+
+		\includegraphics[width=\textwidth]{odometria_correccion_error_tipo_b}
+		\column{.5\textwidth}
+		
+		Error: 
+		\begin{equation*}
+		\boxed{E_d = \frac{D_R}{D_L} = \frac{R+b/2}{R-b/2}}
+		\end{equation*}
+
+		Factores de corrección:
+		\begin{align*}
+		c_L =& \frac{2}{E_d +1} \\
+		c_R =& \frac{2}{(1/E_d) + 1}
+		\end{align*}
+		\end{columns}
+}{}
+
+
+\alt<2>{
+		\begin{columns}
+		\column{.5\textwidth}
+		\begin{enumerate}
+		%\item Medida y corrección del error $E_d$.
+		\item[2] Medida y corrección del error $E_b$.
+		\end{enumerate} 
+
+		\includegraphics[width=\textwidth]{odometria_correccion_error_tipo_a}
+		\column{.5\textwidth}
+		
+		Factor de corrección:
+		\begin{equation*}
+		\boxed{c_b = \frac{\theta}{\theta \pm \alpha} = \frac{3600}{3600 \pm \alpha}}
+		\end{equation*}
+		\end{columns}
+}{}
+
 \end{frame}
 
 
@@ -550,7 +717,7 @@ a_{max2} &= g\,\frac{d2}{h}
 \begin{frame}{Mecánica de la baliza}
 \begin{center}
 \alt<1>{\includegraphics[width=.9\textwidth]{baliza_mecanica}}{}
-\alt<2>{\includegraphics[width=.8\textwidth]{baliza_catadioptrica}}{}
+%\alt<2>{\includegraphics[width=.8\textwidth]{baliza_catadioptrica}}{}
 \end{center}
 \end{frame}
 
@@ -570,37 +737,67 @@ a_{max2} &= g\,\frac{d2}{h}
 \end{frame}
 
 
-\section{Desarrollo HW y SW}
+\section{Desarrollo hardware y software}
 
-\appendix
-\section*{Conclusiones}
+\subsection{Arquitectura HW}
 
-\begin{frame}{Conclusiones}
-
-  % Keep the summary *very short*.
-  \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
-  \end{itemize}
-  
-  % The following outlook is optional.
-  \vskip0pt plus.5fill
-  \begin{itemize}
-  \item
-    Outlook
-    \begin{itemize}
-    \item
-      Something you haven't solved.
-    \item
-      Something else you haven't solved.
-    \end{itemize}
-  \end{itemize}
+\begin{frame}{Arquitectura HW}
+\begin{center}
+\alt<1>{\includegraphics[width=.6\textwidth]{hardware_arquitectura_principal}}{}
+\alt<2>{\includegraphics[width=.8\textwidth]{hardware_arquitectura_platafoma_robotica}}{}
+\alt<3>{\includegraphics[width=.95\textwidth]{hardware_arquitectura}}{}
+%\alt<4>{\includegraphics[height=.8\textheight]{hardware_arquitectura_alimentacion}}{}
+\end{center}
 \end{frame}
 
+\begin{frame}{Implementación HW del robot principal}
+\begin{center}
+\alt<1>{\includegraphics[width=.53\textwidth]{hardware_robot_principal}}{}
+%\alt<1>{\includegraphics[width=.9\textwidth]{hardware_robot_secundario}}{}
+\end{center}
+\end{frame}
+
+
+\subsection{Arquitectura SW}
+
+\begin{frame}{Arquitectura SW}
+\begin{center}
+\includegraphics[width=\textwidth]{sw_diagrama_bloques}
+\end{center}
+\end{frame}
+
+\begin{frame}{Simulador de robots y campo de juego}
+\begin{center}
+\includegraphics[width=.9\textwidth]{sw_diagrama_bloques_simulador}
+\end{center}
+\end{frame}
+
+\subsection{Demostración}
+
+%\begin{frame}{Implementación funcional}
+%\url[pepe]{/media/datos/Datos/Proyectos/TFC_eurobot/book-latex/diagrams/control\_polar\_vs\_por\_rueda.pdf}
+%\movie{\includegraphics[width=0.8\textwidth]{hardware_robot_principal}}{./videos/VID_20150518_211425}
+
+%\href{run:mplayer -fs videos/VID_20150518_211425.mp4}{
+%\includegraphics[scale=0.25]{hardware_robot_principal}}
+
+%\end{frame}
+
+
+
+%\appendix
+%\section*{Conclusiones}
+
+%\begin{frame}{Conclusiones}
+
+%  % Keep the summary *very short*.
+%  \begin{itemize}
+%  \item 
+%  \end{itemize}
+%  
+%\end{frame}
+
+\frame[plain]{\titlepage}
 
 \end{document}
 
