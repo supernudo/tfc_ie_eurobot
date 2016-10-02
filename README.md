@@ -1,4 +1,4 @@
-# Manual de referencia para el desarrollo de robots de Eurobot
+## Manual de referencia para el desarrollo de robots de Eurobot
 
 Este trabajo de fin de carrera trata sobre el desarrollo de robots para la competición de robots [Eurobot](http://www.eurobot.org). Pretende ser un manual de referencia para todo aquel que quiera construir un robot para participar en Eurobot. El trabajo está basado en la experiencia adquirida en el desarrollo de este tipo de robots entre entre los años 2003 y 2015. Especialmente en el periodo entre 2010 y 2015.
 
