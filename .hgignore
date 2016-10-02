@@ -1,9 +1,0 @@
-syntax: glob
-references/latex
-references
-*~
-book-latex/*.aux
-book-latex/book_rev42.pdf
-book-latex/book_rev21.pdf
-book-latex/book-IE-spanish.pdf
-book-latex/.fuse_hidden0000001000000003
